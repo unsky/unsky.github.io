@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://unsky.github.io/"/>
-  <updated>2016-11-01T15:35:22.505Z</updated>
+  <updated>2016-11-01T16:33:04.940Z</updated>
   <id>http://unsky.github.io/</id>
   
   <author>
@@ -16,49 +16,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>my first</title>
-    <link href="http://unsky.github.io/2016/11/01/my-first/"/>
-    <id>http://unsky.github.io/2016/11/01/my-first/</id>
-    <published>2016-11-01T13:55:03.000Z</published>
-    <updated>2016-11-01T15:35:22.505Z</updated>
+    <title>卷积神经网络学习历程</title>
+    <link href="http://unsky.github.io/2016/11/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
+    <id>http://unsky.github.io/2016/11/02/卷积神经网络学习历程/</id>
+    <published>2016-11-01T16:10:30.000Z</published>
+    <updated>2016-11-01T16:33:04.940Z</updated>
     
-    <content type="html"><![CDATA[<p>飞机航空i结婚i他的</p>
+    <content type="html"><![CDATA[<p>挖坑写文章</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;飞机航空i结婚i他的&lt;/p&gt;
+      &lt;p&gt;挖坑写文章&lt;/p&gt;
 
     
     </summary>
     
     
+      <category term="深度学习" scheme="http://unsky.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="卷积" scheme="http://unsky.github.io/tags/%E5%8D%B7%E7%A7%AF/"/>
+    
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://unsky.github.io/2016/11/01/hello-world/"/>
-    <id>http://unsky.github.io/2016/11/01/hello-world/</id>
-    <published>2016-11-01T12:46:05.377Z</published>
-    <updated>2016-11-01T12:46:05.380Z</updated>
+    <title>使用hexo快速搭建git博客</title>
+    <link href="http://unsky.github.io/2016/11/01/%E4%BD%BF%E7%94%A8hexo%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAgit%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://unsky.github.io/2016/11/01/使用hexo快速搭建git博客/</id>
+    <published>2016-11-01T15:40:13.000Z</published>
+    <updated>2016-11-01T15:41:16.559Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>挖坑，开始写这篇文章吧。。。。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;挖坑，开始写这篇文章吧。。。。&lt;/p&gt;
+
     
     </summary>
     
+    
+      <category term="git hexo" scheme="http://unsky.github.io/tags/git-hexo/"/>
     
   </entry>
   
