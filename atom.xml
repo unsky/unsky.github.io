@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://unsky.github.io/"/>
-  <updated>2016-11-01T16:33:04.940Z</updated>
+  <updated>2016-11-02T03:28:33.336Z</updated>
   <id>http://unsky.github.io/</id>
   
   <author>
@@ -20,14 +20,32 @@
     <link href="http://unsky.github.io/2016/11/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
     <id>http://unsky.github.io/2016/11/02/卷积神经网络学习历程/</id>
     <published>2016-11-01T16:10:30.000Z</published>
-    <updated>2016-11-01T16:33:04.940Z</updated>
+    <updated>2016-11-02T03:28:33.336Z</updated>
     
-    <content type="html"><![CDATA[<p>挖坑写文章</p>
+    <content type="html"><![CDATA[<p>深度学习之卷积神经网络</p>
+<ol>
+<li>前向传播</li>
+<li>后向传播</li>
+<li>损失函数</li>
+<li>激活函数</li>
+<li>调参技巧</li>
+<li>加速技巧</li>
+<li></li>
+</ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;挖坑写文章&lt;/p&gt;
+      &lt;p&gt;深度学习之卷积神经网络&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前向传播&lt;/li&gt;
+&lt;li&gt;后向传播&lt;/li&gt;
+&lt;li&gt;损失函数&lt;/li&gt;
+&lt;li&gt;激活函数&lt;/li&gt;
+&lt;li&gt;调参技巧&lt;/li&gt;
+&lt;li&gt;加速技巧&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
     
     </summary>
