@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>unsky</title>
-  
+  <title>Unsky Blog</title>
+  <subtitle>Unsky Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://unsky.github.io/"/>
+  <link href="http://yoursite.com/"/>
   <updated>2016-11-02T07:06:22.315Z</updated>
-  <id>http://unsky.github.io/</id>
+  <id>http://yoursite.com/</id>
   
   <author>
     <name>unsky</name>
-    <email>2081264@qq.com</email>
+    
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
     <title>卷积神经网络学习历程</title>
-    <link href="http://unsky.github.io/2016/11/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
-    <id>http://unsky.github.io/2016/11/02/卷积神经网络学习历程/</id>
+    <link href="http://yoursite.com/2016/11/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
+    <id>http://yoursite.com/2016/11/02/卷积神经网络学习历程/</id>
     <published>2016-11-01T16:10:30.000Z</published>
     <updated>2016-11-02T07:06:22.315Z</updated>
     
@@ -53,16 +53,16 @@
     </summary>
     
     
-      <category term="深度学习" scheme="http://unsky.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="卷积" scheme="http://unsky.github.io/tags/%E5%8D%B7%E7%A7%AF/"/>
+      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
     
   </entry>
   
   <entry>
     <title>使用hexo快速搭建git博客</title>
-    <link href="http://unsky.github.io/2016/11/01/%E4%BD%BF%E7%94%A8hexo%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAgit%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://unsky.github.io/2016/11/01/使用hexo快速搭建git博客/</id>
+    <link href="http://yoursite.com/2016/11/01/%E4%BD%BF%E7%94%A8hexo%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAgit%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2016/11/01/使用hexo快速搭建git博客/</id>
     <published>2016-11-01T15:40:13.000Z</published>
     <updated>2016-11-01T15:41:16.559Z</updated>
     
@@ -77,7 +77,7 @@
     </summary>
     
     
-      <category term="git hexo" scheme="http://unsky.github.io/tags/git-hexo/"/>
+      <category term="git hexo" scheme="http://yoursite.com/tags/git-hexo/"/>
     
   </entry>
   
