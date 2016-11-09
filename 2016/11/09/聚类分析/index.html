@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="深度学习,卷积," />
+  <meta name="keywords" content="聚类分析," />
 
 
 
@@ -84,30 +84,38 @@
 
 
 
-<meta name="description" content="前向传播  后向传播 损失函数 激活函数 调参技巧加速技巧$$\sum_{j=1}^{nuhi}$$
-$$ \sum_{j=1}^n{\sum_{k=1}^n{q_{jk}}} $$
+<meta name="description" content="聚类分析聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。
+一个好的聚类方法要能产生高质量的聚类结果——簇，这些簇要具备以下两个特点：
 
-Simple inline $a = b + c$.
-$$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
+高的簇内相似性
+低的簇间相似性
+
+聚类结果的好坏取决于该聚类方法采用的相似性评估方法以及该方法的具体实现聚类方法的好坏还取决于该方法是否">
 <meta property="og:type" content="article">
-<meta property="og:title" content="卷积神经网络学习历程">
-<meta property="og:url" content="http://yoursite.com/2016/11/02/卷积神经网络学习历程/index.html">
+<meta property="og:title" content="聚类分析">
+<meta property="og:url" content="http://yoursite.com/2016/11/09/聚类分析/index.html">
 <meta property="og:site_name" content="Unsky Blog">
-<meta property="og:description" content="前向传播  后向传播 损失函数 激活函数 调参技巧加速技巧$$\sum_{j=1}^{nuhi}$$
-$$ \sum_{j=1}^n{\sum_{k=1}^n{q_{jk}}} $$
+<meta property="og:description" content="聚类分析聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。
+一个好的聚类方法要能产生高质量的聚类结果——簇，这些簇要具备以下两个特点：
 
-Simple inline $a = b + c$.
-$$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
-<meta property="og:image" content="http://yoursite.com/images/1.png">
-<meta property="og:updated_time" content="2016-11-04T02:19:02.041Z">
+高的簇内相似性
+低的簇间相似性
+
+聚类结果的好坏取决于该聚类方法采用的相似性评估方法以及该方法的具体实现聚类方法的好坏还取决于该方法是否">
+<meta property="og:image" content="http://yoursite.com/images/clutster/1.png">
+<meta property="og:image" content="http://yoursite.com/images/clutster/2.png">
+<meta property="og:image" content="http://yoursite.com/images/clutster/3.png">
+<meta property="og:updated_time" content="2016-11-09T10:36:11.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="卷积神经网络学习历程">
-<meta name="twitter:description" content="前向传播  后向传播 损失函数 激活函数 调参技巧加速技巧$$\sum_{j=1}^{nuhi}$$
-$$ \sum_{j=1}^n{\sum_{k=1}^n{q_{jk}}} $$
+<meta name="twitter:title" content="聚类分析">
+<meta name="twitter:description" content="聚类分析聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。
+一个好的聚类方法要能产生高质量的聚类结果——簇，这些簇要具备以下两个特点：
 
-Simple inline $a = b + c$.
-$$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
-<meta name="twitter:image" content="http://yoursite.com/images/1.png">
+高的簇内相似性
+低的簇间相似性
+
+聚类结果的好坏取决于该聚类方法采用的相似性评估方法以及该方法的具体实现聚类方法的好坏还取决于该方法是否">
+<meta name="twitter:image" content="http://yoursite.com/images/clutster/1.png">
 
 
 
@@ -128,10 +136,10 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/02/卷积神经网络学习历程/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/09/聚类分析/"/>
 
 
-  <title> 卷积神经网络学习历程 | Unsky Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 聚类分析 | Unsky Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -253,7 +261,7 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
             
             
               
-                卷积神经网络学习历程
+                聚类分析
               
             
           </h1>
@@ -265,8 +273,8 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-02T00:10:30+08:00" content="2016-11-02">
-              2016-11-02
+            <time itemprop="dateCreated" datetime="2016-11-09T17:33:59+08:00" content="2016-11-09">
+              2016-11-09
             </time>
           </span>
 
@@ -279,8 +287,8 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/卷积深度网络全剖析/" itemprop="url" rel="index">
-                    <span itemprop="name">卷积深度网络全剖析</span>
+                  <a href="/categories/聚类分析/" itemprop="url" rel="index">
+                    <span itemprop="name">聚类分析</span>
                   </a>
                 </span>
 
@@ -295,8 +303,8 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/02/卷积神经网络学习历程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/02/卷积神经网络学习历程/" itemprop="commentsCount"></span>
+                <a href="/2016/11/09/聚类分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/09/聚类分析/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -319,11 +327,32 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
       
 
       
-        <h2 id="前向传播"><a href="#前向传播" class="headerlink" title=" 前向传播"></a> 前向传播</h2><h2 id="后向传播"><a href="#后向传播" class="headerlink" title="  后向传播"></a>  后向传播</h2><h2 id="损失函数"><a href="#损失函数" class="headerlink" title=" 损失函数"></a> 损失函数</h2><h2 id="激活函数"><a href="#激活函数" class="headerlink" title=" 激活函数"></a> 激活函数</h2><h2 id="调参技巧"><a href="#调参技巧" class="headerlink" title=" 调参技巧"></a> 调参技巧</h2><h2 id="加速技巧"><a href="#加速技巧" class="headerlink" title="加速技巧"></a>加速技巧</h2><p>$$\sum_{j=1}^{nuhi}$$</p>
-<p>$$ \sum_{j=1}^n{\sum_{k=1}^n{q_{jk}}} $$</p>
-<p><img src="/images/1.png" alt=""></p>
-<p>Simple inline $a = b + c$.</p>
-<p>$$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)$$</p>
+        <h1 id="聚类分析"><a href="#聚类分析" class="headerlink" title="聚类分析"></a>聚类分析</h1><p>聚类分析将数据划分成有意义或有用的组（簇）。<br>聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，<br>组内的对象相互之间是相似的，而不同组中的对象是不同的。</p>
+<p>一个好的聚类方法要能产生高质量的聚类结果——簇，这些簇要具备以下两个特点：</p>
+<ol>
+<li>高的簇内相似性</li>
+<li>低的簇间相似性</li>
+</ol>
+<p>聚类结果的好坏取决于该聚类方法采用的相似性评估方法以及该方法的具体实现<br>聚类方法的好坏还取决于该方法是否能发现某些还是所有的隐含模式</p>
+<p><img src="/images/clutster/1.png" alt=""></p>
+<p>聚类可以分为：</p>
+<ol>
+<li>划分聚类（Partitional Clustering）</li>
+<li>层次聚类（Hierarchical Clustering）</li>
+<li>互斥（重叠）聚类（exclusive clustering）</li>
+<li>非互斥聚类（non-exclusive）</li>
+<li>模糊聚类（fuzzy clustering）</li>
+<li>完全聚类（complete clustering）</li>
+<li>部分聚类（partial clustering）</li>
+</ol>
+<h2 id="划分聚类"><a href="#划分聚类" class="headerlink" title="划分聚类"></a>划分聚类</h2><p>划分聚类简单地将数据对象集划分成不重叠的子集，使得每个数据对象恰在一个子集。</p>
+<p><img src="/images/clutster/2.png" alt=""></p>
+<h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>层次聚类是嵌套簇的集族，组织成一棵树。<br><img src="/images/clutster/3.png" alt=""></p>
+<h2 id="互斥的聚类（Exclusive）"><a href="#互斥的聚类（Exclusive）" class="headerlink" title="互斥的聚类（Exclusive）"></a>互斥的聚类（Exclusive）</h2><p>每个对象都指派到单个簇.</p>
+<h2 id="重叠聚类"><a href="#重叠聚类" class="headerlink" title="重叠聚类"></a>重叠聚类</h2><p>重叠的（overlapping）或非互斥的（non-exclusive）<br>聚类用来反映一个对象.同时属于多个组（类）这一事实。<br>例如：在大学里，一个人可能既是学生，又是雇员</p>
+<h2 id="模糊聚类"><a href="#模糊聚类" class="headerlink" title="模糊聚类"></a>模糊聚类</h2><p>模糊聚类（Fuzzy clustering ）<br>每个对象以一个0（绝对不属于）和1（绝对属于）之间的隶属权值属于每个簇。<br>换言之，簇被视为模糊集。</p>
+<h2 id="部分聚类"><a href="#部分聚类" class="headerlink" title="部分聚类"></a>部分聚类</h2><p>部分的（Partial）<br>部分聚类中数据集某些对象可能不属于明确定义的组。如：一些对象可能是离群点、噪声。</p>
+<h2 id="完全聚类"><a href="#完全聚类" class="headerlink" title="完全聚类"></a>完全聚类</h2><p>完全的（complete）<br>完全聚类将每个对象指派到一个簇。</p>
 
       
     </div>
@@ -367,9 +396,7 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
       
         <div class="post-tags">
           
-            <a href="/tags/深度学习/" rel="tag">#深度学习</a>
-          
-            <a href="/tags/卷积/" rel="tag">#卷积</a>
+            <a href="/tags/聚类分析/" rel="tag">#聚类分析</a>
           
         </div>
       
@@ -378,17 +405,13 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/01/使用hexo快速搭建git博客/" rel="next" title="使用hexo快速搭建github pages博客">
-                <i class="fa fa-chevron-left"></i> 使用hexo快速搭建github pages博客
+              <a href="/2016/11/09/k-means聚类/" rel="next" title="k-means聚类">
+                <i class="fa fa-chevron-left"></i> k-means聚类
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/08/手把手将atom打造成c-c编程利器/" rel="prev" title="手把手将atom打造成c++/c编程利器">
-                手把手将atom打造成c++/c编程利器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,8 +475,8 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/02/卷积神经网络学习历程/"
-           data-title="卷积神经网络学习历程" data-url="http://yoursite.com/2016/11/02/卷积神经网络学习历程/">
+      <div class="ds-thread" data-thread-key="2016/11/09/聚类分析/"
+           data-title="聚类分析" data-url="http://yoursite.com/2016/11/09/聚类分析/">
       </div>
     
   </div>
@@ -587,7 +610,7 @@ $$\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2}">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前向传播"><span class="nav-number">1.</span> <span class="nav-text"> 前向传播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后向传播"><span class="nav-number">2.</span> <span class="nav-text">  后向传播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">3.</span> <span class="nav-text"> 损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-number">4.</span> <span class="nav-text"> 激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调参技巧"><span class="nav-number">5.</span> <span class="nav-text"> 调参技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加速技巧"><span class="nav-number">6.</span> <span class="nav-text">加速技巧</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类分析"><span class="nav-number">1.</span> <span class="nav-text">聚类分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#划分聚类"><span class="nav-number">1.1.</span> <span class="nav-text">划分聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次聚类"><span class="nav-number">1.2.</span> <span class="nav-text">层次聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互斥的聚类（Exclusive）"><span class="nav-number">1.3.</span> <span class="nav-text">互斥的聚类（Exclusive）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重叠聚类"><span class="nav-number">1.4.</span> <span class="nav-text">重叠聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊聚类"><span class="nav-number">1.5.</span> <span class="nav-text">模糊聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分聚类"><span class="nav-number">1.6.</span> <span class="nav-text">部分聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全聚类"><span class="nav-number">1.7.</span> <span class="nav-text">完全聚类</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
