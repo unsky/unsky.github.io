@@ -93,7 +93,6 @@
 <meta property="og:image" content="http://yoursite.com/images/atomle/1.png">
 <meta property="og:image" content="http://yoursite.com/images/atomle/2.png">
 <meta property="og:image" content="http://yoursite.com/images/atomle/3.png">
-<meta property="og:image" content="http://yoursite.com/images/atomle/4.png">
 <meta property="og:image" content="http://yoursite.com/images/atomle/5.png">
 <meta property="og:image" content="http://yoursite.com/images/atomle/6.png">
 <meta property="og:image" content="http://yoursite.com/images/atomle/7.png">
@@ -101,7 +100,7 @@
 <meta property="og:image" content="http://yoursite.com/images/atomle/9.png">
 <meta property="og:image" content="http://yoursite.com/images/atomle/10.png">
 <meta property="og:image" content="http://yoursite.com/images/atomle/11.png">
-<meta property="og:updated_time" content="2016-11-09T14:02:58.806Z">
+<meta property="og:updated_time" content="2016-11-09T14:05:18.015Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手把手将atom打造成c++/c编程利器">
 <meta name="twitter:description" content="Atom是由GitHub开发的自由及开放源代码的文字与代码编辑器，支持OS X、Windows和Linux操作系统，支持Node.js所写的插件，并内置Git版本控制系统。多数的延伸包皆为开放源代码授权，并由社区建置与维护。Atm基于Chromium并使用CoffeeScript撰写。Atom也可当作IDE使用。">
@@ -325,8 +324,10 @@
 <p>gpp-compliler 安装依赖于 MinGW 下载地址：<a href="http://www.mingw.org/" target="_blank" rel="external">http://www.mingw.org/</a></p>
 <p>MinGW(Minimalist GNU For Windows)是个精简的Windows平台C/C++、ADA及Fortran编译器，相比Cygwin而言，体积要小很多，使用较为方便。</p>
 <h2 id="运行刚刚下载的安装程序"><a href="#运行刚刚下载的安装程序" class="headerlink" title="运行刚刚下载的安装程序"></a>运行刚刚下载的安装程序</h2><p> <img src="/images/atomle/2.png" alt=""><br> 安装到D:\MinGW，点”Continue”。之后在桌面会形成一个安装器：<br>  <img src="/images/atomle/3.png" alt=""><br>  运行</p>
-<p>##选择安装组件<br>    运行安装程序。<br>    <img src="/images/atomle/4.png" alt=""><br>    选择需要安装的组件，右键选择“Mark for Installation”,之后选择”Installation -&gt; Apply Changes”。</p>
-<h2 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h2><p>  这里重点要提到的是GCC组件的安装，如图所示<br>      <img src="/images/atomle/5.png" alt=""><br>      先选择左边的”MinGW Base System”选项，之后再右边找到mingw-gcc。最好选择bin,dev和lic三个组件进行安装。</p>
+<h2 id="选择安装组件"><a href="#选择安装组件" class="headerlink" title="选择安装组件"></a>选择安装组件</h2><pre><code>运行安装程序。
+![](/images/atomle/4.png)  
+选择需要安装的组件，右键选择“Mark for Installation”,之后选择&quot;Installation -&gt; Apply Changes”。
+</code></pre><h2 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h2><p>  这里重点要提到的是GCC组件的安装，如图所示<br>      <img src="/images/atomle/5.png" alt=""><br>      先选择左边的”MinGW Base System”选项，之后再右边找到mingw-gcc。最好选择bin,dev和lic三个组件进行安装。</p>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p> 设置MinGW环境变量<br>鼠标右键“我的电脑”-&gt;“属性”，选择“高级”选项卡下的“环境变量”，在系统变量里点“新建”，之后填写MinGW的安装路径，如下：<br>      <img src="/images/atomle/6.png" alt=""><br>      之后找到Path，在最前面添加下面这段声明，之后点击确定。安装完成后，在MinGW\bin的目录下，会有一个名为gcc.exe的可执行文件。</p>
 <pre><code>  在 `cmd` 运行
 
@@ -602,7 +603,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装atom"><span class="nav-number">1.</span> <span class="nav-text">安装atom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译和调试插件-gpp-compliler"><span class="nav-number">2.</span> <span class="nav-text">编译和调试插件 gpp-compliler</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行刚刚下载的安装程序"><span class="nav-number">2.1.</span> <span class="nav-text">运行刚刚下载的安装程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCC"><span class="nav-number">2.2.</span> <span class="nav-text">GCC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码错误检测-linter-gcc"><span class="nav-number">3.</span> <span class="nav-text">代码错误检测 linter-gcc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高亮选择-highlight-selected"><span class="nav-number">4.</span> <span class="nav-text">高亮选择 highlight-selected</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动美化代码-atom-beautiful"><span class="nav-number">5.</span> <span class="nav-text">自动美化代码 atom-beautiful</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#minimap"><span class="nav-number">6.</span> <span class="nav-text">minimap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装atom"><span class="nav-number">1.</span> <span class="nav-text">安装atom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译和调试插件-gpp-compliler"><span class="nav-number">2.</span> <span class="nav-text">编译和调试插件 gpp-compliler</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行刚刚下载的安装程序"><span class="nav-number">2.1.</span> <span class="nav-text">运行刚刚下载的安装程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择安装组件"><span class="nav-number">2.2.</span> <span class="nav-text">选择安装组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCC"><span class="nav-number">2.3.</span> <span class="nav-text">GCC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.4.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码错误检测-linter-gcc"><span class="nav-number">3.</span> <span class="nav-text">代码错误检测 linter-gcc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高亮选择-highlight-selected"><span class="nav-number">4.</span> <span class="nav-text">高亮选择 highlight-selected</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动美化代码-atom-beautiful"><span class="nav-number">5.</span> <span class="nav-text">自动美化代码 atom-beautiful</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#minimap"><span class="nav-number">6.</span> <span class="nav-text">minimap</span></a></li></ol></div>
             
           </div>
         </section>
