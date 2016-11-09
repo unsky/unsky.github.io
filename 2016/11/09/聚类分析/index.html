@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/images/clutster/1.png">
 <meta property="og:image" content="http://yoursite.com/images/clutster/2.png">
 <meta property="og:image" content="http://yoursite.com/images/clutster/3.png">
-<meta property="og:updated_time" content="2016-11-09T11:23:01.949Z">
+<meta property="og:updated_time" content="2016-11-09T11:34:27.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聚类分析">
 <meta name="twitter:description" content="聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。">
@@ -310,7 +310,7 @@
 
       
         <p>聚类分析将数据划分成有意义或有用的组（簇）。<br>聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，<br>组内的对象相互之间是相似的，而不同组中的对象是不同的。<br> <a id="more"></a></p>
-<p>一个好的聚类方法要能产生高质量的聚类结果——簇，这些簇要具备以下两个特点：</p>
+<h1 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h1><p>一个好的聚类方法要能产生高质量的聚类结果——簇，这些簇要具备以下两个特点：</p>
 <ol>
 <li>高的簇内相似性</li>
 <li>低的簇间相似性</li>
@@ -330,12 +330,35 @@
 <h2 id="划分聚类"><a href="#划分聚类" class="headerlink" title="划分聚类"></a>划分聚类</h2><p>划分聚类简单地将数据对象集划分成不重叠的子集，使得每个数据对象恰在一个子集。</p>
 <p><img src="/images/clutster/2.png" alt=""></p>
 <h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>层次聚类是嵌套簇的集族，组织成一棵树。<br><img src="/images/clutster/3.png" alt=""></p>
-<h2 id="互斥的聚类（Exclusive）"><a href="#互斥的聚类（Exclusive）" class="headerlink" title="互斥的聚类（Exclusive）"></a>互斥的聚类（Exclusive）</h2><p>每个对象都指派到单个簇.</p>
-<h2 id="重叠聚类"><a href="#重叠聚类" class="headerlink" title="重叠聚类"></a>重叠聚类</h2><p>重叠的（overlapping）或非互斥的（non-exclusive）<br>聚类用来反映一个对象.同时属于多个组（类）这一事实。<br>例如：在大学里，一个人可能既是学生，又是雇员</p>
-<h2 id="模糊聚类"><a href="#模糊聚类" class="headerlink" title="模糊聚类"></a>模糊聚类</h2><p>模糊聚类（Fuzzy clustering ）<br>每个对象以一个0（绝对不属于）和1（绝对属于）之间的隶属权值属于每个簇。<br>换言之，簇被视为模糊集。</p>
-<h2 id="部分聚类"><a href="#部分聚类" class="headerlink" title="部分聚类"></a>部分聚类</h2><p>部分的（Partial）<br>部分聚类中数据集某些对象可能不属于明确定义的组。如：一些对象可能是离群点、噪声。</p>
-<h2 id="完全聚类"><a href="#完全聚类" class="headerlink" title="完全聚类"></a>完全聚类</h2><p>完全的（complete）<br>完全聚类将每个对象指派到一个簇。</p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="簇的分类"><a href="#簇的分类" class="headerlink" title="簇的分类"></a>簇的分类</h2>
+<h2 id="互斥聚类（exclusive）"><a href="#互斥聚类（exclusive）" class="headerlink" title="互斥聚类（exclusive）"></a>互斥聚类（exclusive）</h2><p>每个对象都指派到单个簇.</p>
+<h2 id="重叠聚类（overlapping）或非互斥聚类（non-exclusive）"><a href="#重叠聚类（overlapping）或非互斥聚类（non-exclusive）" class="headerlink" title="重叠聚类（overlapping）或非互斥聚类（non-exclusive）"></a>重叠聚类（overlapping）或非互斥聚类（non-exclusive）</h2><p>聚类用来反映一个对象.同时属于多个组（类）这一事实。<br>例如：在大学里，一个人可能既是学生，又是雇员</p>
+<h2 id="模糊聚类（Fuzzy-clustering-）"><a href="#模糊聚类（Fuzzy-clustering-）" class="headerlink" title="模糊聚类（Fuzzy clustering ）"></a>模糊聚类（Fuzzy clustering ）</h2><p>每个对象以一个0（绝对不属于）和1（绝对属于）之间的隶属权值属于每个簇。<br>换言之，簇被视为模糊集。</p>
+<h2 id="部分聚类（Partial）"><a href="#部分聚类（Partial）" class="headerlink" title="部分聚类（Partial）"></a>部分聚类（Partial）</h2><p>部分聚类中数据集某些对象可能不属于明确定义的组。如：一些对象可能是离群点、噪声。</p>
+<h2 id="完全聚类（complete）"><a href="#完全聚类（complete）" class="headerlink" title="完全聚类（complete）"></a>完全聚类（complete）</h2><p>完全聚类将每个对象指派到一个簇。</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="簇的分类"><a href="#簇的分类" class="headerlink" title="簇的分类"></a>簇的分类</h2><p>簇是同一性状物体的集合<br>按照性状的分类不同可以将簇分为</p>
+<ol>
+<li>明显分离的</li>
+</ol>
+<p>每个点到同簇中任一点的距离比到不同簇中所有点的距离更近。</p>
+<ol>
+<li>基于原型的</li>
+</ol>
+<p>每个对象到定义该簇的原型的距离比到其他簇的原型的距离更近。<br>对于具有连续属性的数据，簇的原型通常是质心，即簇中所有点的平均值。<br>当质心没有意义时，原型通常是中心点，即簇中最有代表性的点。</p>
+<p>基于中心的（ Center-Based）的簇：<br>每个点到其簇中心的距离比到任何其他簇中心的距离更近。</p>
+<ol>
+<li>基于图的</li>
+</ol>
+<p>如果数据用图表示，其中节点是对象，而边代表对象之间的联系。</p>
+<p>簇可以定义为连通分支（connected component）：互相连通但不与组外对象连通的对象组。</p>
+<p>基于近邻的（ Contiguity-Based）：其中两个对象是相连的，仅当它们的距离在指定的范围内。这意味着，每个对象到该簇某个对象的距离比到不同簇中任意点的距离更近。</p>
+<ol>
+<li>基于密度的</li>
+</ol>
+<p>簇是对象的稠密区域，被低密度的区域环绕。</p>
+<ol>
+<li>概念簇<br>可以把簇定义为有某种共同性质的对象的集合。<br>例如：基于中心的聚类。还有一些簇的共同性质需要更复杂的算法才能识别出来。</li>
+</ol>
+
       
     </div>
 
@@ -592,7 +615,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#划分聚类"><span class="nav-number">1.</span> <span class="nav-text">划分聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次聚类"><span class="nav-number">2.</span> <span class="nav-text">层次聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互斥的聚类（Exclusive）"><span class="nav-number">3.</span> <span class="nav-text">互斥的聚类（Exclusive）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重叠聚类"><span class="nav-number">4.</span> <span class="nav-text">重叠聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊聚类"><span class="nav-number">5.</span> <span class="nav-text">模糊聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分聚类"><span class="nav-number">6.</span> <span class="nav-text">部分聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全聚类"><span class="nav-number">7.</span> <span class="nav-text">完全聚类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number"></span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#簇的分类"><span class="nav-number">1.</span> <span class="nav-text">簇的分类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类"><span class="nav-number">1.</span> <span class="nav-text">聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#划分聚类"><span class="nav-number">1.1.</span> <span class="nav-text">划分聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次聚类"><span class="nav-number">1.2.</span> <span class="nav-text">层次聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互斥聚类（exclusive）"><span class="nav-number">1.3.</span> <span class="nav-text">互斥聚类（exclusive）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重叠聚类（overlapping）或非互斥聚类（non-exclusive）"><span class="nav-number">1.4.</span> <span class="nav-text">重叠聚类（overlapping）或非互斥聚类（non-exclusive）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊聚类（Fuzzy-clustering-）"><span class="nav-number">1.5.</span> <span class="nav-text">模糊聚类（Fuzzy clustering ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分聚类（Partial）"><span class="nav-number">1.6.</span> <span class="nav-text">部分聚类（Partial）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全聚类（complete）"><span class="nav-number">1.7.</span> <span class="nav-text">完全聚类（complete）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#簇的分类"><span class="nav-number">2.1.</span> <span class="nav-text">簇的分类</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
