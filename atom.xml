@@ -93,7 +93,7 @@
     <link href="http://yoursite.com/2016/11/09/k-means%E8%81%9A%E7%B1%BB/"/>
     <id>http://yoursite.com/2016/11/09/k-means聚类/</id>
     <published>2016-11-09T08:56:52.000Z</published>
-    <updated>2016-11-09T12:24:34.214Z</updated>
+    <updated>2016-11-09T12:28:40.485Z</updated>
     
     <content type="html"><![CDATA[<p> 在数据挖掘中，K-Means算法是一种cluster analysis的算法，<br> 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。<br> <a id="more"></a></p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>K-Means算法主要解决的问题如下图所示。我们可以看到，在图的左边有一些点，<br>我们用肉眼可以看出来有四个点群，但是我们怎么通过计算机程序找出这几个点群来呢？<br>于是就出现了我们的K-Means算法。<br><img src="/images/kmeans/1.png" alt=""><br>算法概要<br>如下图所示：<br><img src="/images/kmeans/2.png" alt=""><br>从上图中，我们可以看到，A，B，C，D，E是五个在图中点。<br>而灰色的点是我们的种子点，也就是我们用来找点群的点。有两个种子点，所以K=2。</p>
@@ -101,14 +101,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1. 随机在图中取K（这里K=2）个种子点</div><div class="line"></div><div class="line">2. 然后对图中的所有点求到这K个种子点的距离，假如点Pi离种子点Si最近，</div><div class="line">那么Pi属于Si点群。</div><div class="line">（上图中，我们可以看到A，B属于上面的种子点，C，D，E属于下面中部的种子点）</div><div class="line">3. 我们要移动种子点到属于他的“点群”的中心。（见图上的第三步）</div><div class="line">然后重复第2）和第3）步直到，种子点没有移动（我们可以看到图中的第四步上面的种子点聚合了A，B，C，下面的种子点聚合了D，E）。</div></pre></td></tr></table></figure>
 <p>使用公式可以表示为：<br>$$\varUpsilon =\sum_{k=1}^K{\sum_{i=1}^L{dist\left( x_i-u_k \right)}}$$<br>而$dist$距离函数可以分为：</p>
 <ol>
-<li>Minkowski Distance（闵可夫斯基距离）<br>$$<br>d<em>{i,j}=\sqrt[\lambda]{\sum</em>{k=1}^n{|x<em>{i,k}-x</em>{j,k}|}^{\lambda}}<br>$$<br>(\lambda) 可以随意取值，可以是负数，也可以是正数，或是无穷大</li>
+<li>Minkowski Distance（闵可夫斯基距离）<br>$$<br>d_{i,j}=\sqrt[\lambda]{\sum_{k=1}^n{|x_{i,k}-x_{j,k}|}^{\lambda}}<br>$$<br>$$\lambda$$<br>可以随意取值，可以是负数，也可以是正数，或是无穷大</li>
 <li>Euclidean Distance(欧拉距离)</li>
 </ol>
-<p>$$<br>d<em>{i,j}=\sqrt[]{\sum</em>{k=1}^n{|x<em>{i,k}-x</em>{j,k}|}^2}<br>$$<br>其形式为 Minkowski Distance 为 (\lambda)=2时候的特殊形式。</p>
+<p>$$<br>d_{i,j}=\sqrt[]{\sum_{k=1}^n{|x_{i,k}-x_{j,k}|}^2}<br>$$<br>其形式为 Minkowski Distance 为 $$\lambda$$=2时候的特殊形式。</p>
 <ol>
-<li>CityBlock Distance （CB距离）<br>$$<br>d<em>{i,j}=\sum</em>{k=1}^n{|x<em>{i,k}-x</em>{j,k}|}<br>$$<br>也就是第一个公式 (\lambda)=1的情况。<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1>在模拟k-means的实验中我们使用深度学习网络vgg16在一个层的feature maps 来进行模拟实验，用来验证聚类效果，输入图片为一个行人。<br>我们使用vgg16 conv1-2产生的feature maps进行实验。<br>假设我们产生的feature maps 为<br>(\psi \in R^{m\times n\times k}) ,其中 (m\times n)为feature大小, k为map的个数。</li>
+<li>CityBlock Distance （CB距离）<br>$$<br>d_{i,j}=\sum_{k=1}^n{|x_{i,k}-x_{j,k}|}<br>$$<br>也就是第一个公式 $$\lambda$$=1的情况。<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1>在模拟k-means的实验中我们使用深度学习网络vgg16在一个层的feature maps 来进行模拟实验，用来验证聚类效果，输入图片为一个行人。<br>我们使用vgg16 conv1-2产生的feature maps进行实验。<br>假设我们产生的feature maps 为<br>$$\psi \in R^{m\times n\times k}$$ ,其中 $$m\times n$$<br>为feature大小, k为map的个数。</li>
 </ol>
-<p>$$\lambda$$</p>
 <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ol>
 <li>实验使用vlfeat工具包<br>下载地址： <a href="https://github.com/unsky/vlfeat" target="_blank" rel="external">https://github.com/unsky/vlfeat</a></li>
 <li>在vlfeat\toolbox中使用vl_setup启动工具包<h2 id="实验-1"><a href="#实验-1" class="headerlink" title="实验"></a>实验</h2></li>
