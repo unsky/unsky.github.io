@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-10T03:08:26.535Z</updated>
+  <updated>2016-11-10T09:47:52.812Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>损失函数</title>
+    <link href="http://yoursite.com/2016/11/10/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2016/11/10/损失函数/</id>
+    <published>2016-11-10T09:44:34.000Z</published>
+    <updated>2016-11-10T09:47:52.812Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;损失函数&quot;&gt;&lt;a href=&quot;#损失函数&quot; class=&quot;headerlink&quot; title=&quot;损失函数&quot;&gt;&lt;/a&gt;损失函数&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="卷积深度网络全剖析" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%85%A8%E5%89%96%E6%9E%90/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="损失函数" scheme="http://yoursite.com/tags/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>聚类分析</title>
