@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://yoursite.com/images/cnn/9.png">
 <meta property="og:image" content="http://yoursite.com/images/cnn/10.png">
 <meta property="og:image" content="http://yoursite.com/images/cnn/11.png">
-<meta property="og:updated_time" content="2016-11-10T09:41:01.646Z">
+<meta property="og:updated_time" content="2016-11-10T09:43:00.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络学习历程">
 <meta name="twitter:description" content="神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.">
@@ -359,7 +359,7 @@
 <p>$$<br>\frac{\partial E\left( w,b \right)}{\partial w_{ki}}=\frac{1}{\partial w_{ki}}\cdot \frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\left( d_j-y_j \right) \cdot f’\left( S_j \right) \cdot \frac{\partial S_j}{\partial w_{kj}}}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\left( d_j-y_j \right) \cdot f’\left( S_j \right) \cdot \frac{\partial S_j}{\partial x_i}\cdot \frac{\partial x_i}{\partial S_i}\cdot \frac{\partial S_j}{\partial w_{kj}}}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}\cdot x_k<br>$$<br>$$<br>=x_k\cdot \sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}<br>$$<br>$$<br>=\delta_{ki}\cdot x_k<br>$$<br> 其中有<br> $$<br>\delta_{ki}=\sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}<br>$$</p>
 <h2 id="梯度下降更新"><a href="#梯度下降更新" class="headerlink" title="梯度下降更新"></a>梯度下降更新</h2><p>有了上述公式，根据梯度下降法，那么对于隐含层和输出层之间的权值和阀值调整如下<br>$$<br>w_{ij}=w_{ij}-\eta_1\frac{\partial E\left( w,b \right)}{\partial w_{ij}}=w_{ij}-\eta_1\delta_{ij}\cdot x_i<br>$$</p>
 <p>$$<br>b_j=b_j-\eta_2\frac{\partial E\left( w,b \right)}{\partial b_j}=b_j-\eta_2\delta_{ij}<br>$$<br>  而对于输入层和隐含层之间的权值和阀值调整同样有</p>
-<p>  $$w<em>{ki}=w</em>{ki}-\eta_1\frac{\partial E\left( w,b \right)}{\partial w_{ki}}=w_{ki}-\eta_1\delta_{ki}\cdot x_k$$</p>
+<p>  $$w_{ki}=w_{ki}-\eta_1\frac{\partial E\left( w,b \right)}{\partial w_{ki}}=w_{ki}-\eta_1\delta_{ki}\cdot x_k$$</p>
 <p>$$b_i=b_i-\eta_2\frac{\partial E\left( w,b \right)}{\partial b_i}=b_i-\eta_2\delta_{ki}$$</p>
 <h2 id="bp的缺陷"><a href="#bp的缺陷" class="headerlink" title="bp的缺陷"></a>bp的缺陷</h2><ol>
 <li>容易形成局部极小值而得不到全局最优值。BP神经网络中极小值比较多，所以很容易陷入局部极小值，这就要求对初始权值和阀值有要求，要使得初始权值和阀值随机性足够好，可以多次随机来实现。</li>
