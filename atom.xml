@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-10T12:28:37.610Z</updated>
+  <updated>2016-11-10T14:37:38.793Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,16 @@
     <link href="http://yoursite.com/2016/11/10/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
     <id>http://yoursite.com/2016/11/10/激活函数/</id>
     <published>2016-11-10T12:27:17.000Z</published>
-    <updated>2016-11-10T12:28:37.610Z</updated>
+    <updated>2016-11-10T14:37:38.793Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h1>]]></content>
+    <content type="html"><![CDATA[<p>在神经元的数学模型中，轴突所携带的信号(例如: $x_0$ )通过突触进行传递，由于突触的强弱不一，假设我们以 $w_0$ 表示，那么我们传到下一个神经元的树突处的信号就变成了 $w_0x_0$ 。其中突触强弱(参数w)是可学的，它控制了一个神经元对另一个神经元影响的大小和方向（正负）。然后树突接收到信号后传递到神经元内部<code>cell body</code>，与其他树突传递过来的信号一起进行加和，如果这个和的值大于某一个固定的阈值的话，神经元就会被激活，然后传递冲激信号给树突。在数学模型中我们假设传递冲激信号的时间长短并不重要，只有神经元被激活的频率用于传递信息. 我们将是否激活神经元的函数称为激活函数(activation function $f$ ), 它代表了轴突接收到冲激信号的频率。以前我们比较常用的一个激活信号是<code>sigmoid function</code> $σ$ ，因为它接收一个实值的信号（即上面所说的加和的值）然后将它压缩到 <code>0-1</code> 的范围内。我们在后面会介绍更多的激活函数。<br> <a id="more"></a></p>
+<h1 id="传统Sigmoid系激活函数"><a href="#传统Sigmoid系激活函数" class="headerlink" title="传统Sigmoid系激活函数"></a>传统Sigmoid系激活函数</h1><p><img src="/images/activate/1.png" alt=""><br>传统神经网络中最常用的两个激活函数，<code>Sigmoid</code>系（Logistic-Sigmoid、Tanh-Sigmoid）被视为神经网络的核心所在。从数学上来看，非线性的Sigmoid函数对中央区的信号增益较大，对两侧区的信号增益小，在信号的特征空间映射上，有很好的效果。从神经科学上来看，中央区酷似神经元的兴奋态，两侧区酷似神经元的抑制态，因而在神经网络学习方面，可以将重点特征推向中央区，将非重点特征推向两侧区。</p>
+<p>无论是哪种解释，看起来都比早期的<code>线性激活函数</code>(y=x),阶跃激活函数<code>(-1/1,0/1)</code>高明了不少。</p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;激活函数&quot;&gt;&lt;a href=&quot;#激活函数&quot; class=&quot;headerlink&quot; title=&quot;激活函数&quot;&gt;&lt;/a&gt;激活函数&lt;/h1&gt;
+      &lt;p&gt;在神经元的数学模型中，轴突所携带的信号(例如: $x_0$ )通过突触进行传递，由于突触的强弱不一，假设我们以 $w_0$ 表示，那么我们传到下一个神经元的树突处的信号就变成了 $w_0x_0$ 。其中突触强弱(参数w)是可学的，它控制了一个神经元对另一个神经元影响的大小和方向（正负）。然后树突接收到信号后传递到神经元内部&lt;code&gt;cell body&lt;/code&gt;，与其他树突传递过来的信号一起进行加和，如果这个和的值大于某一个固定的阈值的话，神经元就会被激活，然后传递冲激信号给树突。在数学模型中我们假设传递冲激信号的时间长短并不重要，只有神经元被激活的频率用于传递信息. 我们将是否激活神经元的函数称为激活函数(activation function $f$ ), 它代表了轴突接收到冲激信号的频率。以前我们比较常用的一个激活信号是&lt;code&gt;sigmoid function&lt;/code&gt; $σ$ ，因为它接收一个实值的信号（即上面所说的加和的值）然后将它压缩到 &lt;code&gt;0-1&lt;/code&gt; 的范围内。我们在后面会介绍更多的激活函数。&lt;br&gt;
     
     </summary>
     
@@ -309,9 +312,9 @@
       <category term="卷积深度网络全剖析" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%85%A8%E5%89%96%E6%9E%90/"/>
     
     
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
