@@ -92,7 +92,13 @@
 <meta property="og:description" content="神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.">
 <meta property="og:image" content="http://yoursite.com/images/cnn/1.png">
 <meta property="og:image" content="http://yoursite.com/images/cnn/2.gif">
-<meta property="og:updated_time" content="2016-11-10T03:12:39.900Z">
+<meta property="og:image" content="http://yoursite.com/images/cnn/3.png">
+<meta property="og:image" content="http://yoursite.com/images/cnn/4.png">
+<meta property="og:image" content="http://yoursite.com/images/cnn/5.png">
+<meta property="og:image" content="http://yoursite.com/images/cnn/6.png">
+<meta property="og:image" content="http://yoursite.com/images/cnn/7.png">
+<meta property="og:image" content="http://yoursite.com/images/cnn/8.png">
+<meta property="og:updated_time" content="2016-11-10T08:22:04.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络学习历程">
 <meta name="twitter:description" content="神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.">
@@ -315,9 +321,25 @@
 <h1 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h1><h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>自然图像有其固有特性，也就是说，图像的一部分的统计特性与其他部分是一样的。这也意味着我们在这一部分学习的特征也能用在另一部分上，所以对于这个图像上的所有位置，我们都能使用同样的学习特征。</p>
 <p>更恰当的解释是，当从一个大尺寸图像中随机选取一小块，比如说 8x8 作为样本，并且从这个小块样本中学习到了一些特征，这时我们可以把从这个 8x8 样本中学习到的特征作为探测器，应用到这个图像的任意地方中去。特别是，我们可以用从 8x8 样本中所学习到的特征跟原本的大尺寸图像作卷积，从而对这个大尺寸图像上的任一位置获得一个不同特征的激活值。</p>
 <p>下面给出一个具体的例子：假设你已经从一个 96x96 的图像中学习到了它的一个 8x8 的样本所具有的特征，假设这是由有 100 个隐含单元的自编码完成的。为了得到卷积特征，需要对 96x96 的图像的每个 8x8 的小块图像区域都进行卷积运算。也就是说，抽取8x8 的小块区域，并且从起始坐标开始依次标记为（1，1），（1，2），…，一直到（89，89），然后对抽取的区域逐个运行训练过的稀疏自编码来得到特征的激活值。在这个例子里，显然可以得到 100 个集合，每个集合含有 89x89 个卷积特征。<br>  <img src="/images/cnn/2.gif" alt=""></p>
-<p>  假设给定了 $r \times c$ 的大尺寸图像，将其定义为 xlarge。首先通过从大尺寸图像中抽取的 $a \times b$ 的小尺寸图像样本 $x_small$ 训练稀疏自编码，计算 $f = σ(W(1)x_{small} + b(1))$ （σ 是一个 sigmoid 型函数）得到了 k 个特征， 其中 W(1) 和 b(1) 是可视层单元和隐含单元之间的权重和偏差值。对于每一个 $a \times b$ 大小的小图像 $x_s$，计算出对应的值  $fs = σ(W(1)xs + b(1))$ ，对这些 fconvolved 值做卷积，就可以得到  $k \times (r - a + 1) \times (c - b + 1)$  个卷积后的特征的矩阵。</p>
-<p>在接下来的章节里，我们会更进一步描述如何把这些特征汇总到一起以得到一些更利于分类的特征。</p>
-<h2 id="前向"><a href="#前向" class="headerlink" title="前向"></a>前向</h2>
+<p>  假设给定了 $r \times c$ 的大尺寸图像，将其定义为 xlarge。首先通过从大尺寸图像中抽取的 $a \times b$ 的小尺寸图像样本 $x_{small}$ 训练稀疏自编码，计算 $f = σ(W(1)x_{small} + b(1))$ （σ 是一个 sigmoid 型函数）得到了 k 个特征， 其中 W(1) 和 b(1) 是可视层单元和隐含单元之间的权重和偏差值。对于每一个 $a \times b$ 大小的小图像 $x_s$，计算出对应的值  $f_s = σ(W(1)x_s + b(1))$ ，对这些 fconvolved 值做卷积，就可以得到  $k \times (r - a + 1) \times (c - b + 1)$  个卷积后的特征的矩阵。</p>
+<h3 id="窄卷积-vs-宽卷积"><a href="#窄卷积-vs-宽卷积" class="headerlink" title="窄卷积 vs 宽卷积"></a>窄卷积 vs 宽卷积</h3><p>在上文中解释卷积运算的时候，忽略了如何使用滤波器的一个小细节。在矩阵的中部使用3x3的滤波器没有问题，在矩阵的边缘该怎么办呢？左上角的元素没有顶部和左侧相邻的元素，该如何滤波呢？解决的办法是采用补零法（zero-padding）。所有落在矩阵范围之外的元素值都默认为0。这样就可以对输入矩阵的每一个元素做滤波了，输出一个同样大小或是更大的矩阵。补零法又被称为是宽卷积，不使用补零的方法则被称为窄卷积。在具体的试验中就是<code>pad</code>字段设置 <code>0 or other</code></p>
+<p>1D的例子如图所示：<br>  <img src="/images/cnn/3.png" alt="">窄卷积 vs 宽卷积。滤波器长度为5，输入长度为7。</p>
+<h3 id="步长"><a href="#步长" class="headerlink" title="步长"></a>步长</h3><p>卷积运算的另一个超参数是步长，即每一次滤波器平移的距离。上面所有例子中的步长都是1，相邻两个滤波器有重叠。步长越大，则用到的滤波器越少，输出的值也越少.<br>在实验中使用<code>strike</code>进行控制<br>  <img src="/images/cnn/4.png" alt=""></p>
+<h2 id="池化-pooling"><a href="#池化-pooling" class="headerlink" title="池化 pooling"></a>池化 pooling</h2><p>卷积神经网络的一个重要概念就是池化层，一般是在卷积层之后。池化层对输入做降采样。常用的池化做法是对每个滤波器的输出求最大值。我们并不需要对整个矩阵都做池化，可以只对某个窗口区间做池化。例如，下图所示的是2x2窗口的最大值池化（在NLP里，我们通常对整个输出做池化，每个滤波器只有一个输出值）：<br>  <img src="/images/cnn/5.png" alt=""></p>
+<p>池化的特点之一就是它输出一个固定大小的矩阵，这对分类问题很有必要。例如，如果你用了1000个滤波器，并对每个输出使用最大池化，那么无论滤波器的尺寸是多大，也无论输入数据的维度如何变化，你都将得到一个1000维的输出。这让你可以应用不同长度的句子和不同大小的滤波器，但总是得到一个相同维度的输出结果，传入下一层的分类器。</p>
+<p>池化还能降低输出结果的维度，（理想情况下）却能保留显著的特征。你可以认为每个滤波器都是检测一种特定的特征，例如，检测句子是否包含诸如“not amazing”等否定意思。如果这个短语在句子中的某个位置出现，那么对应位置的滤波器的输出值将会非常大，而在其它位置的输出值非常小。通过采用取最大值的方式，能将某个特征是否出现在句子中的信息保留下来，但是无法确定它究竟在句子的哪个位置出现。这个信息出现的位置真的很重要吗？确实是的，它有点类似于一组n-grams模型的行为。尽管丢失了关于位置的全局信息（在句子中的大致位置），但是滤波器捕捉到的局部信息却被保留下来了，比如“not amazing”和“amazing not”的意思就大相径庭。</p>
+<p>在图像识别领域，池化还能提供平移和旋转不变性。若对某个区域做了池化，即使图像平移/旋转几个像素，得到的输出值也基本一样，因为每次最大值运算得到的结果总是一样的</p>
+<h2 id="前向"><a href="#前向" class="headerlink" title="前向"></a>前向</h2><p>现在设节点 $i$ 和节点 $j$ 之间的权值为 $w_{i,j}$ ，节点 $j$ 的阀值为 $b_j$ ，每个节点的输出值为 $x_j$ ，而每个节点的输出值是根据上层所有节点的输出值、当前节点与上一层所有节点的权值和当前节点的阀值还有激活函数来实现的。具体计算方法如下</p>
+<p>$$S_j=\sum_{i=0}^{m-1}{w_{i,j}x_i+b_j}$$<br>$$x_j=f\left( S_j \right) $$</p>
+<p>其中 $f$ 为激活函数，一般选取S型函数或者线性函数。正向传递的过程比较简单，按照上述公式计算即可。在BP神经网络中，输入层节点没有阀值。</p>
+<h3 id="卷积的前向"><a href="#卷积的前向" class="headerlink" title="卷积的前向"></a>卷积的前向</h3><p>如下图，卷积层的输入来源于输入层或者pooling层。每一层的多个卷积核大小相同，在这个网络中，使用的卷积核均为 $5\times 5$ 。<br>  <img src="/images/cnn/6.png" alt=""></p>
+<p>如图输入为 $28 \times 28$ 的图像，经过 $5 \times5$ 的卷积之后，得到一个 $(28-5+1)\times (28-5+1) = 24\times 24$ 的map。卷积层2的每个map是不同卷积核在前一层每个map上进行卷积，并将每个对应位置上的值相加然后再加上一个偏置项。</p>
+<p>  <img src="/images/cnn/7.png" alt=""><br>每次用卷积核与map中对应元素相乘，然后移动卷积核进行下一个神经元的计算。如图中矩阵C的第一行第一列的元素2，就是卷积核在输入map左上角时的计算结果。在图中也很容易看到，输入为一个 $4\times 4$ 的map，经过 $2\times 2$ 的卷积核卷积之后，结果为一个 $(4-2+1) \times (4-2+1) = 3\times 3$ 的map。</p>
+<h3 id="卷积前向的caffe实现"><a href="#卷积前向的caffe实现" class="headerlink" title="卷积前向的caffe实现"></a>卷积前向的caffe实现</h3><p>Caffe中卷积的实现十分巧妙，详细可以参考一下这篇论文: <a href="https://hal.archives-ouvertes.fr/file/index/docid/112631/filename/p1038112283956.pdf" target="_blank" rel="external">https://hal.archives-ouvertes.fr/file/index/docid/112631/filename/p1038112283956.pdf</a></p>
+<p>下面是一张论文中的图片，看这张图片可以很清楚理解。从图中可以看出，卷积之前将输入的多个矩阵和多个卷积核先展开再组合成2个大的矩阵，用展开后的矩阵相乘。</p>
+<p><img src="/images/cnn/8.png" alt=""></p>
+<p>假设我们一次训练16张图片(即batch_size为16)。通过之前的推导，我们知道该层的输入为20个 $12\times 12$ 的特征图，所以bottom的维度 $16\times 20\times 12\times 12$ ，则该层的输出top的维度为 $16\times 50 \times 8\times 8$ 。</p>
+
       
     </div>
 
@@ -580,7 +602,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#神经元建模"><span class="nav-number">1.</span> <span class="nav-text">神经元建模</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前向传播"><span class="nav-number">2.</span> <span class="nav-text">前向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积"><span class="nav-number">2.1.</span> <span class="nav-text">卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前向"><span class="nav-number">2.2.</span> <span class="nav-text">前向</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#神经元建模"><span class="nav-number">1.</span> <span class="nav-text">神经元建模</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前向传播"><span class="nav-number">2.</span> <span class="nav-text">前向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积"><span class="nav-number">2.1.</span> <span class="nav-text">卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#窄卷积-vs-宽卷积"><span class="nav-number">2.1.1.</span> <span class="nav-text">窄卷积 vs 宽卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步长"><span class="nav-number">2.1.2.</span> <span class="nav-text">步长</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#池化-pooling"><span class="nav-number">2.2.</span> <span class="nav-text">池化 pooling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前向"><span class="nav-number">2.3.</span> <span class="nav-text">前向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积的前向"><span class="nav-number">2.3.1.</span> <span class="nav-text">卷积的前向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积前向的caffe实现"><span class="nav-number">2.3.2.</span> <span class="nav-text">卷积前向的caffe实现</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
