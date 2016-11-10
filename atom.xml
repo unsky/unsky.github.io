@@ -219,7 +219,7 @@
     <link href="http://yoursite.com/2016/11/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
     <id>http://yoursite.com/2016/11/02/卷积神经网络学习历程/</id>
     <published>2016-11-01T16:10:30.000Z</published>
-    <updated>2016-11-10T09:52:07.732Z</updated>
+    <updated>2016-11-10T11:07:02.582Z</updated>
     
     <content type="html"><![CDATA[<p>  神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.<br><a id="more"></a></p>
 <h1 id="神经元建模"><a href="#神经元建模" class="headerlink" title="神经元建模"></a>神经元建模</h1><p>  大脑的基本计算单位是神经元（neuron）。人类的神经系统中大约有860亿个神经元，它们被大约10^14-10^15个突触（synapses）连接起来。下面图表的左边展示了一个生物学的神经元，右边展示了一个常用的数学模型。每个神经元都从它的树突获得输入信号，然后沿着它唯一的轴突（axon）产生输出信号。轴突在末端会逐渐分枝，通过突触和其他神经元的树突相连。</p>
@@ -282,10 +282,6 @@
     
       <category term="卷积深度网络全剖析" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%85%A8%E5%89%96%E6%9E%90/"/>
     
-    
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
     
   </entry>
   
