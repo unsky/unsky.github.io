@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://yoursite.com/images/cnn/9.png">
 <meta property="og:image" content="http://yoursite.com/images/cnn/10.png">
 <meta property="og:image" content="http://yoursite.com/images/cnn/11.png">
-<meta property="og:updated_time" content="2016-11-10T09:39:31.600Z">
+<meta property="og:updated_time" content="2016-11-10T09:41:01.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络学习历程">
 <meta name="twitter:description" content="神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.">
@@ -345,7 +345,7 @@
 <p>假设我们一次训练16张图片(即batch_size为16)。通过之前的推导，我们知道该层的输入为20个 $12\times 12$ 的特征图，所以bottom的维度 $16\times 20\times 12\times 12$ ，则该层的输出top的维度为 $16\times 50 \times 8\times 8$ 。</p>
 <h1 id="后向传播"><a href="#后向传播" class="headerlink" title="后向传播"></a>后向传播</h1><h2 id="反向梯度"><a href="#反向梯度" class="headerlink" title="反向梯度"></a>反向梯度</h2><p>在BP神经网络中，误差信号反向传递子过程比较复杂，它是基于 <code>Widrow-Hoff</code> 学习规则的。假设输出层的所有结果为，误差函数如下<br>$$E\left( w,b \right) =\frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2}$$</p>
 <p>而BP神经网络的主要目的是反复修正权值和阀值，使得误差函数值达到最小。<code>Widrow-Hoff</code> 学习规则是通过沿着相对误差平方和的最速下降方向，连续调整网络的权值和阀值，根据梯度下降法，权值矢量的修正正比于当前位置上 $E(w,b)$ 的梯度，对于第 $j$ 个输出节点有<br>$$\varDelta w\left( i,j \right) =-\eta \frac{\partial E\left( w,b \right)}{\partial w\left( i,j \right)}$$<br>假设我们选择激活函数：<br>$$f\left( x \right) =\frac{A}{1+e^{-\frac{x}{B}}}$$<br>对其进行求导：<br>$$<br>f’\left( x \right) =\frac{Ae^{-\frac{x}{B}}}{B\left( 1+e^{-\frac{x}{B}} \right) ^2}<br>$$<br>$$<br>=\frac{1}{AB}\cdot \frac{A}{1+e^{-\frac{x}{B}}}\cdot \left( A-\frac{A}{1+e^{-\frac{x}{B}}} \right)<br>$$<br>$$<br>=\frac{f\left( x \right) \left[ A-f\left( x \right) \right]}{AB}<br>$$<br>那么接下来针对 $w_{i,j}$</p>
-<p>$$\frac{\partial E\left( w,b \right)}{\partial w<em>{ij}}=\frac{1}{\partial w\</em>{ij}}\cdot \frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2}$$</p>
+<p>$$ \frac{\partial E\left( w,b \right)}{\partial w_{ij}}=\frac{1}{\partial w_{ij}}\cdot \frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2} $$</p>
 <p>$$<br>=\left( d_j-y_j \right) \cdot \frac{\partial d_j}{\partial w_{ij}}<br>$$</p>
 <p>$$<br>=\left( d_j-y_j \right) \cdot f’\left( S_j \right) \frac{\partial S_j}{\partial w_{ij}}<br>$$</p>
 <p>$$<br>=\left( d_j-y_j \right) \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}<br>$$</p>
