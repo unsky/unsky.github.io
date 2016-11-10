@@ -93,10 +93,11 @@
     <link href="http://yoursite.com/2016/11/09/k-means%E8%81%9A%E7%B1%BB/"/>
     <id>http://yoursite.com/2016/11/09/k-means聚类/</id>
     <published>2016-11-09T08:56:52.000Z</published>
-    <updated>2016-11-09T12:57:25.066Z</updated>
+    <updated>2016-11-10T03:05:33.235Z</updated>
     
-    <content type="html"><![CDATA[<p> 在数据挖掘中，K-Means算法是一种cluster analysis的算法，<br> 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。<br> <a id="more"></a></p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>K-Means算法主要解决的问题如下图所示。我们可以看到，在图的左边有一些点，<br>我们用肉眼可以看出来有四个点群，但是我们怎么通过计算机程序找出这几个点群来呢？<br>于是就出现了我们的K-Means算法。<br><img src="/images/kmeans/1.png" alt=""><br>算法概要<br>如下图所示：<br><img src="/images/kmeans/2.png" alt=""><br>从上图中，我们可以看到，A，B，C，D，E是五个在图中点。<br>而灰色的点是我们的种子点，也就是我们用来找点群的点。有两个种子点，所以K=2。</p>
+    <content type="html"><![CDATA[<p> 在数据挖掘中，K-Means算法是一种cluster analysis的算法， 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。<br> <a id="more"></a></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>K-Means算法主要解决的问题如下图所示。我们可以看到，在图的左边有一些点，我们用肉眼可以看出来有四个点群，但是我们怎么通过计算机程序找出这几个点群来呢？</p>
+<p>于是就出现了我们的K-Means算法。<br><img src="/images/kmeans/1.png" alt=""><br>算法概要如下图所示：<br><img src="/images/kmeans/2.png" alt=""><br>从上图中，我们可以看到，A，B，C，D，E是五个在图中点。而灰色的点是我们的种子点，也就是我们用来找点群的点。有两个种子点，所以K=2。</p>
 <p>然后，K-Means的算法如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1. 随机在图中取K（这里K=2）个种子点</div><div class="line"></div><div class="line">2. 然后对图中的所有点求到这K个种子点的距离，假如点Pi离种子点Si最近，</div><div class="line">那么Pi属于Si点群。</div><div class="line">（上图中，我们可以看到A，B属于上面的种子点，C，D，E属于下面中部的种子点）</div><div class="line">3. 我们要移动种子点到属于他的“点群”的中心。（见图上的第三步）</div><div class="line">然后重复第2）和第3）步直到，种子点没有移动（我们可以看到图中的第四步上面的种子点聚合了A，B，C，下面的种子点聚合了D，E）。</div></pre></td></tr></table></figure>
 <p>使用公式可以表示为：<br>$$\varUpsilon =\sum_{k=1}^K{\sum_{i=1}^L{dist\left( x_i-u_k \right)}}$$<br>而$dist$距离函数可以分为：</p>
@@ -108,7 +109,7 @@
 <ol>
 <li>CityBlock Distance （CB距离）<br>$$<br>d_{i,j}=\sum_{k=1}^n{|x_{i,k}-x_{j,k}|}<br>$$<br>也就是第一个公式 $\lambda$=1的情况。</li>
 </ol>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>在模拟k-means的实验中我们使用深度学习网络vgg16在一个层的feature maps 来进行模拟实验，用来验证聚类效果，输入图片为一个行人。<br>我们使用vgg16 conv1-2产生的feature maps进行实验。<br>假设我们产生的feature maps 为 $\psi \in R^{m\times n\times k}$ ,其中 $m\times n$ 为feature大小, k为map的个数。<br>首先每个feature进行向量化，从而将其转化为 $\psi \in R^{m* n\times k}$ 。<br>使用k-means对一个层的feature maps进行聚类，并可视化效果。<br>本实验中使用欧式距离。</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>在模拟k-means的实验中我们使用深度学习网络vgg16在一个层的feature maps 来进行模拟实验，用来验证聚类效果，输入图片为一个行人。我们使用vgg16 conv1-2产生的feature maps进行实验。假设我们产生的feature maps 为 $\psi \in R^{m\times n\times k}$ ,其中 $m\times n$ 为feature大小, k为map的个数。首先每个feature进行向量化，从而将其转化为 $\psi \in R^{m* n\times k}$ 。使用k-means对一个层的feature maps进行聚类，并可视化效果。本实验中使用欧式距离。</p>
 <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ol>
 <li>实验使用vlfeat工具包<br>下载地址： <a href="https://github.com/unsky/vlfeat" target="_blank" rel="external">https://github.com/unsky/vlfeat</a></li>
 <li>在vlfeat\toolbox中使用vl_setup启动工具包</li>
@@ -135,7 +136,7 @@
     
     <summary type="html">
     
-      &lt;p&gt; 在数据挖掘中，K-Means算法是一种cluster analysis的算法，&lt;br&gt; 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。&lt;br&gt;
+      &lt;p&gt; 在数据挖掘中，K-Means算法是一种cluster analysis的算法， 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。&lt;br&gt;
     
     </summary>
     
@@ -155,9 +156,9 @@
     <link href="http://yoursite.com/2016/11/08/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B0%86atom%E6%89%93%E9%80%A0%E6%88%90c-c%E7%BC%96%E7%A8%8B%E5%88%A9%E5%99%A8/"/>
     <id>http://yoursite.com/2016/11/08/手把手将atom打造成c-c编程利器/</id>
     <published>2016-11-08T02:31:28.000Z</published>
-    <updated>2016-11-09T14:39:36.544Z</updated>
+    <updated>2016-11-10T03:04:45.918Z</updated>
     
-    <content type="html"><![CDATA[<p>Atom是由GitHub开发的自由及开放源代码的文字与代码编辑器，<br>支持OS X、Windows和Linux操作系统，支持Node.js所写的插件，<br>并内置Git版本控制系统。多数的延伸包皆为开放源代码授权，并由社区建置与维护。<br>Atm基于Chromium并使用CoffeeScript撰写。Atom也可当作IDE使用。<br> <a id="more"></a></p>
+    <content type="html"><![CDATA[<p>Atom是由GitHub开发的自由及开放源代码的文字与代码编辑器，支持OS X、Windows和Linux操作系统，支持Node.js所写的插件，并内置Git版本控制系统。多数的延伸包皆为开放源代码授权，并由社区建置与维护。Atm基于Chromium并使用CoffeeScript撰写。Atom也可当作IDE使用。<br> <a id="more"></a></p>
 <h1 id="安装atom"><a href="#安装atom" class="headerlink" title="安装atom"></a>安装atom</h1><p> 原则自己的平台安装，本文所有操作均在 win10中进行。</p>
 <p> 官方下载地址：<a href="https://atom.io/" target="_blank" rel="external">https://atom.io/</a></p>
 <p> 安装之后进入欢迎界面<br> <img src="/images/atomle/1.png" alt=""><br>原始的atom已经安装了一些插件。但是我们需要将其打造成一个c/c++ IDE.</p>
@@ -165,20 +166,20 @@
 <p>gpp-compliler 安装依赖于 MinGW 下载地址：<a href="http://www.mingw.org/" target="_blank" rel="external">http://www.mingw.org/</a></p>
 <p>MinGW(Minimalist GNU For Windows)是个精简的Windows平台C/C++、ADA及Fortran编译器，相比Cygwin而言，体积要小很多，使用较为方便。</p>
 <h2 id="运行刚刚下载的安装程序"><a href="#运行刚刚下载的安装程序" class="headerlink" title="运行刚刚下载的安装程序"></a>运行刚刚下载的安装程序</h2><p> <img src="/images/atomle/2.png" alt=""><br> 安装到D:\MinGW，点”Continue”。之后在桌面会形成一个安装器：<br>  <img src="/images/atomle/3.png" alt=""><br>  运行</p>
-<h2 id="选择安装组件"><a href="#选择安装组件" class="headerlink" title="选择安装组件"></a>选择安装组件</h2><p>  运行安装程序。<img src="/images/atomle/4.png" alt="">  选择需要安装的组件，右键选择Mark for Installation,之后选择<br>    Installation -&gt; Apply Changes。</p>
+<h2 id="选择安装组件"><a href="#选择安装组件" class="headerlink" title="选择安装组件"></a>选择安装组件</h2><p>  运行安装程序。<img src="/images/atomle/4.png" alt="">  选择需要安装的组件，右键选择Mark for Installation,之后选择Installation -&gt; Apply Changes。</p>
 <h2 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h2><p>  这里重点要提到的是GCC组件的安装，如图所示<br>      <img src="/images/atomle/5.png" alt=""><br>      先选择左边的”MinGW Base System”选项，之后再右边找到mingw-gcc。最好选择bin,dev和lic三个组件进行安装。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p> 设置MinGW环境变量<br>鼠标右键“我的电脑”-&gt;“属性”，选择“高级”选项卡下的“环境变量”，在系统变量里点“新建”，之后填写MinGW的安装路径，如下：<br>      <img src="/images/atomle/6.png" alt=""><br>      之后找到Path，在最前面添加下面这段声明，之后点击确定。安装完成后，在MinGW\bin的目录下，会有一个名为gcc.exe的可执行文件。<br>      在 <code>cmd</code> 运行  <code>gcc -v</code><br>      会出现版本信息，如果显示，则安装成功。<br>  回到atom,新建一个cpp文件，代码中我们加个错误</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p> 设置MinGW环境变量<br>鼠标右键“我的电脑”-&gt;“属性”，选择“高级”选项卡下的“环境变量”，在系统变量里点“新建”，之后填写MinGW的安装路径，如下：<br>      <img src="/images/atomle/6.png" alt=""><br>      之后找到Path，在最前面添加下面这段声明，之后点击确定。安装完成后，在MinGW\bin的目录下，会有一个名为gcc.exe的可执行文件。在 <code>cmd</code> 运行  <code>gcc -v</code>会出现版本信息，如果显示，则安装成功。回到atom,新建一个cpp文件，代码中我们加个错误</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line">    int aaa;</div><div class="line">    cin&gt;&gt;aaa;</div><div class="line">aa</div><div class="line">  cout&lt;&lt;aaa&lt;&lt;endl;</div><div class="line"></div><div class="line">        return 0;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><p>  运行 <code>F5</code><br>    <img src="/images/atomle/7.png" alt=""><br>    错误提示在右上角。<br>    将代码修改正确<br>        <img src="/images/atomle/8.png" alt=""><br>        显示控制台结果.</p>
-<h1 id="代码错误检测-linter-gcc"><a href="#代码错误检测-linter-gcc" class="headerlink" title="代码错误检测 linter-gcc"></a>代码错误检测 linter-gcc</h1><p>linter-gcc 安装依赖于linter 首先安装linter包。<br>同时还依赖于 gcc 在上一步我们已经安装了gcc并且已经加入了路径，<br>如果没有请自行安装。</p>
-<p>只需在 linter-gcc的设置里面<br> <img src="/images/atomle/9.png" alt=""><br><code>F5</code> 运行一段代码错误代码，可以显示：<br><img src="/images/atomle/10.png" alt=""><br>  到这里 atom已经可以完成我们编译所需的环境，剩下的可以进一步就行优化<br>  推荐一些优秀的插件</p>
+<h1 id="代码错误检测-linter-gcc"><a href="#代码错误检测-linter-gcc" class="headerlink" title="代码错误检测 linter-gcc"></a>代码错误检测 linter-gcc</h1><p>linter-gcc 安装依赖于linter 首先安装linter包。同时还依赖于 gcc 在上一步我们已经安装了gcc并且已经加入了路径，如果没有请自行安装。</p>
+<p>只需在 linter-gcc的设置里面<br> <img src="/images/atomle/9.png" alt=""><br><code>F5</code> 运行一段代码错误代码，可以显示：<br><img src="/images/atomle/10.png" alt=""><br>  到这里 atom已经可以完成我们编译所需的环境，剩下的可以进一步就行优化推荐一些优秀的插件</p>
 <h1 id="高亮选择-highlight-selected"><a href="#高亮选择-highlight-selected" class="headerlink" title="高亮选择 highlight-selected"></a>高亮选择 highlight-selected</h1><p>可以高亮选择的关键字<br>    <img src="/images/atomle/11.png" alt=""></p>
 <h1 id="自动美化代码-atom-beautiful"><a href="#自动美化代码-atom-beautiful" class="headerlink" title="自动美化代码 atom-beautiful"></a>自动美化代码 atom-beautiful</h1><h1 id="minimap"><a href="#minimap" class="headerlink" title="minimap"></a>minimap</h1><p>和submit一种风格的快速浏览窗口。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Atom是由GitHub开发的自由及开放源代码的文字与代码编辑器，&lt;br&gt;支持OS X、Windows和Linux操作系统，支持Node.js所写的插件，&lt;br&gt;并内置Git版本控制系统。多数的延伸包皆为开放源代码授权，并由社区建置与维护。&lt;br&gt;Atm基于Chromium并使用CoffeeScript撰写。Atom也可当作IDE使用。&lt;br&gt;
+      &lt;p&gt;Atom是由GitHub开发的自由及开放源代码的文字与代码编辑器，支持OS X、Windows和Linux操作系统，支持Node.js所写的插件，并内置Git版本控制系统。多数的延伸包皆为开放源代码授权，并由社区建置与维护。Atm基于Chromium并使用CoffeeScript撰写。Atom也可当作IDE使用。&lt;br&gt;
     
     </summary>
     
