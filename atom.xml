@@ -93,7 +93,7 @@
     <link href="http://yoursite.com/2016/11/09/k-means%E8%81%9A%E7%B1%BB/"/>
     <id>http://yoursite.com/2016/11/09/k-means聚类/</id>
     <published>2016-11-09T08:56:52.000Z</published>
-    <updated>2016-11-10T03:05:33.235Z</updated>
+    <updated>2016-11-10T03:07:11.221Z</updated>
     
     <content type="html"><![CDATA[<p> 在数据挖掘中，K-Means算法是一种cluster analysis的算法， 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。<br> <a id="more"></a></p>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>K-Means算法主要解决的问题如下图所示。我们可以看到，在图的左边有一些点，我们用肉眼可以看出来有四个点群，但是我们怎么通过计算机程序找出这几个点群来呢？</p>
@@ -156,7 +156,7 @@
     <link href="http://yoursite.com/2016/11/08/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B0%86atom%E6%89%93%E9%80%A0%E6%88%90c-c%E7%BC%96%E7%A8%8B%E5%88%A9%E5%99%A8/"/>
     <id>http://yoursite.com/2016/11/08/手把手将atom打造成c-c编程利器/</id>
     <published>2016-11-08T02:31:28.000Z</published>
-    <updated>2016-11-10T03:04:45.918Z</updated>
+    <updated>2016-11-10T03:07:10.377Z</updated>
     
     <content type="html"><![CDATA[<p>Atom是由GitHub开发的自由及开放源代码的文字与代码编辑器，支持OS X、Windows和Linux操作系统，支持Node.js所写的插件，并内置Git版本控制系统。多数的延伸包皆为开放源代码授权，并由社区建置与维护。Atm基于Chromium并使用CoffeeScript撰写。Atom也可当作IDE使用。<br> <a id="more"></a></p>
 <h1 id="安装atom"><a href="#安装atom" class="headerlink" title="安装atom"></a>安装atom</h1><p> 原则自己的平台安装，本文所有操作均在 win10中进行。</p>
@@ -195,9 +195,9 @@
     <link href="http://yoursite.com/2016/11/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
     <id>http://yoursite.com/2016/11/02/卷积神经网络学习历程/</id>
     <published>2016-11-01T16:10:30.000Z</published>
-    <updated>2016-11-10T03:01:47.962Z</updated>
+    <updated>2016-11-10T03:07:08.099Z</updated>
     
-    <content type="html"><![CDATA[<p>  神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.</p>
+    <content type="html"><![CDATA[<p>  神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.<br><a id="more"></a></p>
 <h1 id="神经元建模"><a href="#神经元建模" class="headerlink" title="神经元建模"></a>神经元建模</h1><p>  大脑的基本计算单位是神经元（neuron）。人类的神经系统中大约有860亿个神经元，它们被大约10^14-10^15个突触（synapses）连接起来。下面图表的左边展示了一个生物学的神经元，右边展示了一个常用的数学模型。每个神经元都从它的树突获得输入信号，然后沿着它唯一的轴突（axon）产生输出信号。轴突在末端会逐渐分枝，通过突触和其他神经元的树突相连。</p>
 <p>  在神经元的计算模型中，沿着轴突传播的信号（比如 $x_0$ ）将基于突触的突触强（比如 $w_0$ ），与其他神经元的树突进行乘法交互（比如$w_0x_0$）。其观点是，突触的强度（也就是权重），是可学习的且可以控制一个神经元对于另一个神经元的影响强度（还可以控制影响方向：使其兴奋（正权重）或使其抑制（负权重））。在基本模型中，树突将信号传递到细胞体，信号在细胞体中相加。如果最终之和高于某个阈值，那么神经元将会激活，向其轴突输出一个峰值信号。在计算模型中，我们假设峰值信号的准确时间点不重要，是激活信号的频率在交流信息。基于这个速率编码的观点，将神经元的激活率建模为激活函数（activation function）f，它表达了轴突上激活信号的频率。由于历史原因，激活函数常常选择使用sigmoid函数 $\sigma$，该函数输入实数值（求和后的信号强度），然后将输入值压缩到0-1之间。在本节后面部分会看到这些激活函数的各种细节。</p>
 <p>  <img src="/images/cnn/1.png" alt=""><br>  左边是生物神经元，右边是数学模型。</p>
@@ -208,8 +208,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;  神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.&lt;/p&gt;
-&lt;h1 id=&quot;神经元建模&quot;&gt;&lt;a href
+      &lt;p&gt;  神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.&lt;br&gt;
     
     </summary>
     
@@ -227,7 +226,7 @@
     <link href="http://yoursite.com/2016/11/01/%E4%BD%BF%E7%94%A8hexo%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAgit%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/11/01/使用hexo快速搭建git博客/</id>
     <published>2016-11-01T15:40:13.000Z</published>
-    <updated>2016-11-09T10:47:45.049Z</updated>
+    <updated>2016-11-10T03:07:09.271Z</updated>
     
     <content type="html"><![CDATA[<h2 id="github-pages简介"><a href="#github-pages简介" class="headerlink" title=" github pages简介"></a> github pages简介</h2><p><img src="/images/gitblog/githubpages.png" alt=""></p>
 <p>Github Pages 是 github 公司提供的免费的静态网站托管服务，用起来方便而且功能强大，不仅没有空间限制，还可以绑定自己的域名。在 <a href="https://pages.github.com/" target="_blank" rel="external">https://pages.github.com/</a> 首页上可以看到很多用 Github Pages 托管的网站，很漂亮。另外很多非常著名的公司和项目也都用这种方式来搭建网站，如微软和 twitter 的网站，还有 谷歌的 Material Design 图标 网站。<br><a id="more"></a></p>
