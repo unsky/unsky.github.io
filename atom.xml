@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-10T09:47:52.812Z</updated>
+  <updated>2016-11-10T10:07:11.417Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/10/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/"/>
     <id>http://yoursite.com/2016/11/10/损失函数/</id>
     <published>2016-11-10T09:44:34.000Z</published>
-    <updated>2016-11-10T09:47:52.812Z</updated>
+    <updated>2016-11-10T10:07:11.417Z</updated>
     
     <content type="html"><![CDATA[<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1>]]></content>
     
@@ -117,7 +117,7 @@
     <link href="http://yoursite.com/2016/11/09/k-means%E8%81%9A%E7%B1%BB/"/>
     <id>http://yoursite.com/2016/11/09/k-means聚类/</id>
     <published>2016-11-09T08:56:52.000Z</published>
-    <updated>2016-11-10T03:34:11.893Z</updated>
+    <updated>2016-11-10T10:06:52.573Z</updated>
     
     <content type="html"><![CDATA[<p> 在数据挖掘中，K-Means算法是一种cluster analysis的算法， 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。<br> <a id="more"></a></p>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>K-Means算法主要解决的问题如下图所示。我们可以看到，在图的左边有一些点，我们用肉眼可以看出来有四个点群，但是我们怎么通过计算机程序找出这几个点群来呢？</p>
