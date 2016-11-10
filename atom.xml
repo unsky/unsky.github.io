@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-10T10:07:11.417Z</updated>
+  <updated>2016-11-10T11:08:11.467Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/10/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/"/>
     <id>http://yoursite.com/2016/11/10/损失函数/</id>
     <published>2016-11-10T09:44:34.000Z</published>
-    <updated>2016-11-10T10:07:11.417Z</updated>
+    <updated>2016-11-10T11:08:11.467Z</updated>
     
     <content type="html"><![CDATA[<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1>]]></content>
     
@@ -33,8 +33,6 @@
       <category term="卷积深度网络全剖析" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%85%A8%E5%89%96%E6%9E%90/"/>
     
     
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="损失函数" scheme="http://yoursite.com/tags/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/"/>
     
   </entry>
@@ -44,7 +42,7 @@
     <link href="http://yoursite.com/2016/11/09/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2016/11/09/聚类分析/</id>
     <published>2016-11-09T09:33:59.000Z</published>
-    <updated>2016-11-10T03:08:26.535Z</updated>
+    <updated>2016-11-10T11:08:57.813Z</updated>
     
     <content type="html"><![CDATA[<p>聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。<br> <a id="more"></a></p>
 <h1 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h1><p>一个好的聚类方法要能产生高质量的聚类结果——簇，这些簇要具备以下两个特点：</p>
