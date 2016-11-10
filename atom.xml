@@ -195,7 +195,7 @@
     <link href="http://yoursite.com/2016/11/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
     <id>http://yoursite.com/2016/11/02/卷积神经网络学习历程/</id>
     <published>2016-11-01T16:10:30.000Z</published>
-    <updated>2016-11-10T08:22:04.648Z</updated>
+    <updated>2016-11-10T09:35:32.242Z</updated>
     
     <content type="html"><![CDATA[<p>  神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.<br><a id="more"></a></p>
 <h1 id="神经元建模"><a href="#神经元建模" class="headerlink" title="神经元建模"></a>神经元建模</h1><p>  大脑的基本计算单位是神经元（neuron）。人类的神经系统中大约有860亿个神经元，它们被大约10^14-10^15个突触（synapses）连接起来。下面图表的左边展示了一个生物学的神经元，右边展示了一个常用的数学模型。每个神经元都从它的树突获得输入信号，然后沿着它唯一的轴突（axon）产生输出信号。轴突在末端会逐渐分枝，通过突触和其他神经元的树突相连。</p>
@@ -222,6 +222,25 @@
 <p>下面是一张论文中的图片，看这张图片可以很清楚理解。从图中可以看出，卷积之前将输入的多个矩阵和多个卷积核先展开再组合成2个大的矩阵，用展开后的矩阵相乘。</p>
 <p><img src="/images/cnn/8.png" alt=""></p>
 <p>假设我们一次训练16张图片(即batch_size为16)。通过之前的推导，我们知道该层的输入为20个 $12\times 12$ 的特征图，所以bottom的维度 $16\times 20\times 12\times 12$ ，则该层的输出top的维度为 $16\times 50 \times 8\times 8$ 。</p>
+<h1 id="后向传播"><a href="#后向传播" class="headerlink" title="后向传播"></a>后向传播</h1><h2 id="反向梯度"><a href="#反向梯度" class="headerlink" title="反向梯度"></a>反向梯度</h2><p>在BP神经网络中，误差信号反向传递子过程比较复杂，它是基于 <code>Widrow-Hoff</code> 学习规则的。假设输出层的所有结果为，误差函数如下<br>$$E\left( w,b \right) =\frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2}$$</p>
+<p>而BP神经网络的主要目的是反复修正权值和阀值，使得误差函数值达到最小。<code>Widrow-Hoff</code> 学习规则是通过沿着相对误差平方和的最速下降方向，连续调整网络的权值和阀值，根据梯度下降法，权值矢量的修正正比于当前位置上 $E(w,b)$ 的梯度，对于第 $j$ 个输出节点有<br>$$\varDelta w\left( i,j \right) =-\eta \frac{\partial E\left( w,b \right)}{\partial w\left( i,j \right)}$$<br>假设我们选择激活函数：<br>$$f\left( x \right) =\frac{A}{1+e^{-\frac{x}{B}}}$$<br>对其进行求导：<br>$$<br>f’\left( x \right) =\frac{Ae^{-\frac{x}{B}}}{B\left( 1+e^{-\frac{x}{B}} \right) ^2}<br>$$<br>$$<br>=\frac{1}{AB}\cdot \frac{A}{1+e^{-\frac{x}{B}}}\cdot \left( A-\frac{A}{1+e^{-\frac{x}{B}}} \right)<br>$$<br>$$<br>=\frac{f\left( x \right) \left[ A-f\left( x \right) \right]}{AB}<br>$$<br>那么接下来针对 $w_{i,j}$</p>
+<p>$$<br>\frac{\partial E\left( w,b \right)}{\partial w<em>{ij}}=\frac{1}{\partial w\</em>{ij}}\cdot \frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2}<br>$$<br>$$<br>=\left( d_j-y_j \right) \cdot \frac{\partial d_j}{\partial w_{ij}}<br>$$<br>$$<br>=\left( d_j-y_j \right) \cdot f’\left( S_j \right) \frac{\partial S_j}{\partial w_{ij}}<br>$$<br>$$<br>=\left( d_j-y_j \right) \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}<br>$$<br>$$<br>=\left( d_j-y_j \right) \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}\cdot x_i<br>$$<br>$$=\delta_{ij}\cdot x_j<br>$$<br>其中有<br>$$\delta_{ij}=\left( d_j-y_j \right) \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}$$</p>
+<p>同样，对于 $b_j$<br>$$<br>\frac{\partial E\left( w,b \right)}{\partial b_j}=\delta_{ij}<br>$$</p>
+<p>这就是著名的 $\delta$   学习规则，通过改变神经元之间的连接权值来减少系统实际输出和期望输出的误差，这个规则又叫做<code>Widrow-Hoff</code>学习规则或者纠错学习规则。</p>
+<p>上面是对隐含层和输出层之间的权值和输出层的阀值计算调整量，而针对输入层和隐含层和隐含层的阀值调整量的计算更为复杂。假设是输入层第 $k$ 个节点和隐含层第 $i$ 个节点之间的权值，那么有</p>
+<p>$$<br>\frac{\partial E\left( w,b \right)}{\partial w_{ki}}=\frac{1}{\partial w_{ki}}\cdot \frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\left( d_j-y_j \right) \cdot f’\left( S_j \right) \cdot \frac{\partial S_j}{\partial w_{kj}}}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\left( d_j-y_j \right) \cdot f’\left( S_j \right) \cdot \frac{\partial S_j}{\partial x_i}\cdot \frac{\partial x_i}{\partial S_i}\cdot \frac{\partial S_j}{\partial w_{kj}}}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}\cdot x_k<br>$$<br>$$<br>=x_k\cdot \sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}<br>$$<br>$$<br>=\delta_{ki}\cdot x_k<br>$$<br> 其中有<br> $$<br>\delta_{ki}=\sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}<br>$$</p>
+<h2 id="梯度下降更新"><a href="#梯度下降更新" class="headerlink" title="梯度下降更新"></a>梯度下降更新</h2><p>有了上述公式，根据梯度下降法，那么对于隐含层和输出层之间的权值和阀值调整如下<br>$$<br>w_{ij}=w_{ij}-\eta_1\frac{\partial E\left( w,b \right)}{\partial w_{ij}}=w_{ij}-\eta_1\delta_{ij}\cdot x_i<br>$$</p>
+<p>$$<br>b_j=b_j-\eta_2\frac{\partial E\left( w,b \right)}{\partial b_j}=b_j-\eta_2\delta_{ij}<br>$$<br>  而对于输入层和隐含层之间的权值和阀值调整同样有</p>
+<p>  $$w<em>{ki}=w</em>{ki}-\eta_1\frac{\partial E\left( w,b \right)}{\partial w_{ki}}=w_{ki}-\eta_1\delta_{ki}\cdot x_k$$</p>
+<p>$$b_i=b_i-\eta_2\frac{\partial E\left( w,b \right)}{\partial b_i}=b_i-\eta_2\delta_{ki}$$</p>
+<h2 id="bp的缺陷"><a href="#bp的缺陷" class="headerlink" title="bp的缺陷"></a>bp的缺陷</h2><ol>
+<li>容易形成局部极小值而得不到全局最优值。BP神经网络中极小值比较多，所以很容易陷入局部极小值，这就要求对初始权值和阀值有要求，要使得初始权值和阀值随机性足够好，可以多次随机来实现。</li>
+<li>训练次数多使得学习效率低，收敛速度慢。</li>
+<li>隐含层的选取缺乏理论的指导。</li>
+<li>训练时学习新样本有遗忘旧样本的趋势。<h2 id="卷积的后向传播"><a href="#卷积的后向传播" class="headerlink" title="卷积的后向传播"></a>卷积的后向传播</h2>在反向传播过程中，若第x层的a节点通过权值W对x+1层的b节点有贡献，则在反向传播过程中，梯度通过权值W从b节点传播回a节点。不管下面的公式推导，还是后面的卷积神经网络，在反向传播的过程中，都是遵循这样的一个规律。</li>
+</ol>
+<p>卷积层的反向传播过程也是如此，我们只需要找出卷积层L中的每个单元和L+1层中的哪些单元相关联即可。我们还用此的图片举例子。<br><img src="/images/cnn/7.png" alt=""><br>在上图中，我们的矩阵A11通过权重B11与C11关联。而A12与2个矩阵C中2个元素相关联，分别是通过权重B12和C11关联，和通过权重B11和C12相关联。矩阵A中其他元素也类似。</p>
+<p>那么，我们有没有简单的方法来实现这样的关联呢。答案是有的。可以通过将卷积核旋转180度，再与扩充后的梯度矩阵进行卷积。扩充的过程如下：如果卷积核为 $k\times k$ ，待卷积矩阵为 $n\times n$ ，需要以$n\times n$ 原矩阵为中心扩展到 $(n+2(k-1))\times (n+2(k-1))$ 。具体过程如下：<br>假设D为反向传播到卷积层的梯度矩阵，则D应该与矩阵C的大小相等，在这里为3*3。我们首先需要将它扩充到 $(3+2\times(2-1))\times (3+2\times(2-1)) = 5\times 5$ 大小的矩阵，<br><img src="/images/cnn/9.png" alt=""><br>同时将卷积核B旋转180度：<br><img src="/images/cnn/10.png" alt=""><br>将旋转后的卷积核与扩充后的梯度矩阵进行卷积：<br><img src="/images/cnn/11.png" alt=""></p>
 ]]></content>
     
     <summary type="html">
