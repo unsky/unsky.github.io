@@ -53,16 +53,16 @@
     <link href="http://yoursite.com/2016/11/10/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
     <id>http://yoursite.com/2016/11/10/激活函数/</id>
     <published>2016-11-10T12:27:17.000Z</published>
-    <updated>2016-11-11T14:43:42.192Z</updated>
+    <updated>2016-11-11T14:47:20.002Z</updated>
     
     <content type="html"><![CDATA[<p>在神经元的数学模型中，轴突所携带的信号(例如: $x_0$ )通过突触进行传递，由于突触的强弱不一，假设我们以 $w_0$ 表示，那么我们传到下一个神经元的树突处的信号就变成了 $w_0x_0$ 。其中突触强弱(参数w)是可学的，它控制了一个神经元对另一个神经元影响的大小和方向（正负）。然后树突接收到信号后传递到神经元内部<code>cell body</code>，与其他树突传递过来的信号一起进行加和，如果这个和的值大于某一个固定的阈值的话，神经元就会被激活，然后传递冲激信号给树突。在数学模型中我们假设传递冲激信号的时间长短并不重要，只有神经元被激活的频率用于传递信息. 我们将是否激活神经元的函数称为激活函数(activation function $f$ ), 它代表了轴突接收到冲激信号的频率。以前我们比较常用的一个激活信号是<code>sigmoid function</code> $σ$ ，因为它接收一个实值的信号（即上面所说的加和的值）然后将它压缩到 <code>0-1</code> 的范围内。我们在后面会介绍更多的激活函数。<br> <a id="more"></a></p>
 <h1 id="传统Sigmoid系激活函数"><a href="#传统Sigmoid系激活函数" class="headerlink" title="传统Sigmoid系激活函数"></a>传统Sigmoid系激活函数</h1><p><img src="/images/activate/3.png" alt=""><br>传统神经网络中最常用的两个激活函数，<code>Sigmoid</code>系（Logistic-Sigmoid、Tanh-Sigmoid）被视为神经网络的核心所在。从数学上来看，非线性的Sigmoid函数对中央区的信号增益较大，对两侧区的信号增益小，在信号的特征空间映射上，有很好的效果。从神经科学上来看，中央区酷似神经元的兴奋态，两侧区酷似神经元的抑制态，因而在神经网络学习方面，可以将重点特征推向中央区，将非重点特征推向两侧区。</p>
 <h2 id="sigmoid激活函数"><a href="#sigmoid激活函数" class="headerlink" title="sigmoid激活函数"></a>sigmoid激活函数</h2><p>sigmoid将一个实数输入映射到[0,1]范围内，如下图（左）所示。使用sigmoid作为激活函数存在以下几个问题：</p>
 <ol>
 <li>梯度饱和。当函数激活值接近于0或者1时，函数的梯度接近于0。在反向传播计算梯度过程中:<br>$$\delta^{\left(l\right)}=\left( W^{\left(l\right)} \right) ^T\delta ^{\left(l+1\right)}\cdot f’\left( z^{\left(L\right)}\right) $$<br>，每层残差接近于0，计算出的梯度也不可避免地接近于0。这样在参数微调过程中，会引起参数弥散问题，传到前几层的梯度已经非常靠近0了，参数几乎不会再更新。</li>
-<li>函数输出不是以0为中心的。我们更偏向于当激活函数的输入是0时，输出也是0的函数.<h2 id="tanh激活函数"><a href="#tanh激活函数" class="headerlink" title="tanh激活函数"></a>tanh激活函数</h2></li>
+<li>函数输出不是以0为中心的。我们更偏向于当激活函数的输入是0时，输出也是0的函数.</li>
 </ol>
-<p>tanh函数将一个实数输入映射到[-1,1]范围内，如上图（右）所示。当输入为0时，tanh函数输出为0，符合我们对激活函数的要求。然而，tanh函数也存在梯度饱和问题，导致训练效率低下。</p>
+<h2 id="tanh激活函数"><a href="#tanh激活函数" class="headerlink" title="tanh激活函数"></a>tanh激活函数</h2><p>tanh函数将一个实数输入映射到[-1,1]范围内，如上图（右）所示。当输入为0时，tanh函数输出为0，符合我们对激活函数的要求。然而，tanh函数也存在梯度饱和问题，导致训练效率低下。</p>
 <h1 id="Softplus-amp-ReLu"><a href="#Softplus-amp-ReLu" class="headerlink" title="Softplus&amp;ReLu"></a>Softplus&amp;ReLu</h1><p><img src="/images/activate/4.png" alt=""></p>
 <p>2001年，神经科学家Dayan、Abott从生物学角度，模拟出了脑神经元接受信号更精确的激活模型，该模型如左图所示：这个模型对比Sigmoid系主要变化有三点：<br><code>单侧抑制</code> <code>相对宽阔的兴奋边界</code> <code>稀疏激活性</code>（重点，可以看到红框里前端状态完全没有激活）<br>同年，Charles Dugas等人在做正数回归预测论文中偶然使用了Softplus函数，Softplus函数是Logistic-Sigmoid函数原函数。</p>
 <h2 id="Softplus"><a href="#Softplus" class="headerlink" title="Softplus"></a>Softplus</h2><p>激活函数公式：<br>$$softplus\left( x \right) =\log \left( 1+e^x \right)<br>$$</p>
