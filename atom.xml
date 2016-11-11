@@ -53,7 +53,7 @@
     <link href="http://yoursite.com/2016/11/10/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
     <id>http://yoursite.com/2016/11/10/激活函数/</id>
     <published>2016-11-10T12:27:17.000Z</published>
-    <updated>2016-11-11T14:11:34.890Z</updated>
+    <updated>2016-11-11T14:21:04.634Z</updated>
     
     <content type="html"><![CDATA[<p>在神经元的数学模型中，轴突所携带的信号(例如: $x_0$ )通过突触进行传递，由于突触的强弱不一，假设我们以 $w_0$ 表示，那么我们传到下一个神经元的树突处的信号就变成了 $w_0x_0$ 。其中突触强弱(参数w)是可学的，它控制了一个神经元对另一个神经元影响的大小和方向（正负）。然后树突接收到信号后传递到神经元内部<code>cell body</code>，与其他树突传递过来的信号一起进行加和，如果这个和的值大于某一个固定的阈值的话，神经元就会被激活，然后传递冲激信号给树突。在数学模型中我们假设传递冲激信号的时间长短并不重要，只有神经元被激活的频率用于传递信息. 我们将是否激活神经元的函数称为激活函数(activation function $f$ ), 它代表了轴突接收到冲激信号的频率。以前我们比较常用的一个激活信号是<code>sigmoid function</code> $σ$ ，因为它接收一个实值的信号（即上面所说的加和的值）然后将它压缩到 <code>0-1</code> 的范围内。我们在后面会介绍更多的激活函数。<br> <a id="more"></a></p>
 <h1 id="传统Sigmoid系激活函数"><a href="#传统Sigmoid系激活函数" class="headerlink" title="传统Sigmoid系激活函数"></a>传统Sigmoid系激活函数</h1><p><img src="/images/activate/3.png" alt=""><br>传统神经网络中最常用的两个激活函数，<code>Sigmoid</code>系（Logistic-Sigmoid、Tanh-Sigmoid）被视为神经网络的核心所在。从数学上来看，非线性的Sigmoid函数对中央区的信号增益较大，对两侧区的信号增益小，在信号的特征空间映射上，有很好的效果。从神经科学上来看，中央区酷似神经元的兴奋态，两侧区酷似神经元的抑制态，因而在神经网络学习方面，可以将重点特征推向中央区，将非重点特征推向两侧区。</p>
@@ -75,7 +75,7 @@
 <li><code>计算速度快</code>。正向传播过程中，sigmoid和tanh函数计算激活值时需要计算指数，而Relu函数仅需要设置阈值。如果x<0,f(x)=0，如果x>0,f(x)=x。加快了正向传播的计算速度。</0,f(x)=0，如果x></li>
 </ol>
 <p>因此，Relu激活函数可以极大地加快收敛速度，相比tanh函数，收敛速度可以加快6倍（如上图（右）所示）。</p>
-<h1 id="激活函数的发展"><a href="#激活函数的发展" class="headerlink" title="激活函数的发展"></a>激活函数的发展</h1><h2 id="PReLU"><a href="#PReLU" class="headerlink" title="PReLU"></a>PReLU</h2><p>PReLU 是ReLU 和 LReLU的改进版本，具有非饱和性：<br>$$f\left( y_i \right) =\left{ \begin{array}{c}    y_i\begin{matrix} \&amp;    ,if\ y_i&gt;0\ \end{matrix}\ a_iy_i\begin{matrix}\&amp; if\ y_i\le 0\ \end{matrix}\ \end{array} \right.$$<br><img src="/images/activate/6.png" alt=""><br>与LReLU相比，PReLU中的负半轴斜率a可学习而非固定。原文献建议初始化a为0.25，不采用正则。个人认为，是否采用正则应当视具体的数据库和网络，通常情况下使用正则能够带来性能提升。</p>
+<h1 id="激活函数的发展"><a href="#激活函数的发展" class="headerlink" title="激活函数的发展"></a>激活函数的发展</h1><h2 id="PReLU"><a href="#PReLU" class="headerlink" title="PReLU"></a>PReLU</h2><p>$$ a\\b $$<br>PReLU 是ReLU 和 LReLU的改进版本，具有非饱和性：<br>$$f\left( y_i \right) =\left{ \begin{array}{c}    y_i\begin{matrix}, &amp; if\ y_i&gt;0\\ \end{matrix}\\ a_iy_i\begin{matrix} &amp;  if\ y_i\le 0\\ \end{matrix}\\ \end{array} \right.$$<br><img src="/images/activate/6.png" alt=""><br>与LReLU相比，PReLU中的负半轴斜率a可学习而非固定。原文献建议初始化a为0.25，不采用正则。个人认为，是否采用正则应当视具体的数据库和网络，通常情况下使用正则能够带来性能提升。</p>
 <p>虽然PReLU 引入了额外的参数，但基本不需要担心过拟合。例如，在上述cifar10+NIN实验中， PReLU比ReLU和ELU多引入了参数，但也展现了更优秀的性能。所以实验中若发现网络性能不好，建议从其他角度寻找原因。</p>
 <p>与ReLU相比，PReLU收敛速度更快。因为PReLU的输出更接近0均值，使得SGD更接近natural gradient。证明过程参见原文[10]。</p>
 <p>此外，作者在ResNet 中采用ReLU，而没有采用新的PReLU。这里给出个人浅见，不一定正确，仅供参考。首先，在上述LReLU实验中，负半轴斜率对性能的影响表现出一致性。对PReLU采用正则将激活值推向0也能够带来性能提升。这或许表明，小尺度或稀疏激活值对深度网络的影响更大。其次，ResNet中包含单位变换和残差两个分支。残差分支用于学习对单位变换的扰动。如果单位变换是最优解，那么残差分支的扰动应该越小越好。这种假设下，小尺度或稀疏激活值对深度网络的影响更大。此时，ReLU或许是比PReLU更好的选择.</p>
@@ -373,9 +373,9 @@
       <category term="卷积深度网络全剖析" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%85%A8%E5%89%96%E6%9E%90/"/>
     
     
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
