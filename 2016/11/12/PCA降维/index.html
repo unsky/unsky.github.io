@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="深度学习,损失函数," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="损失函数（loss function）是用来估量模型的预测值 $f(x)$ 与真实值Y的不一致程度，它是一个非负实值函数,通常使用 $L(Y, f(x))$ 来表示，损失函数越小，模型的鲁棒性就越好。损失函数是经验风险函数的核心部分，也是结构风险函数重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：">
+<meta name="description" content="coding my world.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="损失函数">
-<meta property="og:url" content="http://yoursite.com/2016/11/10/损失函数/index.html">
+<meta property="og:title" content="PCA降维">
+<meta property="og:url" content="http://yoursite.com/2016/11/12/PCA降维/index.html">
 <meta property="og:site_name" content="Unsky Blog">
-<meta property="og:description" content="损失函数（loss function）是用来估量模型的预测值 $f(x)$ 与真实值Y的不一致程度，它是一个非负实值函数,通常使用 $L(Y, f(x))$ 来表示，损失函数越小，模型的鲁棒性就越好。损失函数是经验风险函数的核心部分，也是结构风险函数重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：">
-<meta property="og:image" content="http://yoursite.com/images/lossfunction/1.png">
-<meta property="og:image" content="http://yoursite.com/images/lossfunction/2.png">
-<meta property="og:image" content="http://yoursite.com/images/lossfunction/3.png">
-<meta property="og:image" content="http://yoursite.com/images/lossfunction/4.png">
-<meta property="og:image" content="http://yoursite.com/images/lossfunction/5.png">
-<meta property="og:updated_time" content="2016-11-12T09:51:19.445Z">
+<meta property="og:description" content="coding my world.">
+<meta property="og:updated_time" content="2016-11-12T01:37:32.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="损失函数">
-<meta name="twitter:description" content="损失函数（loss function）是用来估量模型的预测值 $f(x)$ 与真实值Y的不一致程度，它是一个非负实值函数,通常使用 $L(Y, f(x))$ 来表示，损失函数越小，模型的鲁棒性就越好。损失函数是经验风险函数的核心部分，也是结构风险函数重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：">
-<meta name="twitter:image" content="http://yoursite.com/images/lossfunction/1.png">
+<meta name="twitter:title" content="PCA降维">
+<meta name="twitter:description" content="coding my world.">
 
 
 
@@ -120,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/10/损失函数/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/12/PCA降维/"/>
 
 
-  <title> 损失函数 | Unsky Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> PCA降维 | Unsky Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -245,7 +239,7 @@
             
             
               
-                损失函数
+                PCA降维
               
             
           </h1>
@@ -257,38 +251,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-10T17:44:34+08:00" content="2016-11-10">
-              2016-11-10
+            <time itemprop="dateCreated" datetime="2016-11-12T09:37:32+08:00" content="2016-11-12">
+              2016-11-12
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/卷积深度网络全剖析/" itemprop="url" rel="index">
-                    <span itemprop="name">卷积深度网络全剖析</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/10/损失函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/10/损失函数/" itemprop="commentsCount"></span>
+                <a href="/2016/11/12/PCA降维/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/12/PCA降维/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -311,29 +286,7 @@
       
 
       
-        <p>损失函数（loss function）是用来估量模型的预测值 $f(x)$ 与真实值Y的不一致程度，它是一个非负实值函数,通常使用 $L(Y, f(x))$ 来表示，损失函数越小，模型的鲁棒性就越好。损失函数是经验风险函数的核心部分，也是结构风险函数重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：<br><a id="more"></a><br>$$\theta^{*}=arg\underset{\theta}{\min}\frac{1}{N}\sum_{i=1}^N{L\left( y_i,f\left( x_i;\theta \right) \right) +\lambda \varPhi \left( \theta \right)}$$</p>
-<p>其中，前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的 $\varPhi$ 是正则化项（regularizer）或者叫惩罚项（penalty term），它可以是L1，也可以是L2，或者其他的正则函数。整个式子表示的意思是找到使目标函数最小时的θ 值。下面主要列出几种常见的损失函数。</p>
-<h1 id="log对数损失函数（逻辑回归）"><a href="#log对数损失函数（逻辑回归）" class="headerlink" title="log对数损失函数（逻辑回归）"></a>log对数损失函数（逻辑回归）</h1><p>有些人可能觉得逻辑回归的损失函数就是平方损失，其实并不是。平方损失函数可以通过线性回归在假设样本是高斯分布的条件下推导得到，而逻辑回归得到的并不是平方损失。在逻辑回归的推导中，它假设样本服从伯努利分布（0-1分布），然后求得满足该分布的似然函数，接着取对数求极值等等。而逻辑回归并没有求似然函数的极值，而是把极大化当做是一种思想，进而推导出它的经验风险函数为：最小化负的似然函数（即max F(y, f(x)) —-&gt; min -F(y, f(x)))。从损失函数的视角来看，它就成了log损失函数了。</p>
-<p>log损失函数的标准形式：<br>$$ L\left( Y,P\left( Y|X \right) \right) =-\log P\left( Y|X \right)<br>$$<br>刚刚说到，取对数是为了方便计算极大似然估计，因为在MLE中，直接求导比较困难，所以通常都是先取对数再求导找极值点。损失函数 $L(Y, P(Y|X))$ 表达的是样本X在分类Y的情况下，使概率 $P(Y|X)$ 达到最大值（换言之，就是利用已知的样本分布，找到最有可能（即最大概率）导致这种分布的参数值；或者说什么样的参数才能使我们观测到目前这组数据的概率最大）。因为log函数是单调递增的，所以 $logP(Y|X)$ 也会达到最大值，因此在前面加上负号之后，最大化 $P(Y|X)$ 就等价于最小化 $L$ 了。<br>逻辑回归的 $P(Y=y|x)$ 表达式如下（为了将类别标签y统一为1和0，下面将表达式分开表示)：<br><img src="/images/lossfunction/1.png" alt=""><br>将它带入到上式，通过推导可以得到logistic的损失函数表达式，如下：<br><img src="/images/lossfunction/2.png" alt=""><br>逻辑回归最后得到的目标式子如下：<br>$$J\left( \theta \right) =-\frac{1}{m}\sum_{i=1}^m{\left[ y^i\log h_{\theta}\left( x^i \right) +\left( 1-y^i \right) \log \left( 1-h_{\theta}\left( x^i \right) \right) \right]}$$<br>上面是针对二分类而言的。</p>
-<h1 id="平方损失函数（最小二乘法-Ordinary-Least-Squares-）"><a href="#平方损失函数（最小二乘法-Ordinary-Least-Squares-）" class="headerlink" title="平方损失函数（最小二乘法, Ordinary Least Squares ）"></a>平方损失函数（最小二乘法, Ordinary Least Squares ）</h1><p>最小二乘法是线性回归的一种，OLS将问题转化成了一个凸优化问题。在线性回归中，它假设样本和噪声都服从高斯分布（为什么假设成高斯分布呢？其实这里隐藏了一个小知识点，就是中心极限定理，可以参考<code>central limit theorem</code>），最后通过极大似然估计（MLE）可以推导出最小二乘式子。最小二乘的基本原则是：最优拟合直线应该是使各点到回归直线的距离和最小的直线，即平方和最小。换言之，OLS是基于距离的，而这个距离就是我们用的最多的欧几里得距离。为什么它会选择使用欧式距离作为误差度量呢（即Mean squared error， MSE），主要有以下几个原因：</p>
-<ol>
-<li>简单，计算方便；</li>
-<li>欧氏距离是一种很好的相似性度量标准；</li>
-<li>在不同的表示域变换后特征性质不变。<br>平方损失（Square loss）的标准形式如下：<br>$$L\left( Y,f\left( X \right) \right) =\left( Y-f\left( X \right) \right) ^2$$<br>当样本个数为n时，此时的损失函数变为：<br>$$L\left( Y,f\left( X \right) \right) =\sum_{i=1}^n{\left( Y-f\left( X \right) \right) ^2}$$<br>$Y-f(X)$ 表示的是残差，整个式子表示的是残差的平方和，而我们的目的就是最小化这个目标函数值（注：该式子未加入正则项），也就是最小化残差的平方和（residual sum of squares，RSS）。<br>而在实际应用中，通常会使用<code>均方差（MSE）</code>作为一项衡量指标，公式如下：<br>$$MSE=\frac{1}{n}\sum_{i=1}^n{\left( \widetilde{Y_i}-Y_i \right) ^2}$$<br><code>note：</code></li>
-</ol>
-<p>其求解过程转化为LSR(最小二乘回归)在求解时候。</p>
-<ol>
-<li>加入L1惩罚项，将变为 <code>lasso</code>问题，具体对lasso的求解将另起一文</li>
-<li>加入L2惩罚项，将变为岭回归问题</li>
-</ol>
-<h1 id="指数损失函数（Adaboost）"><a href="#指数损失函数（Adaboost）" class="headerlink" title="指数损失函数（Adaboost）"></a>指数损失函数（Adaboost）</h1><p>学过Adaboost算法的人都知道，它是前向分步加法算法的特例，是一个加和模型，损失函数就是指数函数。在Adaboost中，经过m此迭代之后，可以得到<br>$$f_m\left( x \right) =f_{m-1}\left( x \right) +\alpha _mG_m\left( x \right) $$<br>Adaboost每次迭代时的目的是为了找到最小化下列式子时的参数α 和G：<br>$$arg\underset{\alpha ,G}{\min}=\sum_{i=1}^N{\exp \left[ -y_i\left( f_{m-1}\left( x_i \right) +\alpha G\left( x_i \right) \right) \right]}$$<br>而指数损失函数(exp-loss）的标准形式如下<br>  $$L\left( Y,f\left( X \right) \right) =\exp \left[ -yf\left( x \right) \right] $$<br>  可以看出，Adaboost的目标式子就是指数损失，在给定n个样本的情况下，Adaboost的损失函数为：<br>  $$L\left( Y,f\left( X \right) \right) =\frac{1}{n}\sum_{i=1}^n{\exp \left[ -yf\left( x \right) \right]}$$</p>
-<h1 id="Hinge损失函数（SVM）"><a href="#Hinge损失函数（SVM）" class="headerlink" title="Hinge损失函数（SVM）"></a>Hinge损失函数（SVM）</h1><p>在机器学习算法中，hinge损失函数和SVM是息息相关的。在线性支持向量机中，最优化问题可以等价于下列式子：<br>$$\underset{w,b}{\min}\sum_i^N{\left[ 1-y_i\left( w\cdot x_i+b \right) \right] _++\lambda ||w||^2}$$<br>下面来对式子做个变形，令：<br>$$\left[ 1-y_i\left( w\cdot x_i+b \right) \right] _+=\xi _i$$<br>于是，原式就变成了：<br>$$\underset{w,b}{\min}\sum_i^N{\xi _i+\lambda ||w||^2}$$<br>另 $\lambda =\frac{1}{2C}$</p>
-<p>$$\underset{w,b}{\min}\frac{1}{C}\left( C\sum_i^N{\xi _i+\frac{1}{2}||w||^2} \right)$$<br>可以看出，该式子与下式非常相似：</p>
-<h2 id="Hinge-损失函数的标准形式"><a href="#Hinge-损失函数的标准形式" class="headerlink" title="Hinge 损失函数的标准形式:"></a>Hinge 损失函数的标准形式:</h2><p>$$L\left( y \right) =\max \left( 0,1-y\tilde{y} \right) ,y=\pm 1$$<br>可以看出，当 $|y|&gt;=1$ 时，$L(y)=0$ 。</p>
-<h1 id="其它损失函数"><a href="#其它损失函数" class="headerlink" title="其它损失函数"></a>其它损失函数</h1><h2 id="0-1损失函数"><a href="#0-1损失函数" class="headerlink" title="0-1损失函数"></a>0-1损失函数</h2><p><img src="/images/lossfunction/3.png" alt=""></p>
-<h2 id="绝对值损失函数"><a href="#绝对值损失函数" class="headerlink" title="绝对值损失函数"></a>绝对值损失函数</h2><p><img src="/images/lossfunction/4.png" alt=""></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/images/lossfunction/5.png" alt=""><br>参数越多，模型越复杂，而越复杂的模型越容易过拟合。过拟合就是说模型在训练数据上的效果远远好于在测试集上的性能。此时可以考虑正则化，通过设置正则项前面的hyper parameter，来权衡损失函数和正则项，减小参数规模，达到模型简化的目的，从而使模型具有更好的泛化能力。</p>
-
+        
       
     </div>
 
@@ -374,30 +327,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/深度学习/" rel="tag">#深度学习</a>
-          
-            <a href="/tags/损失函数/" rel="tag">#损失函数</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/09/聚类分析/" rel="next" title="聚类分析">
-                <i class="fa fa-chevron-left"></i> 聚类分析
+              <a href="/2016/11/11/最大回文串-Longest-Palindromic-Substring/" rel="next" title="最大回文串 Longest Palindromic Substring">
+                <i class="fa fa-chevron-left"></i> 最大回文串 Longest Palindromic Substring
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/10/激活函数/" rel="prev" title="激活函数">
-                激活函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -461,8 +402,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/10/损失函数/"
-           data-title="损失函数" data-url="http://yoursite.com/2016/11/10/损失函数/">
+      <div class="ds-thread" data-thread-key="2016/11/12/PCA降维/"
+           data-title="PCA降维" data-url="http://yoursite.com/2016/11/12/PCA降维/">
       </div>
     
   </div>
@@ -582,7 +523,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#log对数损失函数（逻辑回归）"><span class="nav-number">1.</span> <span class="nav-text">log对数损失函数（逻辑回归）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#平方损失函数（最小二乘法-Ordinary-Least-Squares-）"><span class="nav-number">2.</span> <span class="nav-text">平方损失函数（最小二乘法, Ordinary Least Squares ）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指数损失函数（Adaboost）"><span class="nav-number">3.</span> <span class="nav-text">指数损失函数（Adaboost）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hinge损失函数（SVM）"><span class="nav-number">4.</span> <span class="nav-text">Hinge损失函数（SVM）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hinge-损失函数的标准形式"><span class="nav-number">4.1.</span> <span class="nav-text">Hinge 损失函数的标准形式:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它损失函数"><span class="nav-number">5.</span> <span class="nav-text">其它损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1损失函数"><span class="nav-number">5.1.</span> <span class="nav-text">0-1损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绝对值损失函数"><span class="nav-number">5.2.</span> <span class="nav-text">绝对值损失函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
