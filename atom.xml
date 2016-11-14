@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-14T13:40:37.818Z</updated>
+  <updated>2016-11-14T13:55:49.767Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,9 @@
     <link href="http://yoursite.com/2016/11/14/ZigZag-Conversion-%E5%9B%9E%E6%97%8B%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     <id>http://yoursite.com/2016/11/14/ZigZag-Conversion-回旋字符串/</id>
     <published>2016-11-14T13:27:29.000Z</published>
-    <updated>2016-11-14T13:40:37.818Z</updated>
+    <updated>2016-11-14T13:55:49.767Z</updated>
     
-    <content type="html"><![CDATA[<p>id：6. ZigZag Conversion   QuestionEditorial Solution  My Submissions<br>Total Accepted: 120341<br>Total Submissions: 469716<br>Difficulty: Easy<br>Contributors: Admin<br>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><img src="/images/zigzagconversion/1.png" alt=""></p>
-<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
+    <content type="html"><![CDATA[<p>id：6. ZigZag Conversion   QuestionEditorial Solution  My Submissions<br>Total Accepted: 120341<br>Total Submissions: 469716<br>Difficulty: Easy<br>Contributors: Admin<br>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><img src="/images/zigzagconversion/1.png" alt=""><br> <a id="more"></a><br>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
 <p>string convert(string text, int nRows);<br>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.<br>Subscribe to see which companies asked this question</p>
 <p>这道题是一个变换，只要找到其中的规律就很好做题。<br><img src="/images/zigzagconversion/2.png" alt=""></p>
 <p><code>假设结果存在一个string result中</code></p>
@@ -38,7 +37,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;id：6. ZigZag Conversion   QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 120341&lt;br&gt;Total Submissions: 469716&lt;br&gt;Difficulty
+      &lt;p&gt;id：6. ZigZag Conversion   QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 120341&lt;br&gt;Total Submissions: 469716&lt;br&gt;Difficulty: Easy&lt;br&gt;Contributors: Admin&lt;br&gt;The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)&lt;br&gt;&lt;img src=&quot;/images/zigzagconversion/1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
