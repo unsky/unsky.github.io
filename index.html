@@ -241,6 +241,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/14/ZigZag-Conversion-回旋字符串/" itemprop="url">
+                  ZigZag Conversion 回旋字符串
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-14T21:27:29+08:00" content="2016-11-14">
+              2016-11-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/14/ZigZag-Conversion-回旋字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/14/ZigZag-Conversion-回旋字符串/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>id：6. ZigZag Conversion   QuestionEditorial Solution  My Submissions<br>Total Accepted: 120341<br>Total Submissions: 469716<br>Difficulty: Easy<br>Contributors: Admin<br>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><img src="/images/zigzagconversion/1.png" alt=""></p>
+<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
+<p>string convert(string text, int nRows);<br>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.<br>Subscribe to see which companies asked this question</p>
+<p>这道题是一个变换，只要找到其中的规律就很好做题。<br><img src="/images/zigzagconversion/2.png" alt=""></p>
+<p><code>假设结果存在一个string result中</code></p>
+<p><code>原字符串存于s</code></p>
+<p>经过观察我们可以发现<br>红色部分的变换为：</p>
+<p><code>result.append(1,s[j*(numRows+numRows-2)+i])</code></p>
+<p>绿色部分的变换为</p>
+<p><code>result.append(1,s[(j+1)*(numRows+numRows-2)-i])</code></p>
+<p>其中i是第i行，j是（红色或者绿）的第j个数</p>
+<p>所以我们可以这么写代码：<br>class Solution {<br>public:<br>    string convert(string s, int numRows) {<br>        string result;<br>        if (numRows==1)<br>        return s;<br>        if(s.size()==0)return result;<br>        for(int i=0;i&lt;numRows;i++)<br>        {<br>            for(int j=0;(j<em>(numRows+numRows-2)+i)&lt;s.size();j++)<br>            {result.append(1,s[j</em>(numRows+numRows-2)+i]);<br>            if(i==0||i==numRows-1)<br>            continue;<br>            if(((j+1)<em>(numRows+numRows-2)-i)&lt;s.size())<br>            {<br>            result.append(1,s[(j+1)</em>(numRows+numRows-2)-i]);<br>            }</p>
+<pre><code>        }
+
+    }
+    return result;
+
+
+}
+</code></pre><p>};</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/12/PCA降维/" itemprop="url">
                   PCA降维
                 </a>
@@ -1338,7 +1477,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1355,7 +1494,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/Tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
