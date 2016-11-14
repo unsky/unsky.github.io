@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-14T13:39:24.018Z</updated>
+  <updated>2016-11-14T13:40:37.818Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/14/ZigZag-Conversion-%E5%9B%9E%E6%97%8B%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     <id>http://yoursite.com/2016/11/14/ZigZag-Conversion-回旋字符串/</id>
     <published>2016-11-14T13:27:29.000Z</published>
-    <updated>2016-11-14T13:39:24.018Z</updated>
+    <updated>2016-11-14T13:40:37.818Z</updated>
     
     <content type="html"><![CDATA[<p>id：6. ZigZag Conversion   QuestionEditorial Solution  My Submissions<br>Total Accepted: 120341<br>Total Submissions: 469716<br>Difficulty: Easy<br>Contributors: Admin<br>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><img src="/images/zigzagconversion/1.png" alt=""></p>
 <p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
@@ -33,15 +33,7 @@
 <p>绿色部分的变换为</p>
 <p><code>result.append(1,s[(j+1)*(numRows+numRows-2)-i])</code></p>
 <p>其中i是第i行，j是（红色或者绿）的第j个数</p>
-<p>所以我们可以这么写代码：<br>class Solution {<br>public:<br>    string convert(string s, int numRows) {<br>        string result;<br>        if (numRows==1)<br>        return s;<br>        if(s.size()==0)return result;<br>        for(int i=0;i&lt;numRows;i++)<br>        {<br>            for(int j=0;(j<em>(numRows+numRows-2)+i)&lt;s.size();j++)<br>            {result.append(1,s[j</em>(numRows+numRows-2)+i]);<br>            if(i==0||i==numRows-1)<br>            continue;<br>            if(((j+1)<em>(numRows+numRows-2)-i)&lt;s.size())<br>            {<br>            result.append(1,s[(j+1)</em>(numRows+numRows-2)-i]);<br>            }</p>
-<pre><code>        }
-
-    }
-    return result;
-
-
-}
-</code></pre><p>};</p>
+<p>所以我们可以这么写代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    string convert(string s, int numRows) &#123;</div><div class="line">        string result;</div><div class="line">        if (numRows==1)</div><div class="line">        return s;</div><div class="line">        if(s.size()==0)return result;</div><div class="line">        for(int i=0;i&lt;numRows;i++)</div><div class="line">        &#123;</div><div class="line">            for(int j=0;(j*(numRows+numRows-2)+i)&lt;s.size();j++)</div><div class="line">            &#123;result.append(1,s[j*(numRows+numRows-2)+i]);</div><div class="line">            if(i==0||i==numRows-1)</div><div class="line">            continue;</div><div class="line">            if(((j+1)*(numRows+numRows-2)-i)&lt;s.size())</div><div class="line">            &#123;</div><div class="line">            result.append(1,s[(j+1)*(numRows+numRows-2)-i]);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
