@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="机器学习,聚类分析," />
+  <meta name="keywords" content="回声状态网络,时间序列,RNN," />
 
 
 
@@ -84,20 +84,16 @@
 
 
 
-<meta name="description" content="聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。">
+<meta name="description" content="coding my world.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="聚类分析">
-<meta property="og:url" content="http://yoursite.com/2016/11/09/聚类分析/index.html">
+<meta property="og:title" content="回升状态网络ESN">
+<meta property="og:url" content="http://yoursite.com/2016/11/18/回声状态网络ESN/index.html">
 <meta property="og:site_name" content="Unsky Blog">
-<meta property="og:description" content="聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。">
-<meta property="og:image" content="http://yoursite.com/images/clutster/1.png">
-<meta property="og:image" content="http://yoursite.com/images/clutster/2.png">
-<meta property="og:image" content="http://yoursite.com/images/clutster/3.png">
-<meta property="og:updated_time" content="2016-11-10T12:24:59.563Z">
+<meta property="og:description" content="coding my world.">
+<meta property="og:updated_time" content="2016-11-18T11:44:19.587Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="聚类分析">
-<meta name="twitter:description" content="聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。">
-<meta name="twitter:image" content="http://yoursite.com/images/clutster/1.png">
+<meta name="twitter:title" content="回升状态网络ESN">
+<meta name="twitter:description" content="coding my world.">
 
 
 
@@ -118,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/09/聚类分析/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/18/回声状态网络ESN/"/>
 
 
-  <title> 聚类分析 | Unsky Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 回升状态网络ESN | Unsky Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -243,7 +239,7 @@
             
             
               
-                聚类分析
+                回升状态网络ESN
               
             
           </h1>
@@ -255,8 +251,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-09T17:33:59+08:00" content="2016-11-09">
-              2016-11-09
+            <time itemprop="dateCreated" datetime="2016-11-18T19:32:31+08:00" content="2016-11-18">
+              2016-11-18
             </time>
           </span>
 
@@ -269,8 +265,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/聚类分析/" itemprop="url" rel="index">
-                    <span itemprop="name">聚类分析</span>
+                  <a href="/categories/时间序列/" itemprop="url" rel="index">
+                    <span itemprop="name">时间序列</span>
                   </a>
                 </span>
 
@@ -285,8 +281,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/09/聚类分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/09/聚类分析/" itemprop="commentsCount"></span>
+                <a href="/2016/11/18/回声状态网络ESN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/18/回声状态网络ESN/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -309,58 +305,7 @@
       
 
       
-        <p>聚类分析将数据划分成有意义或有用的组（簇）。聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的，而不同组中的对象是不同的。<br> <a id="more"></a></p>
-<h1 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h1><p>一个好的聚类方法要能产生高质量的聚类结果——簇，这些簇要具备以下两个特点：</p>
-<ol>
-<li>高的簇内相似性</li>
-<li>低的簇间相似性</li>
-</ol>
-<p>聚类结果的好坏取决于该聚类方法采用的相似性评估方法以及该方法的具体实现<br>聚类方法的好坏还取决于该方法是否能发现某些还是所有的隐含模式</p>
-<p><img src="/images/clutster/1.png" alt=""></p>
-<p>聚类可以分为：</p>
-<ol>
-<li>划分聚类（Partitional Clustering）</li>
-<li>层次聚类（Hierarchical Clustering）</li>
-<li>互斥（重叠）聚类（exclusive clustering）</li>
-<li>非互斥聚类（non-exclusive）</li>
-<li>模糊聚类（fuzzy clustering）</li>
-<li>完全聚类（complete clustering）</li>
-<li>部分聚类（partial clustering）</li>
-</ol>
-<h2 id="划分聚类"><a href="#划分聚类" class="headerlink" title="划分聚类"></a>划分聚类</h2><p>划分聚类简单地将数据对象集划分成不重叠的子集，使得每个数据对象恰在一个子集。</p>
-<p><img src="/images/clutster/2.png" alt=""></p>
-<h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>层次聚类是嵌套簇的集族，组织成一棵树。<br><img src="/images/clutster/3.png" alt=""></p>
-<h2 id="互斥聚类（exclusive）"><a href="#互斥聚类（exclusive）" class="headerlink" title="互斥聚类（exclusive）"></a>互斥聚类（exclusive）</h2><p>每个对象都指派到单个簇.</p>
-<h2 id="重叠聚类（overlapping）或非互斥聚类（non-exclusive）"><a href="#重叠聚类（overlapping）或非互斥聚类（non-exclusive）" class="headerlink" title="重叠聚类（overlapping）或非互斥聚类（non-exclusive）"></a>重叠聚类（overlapping）或非互斥聚类（non-exclusive）</h2><p>聚类用来反映一个对象.同时属于多个组（类）这一事实。<br>例如：在大学里，一个人可能既是学生，又是雇员</p>
-<h2 id="模糊聚类（Fuzzy-clustering-）"><a href="#模糊聚类（Fuzzy-clustering-）" class="headerlink" title="模糊聚类（Fuzzy clustering ）"></a>模糊聚类（Fuzzy clustering ）</h2><p>每个对象以一个0（绝对不属于）和1（绝对属于）之间的隶属权值属于每个簇。<br>换言之，簇被视为模糊集。</p>
-<h2 id="部分聚类（Partial）"><a href="#部分聚类（Partial）" class="headerlink" title="部分聚类（Partial）"></a>部分聚类（Partial）</h2><p>部分聚类中数据集某些对象可能不属于明确定义的组。如：一些对象可能是离群点、噪声。</p>
-<h2 id="完全聚类（complete）"><a href="#完全聚类（complete）" class="headerlink" title="完全聚类（complete）"></a>完全聚类（complete）</h2><p>完全聚类将每个对象指派到一个簇。</p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="簇的分类"><a href="#簇的分类" class="headerlink" title="簇的分类"></a>簇的分类</h2><p>簇是同一性状物体的集合<br>按照性状的分类不同可以将簇分为</p>
-<ol>
-<li>明显分离的</li>
-</ol>
-<p>每个点到同簇中任一点的距离比到不同簇中所有点的距离更近。</p>
-<ol>
-<li>基于原型的</li>
-</ol>
-<p>每个对象到定义该簇的原型的距离比到其他簇的原型的距离更近。<br>对于具有连续属性的数据，簇的原型通常是质心，即簇中所有点的平均值。<br>当质心没有意义时，原型通常是中心点，即簇中最有代表性的点。</p>
-<p>基于中心的（ Center-Based）的簇：<br>每个点到其簇中心的距离比到任何其他簇中心的距离更近。</p>
-<ol>
-<li>基于图的</li>
-</ol>
-<p>如果数据用图表示，其中节点是对象，而边代表对象之间的联系。</p>
-<p>簇可以定义为连通分支（connected component）：互相连通但不与组外对象连通的对象组。</p>
-<p>基于近邻的（ Contiguity-Based）：其中两个对象是相连的，仅当它们的距离在指定的范围内。这意味着，每个对象到该簇某个对象的距离比到不同簇中任意点的距离更近。</p>
-<ol>
-<li>基于密度的</li>
-</ol>
-<p>簇是对象的稠密区域，被低密度的区域环绕。</p>
-<ol>
-<li><p>概念簇<br>可以把簇定义为有某种共同性质的对象的集合。<br>例如：基于中心的聚类。还有一些簇的共同性质需要更复杂的算法才能识别出来。</p>
-<p>本系列文章将探究各个聚类方式之间的区别</p>
-</li>
-</ol>
-
+        
       
     </div>
 
@@ -403,9 +348,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
+            <a href="/tags/回声状态网络/" rel="tag">#回声状态网络</a>
           
-            <a href="/tags/聚类分析/" rel="tag">#聚类分析</a>
+            <a href="/tags/时间序列/" rel="tag">#时间序列</a>
+          
+            <a href="/tags/RNN/" rel="tag">#RNN</a>
           
         </div>
       
@@ -414,17 +361,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/09/k-means聚类/" rel="next" title="互斥聚类-k-means聚类">
-                <i class="fa fa-chevron-left"></i> 互斥聚类-k-means聚类
+              <a href="/2016/11/14/卷积神经网络实验/" rel="next" title="卷积神经网络实验">
+                <i class="fa fa-chevron-left"></i> 卷积神经网络实验
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/10/损失函数/" rel="prev" title="损失函数">
-                损失函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,8 +431,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/09/聚类分析/"
-           data-title="聚类分析" data-url="http://yoursite.com/2016/11/09/聚类分析/">
+      <div class="ds-thread" data-thread-key="2016/11/18/回声状态网络ESN/"
+           data-title="回升状态网络ESN" data-url="http://yoursite.com/2016/11/18/回声状态网络ESN/">
       </div>
     
   </div>
@@ -609,7 +552,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类"><span class="nav-number">1.</span> <span class="nav-text">聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#划分聚类"><span class="nav-number">1.1.</span> <span class="nav-text">划分聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次聚类"><span class="nav-number">1.2.</span> <span class="nav-text">层次聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互斥聚类（exclusive）"><span class="nav-number">1.3.</span> <span class="nav-text">互斥聚类（exclusive）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重叠聚类（overlapping）或非互斥聚类（non-exclusive）"><span class="nav-number">1.4.</span> <span class="nav-text">重叠聚类（overlapping）或非互斥聚类（non-exclusive）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊聚类（Fuzzy-clustering-）"><span class="nav-number">1.5.</span> <span class="nav-text">模糊聚类（Fuzzy clustering ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分聚类（Partial）"><span class="nav-number">1.6.</span> <span class="nav-text">部分聚类（Partial）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全聚类（complete）"><span class="nav-number">1.7.</span> <span class="nav-text">完全聚类（complete）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#簇的分类"><span class="nav-number">2.1.</span> <span class="nav-text">簇的分类</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
