@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-18T14:18:16.060Z</updated>
+  <updated>2016-11-19T04:16:28.681Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/18/%E5%9B%9E%E5%A3%B0%E7%8A%B6%E6%80%81%E7%BD%91%E7%BB%9CESN/"/>
     <id>http://yoursite.com/2016/11/18/回声状态网络ESN/</id>
     <published>2016-11-18T11:32:31.000Z</published>
-    <updated>2016-11-18T14:18:16.060Z</updated>
+    <updated>2016-11-19T04:16:28.681Z</updated>
     
     <content type="html"><![CDATA[<p><code>ESN( echo state networks)</code>:<br>针对递归神经网络训练困难以及记忆渐消问题,jaeger 于2001年提出一种新型递归神经网络— — —回声状态网络. ESN网络一经提出便成为学术界的研究热点，并应用到各种不同领域，包括动态模式分类、机器人控制、对象跟踪核运动目标 检 测、 事 件 监 测 等， 尤其是时间序列预测问题.<br> <a id="more"></a></p>
 <h1 id="ESN"><a href="#ESN" class="headerlink" title="ESN"></a>ESN</h1><p>ESN 属于RNN的范畴，具有短期记忆的能力。今天将探讨和实验ESN在时间序列问题上的原理。</p>
@@ -33,8 +33,10 @@
 </ol>
 <p>假设系统具有M个输入单元,N个内部处理单元（Processing elements PEs），即N个内部神经元,同时具有L个输出单元,输入单元、内部状态、以及输出单元n时刻的值分别为<br><img src="/images/esn/2.png" alt=""></p>
 <p>$$u\left( n \right) =\left[ u_1\left( n \right) ,…,u_M\left( n \right) \right] ^T$$</p>
-<p>$$x\left( n \right) =\left[ x_1\left( n \right) ,…,x_N\left( n \right) \right] ^T$$<br>$$y\left( n \right) =\left[ y_1\left( n \right) ,…,y_L\left( n \right) \right] ^T$$<br>从结构上讲，ESNs是一种特殊类型的神经网络，其基本思想是使用大规模随机连接的递归网络，取代经典神经网络中的中间层，从而简化网络的训练过程,回声状态网络的状态方程为：<br>$$x\left( n+1 \right) =f\left( Wx\left( n \right) +W^{in}u\left( n \right) +W^{back}y\left( n \right) \right) $$<br>$$<br>y\left( n+1 \right) =f_{out}\left( W^{out}\left[ x\left( n+1 \right) ,u\left( n+1 \right) ,y\left( n \right) \right] +b^{out} \right)$$</p>
-<p>f为激活函数，一般为双曲正切函数。<br>其中W, $W^{in}$ , $W^{back}$ 分别表示状态变量、输入和输出对状态变量的连接权矩阵；$W^{out}$表示储备池、输入和输出对于输出的连接权矩阵，$b^{out}$ 表示输出的偏置项或者可以代表噪声,表示内部神经元激活函数,在网络训练过程中，连接到储备池的连接权矩阵 W, $W^{in}$ , $W^{back}$ 随机产生,一经产生就固定不变.而连接到输出的连接权矩阵 $W^{out}$ 需要通过训练得到，因为状态变量、输入和输出与输出之间是线性关系，所以通常这些连接权只需通过求解线性回归问题得到。</p>
+<p>$$x\left( n \right) =\left[ x_1\left( n \right) ,…,x_N\left( n \right) \right] ^T$$<br>$$y\left( n \right) =\left[ y_1\left( n \right) ,…,y_L\left( n \right) \right] ^T$$<br>其中，$u\left( n \right) \in R^{K\times 1}$ , $x\left( n \right) \in R^{N\times 1}$ , $y\left( n \right) \in R^{L\times 1}$</p>
+<p>从结构上讲，ESNs是一种特殊类型的神经网络，其基本思想是使用大规模随机连接的递归网络，取代经典神经网络中的中间层，从而简化网络的训练过程,回声状态网络的状态方程为：<br>$$x\left( n+1 \right) =f\left( Wx\left( n \right) +W^{in}u\left( n \right) +W^{back}y\left( n \right) \right) $$<br>$$<br>y\left( n+1 \right) =f_{out}\left( W^{out}\left[ x\left( n+1 \right) ,u\left( n+1 \right) ,y\left( n \right) \right] +b^{out} \right)$$</p>
+<p>其中，$W\in R^{N\times N}$ , $W^{in}\in R^{N\times K}$ , $W^{back}\in R^{N\times L}$ , $W^{out}\in R^{\left( L+K+N \right) \times L}$</p>
+<p>f为激活函数，一般为双曲正切函数。<br>其中W, $W^{in}$ , $W^{back}$ 分别表示状态变量、输入和输出对状态变量的连接权矩阵；$W^{out}$ 表示储备池、输入和输出对于输出的连接权矩阵，$b^{out}$ 表示输出的偏置项或者可以代表噪声,表示内部神经元激活函数,在网络训练过程中，连接到储备池的连接权矩阵 W, $W^{in}$ , $W^{back}$ 随机产生,一经产生就固定不变.而连接到输出的连接权矩阵 $W^{out}$ 需要通过训练得到，因为状态变量、输入和输出与输出之间是线性关系，所以通常这些连接权只需通过求解线性回归问题得到。</p>
 <h1 id="ESN的训练"><a href="#ESN的训练" class="headerlink" title="ESN的训练"></a>ESN的训练</h1><p>ESNs的训练过程就是根据给定的训练样本 $u\left( n \right) =\left[ u_1\left( n \right) ,…,u_M\left( n \right) \right] ^T$ ，确定系统输出连接权矩阵<br> $W^{out}$的过程 ．<br>ESNs的训练分为两个过程： <code>采样过程</code>和<code>权值计算过程</code></p>
 <h2 id="采样过程"><a href="#采样过程" class="headerlink" title="采样过程"></a>采样过程</h2><p>采样阶段首先任意选定网络的初始状态，但是通常情况下选取网络的初始状态为0，即 $x(0)=0$ ,训练样本$u\left( n \right) =\left[ u_1\left( n \right) ,…,u_M\left( n \right) \right] ^T$ 经过输入连接权矩阵 $W^{in}$ 被加入到储备池中， 按照方程，依次完成系统状态和输出珋 $y(n)$ 的计算与收集 ． 为了计算输出连接权矩阵，需要从某一时刻 m 开始收集（采样）内部状态变量，并以向量 $x\left( n \right) =\left[ x_1\left( n \right) ,…,x_N\left( n \right) \right] ^T$ 为行构成矩阵，同时相应的样本数据 y(n)也被收集，并构成一个列向量  $B\in R^{\left( p-m+1 \right) \times N}$ ,同时相应的样本数据y(n)也被收集，并构成 $T\in R^{\left( p-m+1 \right) \times L}$</p>
 <h2 id="权值计算"><a href="#权值计算" class="headerlink" title="权值计算"></a>权值计算</h2><p>权值计算就是根据在采样阶段收集到系统状态矩阵和样本数据，计算输出连接权  $W^{out}$ ． 因为状态变量 $x(n)$ 和系统输出 $y(n)$ 之间是线性关系，而需要实现的目标是利用网络实际输出逼近期望输出 :<br>$$y\left( n \right) \approx \hat{y}\left( n \right) =\sum_{i=1}^L{w_{i}^{out}x_i\left( n \right)}$$</p>
@@ -122,16 +124,22 @@
   </entry>
   
   <entry>
-    <title>PCA降维</title>
+    <title>PCA主成分分析</title>
     <link href="http://yoursite.com/2016/11/12/PCA%E9%99%8D%E7%BB%B4/"/>
     <id>http://yoursite.com/2016/11/12/PCA降维/</id>
     <published>2016-11-12T01:37:32.000Z</published>
-    <updated>2016-11-12T01:37:32.829Z</updated>
+    <updated>2016-11-18T14:35:15.671Z</updated>
     
     <summary type="html">
     
     </summary>
     
+      <category term="主成分分析" scheme="http://yoursite.com/categories/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/"/>
+    
+    
+      <category term="Principal Component Analysis" scheme="http://yoursite.com/tags/Principal-Component-Analysis/"/>
+    
+      <category term="主成分分析" scheme="http://yoursite.com/tags/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
