@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-19T04:18:42.692Z</updated>
+  <updated>2016-11-19T04:26:49.646Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/18/%E5%9B%9E%E5%A3%B0%E7%8A%B6%E6%80%81%E7%BD%91%E7%BB%9CESN/"/>
     <id>http://yoursite.com/2016/11/18/回声状态网络ESN/</id>
     <published>2016-11-18T11:32:31.000Z</published>
-    <updated>2016-11-19T04:18:42.692Z</updated>
+    <updated>2016-11-19T04:26:49.646Z</updated>
     
     <content type="html"><![CDATA[<p><code>ESN( echo state networks)</code>:<br>针对递归神经网络训练困难以及记忆渐消问题,jaeger 于2001年提出一种新型递归神经网络— — —回声状态网络. ESN网络一经提出便成为学术界的研究热点，并应用到各种不同领域，包括动态模式分类、机器人控制、对象跟踪核运动目标 检 测、 事 件 监 测 等， 尤其是时间序列预测问题.<br> <a id="more"></a></p>
 <h1 id="ESN"><a href="#ESN" class="headerlink" title="ESN"></a>ESN</h1><p>ESN 属于RNN的范畴，具有短期记忆的能力。今天将探讨和实验ESN在时间序列问题上的原理。</p>
