@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-19T04:26:49.646Z</updated>
+  <updated>2016-11-21T03:20:16.983Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Reverse Integer 逆置int数</title>
+    <link href="http://yoursite.com/2016/11/21/Reverse-Integer-%E9%80%86%E7%BD%AEint%E6%95%B0/"/>
+    <id>http://yoursite.com/2016/11/21/Reverse-Integer-逆置int数/</id>
+    <published>2016-11-21T02:59:05.000Z</published>
+    <updated>2016-11-21T03:20:16.983Z</updated>
+    
+    <content type="html"><![CDATA[<p>id7. Reverse Integer   QuestionEditorial Solution  My Submissions<br>Total Accepted: 185981<br>Total Submissions: 785209<br>Difficulty: Easy<br>Contributors: Admin<br>Reverse digits of an integer.<br>Example1: x = 123, return 321<br>Example2: x = -123, return -321<br> <a id="more"></a><br>Have you thought about this?<br>Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
+<p>If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.</p>
+<p>Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?</p>
+<p>For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.<br>Update (2014-11-10):<br>Test cases had been added to test the overflow behavior.</p>
+<p>这个题目非常简单，唯一比较麻烦得是判断溢出。</p>
+<p>“leetcode判断溢出得方法”</p>
+<ol>
+<li><code>设置最大最小2147483647 ~ -2147483648</code> 在本地环境下没有问题，但是leetcode就不行了，编译环境得问题。</li>
+<li><code>使用前一个结果得标志</code> 在溢出得时候只有每次乘以10的时候会产生溢出，假设没乘以10之前的结果保存在pre_result,在乘以10之后的结果为 result,可以使用<code>result/10!=pre_result</code>来进行溢出判断，因为如果溢出结果就是一个溢出的数字不满足乘以10的结果。</li>
+</ol>
+<p>比较啰嗦的借助了一个vector实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</div><div class="line">        <span class="keyword">int</span> num;</div><div class="line">        <span class="keyword">int</span> pre_result=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> flag=<span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (x&lt;=<span class="number">0</span>)&#123;</div><div class="line">        num=<span class="number">-1</span>*x;</div><div class="line">         flag=<span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(x&gt;<span class="number">0</span>)</div><div class="line">        num=x;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;num;</div><div class="line">     <span class="keyword">while</span>(num)</div><div class="line">     &#123;vec.push_back(num%<span class="number">10</span>);</div><div class="line">     num=num/<span class="number">10</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=vec.begin();</div><div class="line">     <span class="keyword">for</span>(;it!=vec.end();it++)</div><div class="line">     &#123;    pre_result=result;</div><div class="line">         result=result*<span class="number">10</span>+(*it);</div><div class="line">         <span class="keyword">if</span> (result/<span class="number">10</span>!=pre_result)</div><div class="line">         <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> flag*result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>精简版，不借助容器实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> pre_result=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> result=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(x)</div><div class="line">    &#123;pre_result=result;</div><div class="line">    result=result*<span class="number">10</span>+x%<span class="number">10</span>;</div><div class="line">    x=x/<span class="number">10</span>;</div><div class="line">    <span class="keyword">if</span>(result/<span class="number">10</span>!=pre_result)</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;id7. Reverse Integer   QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 185981&lt;br&gt;Total Submissions: 785209&lt;br&gt;Difficulty: Easy&lt;br&gt;Contributors: Admin&lt;br&gt;Reverse digits of an integer.&lt;br&gt;Example1: x = 123, return 321&lt;br&gt;Example2: x = -123, return -321&lt;br&gt;
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="Reverse Integer" scheme="http://yoursite.com/tags/Reverse-Integer/"/>
+    
+  </entry>
   
   <entry>
     <title>回声状态网络ESN</title>
@@ -72,7 +107,7 @@
     <link href="http://yoursite.com/2016/11/14/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C-fast-r-cnn/"/>
     <id>http://yoursite.com/2016/11/14/卷积神经网络实验-fast-r-cnn/</id>
     <published>2016-11-14T14:01:38.000Z</published>
-    <updated>2016-11-19T04:43:34.102Z</updated>
+    <updated>2016-11-19T05:48:17.339Z</updated>
     
     <summary type="html">
     
