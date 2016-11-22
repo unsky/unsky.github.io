@@ -485,129 +485,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/22/深度学习总结/" itemprop="url">
-                  深度学习总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-22T09:59:27+08:00" content="2016-11-22">
-              2016-11-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/22/深度学习总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/22/深度学习总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。<br>刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章<br>Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文是ReLU激活函数的提出，它根据脑部信号的激活展开了讨论，最后认为ReLU函数可以很好的拟合这种激活信号并且，具有保持一定的稀疏性。</p>
-<p>VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION<br>这篇论文提出了VGG16的网络结构用于图像分类，是非常经典的结构。</p>
-<p>对于传统的神经网络，因为全连接层的限制所以必须输入固定大小的图片，所以必须对每个图片预处理进行resize成固定大小，但是这样做会对一些小尺寸和大尺寸的图片产生影响从而影响正确率。正好空间金字塔有一个好处就是可以将任意尺寸的都max-pool成固定大小的，所以<br>Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition 的提出也是很必然的。</p>
-<p>在传统的深度学习中，层与层之间是用非线性函数激活的，所以他们之间是非线性联合的，这保证了它的深度，但是用很多层的非线性联合来组成一个神经网络和只用很少的层但用每个层之间用更强的非线性进行联合效果会怎么样?所以作者在 Network In Network这篇论文中提出了一种网中网的结构，就是以前的时候层与层直接只要一个非线性激活函数激活就行了，但是因为多层感知机的非线性据我们所知是很强的，所以作者将每个传统的层之间用多层感知机进行激活。来达到非线性联合的目的，在试验中它指出他仅仅用三层的结构就达到了ALexnet五层的效果。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/11/21/String-to-Integer-atoi-字符转int类型/" itemprop="url">
                   String to Integer (atoi) 字符转int类型
                 </a>
@@ -1438,6 +1315,128 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/10/激活函数/" itemprop="url">
+                  激活函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-10T20:27:17+08:00" content="2016-11-10">
+              2016-11-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/卷积深度网络/" itemprop="url" rel="index">
+                    <span itemprop="name">卷积深度网络</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/10/激活函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/10/激活函数/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在神经元的数学模型中，轴突所携带的信号(例如: $x_0$ )通过突触进行传递，由于突触的强弱不一，假设我们以 $w_0$ 表示，那么我们传到下一个神经元的树突处的信号就变成了 $w_0x_0$ 。其中突触强弱(参数w)是可学的，它控制了一个神经元对另一个神经元影响的大小和方向（正负）。然后树突接收到信号后传递到神经元内部<code>cell body</code>，与其他树突传递过来的信号一起进行加和，如果这个和的值大于某一个固定的阈值的话，神经元就会被激活，然后传递冲激信号给树突。在数学模型中我们假设传递冲激信号的时间长短并不重要，只有神经元被激活的频率用于传递信息. 我们将是否激活神经元的函数称为激活函数(activation function $f$ ), 它代表了轴突接收到冲激信号的频率。以前我们比较常用的一个激活信号是<code>sigmoid function</code> $σ$ ，因为它接收一个实值的信号（即上面所说的加和的值）然后将它压缩到 <code>0-1</code> 的范围内。我们在后面会介绍更多的激活函数。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/10/激活函数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1483,7 +1482,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1491,7 +1490,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

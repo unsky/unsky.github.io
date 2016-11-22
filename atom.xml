@@ -114,32 +114,6 @@
   </entry>
   
   <entry>
-    <title>深度学习总结</title>
-    <link href="http://yoursite.com/2016/11/22/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2016/11/22/深度学习总结/</id>
-    <published>2016-11-22T01:59:27.000Z</published>
-    <updated>2016-11-22T08:42:34.294Z</updated>
-    
-    <content type="html"><![CDATA[<p>读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。<br>刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章<br>Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文是ReLU激活函数的提出，它根据脑部信号的激活展开了讨论，最后认为ReLU函数可以很好的拟合这种激活信号并且，具有保持一定的稀疏性。</p>
-<p>VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION<br>这篇论文提出了VGG16的网络结构用于图像分类，是非常经典的结构。</p>
-<p>对于传统的神经网络，因为全连接层的限制所以必须输入固定大小的图片，所以必须对每个图片预处理进行resize成固定大小，但是这样做会对一些小尺寸和大尺寸的图片产生影响从而影响正确率。正好空间金字塔有一个好处就是可以将任意尺寸的都max-pool成固定大小的，所以<br>Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition 的提出也是很必然的。</p>
-<p>在传统的深度学习中，层与层之间是用非线性函数激活的，所以他们之间是非线性联合的，这保证了它的深度，但是用很多层的非线性联合来组成一个神经网络和只用很少的层但用每个层之间用更强的非线性进行联合效果会怎么样?所以作者在 Network In Network这篇论文中提出了一种网中网的结构，就是以前的时候层与层直接只要一个非线性激活函数激活就行了，但是因为多层感知机的非线性据我们所知是很强的，所以作者将每个传统的层之间用多层感知机进行激活。来达到非线性联合的目的，在试验中它指出他仅仅用三层的结构就达到了ALexnet五层的效果。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。&lt;br&gt;刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章&lt;br&gt;Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文
-    
-    </summary>
-    
-      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>String to Integer (atoi) 字符转int类型</title>
     <link href="http://yoursite.com/2016/11/21/String-to-Integer-atoi-%E5%AD%97%E7%AC%A6%E8%BD%ACint%E7%B1%BB%E5%9E%8B/"/>
     <id>http://yoursite.com/2016/11/21/String-to-Integer-atoi-字符转int类型/</id>
