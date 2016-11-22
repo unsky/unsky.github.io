@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/11/22/R-CNN/</loc>
+    
+    <lastmod>2016-11-22T11:45:30.831Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/11/22/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2016-11-22T08:42:34.294Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/11/21/String-to-Integer-atoi-%E5%AD%97%E7%AC%A6%E8%BD%ACint%E7%B1%BB%E5%9E%8B/</loc>
     
     <lastmod>2016-11-21T14:53:33.912Z</lastmod>

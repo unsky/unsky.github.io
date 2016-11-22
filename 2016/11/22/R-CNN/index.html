@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Reverse Integer," />
+  <meta name="keywords" content="R-CNN,深度学习,物体检测," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="id7. Reverse Integer   QuestionEditorial Solution  My SubmissionsTotal Accepted: 185981Total Submissions: 785209Difficulty: EasyContributors: AdminReverse digits of an integer.Example1: x = 123, retur">
+<meta name="description" content="Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reverse Integer 逆置int数">
-<meta property="og:url" content="http://yoursite.com/2016/11/21/Reverse-Integer-逆置int数/index.html">
+<meta property="og:title" content="R-CNN-物体检测">
+<meta property="og:url" content="http://yoursite.com/2016/11/22/R-CNN/index.html">
 <meta property="og:site_name" content="Unsky Blog">
-<meta property="og:description" content="id7. Reverse Integer   QuestionEditorial Solution  My SubmissionsTotal Accepted: 185981Total Submissions: 785209Difficulty: EasyContributors: AdminReverse digits of an integer.Example1: x = 123, retur">
-<meta property="og:updated_time" content="2016-11-21T03:20:16.983Z">
+<meta property="og:description" content="Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)">
+<meta property="og:image" content="http://yoursite.com/images/r-cnn/1.png">
+<meta property="og:image" content="http://yoursite.com/images/r-cnn/2.png">
+<meta property="og:image" content="http://yoursite.com/images/r-cnn/3.png">
+<meta property="og:image" content="http://yoursite.com/images/r-cnn/4.png">
+<meta property="og:image" content="http://yoursite.com/images/r-cnn/5.png">
+<meta property="og:updated_time" content="2016-11-22T11:45:30.831Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reverse Integer 逆置int数">
-<meta name="twitter:description" content="id7. Reverse Integer   QuestionEditorial Solution  My SubmissionsTotal Accepted: 185981Total Submissions: 785209Difficulty: EasyContributors: AdminReverse digits of an integer.Example1: x = 123, retur">
+<meta name="twitter:title" content="R-CNN-物体检测">
+<meta name="twitter:description" content="Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)">
+<meta name="twitter:image" content="http://yoursite.com/images/r-cnn/1.png">
 
 
 
@@ -114,10 +120,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/21/Reverse-Integer-逆置int数/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/22/R-CNN/"/>
 
 
-  <title> Reverse Integer 逆置int数 | Unsky Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> R-CNN-物体检测 | Unsky Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -239,7 +245,7 @@
             
             
               
-                Reverse Integer 逆置int数
+                R-CNN-物体检测
               
             
           </h1>
@@ -251,8 +257,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-21T10:59:05+08:00" content="2016-11-21">
-              2016-11-21
+            <time itemprop="dateCreated" datetime="2016-11-22T16:41:48+08:00" content="2016-11-22">
+              2016-11-22
             </time>
           </span>
 
@@ -265,8 +271,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/卷积深度网络全剖析/" itemprop="url" rel="index">
+                    <span itemprop="name">卷积深度网络全剖析</span>
                   </a>
                 </span>
 
@@ -281,8 +287,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/21/Reverse-Integer-逆置int数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/Reverse-Integer-逆置int数/" itemprop="commentsCount"></span>
+                <a href="/2016/11/22/R-CNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/22/R-CNN/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -305,19 +311,36 @@
       
 
       
-        <p>id7. Reverse Integer   QuestionEditorial Solution  My Submissions<br>Total Accepted: 185981<br>Total Submissions: 785209<br>Difficulty: Easy<br>Contributors: Admin<br>Reverse digits of an integer.<br>Example1: x = 123, return 321<br>Example2: x = -123, return -321<br> <a id="more"></a><br>Have you thought about this?<br>Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
-<p>If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.</p>
-<p>Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?</p>
-<p>For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.<br>Update (2014-11-10):<br>Test cases had been added to test the overflow behavior.</p>
-<p>这个题目非常简单，唯一比较麻烦得是判断溢出。</p>
-<p>“leetcode判断溢出得方法”</p>
+        <p>Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)<br> <a id="more"></a></p>
+<h1 id="IOU的定义"><a href="#IOU的定义" class="headerlink" title="IOU的定义"></a>IOU的定义</h1><p> 物体检测需要定位出物体的bounding box，就像下面的图片一样，我们不仅要定位出车辆的bounding box 我们还要识别出bounding box 里面的物体就是车辆。对于bounding box的定位精度，有一个很重要的概念，因为我们算法不可能百分百跟人工标注的数据完全匹配，因此就存在一个定位精度评价公式：IOU。</p>
+<p> 矩形框A、B的一个重合度IOU计算公式为：</p>
+<p> <img src="/images/r-cnn/1.png" alt=""><br> $$IOU=\left( A\cap B \right) /\left( A\cup B \right) $$<br> 就是矩形框A、B的重叠面积占A、B并集的面积比例:</p>
+<h1 id="非极大值抑制"><a href="#非极大值抑制" class="headerlink" title="非极大值抑制"></a>非极大值抑制</h1><p>  <img src="/images/r-cnn/2.png" alt=""><br> 就像上面的图片一样，定位一个车辆，最后算法就找出了一堆的方框，我们需要判别哪些矩形框是没用的。非极大值抑制：先假设有6个矩形框，根据分类器类别分类概率做排序，从小到大分别属于车辆的概率分别为A、B、C、D、E、F。</p>
 <ol>
-<li><code>设置最大最小2147483647 ~ -2147483648</code> 在本地环境下没有问题，但是leetcode就不行了，编译环境得问题。</li>
-<li><code>使用前一个结果得标志</code> 在溢出得时候只有每次乘以10的时候会产生溢出，假设没乘以10之前的结果保存在pre_result,在乘以10之后的结果为 result,可以使用<code>result/10!=pre_result</code>来进行溢出判断，因为如果溢出结果就是一个溢出的数字不满足乘以10的结果。</li>
+<li><p>从最大概率矩形框F开始，分别判断A~E与F的重叠度IOU是否大于某个设定的阈值;</p>
+</li>
+<li><p>假设B、D与F的重叠度超过阈值，那么就扔掉B、D；并标记第一个矩形框F，是我们保留下来的。</p>
+</li>
+<li><p>从剩下的矩形框A、C、E中，选择概率最大的E，然后判断E与A、C的重叠度，重叠度大于一定的阈值，那么就扔掉；并标记E是我们保留下来的第二个矩形框。</p>
+</li>
 </ol>
-<p>比较啰嗦的借助了一个vector实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</div><div class="line">        <span class="keyword">int</span> num;</div><div class="line">        <span class="keyword">int</span> pre_result=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> flag=<span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (x&lt;=<span class="number">0</span>)&#123;</div><div class="line">        num=<span class="number">-1</span>*x;</div><div class="line">         flag=<span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(x&gt;<span class="number">0</span>)</div><div class="line">        num=x;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;num;</div><div class="line">     <span class="keyword">while</span>(num)</div><div class="line">     &#123;vec.push_back(num%<span class="number">10</span>);</div><div class="line">     num=num/<span class="number">10</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=vec.begin();</div><div class="line">     <span class="keyword">for</span>(;it!=vec.end();it++)</div><div class="line">     &#123;    pre_result=result;</div><div class="line">         result=result*<span class="number">10</span>+(*it);</div><div class="line">         <span class="keyword">if</span> (result/<span class="number">10</span>!=pre_result)</div><div class="line">         <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> flag*result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>精简版，不借助容器实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> pre_result=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> result=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(x)</div><div class="line">    &#123;pre_result=result;</div><div class="line">    result=result*<span class="number">10</span>+x%<span class="number">10</span>;</div><div class="line">    x=x/<span class="number">10</span>;</div><div class="line">    <span class="keyword">if</span>(result/<span class="number">10</span>!=pre_result)</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>就这样一直重复，找到所有被保留下来的矩形框。</p>
+<h1 id="r-cnn的论文思想"><a href="#r-cnn的论文思想" class="headerlink" title="r-cnn的论文思想"></a>r-cnn的论文思想</h1><p> <img src="/images/r-cnn/3.png" alt=""><br> 在如今看来是非常简单的，</p>
+<ol>
+<li>首先在原图中使用selective_search进行窗口的推荐推荐出2000个候选窗口。</li>
+<li><p>然后采用CNN提取每个候选框中图片的特征向量，特征向量的维度为4096维。</p>
+</li>
+<li><p>接着采用svm算法对各个候选框中的物体进行分类识别</p>
+<h1 id="部分实现细节"><a href="#部分实现细节" class="headerlink" title="部分实现细节"></a>部分实现细节</h1><h2 id="selective-search"><a href="#selective-search" class="headerlink" title="selective_search"></a>selective_search</h2><p>当我们输入一张图片时，我们要搜索出所有可能是物体的区域，这个采用的方法是传统文献的算法：《search for object recognition》，通过这个算法我们搜索出2000个候选框。然后从上面的总流程图中可以看到，搜出的候选框是矩形的，而且是大小各不相同。然而CNN对输入图片的大小是有固定的，如果把搜索到的矩形选框不做处理，就扔进CNN中，肯定不行。因此对于每个输入的候选框都需要缩放到固定的大小。下面我们讲解要怎么进行缩放处理，为了简单起见我们假设下一阶段CNN所需要的输入图片大小是个正方形图片227*227。因为我们经过selective search 得到的是矩形框，paper试验了两种不同的处理方法：<br><img src="/images/r-cnn/4.png" alt=""></p>
+</li>
+<li>各向异性缩放,这种方法很简单，就是不管图片的长宽比例，管它是否扭曲，进行缩放就是了，全部缩放到CNN输入的大小227*227，如下图(D)所示；</li>
+<li>先把bounding box图片裁剪出来，然后用固定的背景颜色填充成正方形图片(背景颜色也是采用bounding box的像素颜色均值),如下图(C)所示;</li>
+</ol>
+<p>对于上面的异性、同性缩放，文献还有个padding处理，上面的示意图中第1、3行就是结合了padding=0,第2、4行结果图采用padding=16的结果。经过最后的试验，作者发现采用各向异性缩放、padding=16的精度最高.</p>
+<h2 id="fine-tuning阶段"><a href="#fine-tuning阶段" class="headerlink" title="fine-tuning阶段"></a>fine-tuning阶段</h2><p>我们接着采用selective search 搜索出来的候选框，然后处理到指定大小图片，继续对上面预训练的cnn模型进行fine-tuning训练。假设要检测的物体类别有N类，那么我们就需要把上面预训练阶段的CNN模型的最后一层给替换掉，替换成N+1个输出的神经元(加1，表示还有一个背景)，然后这一层直接采用参数随机初始化的方法，其它网络层的参数不变；接着就可以开始继续SGD训练了。开始的时候，SGD学习率选择0.001，在每次训练的时候，我们batch size大小选择128，其中32个正样本、96个负样本(1:3)<br>note：作者在此论文中给出了卷积层和全连接层的一些特征，拿vgg16而言，网络的卷积层部分可以看作是sift等一样的特征提取器，但是对于全连接层是根据特定任务而言的，比如vgg16是用于图片分类，我们可以直接用其卷积层进行特征提取，而对于全连接，一般需要针对人脸任务进行一部分的微调。</p>
+<p><code>一些附加的调参技巧：在cat vs dog 的二分类竞赛中，发现对于vgg16网络，如果仅仅改变全连接层，那么效果可以达到正确率95%,但是如果微调vgg16的conv5+全连接层可以达到正确率98%</code></p>
+<h1 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h1><p> <img src="/images/r-cnn/5.png" alt=""></p>
+<p>具体的实验代码可以在<br><a href="https://github.com/unsky/rcnn" target="_blank" rel="external">https://github.com/unsky/rcnn</a><br>中找到。</p>
 
       
     </div>
@@ -361,7 +384,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Reverse-Integer/" rel="tag">#Reverse Integer</a>
+            <a href="/tags/R-CNN/" rel="tag">#R-CNN</a>
+          
+            <a href="/tags/深度学习/" rel="tag">#深度学习</a>
+          
+            <a href="/tags/物体检测/" rel="tag">#物体检测</a>
           
         </div>
       
@@ -370,17 +397,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/18/回声状态网络ESN/" rel="next" title="回声状态网络ESN">
-                <i class="fa fa-chevron-left"></i> 回声状态网络ESN
+              <a href="/2016/11/22/深度学习总结/" rel="next" title="深度学习总结">
+                <i class="fa fa-chevron-left"></i> 深度学习总结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/21/String-to-Integer-atoi-字符转int类型/" rel="prev" title="String to Integer (atoi) 字符转int类型">
-                String to Integer (atoi) 字符转int类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -444,8 +467,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/21/Reverse-Integer-逆置int数/"
-           data-title="Reverse Integer 逆置int数" data-url="http://yoursite.com/2016/11/21/Reverse-Integer-逆置int数/">
+      <div class="ds-thread" data-thread-key="2016/11/22/R-CNN/"
+           data-title="R-CNN-物体检测" data-url="http://yoursite.com/2016/11/22/R-CNN/">
       </div>
     
   </div>
@@ -565,7 +588,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IOU的定义"><span class="nav-number">1.</span> <span class="nav-text">IOU的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非极大值抑制"><span class="nav-number">2.</span> <span class="nav-text">非极大值抑制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#r-cnn的论文思想"><span class="nav-number">3.</span> <span class="nav-text">r-cnn的论文思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部分实现细节"><span class="nav-number">4.</span> <span class="nav-text">部分实现细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#selective-search"><span class="nav-number">4.1.</span> <span class="nav-text">selective_search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fine-tuning阶段"><span class="nav-number">4.2.</span> <span class="nav-text">fine-tuning阶段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验效果"><span class="nav-number">5.</span> <span class="nav-text">实验效果</span></a></li></ol></div>
             
           </div>
         </section>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-21T14:53:33.912Z</updated>
+  <updated>2016-11-22T11:45:30.831Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>R-CNN-物体检测</title>
+    <link href="http://yoursite.com/2016/11/22/R-CNN/"/>
+    <id>http://yoursite.com/2016/11/22/R-CNN/</id>
+    <published>2016-11-22T08:41:48.000Z</published>
+    <updated>2016-11-22T11:45:30.831Z</updated>
+    
+    <content type="html"><![CDATA[<p>Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)<br> <a id="more"></a></p>
+<h1 id="IOU的定义"><a href="#IOU的定义" class="headerlink" title="IOU的定义"></a>IOU的定义</h1><p> 物体检测需要定位出物体的bounding box，就像下面的图片一样，我们不仅要定位出车辆的bounding box 我们还要识别出bounding box 里面的物体就是车辆。对于bounding box的定位精度，有一个很重要的概念，因为我们算法不可能百分百跟人工标注的数据完全匹配，因此就存在一个定位精度评价公式：IOU。</p>
+<p> 矩形框A、B的一个重合度IOU计算公式为：</p>
+<p> <img src="/images/r-cnn/1.png" alt=""><br> $$IOU=\left( A\cap B \right) /\left( A\cup B \right) $$<br> 就是矩形框A、B的重叠面积占A、B并集的面积比例:</p>
+<h1 id="非极大值抑制"><a href="#非极大值抑制" class="headerlink" title="非极大值抑制"></a>非极大值抑制</h1><p>  <img src="/images/r-cnn/2.png" alt=""><br> 就像上面的图片一样，定位一个车辆，最后算法就找出了一堆的方框，我们需要判别哪些矩形框是没用的。非极大值抑制：先假设有6个矩形框，根据分类器类别分类概率做排序，从小到大分别属于车辆的概率分别为A、B、C、D、E、F。</p>
+<ol>
+<li><p>从最大概率矩形框F开始，分别判断A~E与F的重叠度IOU是否大于某个设定的阈值;</p>
+</li>
+<li><p>假设B、D与F的重叠度超过阈值，那么就扔掉B、D；并标记第一个矩形框F，是我们保留下来的。</p>
+</li>
+<li><p>从剩下的矩形框A、C、E中，选择概率最大的E，然后判断E与A、C的重叠度，重叠度大于一定的阈值，那么就扔掉；并标记E是我们保留下来的第二个矩形框。</p>
+</li>
+</ol>
+<p>就这样一直重复，找到所有被保留下来的矩形框。</p>
+<h1 id="r-cnn的论文思想"><a href="#r-cnn的论文思想" class="headerlink" title="r-cnn的论文思想"></a>r-cnn的论文思想</h1><p> <img src="/images/r-cnn/3.png" alt=""><br> 在如今看来是非常简单的，</p>
+<ol>
+<li>首先在原图中使用selective_search进行窗口的推荐推荐出2000个候选窗口。</li>
+<li><p>然后采用CNN提取每个候选框中图片的特征向量，特征向量的维度为4096维。</p>
+</li>
+<li><p>接着采用svm算法对各个候选框中的物体进行分类识别</p>
+<h1 id="部分实现细节"><a href="#部分实现细节" class="headerlink" title="部分实现细节"></a>部分实现细节</h1><h2 id="selective-search"><a href="#selective-search" class="headerlink" title="selective_search"></a>selective_search</h2><p>当我们输入一张图片时，我们要搜索出所有可能是物体的区域，这个采用的方法是传统文献的算法：《search for object recognition》，通过这个算法我们搜索出2000个候选框。然后从上面的总流程图中可以看到，搜出的候选框是矩形的，而且是大小各不相同。然而CNN对输入图片的大小是有固定的，如果把搜索到的矩形选框不做处理，就扔进CNN中，肯定不行。因此对于每个输入的候选框都需要缩放到固定的大小。下面我们讲解要怎么进行缩放处理，为了简单起见我们假设下一阶段CNN所需要的输入图片大小是个正方形图片227*227。因为我们经过selective search 得到的是矩形框，paper试验了两种不同的处理方法：<br><img src="/images/r-cnn/4.png" alt=""></p>
+</li>
+<li>各向异性缩放,这种方法很简单，就是不管图片的长宽比例，管它是否扭曲，进行缩放就是了，全部缩放到CNN输入的大小227*227，如下图(D)所示；</li>
+<li>先把bounding box图片裁剪出来，然后用固定的背景颜色填充成正方形图片(背景颜色也是采用bounding box的像素颜色均值),如下图(C)所示;</li>
+</ol>
+<p>对于上面的异性、同性缩放，文献还有个padding处理，上面的示意图中第1、3行就是结合了padding=0,第2、4行结果图采用padding=16的结果。经过最后的试验，作者发现采用各向异性缩放、padding=16的精度最高.</p>
+<h2 id="fine-tuning阶段"><a href="#fine-tuning阶段" class="headerlink" title="fine-tuning阶段"></a>fine-tuning阶段</h2><p>我们接着采用selective search 搜索出来的候选框，然后处理到指定大小图片，继续对上面预训练的cnn模型进行fine-tuning训练。假设要检测的物体类别有N类，那么我们就需要把上面预训练阶段的CNN模型的最后一层给替换掉，替换成N+1个输出的神经元(加1，表示还有一个背景)，然后这一层直接采用参数随机初始化的方法，其它网络层的参数不变；接着就可以开始继续SGD训练了。开始的时候，SGD学习率选择0.001，在每次训练的时候，我们batch size大小选择128，其中32个正样本、96个负样本(1:3)<br>note：作者在此论文中给出了卷积层和全连接层的一些特征，拿vgg16而言，网络的卷积层部分可以看作是sift等一样的特征提取器，但是对于全连接层是根据特定任务而言的，比如vgg16是用于图片分类，我们可以直接用其卷积层进行特征提取，而对于全连接，一般需要针对人脸任务进行一部分的微调。</p>
+<p><code>一些附加的调参技巧：在cat vs dog 的二分类竞赛中，发现对于vgg16网络，如果仅仅改变全连接层，那么效果可以达到正确率95%,但是如果微调vgg16的conv5+全连接层可以达到正确率98%</code></p>
+<h1 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h1><p> <img src="/images/r-cnn/5.png" alt=""></p>
+<p>具体的实验代码可以在<br><a href="https://github.com/unsky/rcnn" target="_blank" rel="external">https://github.com/unsky/rcnn</a><br>中找到。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)&lt;br&gt;
+    
+    </summary>
+    
+      <category term="卷积深度网络全剖析" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%85%A8%E5%89%96%E6%9E%90/"/>
+    
+    
+      <category term="R-CNN" scheme="http://yoursite.com/tags/R-CNN/"/>
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="物体检测" scheme="http://yoursite.com/tags/%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习总结</title>
+    <link href="http://yoursite.com/2016/11/22/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/11/22/深度学习总结/</id>
+    <published>2016-11-22T01:59:27.000Z</published>
+    <updated>2016-11-22T08:42:34.294Z</updated>
+    
+    <content type="html"><![CDATA[<p>读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。<br>刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章<br>Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文是ReLU激活函数的提出，它根据脑部信号的激活展开了讨论，最后认为ReLU函数可以很好的拟合这种激活信号并且，具有保持一定的稀疏性。</p>
+<p>VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION<br>这篇论文提出了VGG16的网络结构用于图像分类，是非常经典的结构。</p>
+<p>对于传统的神经网络，因为全连接层的限制所以必须输入固定大小的图片，所以必须对每个图片预处理进行resize成固定大小，但是这样做会对一些小尺寸和大尺寸的图片产生影响从而影响正确率。正好空间金字塔有一个好处就是可以将任意尺寸的都max-pool成固定大小的，所以<br>Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition 的提出也是很必然的。</p>
+<p>在传统的深度学习中，层与层之间是用非线性函数激活的，所以他们之间是非线性联合的，这保证了它的深度，但是用很多层的非线性联合来组成一个神经网络和只用很少的层但用每个层之间用更强的非线性进行联合效果会怎么样?所以作者在 Network In Network这篇论文中提出了一种网中网的结构，就是以前的时候层与层直接只要一个非线性激活函数激活就行了，但是因为多层感知机的非线性据我们所知是很强的，所以作者将每个传统的层之间用多层感知机进行激活。来达到非线性联合的目的，在试验中它指出他仅仅用三层的结构就达到了ALexnet五层的效果。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。&lt;br&gt;刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章&lt;br&gt;Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文
+    
+    </summary>
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>String to Integer (atoi) 字符转int类型</title>
@@ -156,9 +238,9 @@
       <category term="卷积深度网络全剖析" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%85%A8%E5%89%96%E6%9E%90/"/>
     
     
-      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
-    
       <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
     
   </entry>
   
@@ -599,9 +681,9 @@
       <category term="卷积深度网络全剖析" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%85%A8%E5%89%96%E6%9E%90/"/>
     
     
-      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
-    
       <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
     
   </entry>
   
