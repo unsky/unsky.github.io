@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-22T12:47:17.135Z</updated>
+  <updated>2016-11-22T14:20:05.411Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>spp-net-物体检测</title>
+    <link href="http://yoursite.com/2016/11/22/spp-net-%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/"/>
+    <id>http://yoursite.com/2016/11/22/spp-net-物体检测/</id>
+    <published>2016-11-22T13:44:23.000Z</published>
+    <updated>2016-11-22T14:20:05.411Z</updated>
+    
+    <content type="html"><![CDATA[<p>卷积神经网络(CNN),训练数据的维度都是相同的,这样经过卷积池化后,得到的特征维度才能相同,进而才能将特征输入到分类器中训练分类器.输入维度相同这个限制太大了,这篇文章主要针对这个缺陷进行了改进,具体地就是加入了空间金字塔池化(Spatial Pyrimid Pooling),使得不同维度的输入最后都能得到相同维度的输出.所以每次在进行输入图片的时候都需要对原始的图片进行crop/warp操作，这样对一些过大过小的图片是不公平的。<br> <a id="more"></a></p>
+<h1 id="spp-net的出发点"><a href="#spp-net的出发点" class="headerlink" title="spp-net的出发点"></a>spp-net的出发点</h1><p> 在对图片进行处理的时候，需要对图片进行crop/warp操作，<br>比如 <img src="/images/spp-net/1.png" alt=""></p>
+<p>深究卷积神经网络为什么需要一个固定的输入，作者指出，在卷积层是可以任意尺寸的，但是全连接层需要一个固定大小的输入，所以限制整个网络需要固定输入的是全连接。</p>
+<h1 id="spp-net的结构"><a href="#spp-net的结构" class="headerlink" title="spp-net的结构"></a>spp-net的结构</h1><p>SPP是词袋模型(Bag-of-Words)的扩展.词袋模型没有特征的空间信息(就像它只能统计一个句子中每个单词的词频,而不能记录词的位置信息一样).在深层CNN里加入SPP会有3个优势: 1) 相比之前的滑动窗池化(sliding window pooling),SPP可以对不同维度输入得到固定长度输出. 2) SPP使用了多维的spatial bins(我的理解就是多个不同大小的窗),而滑动窗池化只用了一个窗. 3) 因为输入图片尺度可以是任意的,SPP就提取出了不同尺度的特征.作者说这3点可以提高深度网络的识别准确率.</p>
+<p>所以作者提出了如下的结构：<br> <img src="/images/spp-net/2.png" alt=""></p>
+<h1 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h1><p>若输入维度不同,卷积层会输出的不同大小的feature map.其实把BoW用在这些feature map上已经可以解决固定输出的问题了,但SPP使用local spatial bins来做池化,保留了空间信息,是一个提升.SPP的原理其实就一句话,SPP的spatial bins(也就是池化时候的窗口大小)是和输入图片的大小成比例的,所以spatial bins的数目也就固定下了,和输入大小无关.原理是下图.无论feature map的大小是多少,总是可以把一个feature map分成4x4,或者2x2,或者1x1,只是每一个小方块大小不一样.</p>
+<p>具体地,在一个CNN里,把最以后一次池化层去掉,换成一个SPP去做最大池化操作(max pooling).如果最后一次卷积得到了k个feature map,也就是有k个filter,SPP有M个bin,那经过SPP得到的是一个kM维的向量.我的理解是,比如上图中第一个feature map有16个bin,一共有256个feature map,每一个经过16个bin的max pooling得到16个数,那256个feature map就是16x256的向量了.SPP的bin大小可以选择多个,所以经过SPP还能产生4x256,1x256维的向量.</p>
+<p> <img src="/images/spp-net/3.png" alt=""></p>
+<p>我们可以对不同比例,不同大小的图片进行处理,而且使用同一个CNN,只是对不同大小的图片,在最后的SPP里,bin的大小不同,但最后得到的特征确实相同维度.这样,我们把一张图片resize成不同尺度,放到同一个CNN里训练,就能得到不同尺度下的特征,就和SIFT类似了.</p>
+<h1 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h1><p>虽然SPP理论上可以直接用BP来训练参数,但现有的使用了GPU的CNN工具,比如caffe和cuda-caffe都只能以固定大小的图片作为输入.作者使用了caffe,但是用了一些技巧来实现SPP的训练.</p>
+<h2 id="单一大小训练"><a href="#单一大小训练" class="headerlink" title="单一大小训练"></a>单一大小训练</h2><p>如果一个图片大小固定,比如224x224,那么我们就能计算出它的池化窗口(bin)的大小.比如经过第五个卷积层conv5之后得到的feature map是a x a(13x13),如果金字塔大小n x n,那么窗口大小就是ceil(a / n), 步长是floor(a / n).我们可以用ll个不同大小的窗口,比如3x3, 2x2, 1x1.然后把这ll个输出连接起来,送入之后的全连层.下图是这样3个窗口和最后的全连层的的配置文件.<br> <img src="/images/spp-net/4.png" alt=""></p>
+<h2 id="多个大小训练"><a href="#多个大小训练" class="headerlink" title="多个大小训练"></a>多个大小训练</h2><p>我们再考虑一种输入大小(180x180),这个180x180的直接取224x224图片的按尺度缩放图片,这两张图除了解析度不同别的都相同.180x180的图片经过第五层卷积后的feature map是10x10,这时我们依然用刚才的公式,窗口大小就是ceil(a / n), 步长是floor(a / n),这样的话后得到的特征长度与之前的224x224的特征长度相同.举个例子,如果金字塔是3*3,即n=3,那么对于第一种大小,窗口长为5,步长4,第二中大小,窗口4,步长3,如下图.<br> <img src="/images/spp-net/5.png" alt=""><br> 红色区域代表窗口,经过最大池化后,两张图得到的特征向量长度均为3x3=9.所以180的网络和224的网络参数完全一样,于是SPP训练阶段,对于这两种网络只要共享参数即可.</p>
+<p>但是在实际训练时,为了减少不停转换网络带来的开销,需要使用全部数据一次训练一个网络,然后再换成第二个,作为一次迭代.所以作者根本没有实现训练不同大小输入的CNN的BP算法,只是针对各种各样大小不同的输入,定义出不同的网络,但这些网络实际上参数都相同,于是就可以用现有工具来训练.</p>
+<h1 id="SPP-NET物体检测实验"><a href="#SPP-NET物体检测实验" class="headerlink" title="SPP-NET物体检测实验"></a>SPP-NET物体检测实验</h1><p>R-CNN进行物体检测的方法是,首先从每张图片选出2000个候选窗口,然后把窗口变形到227x227,把每个窗口送入网络计算特征,然后训练SVM进行二分类.R-CNN效果很好,但是对每一张图片的2000个窗口都要送进卷积网络计算,很费时间.</p>
+<p>SPP-NET可以直接对一张整图计算feature map(以及不同尺度的这张图片),然后只需要在feature map的不同区域进行SPPooling即可,没有了像R-CNN的从头卷积那一步,如下图.<br> <img src="/images/spp-net/6.png" alt=""></p>
+<p>具体的源码可以在 <a href="https://github.com/unsky/SPP_net" target="_blank" rel="external">https://github.com/unsky/SPP_net</a> 中找到。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;卷积神经网络(CNN),训练数据的维度都是相同的,这样经过卷积池化后,得到的特征维度才能相同,进而才能将特征输入到分类器中训练分类器.输入维度相同这个限制太大了,这篇文章主要针对这个缺陷进行了改进,具体地就是加入了空间金字塔池化(Spatial Pyrimid Pooling),使得不同维度的输入最后都能得到相同维度的输出.所以每次在进行输入图片的时候都需要对原始的图片进行crop/warp操作，这样对一些过大过小的图片是不公平的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="卷积深度网络" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="物体检测" scheme="http://yoursite.com/tags/%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/"/>
+    
+      <category term="spp-net" scheme="http://yoursite.com/tags/spp-net/"/>
+    
+  </entry>
+  
+  <entry>
     <title>R-CNN-物体检测</title>
     <link href="http://yoursite.com/2016/11/22/R-CNN/"/>
     <id>http://yoursite.com/2016/11/22/R-CNN/</id>
     <published>2016-11-22T08:41:48.000Z</published>
-    <updated>2016-11-22T12:47:17.135Z</updated>
+    <updated>2016-11-22T13:55:35.758Z</updated>
     
     <content type="html"><![CDATA[<p>Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)<br> <a id="more"></a></p>
 <h1 id="IOU的定义"><a href="#IOU的定义" class="headerlink" title="IOU的定义"></a>IOU的定义</h1><p> 物体检测需要定位出物体的bounding box，就像下面的图片一样，我们不仅要定位出车辆的bounding box 我们还要识别出bounding box 里面的物体就是车辆。对于bounding box的定位精度，有一个很重要的概念，因为我们算法不可能百分百跟人工标注的数据完全匹配，因此就存在一个定位精度评价公式：IOU。</p>
@@ -229,9 +271,14 @@
     <link href="http://yoursite.com/2016/11/14/fast-r-cnn-%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/"/>
     <id>http://yoursite.com/2016/11/14/fast-r-cnn-物体检测/</id>
     <published>2016-11-14T14:01:38.000Z</published>
-    <updated>2016-11-22T12:46:15.919Z</updated>
+    <updated>2016-11-22T13:31:39.432Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是RBG大神对于R-CNN的改进，从上一篇RCNN <a href="http://deepdim.com/2016/11/22/R-CNN/" target="_blank" rel="external">http://deepdim.com/2016/11/22/R-CNN/</a><br>中我们知道R-CNN需要先对原始图片进行窗口搜索然后将窗口挨个的输入网络中，这导致了速度特别的慢，所以RBG大神就此提出了fast-r-cnn.<br> <a id="more"></a></p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;这是RBG大神对于R-CNN的改进，从上一篇RCNN &lt;a href=&quot;http://deepdim.com/2016/11/22/R-CNN/&quot;&gt;http://deepdim.com/2016/11/22/R-CNN/&lt;/a&gt;&lt;br&gt;中我们知道R-CNN需要先对原始图片进行窗口搜索然后将窗口挨个的输入网络中，这导致了速度特别的慢，所以RBG大神就此提出了fast-r-cnn.&lt;br&gt;
     
     </summary>
     

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="深度学习," />
+  <meta name="keywords" content="深度学习,物体检测,spp-net," />
 
 
 
@@ -84,19 +84,23 @@
 
 
 
-<meta name="description" content="读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文是ReLU激活函数的提出，它根据脑部信号的激活展开了讨论，最后认为ReLU函数可以很好的拟合这种激活信号并且，具有保持一定的稀疏性。
-VERY">
+<meta name="description" content="卷积神经网络(CNN),训练数据的维度都是相同的,这样经过卷积池化后,得到的特征维度才能相同,进而才能将特征输入到分类器中训练分类器.输入维度相同这个限制太大了,这篇文章主要针对这个缺陷进行了改进,具体地就是加入了空间金字塔池化(Spatial Pyrimid Pooling),使得不同维度的输入最后都能得到相同维度的输出.所以每次在进行输入图片的时候都需要对原始的图片进行crop/warp操作，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习总结">
-<meta property="og:url" content="http://yoursite.com/2016/11/22/深度学习总结/index.html">
+<meta property="og:title" content="spp-net-物体检测">
+<meta property="og:url" content="http://yoursite.com/2016/11/22/spp-net-物体检测/index.html">
 <meta property="og:site_name" content="Deepdim-Unsky'Blog">
-<meta property="og:description" content="读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文是ReLU激活函数的提出，它根据脑部信号的激活展开了讨论，最后认为ReLU函数可以很好的拟合这种激活信号并且，具有保持一定的稀疏性。
-VERY">
-<meta property="og:updated_time" content="2016-11-22T08:42:34.294Z">
+<meta property="og:description" content="卷积神经网络(CNN),训练数据的维度都是相同的,这样经过卷积池化后,得到的特征维度才能相同,进而才能将特征输入到分类器中训练分类器.输入维度相同这个限制太大了,这篇文章主要针对这个缺陷进行了改进,具体地就是加入了空间金字塔池化(Spatial Pyrimid Pooling),使得不同维度的输入最后都能得到相同维度的输出.所以每次在进行输入图片的时候都需要对原始的图片进行crop/warp操作，">
+<meta property="og:image" content="http://yoursite.com/images/spp-net/1.png">
+<meta property="og:image" content="http://yoursite.com/images/spp-net/2.png">
+<meta property="og:image" content="http://yoursite.com/images/spp-net/3.png">
+<meta property="og:image" content="http://yoursite.com/images/spp-net/4.png">
+<meta property="og:image" content="http://yoursite.com/images/spp-net/5.png">
+<meta property="og:image" content="http://yoursite.com/images/spp-net/6.png">
+<meta property="og:updated_time" content="2016-11-22T14:20:05.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深度学习总结">
-<meta name="twitter:description" content="读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文是ReLU激活函数的提出，它根据脑部信号的激活展开了讨论，最后认为ReLU函数可以很好的拟合这种激活信号并且，具有保持一定的稀疏性。
-VERY">
+<meta name="twitter:title" content="spp-net-物体检测">
+<meta name="twitter:description" content="卷积神经网络(CNN),训练数据的维度都是相同的,这样经过卷积池化后,得到的特征维度才能相同,进而才能将特征输入到分类器中训练分类器.输入维度相同这个限制太大了,这篇文章主要针对这个缺陷进行了改进,具体地就是加入了空间金字塔池化(Spatial Pyrimid Pooling),使得不同维度的输入最后都能得到相同维度的输出.所以每次在进行输入图片的时候都需要对原始的图片进行crop/warp操作，">
+<meta name="twitter:image" content="http://yoursite.com/images/spp-net/1.png">
 
 
 
@@ -117,10 +121,10 @@ VERY">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/22/深度学习总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/22/spp-net-物体检测/"/>
 
 
-  <title> 深度学习总结 | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> spp-net-物体检测 | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +246,7 @@ VERY">
             
             
               
-                深度学习总结
+                spp-net-物体检测
               
             
           </h1>
@@ -254,7 +258,7 @@ VERY">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-22T09:59:27+08:00" content="2016-11-22">
+            <time itemprop="dateCreated" datetime="2016-11-22T21:44:23+08:00" content="2016-11-22">
               2016-11-22
             </time>
           </span>
@@ -268,8 +272,8 @@ VERY">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
+                  <a href="/categories/卷积深度网络/" itemprop="url" rel="index">
+                    <span itemprop="name">卷积深度网络</span>
                   </a>
                 </span>
 
@@ -284,8 +288,8 @@ VERY">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/22/深度学习总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/22/深度学习总结/" itemprop="commentsCount"></span>
+                <a href="/2016/11/22/spp-net-物体检测/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/22/spp-net-物体检测/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -308,10 +312,22 @@ VERY">
       
 
       
-        <p>读过的文章比较杂，在应用方面的比较少，涉及结构和基础理论的比较多。。<br>刚开始看深度学习的文章对激活函数不是很懂，所以找了相关的文章<br>Rectified Linear Units Improve Restricted Boltzmann Machines 这篇论文是ReLU激活函数的提出，它根据脑部信号的激活展开了讨论，最后认为ReLU函数可以很好的拟合这种激活信号并且，具有保持一定的稀疏性。</p>
-<p>VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION<br>这篇论文提出了VGG16的网络结构用于图像分类，是非常经典的结构。</p>
-<p>对于传统的神经网络，因为全连接层的限制所以必须输入固定大小的图片，所以必须对每个图片预处理进行resize成固定大小，但是这样做会对一些小尺寸和大尺寸的图片产生影响从而影响正确率。正好空间金字塔有一个好处就是可以将任意尺寸的都max-pool成固定大小的，所以<br>Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition 的提出也是很必然的。</p>
-<p>在传统的深度学习中，层与层之间是用非线性函数激活的，所以他们之间是非线性联合的，这保证了它的深度，但是用很多层的非线性联合来组成一个神经网络和只用很少的层但用每个层之间用更强的非线性进行联合效果会怎么样?所以作者在 Network In Network这篇论文中提出了一种网中网的结构，就是以前的时候层与层直接只要一个非线性激活函数激活就行了，但是因为多层感知机的非线性据我们所知是很强的，所以作者将每个传统的层之间用多层感知机进行激活。来达到非线性联合的目的，在试验中它指出他仅仅用三层的结构就达到了ALexnet五层的效果。</p>
+        <p>卷积神经网络(CNN),训练数据的维度都是相同的,这样经过卷积池化后,得到的特征维度才能相同,进而才能将特征输入到分类器中训练分类器.输入维度相同这个限制太大了,这篇文章主要针对这个缺陷进行了改进,具体地就是加入了空间金字塔池化(Spatial Pyrimid Pooling),使得不同维度的输入最后都能得到相同维度的输出.所以每次在进行输入图片的时候都需要对原始的图片进行crop/warp操作，这样对一些过大过小的图片是不公平的。<br> <a id="more"></a></p>
+<h1 id="spp-net的出发点"><a href="#spp-net的出发点" class="headerlink" title="spp-net的出发点"></a>spp-net的出发点</h1><p> 在对图片进行处理的时候，需要对图片进行crop/warp操作，<br>比如 <img src="/images/spp-net/1.png" alt=""></p>
+<p>深究卷积神经网络为什么需要一个固定的输入，作者指出，在卷积层是可以任意尺寸的，但是全连接层需要一个固定大小的输入，所以限制整个网络需要固定输入的是全连接。</p>
+<h1 id="spp-net的结构"><a href="#spp-net的结构" class="headerlink" title="spp-net的结构"></a>spp-net的结构</h1><p>SPP是词袋模型(Bag-of-Words)的扩展.词袋模型没有特征的空间信息(就像它只能统计一个句子中每个单词的词频,而不能记录词的位置信息一样).在深层CNN里加入SPP会有3个优势: 1) 相比之前的滑动窗池化(sliding window pooling),SPP可以对不同维度输入得到固定长度输出. 2) SPP使用了多维的spatial bins(我的理解就是多个不同大小的窗),而滑动窗池化只用了一个窗. 3) 因为输入图片尺度可以是任意的,SPP就提取出了不同尺度的特征.作者说这3点可以提高深度网络的识别准确率.</p>
+<p>所以作者提出了如下的结构：<br> <img src="/images/spp-net/2.png" alt=""></p>
+<h1 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h1><p>若输入维度不同,卷积层会输出的不同大小的feature map.其实把BoW用在这些feature map上已经可以解决固定输出的问题了,但SPP使用local spatial bins来做池化,保留了空间信息,是一个提升.SPP的原理其实就一句话,SPP的spatial bins(也就是池化时候的窗口大小)是和输入图片的大小成比例的,所以spatial bins的数目也就固定下了,和输入大小无关.原理是下图.无论feature map的大小是多少,总是可以把一个feature map分成4x4,或者2x2,或者1x1,只是每一个小方块大小不一样.</p>
+<p>具体地,在一个CNN里,把最以后一次池化层去掉,换成一个SPP去做最大池化操作(max pooling).如果最后一次卷积得到了k个feature map,也就是有k个filter,SPP有M个bin,那经过SPP得到的是一个kM维的向量.我的理解是,比如上图中第一个feature map有16个bin,一共有256个feature map,每一个经过16个bin的max pooling得到16个数,那256个feature map就是16x256的向量了.SPP的bin大小可以选择多个,所以经过SPP还能产生4x256,1x256维的向量.</p>
+<p> <img src="/images/spp-net/3.png" alt=""></p>
+<p>我们可以对不同比例,不同大小的图片进行处理,而且使用同一个CNN,只是对不同大小的图片,在最后的SPP里,bin的大小不同,但最后得到的特征确实相同维度.这样,我们把一张图片resize成不同尺度,放到同一个CNN里训练,就能得到不同尺度下的特征,就和SIFT类似了.</p>
+<h1 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h1><p>虽然SPP理论上可以直接用BP来训练参数,但现有的使用了GPU的CNN工具,比如caffe和cuda-caffe都只能以固定大小的图片作为输入.作者使用了caffe,但是用了一些技巧来实现SPP的训练.</p>
+<h2 id="单一大小训练"><a href="#单一大小训练" class="headerlink" title="单一大小训练"></a>单一大小训练</h2><p>如果一个图片大小固定,比如224x224,那么我们就能计算出它的池化窗口(bin)的大小.比如经过第五个卷积层conv5之后得到的feature map是a x a(13x13),如果金字塔大小n x n,那么窗口大小就是ceil(a / n), 步长是floor(a / n).我们可以用ll个不同大小的窗口,比如3x3, 2x2, 1x1.然后把这ll个输出连接起来,送入之后的全连层.下图是这样3个窗口和最后的全连层的的配置文件.<br> <img src="/images/spp-net/4.png" alt=""></p>
+<h2 id="多个大小训练"><a href="#多个大小训练" class="headerlink" title="多个大小训练"></a>多个大小训练</h2><p>我们再考虑一种输入大小(180x180),这个180x180的直接取224x224图片的按尺度缩放图片,这两张图除了解析度不同别的都相同.180x180的图片经过第五层卷积后的feature map是10x10,这时我们依然用刚才的公式,窗口大小就是ceil(a / n), 步长是floor(a / n),这样的话后得到的特征长度与之前的224x224的特征长度相同.举个例子,如果金字塔是3*3,即n=3,那么对于第一种大小,窗口长为5,步长4,第二中大小,窗口4,步长3,如下图.<br> <img src="/images/spp-net/5.png" alt=""><br> 红色区域代表窗口,经过最大池化后,两张图得到的特征向量长度均为3x3=9.所以180的网络和224的网络参数完全一样,于是SPP训练阶段,对于这两种网络只要共享参数即可.</p>
+<p>但是在实际训练时,为了减少不停转换网络带来的开销,需要使用全部数据一次训练一个网络,然后再换成第二个,作为一次迭代.所以作者根本没有实现训练不同大小输入的CNN的BP算法,只是针对各种各样大小不同的输入,定义出不同的网络,但这些网络实际上参数都相同,于是就可以用现有工具来训练.</p>
+<h1 id="SPP-NET物体检测实验"><a href="#SPP-NET物体检测实验" class="headerlink" title="SPP-NET物体检测实验"></a>SPP-NET物体检测实验</h1><p>R-CNN进行物体检测的方法是,首先从每张图片选出2000个候选窗口,然后把窗口变形到227x227,把每个窗口送入网络计算特征,然后训练SVM进行二分类.R-CNN效果很好,但是对每一张图片的2000个窗口都要送进卷积网络计算,很费时间.</p>
+<p>SPP-NET可以直接对一张整图计算feature map(以及不同尺度的这张图片),然后只需要在feature map的不同区域进行SPPooling即可,没有了像R-CNN的从头卷积那一步,如下图.<br> <img src="/images/spp-net/6.png" alt=""></p>
+<p>具体的源码可以在 <a href="https://github.com/unsky/SPP_net" target="_blank" rel="external">https://github.com/unsky/SPP_net</a> 中找到。</p>
 
       
     </div>
@@ -357,6 +373,10 @@ VERY">
           
             <a href="/tags/深度学习/" rel="tag">#深度学习</a>
           
+            <a href="/tags/物体检测/" rel="tag">#物体检测</a>
+          
+            <a href="/tags/spp-net/" rel="tag">#spp-net</a>
+          
         </div>
       
 
@@ -364,17 +384,13 @@ VERY">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/21/String-to-Integer-atoi-字符转int类型/" rel="next" title="String to Integer (atoi) 字符转int类型">
-                <i class="fa fa-chevron-left"></i> String to Integer (atoi) 字符转int类型
+              <a href="/2016/11/22/R-CNN/" rel="next" title="R-CNN-物体检测">
+                <i class="fa fa-chevron-left"></i> R-CNN-物体检测
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/22/R-CNN/" rel="prev" title="R-CNN-物体检测">
-                R-CNN-物体检测 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -438,8 +454,8 @@ VERY">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/22/深度学习总结/"
-           data-title="深度学习总结" data-url="http://yoursite.com/2016/11/22/深度学习总结/">
+      <div class="ds-thread" data-thread-key="2016/11/22/spp-net-物体检测/"
+           data-title="spp-net-物体检测" data-url="http://yoursite.com/2016/11/22/spp-net-物体检测/">
       </div>
     
   </div>
@@ -559,7 +575,7 @@ VERY">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spp-net的出发点"><span class="nav-number">1.</span> <span class="nav-text">spp-net的出发点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spp-net的结构"><span class="nav-number">2.</span> <span class="nav-text">spp-net的结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#详细设计"><span class="nav-number">3.</span> <span class="nav-text">详细设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#训练"><span class="nav-number">4.</span> <span class="nav-text">训练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单一大小训练"><span class="nav-number">4.1.</span> <span class="nav-text">单一大小训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个大小训练"><span class="nav-number">4.2.</span> <span class="nav-text">多个大小训练</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SPP-NET物体检测实验"><span class="nav-number">5.</span> <span class="nav-text">SPP-NET物体检测实验</span></a></li></ol></div>
             
           </div>
         </section>
