@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="这是RBG大神对于R-CNN的改进，从上一篇RCNN http://deepdim.com/2016/11/22/R-CNN/中我们知道R-CNN需要先对原始图片进行窗口搜索然后将窗口挨个的输入网络中，这导致了速度特别的慢，所以RBG大神就此提出了fast-r-cnn.">
+<meta name="description" content="这是RBG大神对于R-CNN的改进，从上一篇RCNN http://deepdim.com/2016/11/22/R-CNN/中我们知道R-CNN，同时知道SPP-NET可以惊醒任意尺寸的输入同时不需要对没个候选窗口进行输入，而是输入整张图片，在卷积层之后进行窗口推荐。结合两者的优点，所以RBG大神就此提出了fast-r-cnn.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fast-r-cnn-物体检测">
 <meta property="og:url" content="http://yoursite.com/2016/11/14/fast-r-cnn-物体检测/index.html">
 <meta property="og:site_name" content="Deepdim-Unsky'Blog">
-<meta property="og:description" content="这是RBG大神对于R-CNN的改进，从上一篇RCNN http://deepdim.com/2016/11/22/R-CNN/中我们知道R-CNN需要先对原始图片进行窗口搜索然后将窗口挨个的输入网络中，这导致了速度特别的慢，所以RBG大神就此提出了fast-r-cnn.">
-<meta property="og:updated_time" content="2016-11-22T13:31:39.432Z">
+<meta property="og:description" content="这是RBG大神对于R-CNN的改进，从上一篇RCNN http://deepdim.com/2016/11/22/R-CNN/中我们知道R-CNN，同时知道SPP-NET可以惊醒任意尺寸的输入同时不需要对没个候选窗口进行输入，而是输入整张图片，在卷积层之后进行窗口推荐。结合两者的优点，所以RBG大神就此提出了fast-r-cnn.">
+<meta property="og:image" content="http://yoursite.com/images/fast-r-cnn/1.png">
+<meta property="og:updated_time" content="2016-11-22T15:10:55.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fast-r-cnn-物体检测">
-<meta name="twitter:description" content="这是RBG大神对于R-CNN的改进，从上一篇RCNN http://deepdim.com/2016/11/22/R-CNN/中我们知道R-CNN需要先对原始图片进行窗口搜索然后将窗口挨个的输入网络中，这导致了速度特别的慢，所以RBG大神就此提出了fast-r-cnn.">
+<meta name="twitter:description" content="这是RBG大神对于R-CNN的改进，从上一篇RCNN http://deepdim.com/2016/11/22/R-CNN/中我们知道R-CNN，同时知道SPP-NET可以惊醒任意尺寸的输入同时不需要对没个候选窗口进行输入，而是输入整张图片，在卷积层之后进行窗口推荐。结合两者的优点，所以RBG大神就此提出了fast-r-cnn.">
+<meta name="twitter:image" content="http://yoursite.com/images/fast-r-cnn/1.png">
 
 
 
@@ -305,7 +307,15 @@
       
 
       
-        <p>这是RBG大神对于R-CNN的改进，从上一篇RCNN <a href="http://deepdim.com/2016/11/22/R-CNN/" target="_blank" rel="external">http://deepdim.com/2016/11/22/R-CNN/</a><br>中我们知道R-CNN需要先对原始图片进行窗口搜索然后将窗口挨个的输入网络中，这导致了速度特别的慢，所以RBG大神就此提出了fast-r-cnn.<br> <a id="more"></a></p>
+        <p>这是RBG大神对于R-CNN的改进，从上一篇RCNN <a href="http://deepdim.com/2016/11/22/R-CNN/" target="_blank" rel="external">http://deepdim.com/2016/11/22/R-CNN/</a><br>中我们知道R-CNN，同时知道SPP-NET可以惊醒任意尺寸的输入同时不需要对没个候选窗口进行输入，而是输入整张图片，在卷积层之后进行窗口推荐。<br>结合两者的优点，所以RBG大神就此提出了fast-r-cnn.<br> <a id="more"></a></p>
+<h1 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h1><p>具体的结构不同在于卷积层之后：<br>  <img src="/images/fast-r-cnn/1.png" alt=""></p>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><ol>
+<li>经过多层的卷积和pooling得到一组feature map</li>
+<li>通过SPP net中的ROI projection在这层feature map上找到原图的proposal对应的区域（ROI）</li>
+<li>利用spatial pooling的思路，对每个ROI做pooling。具体来说就是把h×w的ROI划分为H×W个grid/sub-window，每个grid大小是h/H × w/W，在每个grid内取max。</li>
+<li>把ROI pooling layer对每个ROI（对应回原图就是每个proposal）输出的H×W长的max pooling feature vector接全连接层</li>
+<li>全连接层之后有两个输出层，一个softmax分类器，输出该ROI对应的proposal的object类别，一个是bounding box回归层，输出category specific bounding box<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2>可以看出该网络最大的创新是在</li>
+</ol>
 
       
     </div>
@@ -555,7 +565,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络结构"><span class="nav-number">1.</span> <span class="nav-text">网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#具体步骤"><span class="nav-number">1.1.</span> <span class="nav-text">具体步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练"><span class="nav-number">1.2.</span> <span class="nav-text">训练</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
