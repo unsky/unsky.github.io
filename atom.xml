@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-22T14:20:05.411Z</updated>
+  <updated>2016-11-25T07:59:18.546Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo旋转特效</title>
+    <link href="http://yoursite.com/2016/11/25/hexo%E6%97%8B%E8%BD%AC%E7%89%B9%E6%95%88/"/>
+    <id>http://yoursite.com/2016/11/25/hexo旋转特效/</id>
+    <published>2016-11-25T07:11:50.000Z</published>
+    <updated>2016-11-25T07:59:18.546Z</updated>
+    
+    <content type="html"><![CDATA[<p>hexo 博客非常自由，可以自己随便更改自己想要得东西，在这里给大家分享一些特效。<br>note:<br>本改动在NexT主题下进行<br> <a id="more"></a></p>
+<h1 id="旋转访客地球"><a href="#旋转访客地球" class="headerlink" title="旋转访客地球"></a>旋转访客地球</h1><p><img src="/images/xuanzhuan/1.png" alt=""><br>这个特效是我在逛各种乱七八糟网站之后扒来的，具体哪里来的已经忘了。<br>这个特效官方提供免费的接口。 官网地址<a href="https://www.revolvermaps.com/?target=gallery" target="_blank" rel="external">https://www.revolvermaps.com/?target=gallery</a><br><img src="/images/xuanzhuan/2.png" alt=""><br>点击设置好自己喜欢的样式之后，网站会生成一段代码：</p>
+<p><img src="/images/xuanzhuan/3.png" alt=""><br>就假设是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;//rc.revolvermaps.com/0/0/8.js?i=2geilzwv548&amp;amp;m=0&amp;amp;s=220&amp;amp;c=ff0000&amp;amp;cr1=ffffff&amp;amp;f=arial&amp;amp;l=33&quot; async=&quot;async&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>这段代码理论是可以放在任何位置的，但是尝试了几个地方都太难看了，所以最终选择将其放在侧边栏。</p>
+<p>在这里我用的是NexT主题，在博客源码的<br> <code>\layout\_macro</code> 中找到sidebar文件</p>
+<p>在最末尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;/div&gt;</div><div class="line">&lt;/aside&gt;</div><div class="line">&#123;% endmacro %&#125;</div></pre></td></tr></table></figure></p>
+<p>之前加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;//rc.revolvermaps.com/0/0/8.js?i=2geilzwv548&amp;amp;m=0&amp;amp;s=220&amp;amp;c=ff0000&amp;amp;cr1=ffffff&amp;amp;f=arial&amp;amp;l=33&quot; async=&quot;async&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>就可以了。</p>
+<h1 id="旋转标签云"><a href="#旋转标签云" class="headerlink" title="旋转标签云"></a>旋转标签云</h1><p><img src="/images/xuanzhuan/4.png" alt=""><br>效果就是让标签旋转起来，地球一样的。。<br>收下下载这个特效的JS和css源码在 <a href="https://github.com/unsky/Rotatingeffects" target="_blank" rel="external">https://github.com/unsky/Rotatingeffects</a> 这里可以下载<br>然后在博客源码中找到\source文件<br><img src="/images/xuanzhuan/5.png" alt=""><br>源文件 vendor的文件夹已经被我改为lib，把下载的特效放在这个文件夹就行了，结果如下。<br><img src="/images/xuanzhuan/6.png" alt=""></p>
+<p>然后找到<br>\layout文件夹中的 page文件<br>找到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;tag-cloud-tags&quot;&gt;</div><div class="line">         &#123;&#123; tagcloud(&#123;min_font: 12, max_font: 30, amount: 200, color: true, start_color: &apos;#ccc&apos;, end_color: &apos;#111&apos;&#125;) &#125;&#125;</div><div class="line">       &lt;/div&gt;</div><div class="line">     &lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>修改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../lib/style/zns_style.css&quot; /&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;../lib/js/zns_3dsc.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;div id=&quot;div1&quot;&gt;</div><div class="line">      &#123;&#123; tagcloud(&#123;min_font: 12, max_font: 30, amount: 200, color: true, start_color: &apos;#ccc&apos;, end_color: &apos;#111&apos;&#125;) &#125;&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>就可以了。。。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hexo 博客非常自由，可以自己随便更改自己想要得东西，在这里给大家分享一些特效。&lt;br&gt;note:&lt;br&gt;本改动在NexT主题下进行&lt;br&gt;
+    
+    </summary>
+    
+      <category term="环境搭建" scheme="http://yoursite.com/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+    
+      <category term="aa" scheme="http://yoursite.com/tags/aa/"/>
+    
+      <category term="cdf" scheme="http://yoursite.com/tags/cdf/"/>
+    
+  </entry>
   
   <entry>
     <title>spp-net-物体检测</title>
