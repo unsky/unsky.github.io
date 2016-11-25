@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-25T07:59:18.546Z</updated>
+  <updated>2016-11-25T08:02:10.006Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/25/hexo%E6%97%8B%E8%BD%AC%E7%89%B9%E6%95%88/"/>
     <id>http://yoursite.com/2016/11/25/hexo旋转特效/</id>
     <published>2016-11-25T07:11:50.000Z</published>
-    <updated>2016-11-25T07:59:18.546Z</updated>
+    <updated>2016-11-25T08:02:10.006Z</updated>
     
     <content type="html"><![CDATA[<p>hexo 博客非常自由，可以自己随便更改自己想要得东西，在这里给大家分享一些特效。<br>note:<br>本改动在NexT主题下进行<br> <a id="more"></a></p>
 <h1 id="旋转访客地球"><a href="#旋转访客地球" class="headerlink" title="旋转访客地球"></a>旋转访客地球</h1><p><img src="/images/xuanzhuan/1.png" alt=""><br>这个特效是我在逛各种乱七八糟网站之后扒来的，具体哪里来的已经忘了。<br>这个特效官方提供免费的接口。 官网地址<a href="https://www.revolvermaps.com/?target=gallery" target="_blank" rel="external">https://www.revolvermaps.com/?target=gallery</a><br><img src="/images/xuanzhuan/2.png" alt=""><br>点击设置好自己喜欢的样式之后，网站会生成一段代码：</p>
@@ -46,9 +46,9 @@
       <category term="环境搭建" scheme="http://yoursite.com/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
     
-      <category term="aa" scheme="http://yoursite.com/tags/aa/"/>
+      <category term="旋转访客地球" scheme="http://yoursite.com/tags/%E6%97%8B%E8%BD%AC%E8%AE%BF%E5%AE%A2%E5%9C%B0%E7%90%83/"/>
     
-      <category term="cdf" scheme="http://yoursite.com/tags/cdf/"/>
+      <category term="旋转标签云" scheme="http://yoursite.com/tags/%E6%97%8B%E8%BD%AC%E6%A0%87%E7%AD%BE%E4%BA%91/"/>
     
   </entry>
   
