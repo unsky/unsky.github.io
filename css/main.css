@@ -891,7 +891,7 @@ pre .javascript .function {
 }
 .headband {
   height: 3px;
-  background: #222;
+background
 }
 .site-meta {
   margin: 0;
@@ -1528,8 +1528,6 @@ pre .javascript .function {
   bottom: 0;
   width: 0;
   z-index: 1040;
-  box-shadow: inset 0 2px 6px #000;
-  background: #222;
   -webkit-transform: translateZ(0);
 }
 .sidebar a {
@@ -1552,7 +1550,7 @@ pre .javascript .function {
 .sidebar-inner {
   position: relative;
   padding: 20px 10px;
-  color: #999;
+  color: $red-dark;
   text-align: center;
 }
 .sidebar-toggle {
@@ -1678,7 +1676,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7d088f;
+  background: #4fe700;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1790,7 +1788,7 @@ pre .javascript .function {
 }
 .footer {
   font-size: 14px;
-  color: #999;
+  color: $gray-black;
 }
 .footer img {
   border: none;

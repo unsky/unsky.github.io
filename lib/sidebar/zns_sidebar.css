@@ -1,0 +1,4 @@
+
+#div_sidebar {position:relative; width:300px; height:300px; margin: 20px auto 0; }
+#div_sidebar a {position:absolute; top:0px; left:0px; font-family: Microsoft YaHei;  font-weight:bold; text-decoration:none; padding: 3px 6px; }
+#div_sidebar a:hover {border: 1px solid #eee; background: #000; }

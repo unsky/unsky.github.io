@@ -146,9 +146,10 @@ Github Pages 是 github 公司提供的免费的静态网站托管服务，用�
   
 
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" style="background-color:white;" itemscope itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
@@ -241,6 +242,13 @@ Github Pages 是 github 公司提供的免费的静态网站托管服务，用�
     </header>
 
     <main id="main" class="main">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+        <img class="site-author-image" itemprop="image"
+             src="https://avatars1.githubusercontent.com/u/15643995?v=3&amp"
+             alt="unsky" />
+        <p class="site-author-name" itemprop="name">unsky</p>
+        <p class="site-description motion-element" itemprop="description">coding my world.</p>
+      </div>
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
@@ -509,13 +517,19 @@ Github Pages 是 github 公司提供的免费的静态网站托管服务，用�
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/15643995?v=3&amp"
-               alt="unsky" />
-          <p class="site-author-name" itemprop="name">unsky</p>
-          <p class="site-description motion-element" itemprop="description">coding my world.</p>
+
+      <link rel="stylesheet" type="text/css" href="../lib/sidebar/zns_sidebar.css" />
+
+      <div id="div_sidebar">
+      <a href="#" class="black">深度学习</a>
+      <a href="#" class="black">机器学习</a>
+      <a href="#" class="black">人工智能</a>
+      <a href="#" class="black">环境搭建</a>
+      <a href="#" class="black">语言学习</a>
+      <a href="#" class="black">环境搭建</a>
         </div>
+
+
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -541,7 +555,6 @@ Github Pages 是 github 公司提供的免费的静态网站托管服务，用�
               </a>
             </div>
           
-
         </nav>
 
         
