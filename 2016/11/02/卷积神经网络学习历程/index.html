@@ -157,8 +157,91 @@
     <div class="headband"></div>
   <div>
     <div style="float:left;width:170px;height:170px;" ><div>
-    <img  style="width:120px;height:120px;margin-left:40px;margin-top:40px;float:left;"
-        src="https://avatars1.githubusercontent.com/u/15643995?v=3&amp"
+    <
+
+
+    <style type="text/css">
+    *{margin: 0;padding: 0;}
+    html,body{height: 100%;background: black;}
+    .wrap{
+    	  height: 100%;position: relative;
+    	  -webkit-transform-style:preserve-3d;
+    	  -webkit-perspective:0px;
+
+    	  -moz-transform-style:preserve-3d;
+    	  -moz-perspective:0px;
+
+    	  -webkit-animation:mydhua 5s ease infinite;
+    	  -moz-animation:mydhua 5s ease infinite;
+
+
+
+    }
+    .box{width: 200px;height: 200px;position: absolute;top: 50%;left: 50%;
+    	 margin:-100px 0 0 -100px; line-height: 200px;text-align: center;font-size: 48px;color: white;
+    		}
+    .box1{
+    	-webkit-transform:rotatey(90deg) translatez(-100px);
+    	-moz-transform:rotatey(90deg) translatez(-100px);
+    	background: white;
+    }
+    .box2{
+    	-webkit-transform:rotatey(90deg) translatez(100px);
+    	-moz-transform:rotatey(90deg) translatez(100px);
+    	background: rgba(255,0,255,.5);
+    }
+    .box3{
+    	-webkit-transform:rotatex(90deg) translatez(100px);
+    	-moz-transform:rotatex(90deg) translatez(100px);
+    	background: rgba(255,153,204,.5);
+    }
+    .box4{
+    	-webkit-transform:rotatex(90deg) translatez(-100px);
+    	-moz-transform:rotatex(90deg) translatez(-100px);
+    	background: rgba(0,204,255,.5);
+    }
+    .box5{
+    	-webkit-transform: translatez(-100px);
+    	-moz-transform:translatez(-100px);
+    	background: rgba(153,204,255,.5);
+    }
+    .box6{
+    	-webkit-transform: translatez(100px);
+    	-moz-transform:translatez(100px);
+    	background: rgba(0,255,255,.5);
+    }
+
+    @-webkit-keyframes mydhua{
+
+    	0%{-webkit-transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);-webkit-transform-origin: center center;}
+    	100%{-webkit-transform:rotateX(180deg) rotateY(180deg) rotateZ(180deg);-webkit-transform-origin: center center; }
+    }
+    @-moz-keyframes mydhua{
+
+    	0%{-moz-transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);-webkit-transform-origin: center center;}
+    	100%{-moz-transform:rotateX(180deg) rotateY(180deg) rotateZ(180deg); -webkit-transform-origin: center center;}
+    }
+    </style>
+
+
+    <div class="wrap">
+    	<div class="box1 box"><img src="https://avatars1.githubusercontent.com/u/15643995?v=3&amp" ></div>
+    	<div class="box2 box">2</div>
+    	<div class="box3 box">3</div>
+    	<div class="box4 box">4</div>
+    	<div class="box5 box">5</div>
+    	<div class="box6 box">6</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
         unsky/> </div>
           <div style="float:left;margin-left:40px;">coding my world.</div>
     </div>
