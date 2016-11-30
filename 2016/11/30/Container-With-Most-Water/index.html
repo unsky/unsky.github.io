@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Container With Most Water," />
 
 
 
@@ -84,15 +84,19 @@
 
 
 
-<meta name="description" content="coding my world.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deepdim-Unsky'Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="id 11. Container With Most Water   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 105561Total Submissions: 293689Difficulty: MediumContributors: AdminGiven n non-negative intege">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Container With Most Water">
+<meta property="og:url" content="http://yoursite.com/2016/11/30/Container-With-Most-Water/index.html">
 <meta property="og:site_name" content="Deepdim-Unsky'Blog">
-<meta property="og:description" content="coding my world.">
+<meta property="og:description" content="id 11. Container With Most Water   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 105561Total Submissions: 293689Difficulty: MediumContributors: AdminGiven n non-negative intege">
+<meta property="og:image" content="http://yoursite.com/images/leecode_id11/1.png">
+<meta property="og:image" content="http://yoursite.com/images/leecode_id11/2.png">
+<meta property="og:updated_time" content="2016-11-30T14:04:17.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deepdim-Unsky'Blog">
-<meta name="twitter:description" content="coding my world.">
+<meta name="twitter:title" content="Container With Most Water">
+<meta name="twitter:description" content="id 11. Container With Most Water   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 105561Total Submissions: 293689Difficulty: MediumContributors: AdminGiven n non-negative intege">
+<meta name="twitter:image" content="http://yoursite.com/images/leecode_id11/1.png">
 
 
 
@@ -113,10 +117,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/30/Container-With-Most-Water/"/>
 
 
-  <title> 归档 | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Container With Most Water | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +142,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  page-archive  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
 
     <div class="headband"></div>
     <div style="float:left;width:170px;height:170px;" >
@@ -355,403 +359,224 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 18 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Container With Most Water
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-30T20:52:18+08:00" content="2016-11-30">
+              2016-11-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/30/Container-With-Most-Water/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/30/Container-With-Most-Water/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <p>id 11. Container With Most Water   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 105561<br>Total Submissions: 293689<br>Difficulty: Medium<br>Contributors: Admin<br>Given n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
+<p>Note: You may not slant the container.<br><a id="more"></a><br>题目意思，假设一个二维的平面上有x和y轴，数组里面的数构成了在平面上的坐标，比如height[i]的的坐标就是(i,height[i]),将其(i,0)和(i,height[i])连线，构成一个线，现在找两个这种线，让其往里倒水可以盛最多的水。</p>
+<p><code>note:</code></p>
+<p>水的体积应该由最短的线决定。如图<br>  <img src="/images/leecode_id11/1.png" alt=""></p>
+<h1 id="穷举"><a href="#穷举" class="headerlink" title="穷举"></a>穷举</h1><p>在一开始我们可以使用暴力穷举的方法进行<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//动态规划 超时</span></div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; height)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> area;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;height.size();i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;height.size();j++)</div><div class="line">        &#123; <span class="keyword">if</span>(height[i]&lt;=height[j])</div><div class="line">             area=(j-i)*height[i];</div><div class="line">             <span class="keyword">else</span></div><div class="line">             area=(j-i)*height[j];</div><div class="line"></div><div class="line">             <span class="keyword">if</span> (area&gt;result)</div><div class="line">             result=area;</div><div class="line">            &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; height= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">96</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">23</span>,<span class="number">6</span>,<span class="number">57</span>,<span class="number">85</span>,<span class="number">9</span>&#125;;</div><div class="line">  Solution s;</div><div class="line">  <span class="built_in">cout</span>&lt;&lt;s.maxArea(height);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是这么做可想而知是会超时的，因为涉及非常多的重复计算。</p>
+<h1 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h1><p>我们使用双指针向两边靠拢的方式进行遍历<br>  <img src="/images/leecode_id11/2.png" alt=""><br>  其中面积是由</p>
+<p>  $$S\left( i,j \right) =\min \left( height\left( i \right) ,height\left( j \right) \right) *\left( j-i \right)$$<br>  决定的，所以在由两边向中间靠拢的时候，一定有<br>  $$\left( j’-i’ \right) &lt;\left( j-i \right)$$<br>  所以这个面积公式决定性的部分只有考虑<br>  $$\min \left( height\left( i \right) ,height\left( j \right) \right) $$<br>  部分</p>
+<p>  <code>考虑情况</code></p>
+<ol>
+<li>当 $height(i) &lt; height(j)$ 时，对任何 $j’&lt;j$ 来说一定有：</li>
+</ol>
+<p>(a)   $min(height(i),height(j’))&lt;height(i)=min(height(i),height(j))$<br>所以让 $j’$ 继续移动是没有意义的,从而排除了以i为左边界的情况。所以需要执行i++;</p>
+<p>2 . $height(i) &gt; height(j)$ 需要j–;</p>
+<ol>
+<li>$height(i) =height(j)$ 需要 i++,j–;</li>
+</ol>
+<p><code>note:</code><br>左右边界的长度在更新的过程总是递增的！有助于理解。<br>所以代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; height)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> Area=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=height.size()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">while</span>(i&lt;j)</div><div class="line">        &#123;</div><div class="line">            Area=min(height[i],height[j])*(j-i);</div><div class="line">            result=max(Area,result);</div><div class="line">            <span class="keyword">if</span>(height[i]&lt;height[j])</div><div class="line">            i++;</div><div class="line">           <span class="keyword">else</span> <span class="keyword">if</span> (height[i]&gt;height[j])</div><div class="line">            j--;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;i++;</div><div class="line">            j--;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="unsky WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
       
       
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="unsky Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
+    </div>
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Container-With-Most-Water/" rel="tag">#Container With Most Water</a>
+          
+        </div>
+      
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/30/Container-With-Most-Water/" itemprop="url">
-              
-                <span itemprop="name">Container With Most Water</span>
-              
-            </a>
-        
-      </h1>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/25/hexo旋转特效/" rel="next" title="hexo旋转特效">
+                <i class="fa fa-chevron-left"></i> hexo旋转特效
+              </a>
+            
+          </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-30T20:52:18+08:00"
-              content="2016-11-30" >
-          11-30
-        </time>
-      </div>
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/11/25/hexo旋转特效/" itemprop="url">
-              
-                <span itemprop="name">hexo旋转特效</span>
-              
-            </a>
-        
-      </h1>
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-25T15:11:50+08:00"
-              content="2016-11-25" >
-          11-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/22/spp-net-物体检测/" itemprop="url">
-              
-                <span itemprop="name">spp-net-物体检测</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-22T21:44:23+08:00"
-              content="2016-11-22" >
-          11-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
 
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/22/R-CNN/" itemprop="url">
-              
-                <span itemprop="name">R-CNN-物体检测</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-22T16:41:48+08:00"
-              content="2016-11-22" >
-          11-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/21/String-to-Integer-atoi-字符转int类型/" itemprop="url">
-              
-                <span itemprop="name">String to Integer (atoi) 字符转int类型</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-21T21:45:58+08:00"
-              content="2016-11-21" >
-          11-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/21/Reverse-Integer-逆置int数/" itemprop="url">
-              
-                <span itemprop="name">Reverse Integer 逆置int数</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-21T10:59:05+08:00"
-              content="2016-11-21" >
-          11-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/18/回声状态网络ESN/" itemprop="url">
-              
-                <span itemprop="name">回声状态网络ESN</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-18T19:32:31+08:00"
-              content="2016-11-18" >
-          11-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/14/fast-r-cnn-物体检测/" itemprop="url">
-              
-                <span itemprop="name">fast-r-cnn-物体检测</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-14T22:01:38+08:00"
-              content="2016-11-14" >
-          11-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/14/ZigZag-Conversion-回旋字符串/" itemprop="url">
-              
-                <span itemprop="name">ZigZag Conversion 回旋字符串</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-14T21:27:29+08:00"
-              content="2016-11-14" >
-          11-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/12/PCA降维/" itemprop="url">
-              
-                <span itemprop="name">PCA主成分分析</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-12T09:37:32+08:00"
-              content="2016-11-12" >
-          11-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
+    </div>
+  </div>
 
 
 
@@ -762,6 +587,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/30/Container-With-Most-Water/"
+           data-title="Container With Most Water" data-url="http://yoursite.com/2016/11/30/Container-With-Most-Water/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -809,9 +642,18 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
 
       <div class="ui_base u_p3d">
       	<div class="base u_p3d">
@@ -888,6 +730,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#穷举"><span class="nav-number">1.</span> <span class="nav-text">穷举</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法二"><span class="nav-number">2.</span> <span class="nav-text">方法二</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
 
@@ -1255,11 +1108,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
 
 
   
