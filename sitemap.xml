@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/12/01/Integer-to-Roman/</loc>
+    
+    <lastmod>2016-12-01T12:01:07.326Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/11/30/Container-With-Most-Water/</loc>
     
-    <lastmod>2016-11-30T14:41:46.022Z</lastmod>
+    <lastmod>2016-11-30T14:48:30.148Z</lastmod>
     
   </url>
   
