@@ -1,0 +1,1226 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="QT5," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="开始学习使用c++进行QT5学习
+QT是一个1998年开始创办的c++库,其界面设计等能力表现不俗,后来被诺基亚收购，之后诺基亚将其开源，后来诺基亚倒闭，QT右digital接着运营。伴随着c++的发展，QT也从QT1发展到QT5，充分运用了c++的新特性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QT5从入门到放弃:(1)hello,qt!">
+<meta property="og:url" content="http://yoursite.com/2016/12/02/QT5从入门到放弃：(1)hello-qt/index.html">
+<meta property="og:site_name" content="Deepdim-Unsky'Blog">
+<meta property="og:description" content="开始学习使用c++进行QT5学习
+QT是一个1998年开始创办的c++库,其界面设计等能力表现不俗,后来被诺基亚收购，之后诺基亚将其开源，后来诺基亚倒闭，QT右digital接着运营。伴随着c++的发展，QT也从QT1发展到QT5，充分运用了c++的新特性。">
+<meta property="og:image" content="http://yoursite.com/images/helloqt/1.png">
+<meta property="og:image" content="http://yoursite.com/images/helloqt/2.png">
+<meta property="og:image" content="http://yoursite.com/images/helloqt/3.png">
+<meta property="og:image" content="http://yoursite.com/images/helloqt/4.png">
+<meta property="og:image" content="http://yoursite.com/images/helloqt/5.png">
+<meta property="og:image" content="http://yoursite.com/images/helloqt/6.png">
+<meta property="og:updated_time" content="2016-12-02T13:42:50.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QT5从入门到放弃:(1)hello,qt!">
+<meta name="twitter:description" content="开始学习使用c++进行QT5学习
+QT是一个1998年开始创办的c++库,其界面设计等能力表现不俗,后来被诺基亚收购，之后诺基亚将其开源，后来诺基亚倒闭，QT右digital接着运营。伴随着c++的发展，QT也从QT1发展到QT5，充分运用了c++的新特性。">
+<meta name="twitter:image" content="http://yoursite.com/images/helloqt/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/02/QT5从入门到放弃：(1)hello-qt/"/>
+
+
+  <title> QT5从入门到放弃:(1)hello,qt! | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+
+    <div class="headband"></div>
+    <div style="float:left;width:170px;height:170px;" >
+      <div>
+
+    <style type="text/css">
+    *{margin: 0;padding: 0;}
+    html,body{height: 100%;}
+    .wrap{
+    	  height: 100%;position: relative;
+    	  -webkit-transform-style:preserve-3d;
+    	  -webkit-perspective:0px;
+
+    	  -moz-transform-style:preserve-3d;
+    	  -moz-perspective:0px;
+
+    	  -webkit-animation:mydhua 5s ease infinite;
+    	  -moz-animation:mydhua 5s ease infinite;
+
+
+
+    }
+    .box{width: 130px;height: 130px;position: absolute;top: 50%;left: 50%;
+    	 margin:-100px 0 0 -100px; line-height: 150px;text-align: center;font-size: 20px;color: white;
+    		}
+    .box1{
+    	-webkit-transform:rotatey(90deg) translatez(-65px);
+    	-moz-transform:rotatey(90deg) translatez(-65px);
+    	background: white;
+    }
+    .box2{
+    	-webkit-transform:rotatey(90deg) translatez(65px);
+    	-moz-transform:rotatey(90deg) translatez(65px);
+    	background: rgba(255,0,255,.5);
+    }
+    .box3{
+    	-webkit-transform:rotatex(90deg) translatez(65px);
+    	-moz-transform:rotatex(90deg) translatez(65px);
+    	background: rgba(255,153,204,.5);
+    }
+    .box4{
+    	-webkit-transform:rotatex(90deg) translatez(-65px);
+    	-moz-transform:rotatex(90deg) translatez(-65px);
+    	background: rgba(0,204,255,.5);
+    }
+    .box5{
+    	-webkit-transform: translatez(-65px);
+    	-moz-transform:translatez(-65px);
+    	background: rgba(153,204,255,.5);
+    }
+    .box6{
+    	-webkit-transform: translatez(65px);
+    	-moz-transform:translatez(65px);
+    	background: rgba(0,255,255,.5);
+    }
+
+    @-webkit-keyframes mydhua{
+
+    	0%{-webkit-transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);-webkit-transform-origin: center center;}
+    	100%{-webkit-transform:rotateX(180deg) rotateY(180deg) rotateZ(180deg);-webkit-transform-origin: center center; }
+    }
+    @-moz-keyframes mydhua{
+
+    	0%{-moz-transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);-webkit-transform-origin: center center;}
+    	100%{-moz-transform:rotateX(180deg) rotateY(180deg) rotateZ(180deg); -webkit-transform-origin: center center;}
+    }
+    </style>
+
+
+    <div class="wrap" style="margin-top:120px;margin-left:200px;background:transparent;">
+    	<div class="box1 box"><img   src="https://avatars1.githubusercontent.com/u/15643995?v=3&amp"></div>
+    	<div class="box2 box">coding</div>
+    	<div class="box3 box">unsky</div>
+    	<div class="box4 box">deepdim</div>
+    	<div class="box5 box">thought</div>
+    	<div class="box6 box"><img   src="https://avatars1.githubusercontent.com/u/15643995?v=3&amp"></div>
+    </div>
+
+       </div>
+
+    </div>
+
+    <header id="header" class="header" style="background:transparent;" itemscope itemtype="//schema.org/WPHeader">
+
+      <div class="header-inner">
+
+                <div style="display:block;margin-top:30px;"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Deepdim-Unsky'Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Unsky Blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/Tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-gene">
+          <a href="/gene" rel="section">
+            
+            网站基因
+          </a>
+        </li>
+      
+
+
+    </ul>
+  
+
+
+</nav>
+
+                </div><br/>
+
+                  <div class="header-inner" style="margin-top:20px;" >
+
+
+
+                    
+                      
+                        <span class="links-of-author-item">
+                          <a href="https://github.com/unsky" target="_blank" title="GitHub">
+                            
+                              <i class="fa fa-fw fa-github"></i>
+                            
+                            GitHub
+                          </a>
+                        </span>
+                      
+                        <span class="links-of-author-item">
+                          <a href="http://weibo.com/cs_unsky" target="_blank" title="Weibo">
+                            
+                              <i class="fa fa-fw fa-weibo"></i>
+                            
+                            Weibo
+                          </a>
+                        </span>
+                      
+                        <span class="links-of-author-item">
+                          <a href="https://www.zhihu.com/people/chen-shuai-87-4" target="_blank" title="知乎">
+                            
+                              <i class="fa fa-fw fa-globe"></i>
+                            
+                            知乎
+                          </a>
+                        </span>
+                      
+                    
+
+
+                  </div>
+
+      </div>
+
+
+
+
+
+    </header>
+
+    <main id="main" class="main" >
+
+      <div class="main-inner" style="margin-top:0px">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                QT5从入门到放弃:(1)hello,qt!
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-02T19:26:26+08:00" content="2016-12-02">
+              2016-12-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/QT5从入门到放弃/" itemprop="url" rel="index">
+                    <span itemprop="name">QT5从入门到放弃</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/02/QT5从入门到放弃：(1)hello-qt/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/QT5从入门到放弃：(1)hello-qt/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>开始学习使用c++进行QT5学习</p>
+<p>QT是一个1998年开始创办的c++库,其界面设计等能力表现不俗,后来被诺基亚收购，之后诺基亚将其开源，后来诺基亚倒闭，QT右digital接着运营。伴随着c++的发展，QT也从QT1发展到QT5，充分运用了c++的新特性。<br><a id="more"></a></p>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>QT5的安装非常简单不需要复杂的配置，我使用<br>Qt 5.7.0 for Windows 64-bit (VS 2013, 904 MB)配合vs2013进行，先安装vs2013再安装QT即可。<br>具体的可已根据自己的配置选择不同的编译器等。我的配置如下:<br><img src="/images/helloqt/1.png" alt=""></p>
+<h1 id="hello-qt"><a href="#hello-qt" class="headerlink" title="hello,qt!"></a>hello,qt!</h1><p>因为我使用的是qt5但是在学习的资料上还是很多使用QT4，其实他们是可以兼容的。在新建工程的时候选择，<code>qt widgets application</code>，就可以使用QT5下兼容qt4的情况。下面在详细的说。</p>
+<p>在生成了项目之后，会自动生成六个文件：<br><img src="/images/helloqt/2.png" alt=""><br><img src="/images/helloqt/3.png" alt=""></p>
+<p>现在先从一个基本的空项目开始学习。</p>
+<h1 id="基本工程文件-pro"><a href="#基本工程文件-pro" class="headerlink" title="基本工程文件.pro"></a>基本工程文件.pro</h1><p>在工程文件.pro里面：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#-------------------------------------------------</div><div class="line">#</div><div class="line"># Project created by QtCreator <span class="number">2016</span><span class="number">-12</span><span class="number">-02</span>T20:<span class="number">18</span>:<span class="number">03</span></div><div class="line">#</div><div class="line">#-------------------------------------------------</div><div class="line"></div><div class="line">QT       += core gui <span class="comment">//核心模块</span></div><div class="line"></div><div class="line">greaterThan(QT_MAJOR_VERSION, <span class="number">4</span>): QT += widgets <span class="comment">//如果使用了qt4则调用widgets</span></div><div class="line"></div><div class="line">TARGET = helloworld <span class="comment">//目标程序</span></div><div class="line">TEMPLATE = app <span class="comment">//模板类型，这里是QT widgets application</span></div><div class="line"></div><div class="line"></div><div class="line">SOURCES += main.cpp\   <span class="comment">//包含了主要的源码，主程序，一般主要负责各种事件的处理</span></div><div class="line">        hellpdialog.cpp <span class="comment">//各种函数 在这个简单的程序里主要负责的是ui类的定义实际</span></div><div class="line"></div><div class="line">HEADERS  += hellpdialog.h  <span class="comment">//ui类的头文件</span></div><div class="line"></div><div class="line">FORMS    += hellpdialog.ui  <span class="comment">//具体的ui设计</span></div></pre></td></tr></table></figure>
+<p>可以看出这个文件里包含了所有的工程信息，<br>其中<br><code>greaterThan(QT_MAJOR_VERSION, 4): QT += widgets</code>这句话的作用就是自动识别QT4并使用QT4语句。</p>
+<h1 id="主程序main-cpp"><a href="#主程序main-cpp" class="headerlink" title="主程序main.cpp"></a>主程序main.cpp</h1><p>在这里我们使用空项目进行学习。<br>删光<code>mian.cpp</code>里的代码我们从最基本的开始：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span> <span class="comment">//用于管理应用程序的资源，任何GUI程序都需要该类库</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLabel&gt;</span><span class="comment">//标签类</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span><span class="comment">//窗口类</span></span></div><div class="line"><span class="comment">//c++主程序</span></div><div class="line"> <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> * argv[])</span></span></div><div class="line"> &#123;</div><div class="line">     <span class="function">QApplication <span class="title">QAPP</span><span class="params">(argc,argv)</span></span>; <span class="comment">//建立应用程序资源管理器QAPP</span></div><div class="line">     QDialog w; <span class="comment">//新建窗口</span></div><div class="line">     <span class="function">QLabel <span class="title">winlabel</span><span class="params">(&amp;w)</span></span>;<span class="comment">//新建标签并且将其绑定到窗口上</span></div><div class="line">     winlabel.setText(<span class="string">"hello,qt"</span>);<span class="comment">//标签要表达的语句</span></div><div class="line">     w.show(); <span class="comment">//窗口展示</span></div><div class="line">     <span class="keyword">return</span> QAPP.exec();<span class="comment">//返回</span></div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<h1 id="使用设计师ui"><a href="#使用设计师ui" class="headerlink" title="使用设计师ui"></a>使用设计师ui</h1><p>删光原来的工程（剩下main.cpp和helloworld.pro）<br>然后删掉<br><code>build-helloworld-Desktop_Qt_5_7_0_MSVC2013_64bit-Debug</code>文件夹。（注意如果修改了.pro的内容而没有生效的话，要删掉这个文件夹，才可以生效）<br>然后新建文件：<br><img src="/images/helloqt/4.png" alt=""><br>命名为mydialog<br>在建立完之后，会生成<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mydialog.h <span class="comment">//mydiaglog ui类头文件</span></div><div class="line">mydialog.cpp <span class="comment">//子函数</span></div><div class="line">mydialog.ui <span class="comment">//ui文件</span></div></pre></td></tr></table></figure></p>
+<p>同时在构建之后，ui会在debug文件里生成 <code>ui_mydalog.h</code></p>
+<h2 id="ui-mydalog-h"><a href="#ui-mydalog-h" class="headerlink" title="ui_mydalog.h"></a>ui_mydalog.h</h2><p>在这个头文件里主要定义了ui类<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/********************************************************************************</span></div><div class="line">** Form generated from reading UI file 'mydialog.ui'</div><div class="line">**</div><div class="line">** Created by: Qt User Interface Compiler version 5.7.0</div><div class="line">**</div><div class="line">** WARNING! All changes made in this file will be lost when recompiling UI file!</div><div class="line">********************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> UI_MYDIALOG_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> UI_MYDIALOG_H</span></div><div class="line"><span class="comment">//以上两行是预处理命令，能够防止对这个头文件的多重包含</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtCore/QVariant&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QAction&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QButtonGroup&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QDialog&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QHeaderView&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QLabel&gt;</span></span></div><div class="line"></div><div class="line">QT_BEGIN_NAMESPACE <span class="comment">//QT名字命名空间的开始</span></div><div class="line"><span class="comment">//定义Ui_myDialog类</span></div><div class="line"><span class="keyword">class</span> Ui_myDialog</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    QLabel *label;<span class="comment">//定义标签</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setupUi</span><span class="params">(QDialog *myDialog)</span> <span class="comment">//生成界面函数</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (myDialog-&gt;objectName().isEmpty())</div><div class="line">            myDialog-&gt;setObjectName(QStringLiteral(<span class="string">"myDialog"</span>));</div><div class="line">        myDialog-&gt;resize(<span class="number">400</span>, <span class="number">300</span>);</div><div class="line">        label = <span class="keyword">new</span> QLabel(myDialog);</div><div class="line">        label-&gt;setObjectName(QStringLiteral(<span class="string">"label"</span>));</div><div class="line">        label-&gt;setGeometry(QRect(<span class="number">130</span>, <span class="number">90</span>, <span class="number">151</span>, <span class="number">131</span>));</div><div class="line"></div><div class="line">        retranslateUi(myDialog);</div><div class="line"></div><div class="line">        QMetaObject::connectSlotsByName(myDialog);</div><div class="line">    &#125; <span class="comment">// setupUi</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">retranslateUi</span><span class="params">(QDialog *myDialog)</span><span class="comment">//实现了窗口内字符串的转换</span></span></div><div class="line">    &#123;</div><div class="line">        myDialog-&gt;setWindowTitle(QApplication::translate(<span class="string">"myDialog"</span>, <span class="string">"Dialog"</span>, <span class="number">0</span>));</div><div class="line">        label-&gt;setText(QApplication::translate(<span class="string">"myDialog"</span>, <span class="string">"hello,QT!"</span>, <span class="number">0</span>));</div><div class="line">    &#125; <span class="comment">// retranslateUi</span></div><div class="line"></div><div class="line">&#125;;</div><div class="line"><span class="comment">//名字空间的结束</span></div><div class="line"><span class="keyword">namespace</span> Ui &#123;</div><div class="line">    <span class="keyword">class</span> myDialog: <span class="keyword">public</span> Ui_myDialog &#123;&#125;;</div><div class="line">&#125; <span class="comment">// namespace Ui</span></div><div class="line"></div><div class="line">QT_END_NAMESPACE</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// UI_MYDIALOG_H</span></span></div></pre></td></tr></table></figure></p>
+<h2 id="mydialog-h"><a href="#mydialog-h" class="headerlink" title="mydialog.h"></a>mydialog.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//避免多重包含</span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MYDIALOG_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MYDIALOG_H</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDialog&gt;</span> <span class="comment">//使用QDialog定义自己的类</span></span></div><div class="line"><span class="comment">//对ui::myDialog进行了前置声明。！！！！注意Ui::myDialog和 myDialog不是一个类！！！只是名字一样，所以使用了名字空间以区别！！</span></div><div class="line"><span class="keyword">namespace</span> Ui &#123;</div><div class="line"><span class="keyword">class</span> myDialog;</div><div class="line">&#125;</div><div class="line"><span class="comment">//具体的在主城虚里吊影的myDialog类实现</span></div><div class="line"><span class="keyword">class</span> myDialog : <span class="keyword">public</span> QDialog</div><div class="line">&#123;</div><div class="line">    Q_OBJECT <span class="comment">//宏，继承了普通c++类的基本功能</span></div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">myDialog</span><span class="params">(QWidget *parent = <span class="number">0</span>)</span></span>;</div><div class="line">    ~myDialog();  <span class="comment">//共有变量 因为是根窗口，所以parent=0</span></div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    Ui::myDialog *ui; <span class="comment">//私有变量 ui</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// MYDIALOG_H</span></span></div></pre></td></tr></table></figure>
+<h2 id="mydialog-cpp"><a href="#mydialog-cpp" class="headerlink" title="mydialog.cpp"></a>mydialog.cpp</h2><p>自定义类的源文件<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">同时，pro内的内容被更新为：</div><div class="line">```cpp</div><div class="line">#-------------------------------------------------</div><div class="line">#</div><div class="line"># Project created by QtCreator <span class="number">2016</span><span class="number">-12</span><span class="number">-02</span>T20:<span class="number">18</span>:<span class="number">03</span></div><div class="line">#</div><div class="line">#-------------------------------------------------</div><div class="line"></div><div class="line">QT       += core gui</div><div class="line"></div><div class="line">greaterThan(QT_MAJOR_VERSION, <span class="number">4</span>): QT += widgets</div><div class="line"></div><div class="line">TARGET = helloworld</div><div class="line">TEMPLATE = app</div><div class="line"></div><div class="line"></div><div class="line">SOURCES += main.cpp \</div><div class="line">    mydialog.cpp</div><div class="line"></div><div class="line">HEADERS  += \</div><div class="line">    mydialog.h</div><div class="line"></div><div class="line">FORMS    += \</div><div class="line">    mydialog.ui</div></pre></td></tr></table></figure></p>
+<p>开始编辑ui文件:<br><img src="/images/helloqt/5.png" alt=""><br>ctrl+s保存之后,看带我们的ui内容被以xml的形式存储：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">ui</span> <span class="attr">version</span>=<span class="string">"4.0"</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">class</span>&gt;</span>myDialog<span class="tag">&lt;/<span class="name">class</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">"QDialog"</span> <span class="attr">name</span>=<span class="string">"myDialog"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"geometry"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">rect</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">x</span>&gt;</span>0<span class="tag">&lt;/<span class="name">x</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">y</span>&gt;</span>0<span class="tag">&lt;/<span class="name">y</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">width</span>&gt;</span>400<span class="tag">&lt;/<span class="name">width</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">height</span>&gt;</span>300<span class="tag">&lt;/<span class="name">height</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"windowTitle"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">string</span>&gt;</span>Dialog<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">"QLabel"</span> <span class="attr">name</span>=<span class="string">"label"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"geometry"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">rect</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">x</span>&gt;</span>130<span class="tag">&lt;/<span class="name">x</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">y</span>&gt;</span>90<span class="tag">&lt;/<span class="name">y</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">width</span>&gt;</span>151<span class="tag">&lt;/<span class="name">width</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">height</span>&gt;</span>131<span class="tag">&lt;/<span class="name">height</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"text"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>hello,QT!<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">resources</span>/&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">connections</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="调用设计师ui"><a href="#调用设计师ui" class="headerlink" title="调用设计师ui"></a>调用设计师ui</h1><p>在设计完ui之后我们需要在主程序里调用：<br>编写主程序：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"mydialog.h"</span></span></div><div class="line"> <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> * argv[])</span></span></div><div class="line"> &#123;</div><div class="line">     <span class="function">QApplication <span class="title">QAPP</span><span class="params">(argc,argv)</span></span>;</div><div class="line">     myDialog w; <span class="comment">//调用自定义的ui类</span></div><div class="line">     w.show();</div><div class="line">     <span class="keyword">return</span> QAPP.exec();</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p><img src="/images/helloqt/6.png" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="unsky WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="unsky Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/QT5/" rel="tag">#QT5</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/Integer-to-Roman/" rel="next" title="Integer to Roman">
+                <i class="fa fa-chevron-left"></i> Integer to Roman
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+
+            
+          </div>
+
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/02/QT5从入门到放弃：(1)hello-qt/"
+           data-title="QT5从入门到放弃:(1)hello,qt!" data-url="http://yoursite.com/2016/12/02/QT5从入门到放弃：(1)hello-qt/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+  <div style="background-color:black;margin-top:50px">
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/Tags">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+        </nav>
+          </div>
+
+    <div class="sidebar-inner">
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+
+      <section class="site-overview sidebar-panel ">
+
+      <div class="ui_base u_p3d">
+      	<div class="base u_p3d">
+      		<div class="pan"></div>
+      		<div class="ball_base u_p3d ball_1">
+      			<div class="ball">深度学习</div>
+      		</div>
+      		<div class="ball_base u_p3d ball_2">
+      			<div class="ball">机器学习</div>
+      		</div>
+      		<div class="ball_base u_p3d ball_3">
+      			<div class="ball">数据挖掘</div>
+      		</div>
+      		<div class="ball_base u_p3d ball_4">
+      			<div class="ball">环境搭建</div>
+      		</div>
+      		<div class="ball_base u_p3d ball_5">
+      			<div class="ball">编程语言</div>
+      		</div>
+      		<div class="ball_base u_p3d ball_6">
+      			<div class="ball">算法结构</div>
+      		</div>
+      	</div>
+      </div>
+  <script type="text/javascript" src="//rc.revolvermaps.com/0/0/8.js?i=2zfmnth7mnb&amp;m=7&amp;s=170&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=17" async="async"></script>
+
+  <div class="" style="margin-top:200px;">
+
+
+
+        <li class="menu-item menu-item-search">
+
+            <a href="javascript:;" class="popup-trigger">
+
+            搜索
+          </a>
+        </li>
+  <div class="site-search">
+    
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hello-qt"><span class="nav-number">2.</span> <span class="nav-text">hello,qt!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本工程文件-pro"><span class="nav-number">3.</span> <span class="nav-text">基本工程文件.pro</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主程序main-cpp"><span class="nav-number">4.</span> <span class="nav-text">主程序main.cpp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用设计师ui"><span class="nav-number">5.</span> <span class="nav-text">使用设计师ui</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ui-mydalog-h"><span class="nav-number">5.1.</span> <span class="nav-text">ui_mydalog.h</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mydialog-h"><span class="nav-number">5.2.</span> <span class="nav-text">mydialog.h</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mydialog-cpp"><span class="nav-number">5.3.</span> <span class="nav-text">mydialog.cpp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用设计师ui"><span class="nav-number">6.</span> <span class="nav-text">调用设计师ui</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+
+    </div>
+  </aside>
+
+  <style type="text/css">
+
+  @-webkit-keyframes cir1 {
+    0% {
+      -webkit-transform: rotateY(0deg) rotateZ(10deg);
+    }
+    100% {
+      -webkit-transform: rotateY(-360deg) rotateZ(10deg);
+    }
+  }
+  @keyframes cir1 {
+    0% {
+      transform: rotateY(0deg) rotateZ(10deg);
+    }
+    100% {
+      transform: rotateY(-360deg) rotateZ(10deg);
+    }
+  }
+  @-webkit-keyframes cir2 {
+    0% {
+      -webkit-transform: rotateY(-60deg) rotateZ(10deg);
+    }
+    100% {
+      -webkit-transform: rotateY(-420deg) rotateZ(10deg);
+    }
+  }
+  @keyframes cir2 {
+    0% {
+      transform: rotateY(-60deg) rotateZ(10deg);
+    }
+    100% {
+      transform: rotateY(-420deg) rotateZ(10deg);
+    }
+  }
+  @-webkit-keyframes cir3 {
+    0% {
+      -webkit-transform: rotateY(-120deg) rotateZ(10deg);
+    }
+    100% {
+      -webkit-transform: rotateY(-480deg) rotateZ(10deg);
+    }
+  }
+  @keyframes cir3 {
+    0% {
+      transform: rotateY(-120deg) rotateZ(10deg);
+    }
+    100% {
+      transform: rotateY(-480deg) rotateZ(10deg);
+    }
+  }
+  @-webkit-keyframes cir4 {
+    0% {
+      -webkit-transform: rotateY(-180deg) rotateZ(10deg);
+    }
+    100% {
+      -webkit-transform: rotateY(-540deg) rotateZ(10deg);
+    }
+  }
+  @keyframes cir4 {
+    0% {
+      transform: rotateY(-180deg) rotateZ(10deg);
+    }
+    100% {
+      transform: rotateY(-540deg) rotateZ(10deg);
+    }
+  }
+  @-webkit-keyframes cir5 {
+    0% {
+      -webkit-transform: rotateY(-240deg) rotateZ(10deg);
+    }
+    100% {
+      -webkit-transform: rotateY(-600deg) rotateZ(10deg);
+    }
+  }
+  @keyframes cir5 {
+    0% {
+      transform: rotateY(-240deg) rotateZ(10deg);
+    }
+    100% {
+      transform: rotateY(-600deg) rotateZ(10deg);
+    }
+  }
+  @-webkit-keyframes cir6 {
+    0% {
+      -webkit-transform: rotateY(-300deg) rotateZ(10deg);
+    }
+    100% {
+      -webkit-transform: rotateY(-660deg) rotateZ(10deg);
+    }
+  }
+  @keyframes cir6 {
+    0% {
+      transform: rotateY(-300deg) rotateZ(10deg);
+    }
+    100% {
+      transform: rotateY(-660deg) rotateZ(10deg);
+    }
+  }
+  @keyframes cir {
+    0% {
+      transform: rotateX(80deg) rotateY(-10deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(80deg) rotateY(-10deg) rotateZ(-360deg);
+    }
+  }
+  @keyframes cir_p {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(-360deg);
+    }
+  }
+  @-webkit-keyframes cir {
+    0% {
+      -webkit-transform: rotateX(80deg) rotateY(-10deg) rotateZ(0deg);
+    }
+    100% {
+      -webkit-transform: rotateX(80deg) rotateY(-10deg) rotateZ(-360deg);
+    }
+  }
+  @-webkit-keyframes cir_p {
+    0% {
+      -webkit-transform: rotateZ(0deg);
+    }
+    100% {
+      -webkit-transform: rotateZ(-360deg);
+    }
+  }
+
+  .u_p3d{
+      -webkit-transform-style: preserve-3d !important;
+      transform-style: preserve-3d !important;
+  }
+
+  .ui_base {
+      position: relative;
+      width: 100px;
+      height: 0px;
+      -webkit-perspective: 1000px;
+      -webkit-perspective-origin: 50% 0%;
+      perspective: 20000px;
+      perspective-origin: 50% 0%;
+  }
+  .base{
+  	-webkit-transform: rotateX(80deg) rotateY(-10deg);
+      transform: rotateX(80deg) rotateY(-10deg);
+      position: relative;
+      width: 350px;
+      height: 350px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      animation: cir 10s linear 0s infinite;
+  }
+  .ball_base {
+      -webkit-transform-origin: 225px 0px;
+      transform-origin: 225px 0px;
+      position: absolute;
+      top: 175px;
+      left: -50px;
+      width: 225px;
+      height: 127px;
+  }
+  .ball{
+  	-webkit-transition:all 2s ease-out 0ms;
+  	transition:all 2s ease-out 0ms;
+  	-webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+  	position: absolute;
+  	width: 60px;
+  	height:120px;
+  	line-height: 90px;
+  	text-align: center;
+  	background-size: 100% 100%;
+  	left: 0px;
+  	top: 0px;
+  	color: black;
+  	font-size: 15px;
+  	opacity: 1;
+  	overflow: hidden;
+  }
+
+  .ball_c {
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      position: absolute;
+      width: 157px;
+      height: 157px;
+      line-height: 157px;
+      text-align: center;
+      left: 90px;
+      top: 20px;
+      color: black;
+      font-size: 24px;
+  }
+
+  .pan {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url("../images/c.png");
+      background-size: 100% 100%;
+      -webkit-animation: cir_p 5s linear 0s infinite;
+  	animation: cir_p 5s linear 0s infinite;
+  }
+
+  .ball {
+      color: black;
+      opacity: 1;
+  }
+
+  .ball_1 .ball {
+      transform: rotateY(10deg) rotateZ(10deg);
+      animation: cir1 10s linear 0s infinite;
+      -webkit-transition-delay: 1100ms !important;
+  	transition-delay: 1100ms !important;
+  }
+  .ball_2 .ball {
+      -webkit-animation: cir2 10s linear 0s infinite;
+  		animation: cir2 10s linear 0s infinite;
+  		-webkit-transition-delay: 900ms !important;
+  	transition-delay: 900ms !important;
+  }
+  .ball_3 .ball {
+      -webkit-animation: cir3 10s linear 0s infinite;
+  	animation: cir3 10s linear 0s infinite;
+  	-webkit-transition-delay: 700ms !important;
+  	transition-delay: 700ms !important;
+  }
+  .ball_4 .ball {
+  	-webkit-animation: cir4 10s linear 0s infinite;
+  	animation: cir4 10s linear 0s infinite;
+  	-webkit-transition-delay: 500ms !important;
+  	transition-delay: 500ms !important;
+  }
+  .ball_5 .ball {
+  	-webkit-animation: cir5 10s linear 0s infinite;
+  	animation: cir5 10s linear 0s infinite;
+  	-webkit-transition-delay: 300ms !important;
+  	transition-delay: 300ms !important;
+  }
+  .ball_6 .ball {
+      -webkit-animation: cir6 10s linear 0s infinite;
+  	animation: cir6 10s linear 0s infinite;
+  	-webkit-transition-delay: 100ms !important;
+  		transition-delay: 100ms !important;
+  }
+
+  .ball_1 {
+      -webkit-transform: rotateX(-90deg) rotateY(0deg) translateY(-70px);
+      transform: rotateX(-90deg) rotateY(0deg) translateY(-70px);
+  }
+  .ball_2 {
+      -webkit-transform: rotateX(-90deg) rotateY(60deg) translateY(-70px);
+      transform: rotateX(-90deg) rotateY(60deg) translateY(-70px);
+  }
+  .ball_3 {
+      -webkit-transform: rotateX(-90deg) rotateY(120deg) translateY(-70px);
+      transform: rotateX(-90deg) rotateY(120deg) translateY(-70px);
+  }
+  .ball_4 {
+      -webkit-transform: rotateX(-90deg) rotateY(180deg) translateY(-70px);
+      transform: rotateX(-90deg) rotateY(180deg) translateY(-70px);
+  }
+  .ball_5 {
+      -webkit-transform: rotateX(-90deg) rotateY(240deg) translateY(-70px);
+  	transform: rotateX(-90deg) rotateY(240deg) translateY(-70px);
+  }
+  .ball_6 {
+  	-webkit-transform: rotateX(-90deg) rotateY(300deg) translateY(-70px);
+      transform: rotateX(-90deg) rotateY(300deg) translateY(-70px);
+  }
+
+  </style>
+
+
+
+
+
+        
+      </div>
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">unsky</span>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"unsky"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementById('footer')
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+<!-- �������� -->
+<script type="text/javascript" src="/js/src/particle.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
