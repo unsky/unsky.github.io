@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-02T13:44:24.077Z</updated>
+  <updated>2016-12-02T14:55:29.774Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Roman to Integer</title>
+    <link href="http://yoursite.com/2016/12/02/Roman-to-Integer/"/>
+    <id>http://yoursite.com/2016/12/02/Roman-to-Integer/</id>
+    <published>2016-12-02T14:49:15.000Z</published>
+    <updated>2016-12-02T14:55:29.774Z</updated>
+    
+    <content type="html"><![CDATA[<p>ID13. Roman to Integer   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 117446<br>Total Submissions: 273074<br>Difficulty: Easy<br>Contributors: Admin<br>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.<br><a id="more"></a><br>这道题同<br><a href="http://deepdim.com/2016/12/01/Integer-to-Roman/" target="_blank" rel="external">http://deepdim.com/2016/12/01/Integer-to-Roman/</a><br>需要特殊处理的有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">I: 1</div><div class="line">IV: 4</div><div class="line">V: 5</div><div class="line">IX: 9</div><div class="line">X: 10</div><div class="line">XL: 40</div><div class="line">L: 50</div><div class="line">XC: 90</div><div class="line">C: 100</div><div class="line">CD: 400</div><div class="line">D: 500</div><div class="line">CM: 900</div><div class="line">M: 1000</div></pre></td></tr></table></figure></p>
+<p>代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">         <span class="built_in">string</span> roman[] = &#123;<span class="string">"M"</span>,<span class="string">"CM"</span>,<span class="string">"D"</span>,<span class="string">"CD"</span>,<span class="string">"C"</span>,<span class="string">"XC"</span>,<span class="string">"L"</span>,<span class="string">"XL"</span>,<span class="string">"X"</span>,<span class="string">"IX"</span>,<span class="string">"V"</span>,<span class="string">"IV"</span>,<span class="string">"I"</span>&#125;;</div><div class="line">        <span class="keyword">int</span> num[] = &#123;<span class="number">1000</span>,<span class="number">900</span>,<span class="number">500</span>,<span class="number">400</span>,<span class="number">100</span>,<span class="number">90</span>,<span class="number">50</span>,<span class="number">40</span>,<span class="number">10</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">1</span>&#125;;</div><div class="line">         <span class="keyword">int</span> i=<span class="number">0</span>,index=<span class="number">0</span>,result=<span class="number">0</span>;</div><div class="line">         <span class="built_in">string</span> CurString;</div><div class="line">        <span class="keyword">while</span>(i&lt;<span class="number">13</span>)</div><div class="line">        &#123; CurString=s.substr(index,roman[i].size());</div><div class="line">         <span class="keyword">if</span>(CurString==roman[i])</div><div class="line">         &#123;result=result+num[i];</div><div class="line">         index=index+roman[i].size();</div><div class="line">         <span class="built_in">cout</span>&lt;&lt;num[i]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">         <span class="keyword">else</span>  <span class="keyword">if</span>((CurString!=roman[i])||s.substr(index+roman[i].size(),roman[i].size())!=roman[i])</div><div class="line">             i++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>其中较为关键的是判断什么时候进行i++<br> <code>if((CurString!=roman[i])||s.substr(index+roman[i].size(),roman[i].size())!=roman[i])</code><br> 即只有在当前不匹配或者下个不匹配的时候才进行i++从而实现了最大三个字母的重复。。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ID13. Roman to Integer   Add to List QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 117446&lt;br&gt;Total Submissions: 273074&lt;br&gt;Difficulty: Easy&lt;br&gt;Contributors: Admin&lt;br&gt;Given a roman numeral, convert it to an integer.&lt;/p&gt;
+&lt;p&gt;Input is guaranteed to be within the range from 1 to 3999.&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>QT5从入门到放弃:(1)hello,qt!</title>
@@ -61,9 +84,9 @@
     <link href="http://yoursite.com/2016/12/01/Integer-to-Roman/"/>
     <id>http://yoursite.com/2016/12/01/Integer-to-Roman/</id>
     <published>2016-12-01T11:47:19.000Z</published>
-    <updated>2016-12-01T12:08:02.969Z</updated>
+    <updated>2016-12-02T14:50:41.381Z</updated>
     
-    <content type="html"><![CDATA[<p>Integer to Roman   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 85662<br>Total Submissions: 202008<br>Difficulty: Medium<br>Contributors: Admin<br>Given an integer, convert it to a roman numeral.</p>
+    <content type="html"><![CDATA[<p>ID12:Integer to Roman   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 85662<br>Total Submissions: 202008<br>Difficulty: Medium<br>Contributors: Admin<br>Given an integer, convert it to a roman numeral.</p>
 <p>Input is guaranteed to be within the range from 1 to 3999.<br><a id="more"></a><br>这道题目需要一定的背景知识。<br>罗马数字的表示方法可以参考wiki:<br><a href="https://en.wikipedia.org/wiki/Roman_numerals" target="_blank" rel="external">https://en.wikipedia.org/wiki/Roman_numerals</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">I: 1</div><div class="line">V: 5</div><div class="line">X: 10</div><div class="line">L: 50</div><div class="line">C: 100</div><div class="line">D: 500</div><div class="line">M: 1000</div></pre></td></tr></table></figure></p>
 <p>字母可以重复，但不超过三次，当需要超过三次时，用与下一位的组合表示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">I: 1, II: 2, III: 3, IV: 4</div><div class="line">C: 100, CC: 200, CCC: 300, CD: 400</div></pre></td></tr></table></figure></p>
 <p>所以需要特殊处理的数字包括：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">I: 1</div><div class="line">IV: 4</div><div class="line">V: 5</div><div class="line">IX: 9</div><div class="line">X: 10</div><div class="line">XL: 40</div><div class="line">L: 50</div><div class="line">XC: 90</div><div class="line">C: 100</div><div class="line">CD: 400</div><div class="line">D: 500</div><div class="line">CM: 900</div><div class="line">M: 1000</div></pre></td></tr></table></figure></p>
@@ -73,7 +96,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;Integer to Roman   Add to List QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 85662&lt;br&gt;Total Submissions: 202008&lt;br&gt;Difficulty: Medium&lt;br&gt;Contributors: Admin&lt;br&gt;Given an integer, convert it to a roman numeral.&lt;/p&gt;
+      &lt;p&gt;ID12:Integer to Roman   Add to List QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 85662&lt;br&gt;Total Submissions: 202008&lt;br&gt;Difficulty: Medium&lt;br&gt;Contributors: Admin&lt;br&gt;Given an integer, convert it to a roman numeral.&lt;/p&gt;
 &lt;p&gt;Input is guaranteed to be within the range from 1 to 3999.&lt;br&gt;
     
     </summary>
@@ -867,47 +890,6 @@
       <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用hexo快速搭建github pages博客</title>
-    <link href="http://yoursite.com/2016/11/01/%E4%BD%BF%E7%94%A8hexo%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAgit%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2016/11/01/使用hexo快速搭建git博客/</id>
-    <published>2016-11-01T15:40:13.000Z</published>
-    <updated>2016-11-22T12:47:09.063Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="github-pages简介"><a href="#github-pages简介" class="headerlink" title=" github pages简介"></a> github pages简介</h2><p><img src="/images/gitblog/githubpages.png" alt=""></p>
-<p>Github Pages 是 github 公司提供的免费的静态网站托管服务，用起来方便而且功能强大，不仅没有空间限制，还可以绑定自己的域名。在 <a href="https://pages.github.com/" target="_blank" rel="external">https://pages.github.com/</a> 首页上可以看到很多用 Github Pages 托管的网站，很漂亮。另外很多非常著名的公司和项目也都用这种方式来搭建网站，如微软和 twitter 的网站，还有 谷歌的 Material Design 图标 网站。<br><a id="more"></a></p>
-<h2 id="node-js之hexo"><a href="#node-js之hexo" class="headerlink" title=" node.js之hexo"></a> node.js之hexo</h2><p>Node.js®是一个基于Chrome V8 引擎的 JavaScript 运行时。 Node.js 使用高效、轻量级的事件驱动、非阻塞 I/O 模型。Node.js 之生态系统是目前最大的开源包管理系统。</p>
-<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p><img src="/images/gitblog/hexo.png" alt=""><br>Hexo 是高效的静态站点生成框架，她基于 Node.js。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的 标签插件 来快速的插入特定形式的内容。在这篇文章中，假定你已经成功安装了 Hexo，并使用 Hexo 提供的命令创建了一个站点。</p>
-<p>hexo出自台湾大学生tommy351之手，是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。hexo生成的静态网页可以直接放到GitHub Pages，BAE，SAE等平台上</p>
-<h2 id="hexo之NexT主题"><a href="#hexo之NexT主题" class="headerlink" title=" hexo之NexT主题"></a> hexo之NexT主题</h2><p> 一个很好的基于hexo的主题，在NexT主题里有 scheme小主题的概念，非常棒，简约风格。<br> <img src="/images/gitblog/next.png" alt=""></p>
-<h2 id="搭建博客系统"><a href="#搭建博客系统" class="headerlink" title=" 搭建博客系统"></a> 搭建博客系统</h2><p> 首先下载安装node.js <a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">https://nodejs.org/zh-cn/</a></p>
-<p>  下载之后打开node.js command prompt<br>  开始下载hexo<br>  运行如下的命令</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ cd blog</div><div class="line">$ npm install</div><div class="line">$ hexo server</div><div class="line"></div><div class="line">#安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</div><div class="line"></div><div class="line">#新建完成后，指定文件夹的目录如下</div><div class="line">.</div><div class="line">├── _config.yml</div><div class="line">├── package.json</div><div class="line">├── scaffolds</div><div class="line">├── scripts</div><div class="line">├── source</div><div class="line">|      ├── _drafts</div><div class="line">|      └── _posts</div><div class="line">└── themes</div></pre></td></tr></table></figure>
-<p>  这时候使用<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s</div></pre></td></tr></table></figure></p>
-<p>  就可以打开 localhost: 4000进行访问看到hexo的landspace 就成功了</p>
-<p>note：<br><code>如果你的安装了福新阅读器等一些占用4000端口的程序。就会加载不出来。</code></p>
-<p>可以更改端口：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s -p 3600</div></pre></td></tr></table></figure>
-<p>安装成功之后可以绑定自己的gitHub.<br>后面的NexT主题安装部分详细见：</p>
-<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">http://theme-next.iissnan.com/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;github-pages简介&quot;&gt;&lt;a href=&quot;#github-pages简介&quot; class=&quot;headerlink&quot; title=&quot; github pages简介&quot;&gt;&lt;/a&gt; github pages简介&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/gitblog/githubpages.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Github Pages 是 github 公司提供的免费的静态网站托管服务，用起来方便而且功能强大，不仅没有空间限制，还可以绑定自己的域名。在 &lt;a href=&quot;https://pages.github.com/&quot;&gt;https://pages.github.com/&lt;/a&gt; 首页上可以看到很多用 Github Pages 托管的网站，很漂亮。另外很多非常著名的公司和项目也都用这种方式来搭建网站，如微软和 twitter 的网站，还有 谷歌的 Material Design 图标 网站。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="环境搭建" scheme="http://yoursite.com/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    
-    
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
