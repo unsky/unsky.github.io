@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-02T14:55:29.774Z</updated>
+  <updated>2016-12-02T15:06:57.925Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/12/02/Roman-to-Integer/"/>
     <id>http://yoursite.com/2016/12/02/Roman-to-Integer/</id>
     <published>2016-12-02T14:49:15.000Z</published>
-    <updated>2016-12-02T14:55:29.774Z</updated>
+    <updated>2016-12-02T15:06:57.925Z</updated>
     
     <content type="html"><![CDATA[<p>ID13. Roman to Integer   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 117446<br>Total Submissions: 273074<br>Difficulty: Easy<br>Contributors: Admin<br>Given a roman numeral, convert it to an integer.</p>
 <p>Input is guaranteed to be within the range from 1 to 3999.<br><a id="more"></a><br>这道题同<br><a href="http://deepdim.com/2016/12/01/Integer-to-Roman/" target="_blank" rel="external">http://deepdim.com/2016/12/01/Integer-to-Roman/</a><br>需要特殊处理的有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">I: 1</div><div class="line">IV: 4</div><div class="line">V: 5</div><div class="line">IX: 9</div><div class="line">X: 10</div><div class="line">XL: 40</div><div class="line">L: 50</div><div class="line">XC: 90</div><div class="line">C: 100</div><div class="line">CD: 400</div><div class="line">D: 500</div><div class="line">CM: 900</div><div class="line">M: 1000</div></pre></td></tr></table></figure></p>
@@ -35,6 +35,10 @@
     
     </summary>
     
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="Roman to Integer" scheme="http://yoursite.com/tags/Roman-to-Integer/"/>
     
   </entry>
   
