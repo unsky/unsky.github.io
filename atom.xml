@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-02T15:06:57.925Z</updated>
+  <updated>2016-12-03T11:26:02.867Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>QT5从入门到放弃:(2)基础窗口部件</title>
+    <link href="http://yoursite.com/2016/12/03/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%9A%EF%BC%882)%E5%9F%BA%E7%A1%80%E7%AA%97%E5%8F%A3%E9%83%A8%E4%BB%B6/"/>
+    <id>http://yoursite.com/2016/12/03/QT5从入门到放弃：（2)基础窗口部件/</id>
+    <published>2016-12-03T09:55:49.000Z</published>
+    <updated>2016-12-03T11:26:02.867Z</updated>
+    
+    <content type="html"><![CDATA[<p>QT提供默认的几类只有QMainWindow,QWidget,QDialog三种，这三种窗体是最常见的,QMainWindow带有菜单栏和工具栏的主窗口类，QDialog是各种对话框的几类，而他们全部继承自QWidget.<br><a id="more"></a><br>他们之间详细的关系如下：<br><img src="/images/qwidgets/1.png" alt=""></p>
+<h1 id="窗口和部件以及窗口类型"><a href="#窗口和部件以及窗口类型" class="headerlink" title="窗口和部件以及窗口类型"></a>窗口和部件以及窗口类型</h1><p> 窗口部件是QT中建立用户元素的主要部件，其中作为部件附属于其他窗口的可以简称为部件，而没有上级的成为窗口（根）<br> 看一段代码：<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLabel&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</div><div class="line">    QDialog *w1=<span class="keyword">new</span> QDialog();</div><div class="line">    w1-&gt;setWindowTitle(<span class="string">"thie is win1"</span>);</div><div class="line">    QLabel * label1=<span class="keyword">new</span> QLabel();</div><div class="line">    label1-&gt;setText(<span class="string">"label1"</span>);</div><div class="line">    label1-&gt;show();</div><div class="line">    label1-&gt;resize(<span class="number">200</span>,<span class="number">200</span>);</div><div class="line">   QLabel *label2=<span class="keyword">new</span> QLabel(w1);</div><div class="line">   label2-&gt;setText(<span class="string">"LABEL2"</span>);</div><div class="line">   w1-&gt;resize(<span class="number">200</span>,<span class="number">200</span>);</div><div class="line">   label2-&gt;show();</div><div class="line">   label2-&gt;resize(<span class="number">150</span>,<span class="number">150</span>);</div><div class="line">   w1-&gt;show();</div><div class="line"></div><div class="line"></div><div class="line"> <span class="keyword">return</span> a.exec();</div><div class="line"> <span class="keyword">delete</span> label1;</div><div class="line"> <span class="comment">//  delete label2;</span></div><div class="line">   <span class="keyword">delete</span> w1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 这段程序定义了一个QDialog :w1,两个QLabel: label1和label2.<br> 在这里需要注意的是所有的定义都使用new()开辟空间，所以在最后都需要执行delete操作。<br> 如：<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QDialog *w1=<span class="keyword">new</span> QDialog();</div><div class="line"><span class="keyword">delete</span> w1;</div></pre></td></tr></table></figure></p>
+<p> 在这段程序里我们分析各个部件之间的关系。因为label1没有绑定任何父类，所以他是一个独立的窗口，而label2在新定义的时候，  <code>QLabel *label2=new QLabel(w1);</code>就被绑定上了w1所以其父是w1.<br> 所以有如下的一些特点：</p>
+<ol>
+<li>label1可以单独显示，而label2不可以单独显示，如果显示w1则显示w1的全部子部件，即label2也被显示出来。</li>
+<li><p>在delete的时候，label1和label2都可以单独被销毁，但是如果如果w1被销毁，那么w1的所有子部件也全部被销毁。<br><img src="/images/qwidgets/2.png" alt=""></p>
+<h1 id="窗口类型"><a href="#窗口类型" class="headerlink" title="窗口类型"></a>窗口类型</h1><p>QT有非常多的窗口类型，QWidget的构造函数有两个参数<br>一个是<code>QWidget *parent=0</code> 这个参数主要负责该窗口部件的附属关系，默认是0，表示是一个独立窗口，两一个参数是<br><code>Qt::WindowFlags</code>这个参数主要负责的是这个窗口部件的类型。<br>比如我们可以</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QDialog *w1=<span class="keyword">new</span> QDialog(<span class="number">0</span>,Qt::Dialog);</div><div class="line">  QLabel * label1=<span class="keyword">new</span> QLabel(<span class="number">0</span>,Qt::SplashScreen);</div></pre></td></tr></table></figure>
+<p>其效果：<br><img src="/images/qwidgets/3.png" alt=""><br>也可以使用位或操作如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> QDialog *w1=<span class="keyword">new</span> QDialog(<span class="number">0</span>,Qt::Dialog|Qt::FramelessWindowHint);</div><div class="line"></div><div class="line">QLabel * label1=<span class="keyword">new</span> QLabel(<span class="number">0</span>,Qt::SplashScreen|Qt::WindowStaysOnTopHint);</div></pre></td></tr></table></figure>
+<p><img src="/images/qwidgets/4.png" alt=""><br>更加详细的样式，用到再说。</p>
+<h1 id="窗口的几何布局"><a href="#窗口的几何布局" class="headerlink" title="窗口的几何布局"></a>窗口的几何布局</h1><p><img src="/images/qwidgets/5.png" alt=""><br>这里的函数主要分为两类，一类是包含框架的，另一个事不包含框架的。</p>
+</li>
+<li>包含框架的：x(),y(),frameGemetry(),pos(),move()函数</li>
+<li><p>不包含框架的：genmetry(),width(),height(),rect()和size()函数。<br>实例程序：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QWidget&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;  <span class="function">QApplication <span class="title">a</span><span class="params">(argc,argv)</span></span>;</div><div class="line">    QWidget w;</div><div class="line">   <span class="keyword">int</span> x=w.x();</div><div class="line">   <span class="keyword">int</span> y=w.y();</div><div class="line">   QRect gemetry=w.geometry();</div><div class="line">   QRect frame=w.frameGeometry();</div><div class="line">    <span class="keyword">return</span> a.exec();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> x=w.x();</div><div class="line"><span class="keyword">int</span> y=w.y();</div></pre></td></tr></table></figure></p>
+<p>分别返回窗口部件的坐标值x,y,他们的默认值是0.</p>
+<p>而geometry和frameGeometry()函数分别返回没有边框的和包含边框矩形的值，其返回值是QRect类型的，就是一个矩形，他的形式是（x,y,height,width）<br>在这里我们使用QDebug进行调试。<br>程序<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QWidget&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDebug&gt;</span></span></div><div class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;  <span class="function">QApplication <span class="title">a</span><span class="params">(argc,argv)</span></span>;</div><div class="line">    QWidget w;</div><div class="line">   <span class="keyword">int</span> x=w.x();</div><div class="line">   <span class="keyword">int</span> y=w.y();</div><div class="line">   QRect gemetry=w.geometry();</div><div class="line">   QRect frame=w.frameGeometry();</div><div class="line">   qDebug()&lt;&lt;x&lt;&lt;<span class="string">" "</span>&lt;&lt;y&lt;&lt;<span class="string">" "</span>&lt;&lt;gemetry&lt;&lt;<span class="string">" "</span>&lt;&lt;frame;</div><div class="line">    <span class="keyword">return</span> a.exec();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在引入了QDebug头文件之后，可以直接使用qDebug()函数<br><code>qDebug()&lt;&lt;x&lt;&lt;&quot; &quot;&lt;&lt;y&lt;&lt;&quot; &quot;&lt;&lt;gemetry&lt;&lt;&quot; &quot;&lt;&lt;frame;</code>这句语句可以输出。<br>其结果如下：<br> <img src="/images/qwidgets/6.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;QT提供默认的几类只有QMainWindow,QWidget,QDialog三种，这三种窗体是最常见的,QMainWindow带有菜单栏和工具栏的主窗口类，QDialog是各种对话框的几类，而他们全部继承自QWidget.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="QT5从入门到放弃" scheme="http://yoursite.com/categories/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
+    
+    
+      <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
+    
+  </entry>
   
   <entry>
     <title>Roman to Integer</title>
@@ -47,7 +92,7 @@
     <link href="http://yoursite.com/2016/12/02/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%9A(1)hello-qt/"/>
     <id>http://yoursite.com/2016/12/02/QT5从入门到放弃：(1)hello-qt/</id>
     <published>2016-12-02T11:26:26.000Z</published>
-    <updated>2016-12-03T04:05:22.382Z</updated>
+    <updated>2016-12-03T04:11:22.766Z</updated>
     
     <content type="html"><![CDATA[<p>开始学习使用c++进行QT5学习</p>
 <p>QT是一个1998年开始创办的c++库,其界面设计等能力表现不俗,后来被诺基亚收购，之后诺基亚将其开源，后来诺基亚倒闭，QT右digital接着运营。伴随着c++的发展，QT也从QT1发展到QT5，充分运用了c++的新特性。<br><a id="more"></a></p>
@@ -839,81 +884,6 @@
     
     
       <category term="atom" scheme="http://yoursite.com/tags/atom/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>卷积神经网络</title>
-    <link href="http://yoursite.com/2016/11/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
-    <id>http://yoursite.com/2016/11/02/卷积神经网络学习历程/</id>
-    <published>2016-11-01T16:10:30.000Z</published>
-    <updated>2016-11-22T12:46:50.778Z</updated>
-    
-    <content type="html"><![CDATA[<p>  神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.<br><a id="more"></a></p>
-<h1 id="神经元建模"><a href="#神经元建模" class="headerlink" title="神经元建模"></a>神经元建模</h1><p>  大脑的基本计算单位是神经元（neuron）。人类的神经系统中大约有860亿个神经元，它们被大约10^14-10^15个突触（synapses）连接起来。下面图表的左边展示了一个生物学的神经元，右边展示了一个常用的数学模型。每个神经元都从它的树突获得输入信号，然后沿着它唯一的轴突（axon）产生输出信号。轴突在末端会逐渐分枝，通过突触和其他神经元的树突相连。</p>
-<p>  在神经元的计算模型中，沿着轴突传播的信号（比如 $x_0$ ）将基于突触的突触强（比如 $w_0$ ），与其他神经元的树突进行乘法交互（比如$w_0x_0$）。其观点是，突触的强度（也就是权重），是可学习的且可以控制一个神经元对于另一个神经元的影响强度（还可以控制影响方向：使其兴奋（正权重）或使其抑制（负权重））。在基本模型中，树突将信号传递到细胞体，信号在细胞体中相加。如果最终之和高于某个阈值，那么神经元将会激活，向其轴突输出一个峰值信号。在计算模型中，我们假设峰值信号的准确时间点不重要，是激活信号的频率在交流信息。基于这个速率编码的观点，将神经元的激活率建模为激活函数（activation function）f，它表达了轴突上激活信号的频率。由于历史原因，激活函数常常选择使用sigmoid函数 $\sigma$，该函数输入实数值（求和后的信号强度），然后将输入值压缩到0-1之间。在本节后面部分会看到这些激活函数的各种细节。</p>
-<p>  <img src="/images/cnn/1.png" alt=""><br>  左边是生物神经元，右边是数学模型。</p>
-<h1 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h1><h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>自然图像有其固有特性，也就是说，图像的一部分的统计特性与其他部分是一样的。这也意味着我们在这一部分学习的特征也能用在另一部分上，所以对于这个图像上的所有位置，我们都能使用同样的学习特征。</p>
-<p>更恰当的解释是，当从一个大尺寸图像中随机选取一小块，比如说 8x8 作为样本，并且从这个小块样本中学习到了一些特征，这时我们可以把从这个 8x8 样本中学习到的特征作为探测器，应用到这个图像的任意地方中去。特别是，我们可以用从 8x8 样本中所学习到的特征跟原本的大尺寸图像作卷积，从而对这个大尺寸图像上的任一位置获得一个不同特征的激活值。</p>
-<p>下面给出一个具体的例子：假设你已经从一个 96x96 的图像中学习到了它的一个 8x8 的样本所具有的特征，假设这是由有 100 个隐含单元的自编码完成的。为了得到卷积特征，需要对 96x96 的图像的每个 8x8 的小块图像区域都进行卷积运算。也就是说，抽取8x8 的小块区域，并且从起始坐标开始依次标记为（1，1），（1，2），…，一直到（89，89），然后对抽取的区域逐个运行训练过的稀疏自编码来得到特征的激活值。在这个例子里，显然可以得到 100 个集合，每个集合含有 89x89 个卷积特征。<br>  <img src="/images/cnn/2.gif" alt=""></p>
-<p>  假设给定了 $r \times c$ 的大尺寸图像，将其定义为 xlarge。首先通过从大尺寸图像中抽取的 $a \times b$ 的小尺寸图像样本 $x_{small}$ 训练稀疏自编码，计算 $f = σ(W(1)x_{small} + b(1))$ （σ 是一个 sigmoid 型函数）得到了 k 个特征， 其中 W(1) 和 b(1) 是可视层单元和隐含单元之间的权重和偏差值。对于每一个 $a \times b$ 大小的小图像 $x_s$，计算出对应的值  $f_s = σ(W(1)x_s + b(1))$ ，对这些 fconvolved 值做卷积，就可以得到  $k \times (r - a + 1) \times (c - b + 1)$  个卷积后的特征的矩阵。</p>
-<h3 id="窄卷积-vs-宽卷积"><a href="#窄卷积-vs-宽卷积" class="headerlink" title="窄卷积 vs 宽卷积"></a>窄卷积 vs 宽卷积</h3><p>在上文中解释卷积运算的时候，忽略了如何使用滤波器的一个小细节。在矩阵的中部使用3x3的滤波器没有问题，在矩阵的边缘该怎么办呢？左上角的元素没有顶部和左侧相邻的元素，该如何滤波呢？解决的办法是采用补零法（zero-padding）。所有落在矩阵范围之外的元素值都默认为0。这样就可以对输入矩阵的每一个元素做滤波了，输出一个同样大小或是更大的矩阵。补零法又被称为是宽卷积，不使用补零的方法则被称为窄卷积。在具体的试验中就是<code>pad</code>字段设置 <code>0 or other</code></p>
-<p>1D的例子如图所示：<br>  <img src="/images/cnn/3.png" alt="">窄卷积 vs 宽卷积。滤波器长度为5，输入长度为7。</p>
-<h3 id="步长"><a href="#步长" class="headerlink" title="步长"></a>步长</h3><p>卷积运算的另一个超参数是步长，即每一次滤波器平移的距离。上面所有例子中的步长都是1，相邻两个滤波器有重叠。步长越大，则用到的滤波器越少，输出的值也越少.<br>在实验中使用<code>strike</code>进行控制<br>  <img src="/images/cnn/4.png" alt=""></p>
-<h2 id="池化-pooling"><a href="#池化-pooling" class="headerlink" title="池化 pooling"></a>池化 pooling</h2><p>卷积神经网络的一个重要概念就是池化层，一般是在卷积层之后。池化层对输入做降采样。常用的池化做法是对每个滤波器的输出求最大值。我们并不需要对整个矩阵都做池化，可以只对某个窗口区间做池化。例如，下图所示的是2x2窗口的最大值池化（在NLP里，我们通常对整个输出做池化，每个滤波器只有一个输出值）：<br>  <img src="/images/cnn/5.png" alt=""></p>
-<p>池化的特点之一就是它输出一个固定大小的矩阵，这对分类问题很有必要。例如，如果你用了1000个滤波器，并对每个输出使用最大池化，那么无论滤波器的尺寸是多大，也无论输入数据的维度如何变化，你都将得到一个1000维的输出。这让你可以应用不同长度的句子和不同大小的滤波器，但总是得到一个相同维度的输出结果，传入下一层的分类器。</p>
-<p>池化还能降低输出结果的维度，（理想情况下）却能保留显著的特征。你可以认为每个滤波器都是检测一种特定的特征，例如，检测句子是否包含诸如“not amazing”等否定意思。如果这个短语在句子中的某个位置出现，那么对应位置的滤波器的输出值将会非常大，而在其它位置的输出值非常小。通过采用取最大值的方式，能将某个特征是否出现在句子中的信息保留下来，但是无法确定它究竟在句子的哪个位置出现。这个信息出现的位置真的很重要吗？确实是的，它有点类似于一组n-grams模型的行为。尽管丢失了关于位置的全局信息（在句子中的大致位置），但是滤波器捕捉到的局部信息却被保留下来了，比如“not amazing”和“amazing not”的意思就大相径庭。</p>
-<p>在图像识别领域，池化还能提供平移和旋转不变性。若对某个区域做了池化，即使图像平移/旋转几个像素，得到的输出值也基本一样，因为每次最大值运算得到的结果总是一样的</p>
-<h2 id="前向"><a href="#前向" class="headerlink" title="前向"></a>前向</h2><p>现在设节点 $i$ 和节点 $j$ 之间的权值为 $w_{i,j}$ ，节点 $j$ 的阀值为 $b_j$ ，每个节点的输出值为 $x_j$ ，而每个节点的输出值是根据上层所有节点的输出值、当前节点与上一层所有节点的权值和当前节点的阀值还有激活函数来实现的。具体计算方法如下</p>
-<p>$$S_j=\sum_{i=0}^{m-1}{w_{i,j}x_i+b_j}$$<br>$$x_j=f\left( S_j \right) $$</p>
-<p>其中 $f$ 为激活函数，一般选取S型函数或者线性函数。正向传递的过程比较简单，按照上述公式计算即可。在BP神经网络中，输入层节点没有阀值。</p>
-<h3 id="卷积的前向"><a href="#卷积的前向" class="headerlink" title="卷积的前向"></a>卷积的前向</h3><p>如下图，卷积层的输入来源于输入层或者pooling层。每一层的多个卷积核大小相同，在这个网络中，使用的卷积核均为 $5\times 5$ 。<br>  <img src="/images/cnn/6.png" alt=""></p>
-<p>如图输入为 $28 \times 28$ 的图像，经过 $5 \times5$ 的卷积之后，得到一个 $(28-5+1)\times (28-5+1) = 24\times 24$ 的map。卷积层2的每个map是不同卷积核在前一层每个map上进行卷积，并将每个对应位置上的值相加然后再加上一个偏置项。</p>
-<p>  <img src="/images/cnn/7.png" alt=""><br>每次用卷积核与map中对应元素相乘，然后移动卷积核进行下一个神经元的计算。如图中矩阵C的第一行第一列的元素2，就是卷积核在输入map左上角时的计算结果。在图中也很容易看到，输入为一个 $4\times 4$ 的map，经过 $2\times 2$ 的卷积核卷积之后，结果为一个 $(4-2+1) \times (4-2+1) = 3\times 3$ 的map。</p>
-<h3 id="卷积前向的caffe实现"><a href="#卷积前向的caffe实现" class="headerlink" title="卷积前向的caffe实现"></a>卷积前向的caffe实现</h3><p>Caffe中卷积的实现十分巧妙，详细可以参考一下这篇论文: <a href="https://hal.archives-ouvertes.fr/file/index/docid/112631/filename/p1038112283956.pdf" target="_blank" rel="external">https://hal.archives-ouvertes.fr/file/index/docid/112631/filename/p1038112283956.pdf</a></p>
-<p>下面是一张论文中的图片，看这张图片可以很清楚理解。从图中可以看出，卷积之前将输入的多个矩阵和多个卷积核先展开再组合成2个大的矩阵，用展开后的矩阵相乘。</p>
-<p><img src="/images/cnn/8.png" alt=""></p>
-<p>假设我们一次训练16张图片(即batch_size为16)。通过之前的推导，我们知道该层的输入为20个 $12\times 12$ 的特征图，所以bottom的维度 $16\times 20\times 12\times 12$ ，则该层的输出top的维度为 $16\times 50 \times 8\times 8$ 。</p>
-<h1 id="后向传播"><a href="#后向传播" class="headerlink" title="后向传播"></a>后向传播</h1><h2 id="反向梯度"><a href="#反向梯度" class="headerlink" title="反向梯度"></a>反向梯度</h2><p>在BP神经网络中，误差信号反向传递子过程比较复杂，它是基于 <code>Widrow-Hoff</code> 学习规则的。假设输出层的所有结果为，误差函数如下<br>$$E\left( w,b \right) =\frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2}$$</p>
-<p>而BP神经网络的主要目的是反复修正权值和阀值，使得误差函数值达到最小。<code>Widrow-Hoff</code> 学习规则是通过沿着相对误差平方和的最速下降方向，连续调整网络的权值和阀值，根据梯度下降法，权值矢量的修正正比于当前位置上 $E(w,b)$ 的梯度，对于第 $j$ 个输出节点有<br>$$\varDelta w\left( i,j \right) =-\eta \frac{\partial E\left( w,b \right)}{\partial w\left( i,j \right)}$$<br>假设我们选择激活函数：<br>$$f\left( x \right) =\frac{A}{1+e^{-\frac{x}{B}}}$$<br>对其进行求导：<br>$$<br>f’\left( x \right) =\frac{Ae^{-\frac{x}{B}}}{B\left( 1+e^{-\frac{x}{B}} \right) ^2}<br>$$<br>$$<br>=\frac{1}{AB}\cdot \frac{A}{1+e^{-\frac{x}{B}}}\cdot \left( A-\frac{A}{1+e^{-\frac{x}{B}}} \right)<br>$$<br>$$<br>=\frac{f\left( x \right) \left[ A-f\left( x \right) \right]}{AB}<br>$$<br>那么接下来针对 $w_{i,j}$</p>
-<p>$$ \frac{\partial E\left( w,b \right)}{\partial w_{ij}}=\frac{1}{\partial w_{ij}}\cdot \frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2} $$</p>
-<p>$$<br>=\left( d_j-y_j \right) \cdot \frac{\partial d_j}{\partial w_{ij}}<br>$$</p>
-<p>$$<br>=\left( d_j-y_j \right) \cdot f’\left( S_j \right) \frac{\partial S_j}{\partial w_{ij}}<br>$$</p>
-<p>$$<br>=\left( d_j-y_j \right) \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}<br>$$</p>
-<p>$$<br>=\left( d_j-y_j \right) \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}\cdot x_i<br>$$</p>
-<p>$$=\delta_{ij}\cdot x_j$$</p>
-<p>其中有</p>
-<p>$$\delta_{ij}=\left( d_j-y_j \right) \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB} $$</p>
-<p>同样，对于 $b_j$<br>$$<br>\frac{\partial E\left( w,b \right)}{\partial b_j}=\delta_{ij}<br>$$</p>
-<p>这就是著名的 $\delta$   学习规则，通过改变神经元之间的连接权值来减少系统实际输出和期望输出的误差，这个规则又叫做<code>Widrow-Hoff</code>学习规则或者纠错学习规则。</p>
-<p>上面是对隐含层和输出层之间的权值和输出层的阀值计算调整量，而针对输入层和隐含层和隐含层的阀值调整量的计算更为复杂。假设是输入层第 $k$ 个节点和隐含层第 $i$ 个节点之间的权值，那么有</p>
-<p>$$<br>\frac{\partial E\left( w,b \right)}{\partial w_{ki}}=\frac{1}{\partial w_{ki}}\cdot \frac{1}{2}\sum_{j=0}^{n-1}{\left( d_j-y_j \right) ^2}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\left( d_j-y_j \right) \cdot f’\left( S_j \right) \cdot \frac{\partial S_j}{\partial w_{kj}}}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\left( d_j-y_j \right) \cdot f’\left( S_j \right) \cdot \frac{\partial S_j}{\partial x_i}\cdot \frac{\partial x_i}{\partial S_i}\cdot \frac{\partial S_j}{\partial w_{kj}}}<br>$$<br>$$<br>=\sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}\cdot x_k<br>$$<br>$$<br>=x_k\cdot \sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}<br>$$<br>$$<br>=\delta_{ki}\cdot x_k<br>$$<br> 其中有<br> $$<br>\delta_{ki}=\sum_{j=0}^{n-1}{\delta_{ij}\cdot w_{ij}\cdot \frac{f\left( S_j \right) \left[ A-f\left( S_j \right) \right]}{AB}}<br>$$</p>
-<h2 id="梯度下降更新"><a href="#梯度下降更新" class="headerlink" title="梯度下降更新"></a>梯度下降更新</h2><p>有了上述公式，根据梯度下降法，那么对于隐含层和输出层之间的权值和阀值调整如下<br>$$<br>w_{ij}=w_{ij}-\eta_1\frac{\partial E\left( w,b \right)}{\partial w_{ij}}=w_{ij}-\eta_1\delta_{ij}\cdot x_i<br>$$</p>
-<p>$$<br>b_j=b_j-\eta_2\frac{\partial E\left( w,b \right)}{\partial b_j}=b_j-\eta_2\delta_{ij}<br>$$<br>  而对于输入层和隐含层之间的权值和阀值调整同样有</p>
-<p>  $$w_{ki}=w_{ki}-\eta_1\frac{\partial E\left( w,b \right)}{\partial w_{ki}}=w_{ki}-\eta_1\delta_{ki}\cdot x_k$$</p>
-<p>$$b_i=b_i-\eta_2\frac{\partial E\left( w,b \right)}{\partial b_i}=b_i-\eta_2\delta_{ki}$$</p>
-<h2 id="bp的缺陷"><a href="#bp的缺陷" class="headerlink" title="bp的缺陷"></a>bp的缺陷</h2><ol>
-<li>容易形成局部极小值而得不到全局最优值。BP神经网络中极小值比较多，所以很容易陷入局部极小值，这就要求对初始权值和阀值有要求，要使得初始权值和阀值随机性足够好，可以多次随机来实现。</li>
-<li>训练次数多使得学习效率低，收敛速度慢。</li>
-<li>隐含层的选取缺乏理论的指导。</li>
-<li>训练时学习新样本有遗忘旧样本的趋势。<h2 id="卷积的后向传播"><a href="#卷积的后向传播" class="headerlink" title="卷积的后向传播"></a>卷积的后向传播</h2>在反向传播过程中，若第x层的a节点通过权值W对x+1层的b节点有贡献，则在反向传播过程中，梯度通过权值W从b节点传播回a节点。不管下面的公式推导，还是后面的卷积神经网络，在反向传播的过程中，都是遵循这样的一个规律。</li>
-</ol>
-<p>卷积层的反向传播过程也是如此，我们只需要找出卷积层L中的每个单元和L+1层中的哪些单元相关联即可。我们还用此的图片举例子。<br><img src="/images/cnn/7.png" alt=""><br>在上图中，我们的矩阵A11通过权重B11与C11关联。而A12与2个矩阵C中2个元素相关联，分别是通过权重B12和C11关联，和通过权重B11和C12相关联。矩阵A中其他元素也类似。</p>
-<p>那么，我们有没有简单的方法来实现这样的关联呢。答案是有的。可以通过将卷积核旋转180度，再与扩充后的梯度矩阵进行卷积。扩充的过程如下：如果卷积核为 $k\times k$ ，待卷积矩阵为 $n\times n$ ，需要以$n\times n$ 原矩阵为中心扩展到 $(n+2(k-1))\times (n+2(k-1))$ 。具体过程如下：<br>假设D为反向传播到卷积层的梯度矩阵，则D应该与矩阵C的大小相等，在这里为3*3。我们首先需要将它扩充到 $(3+2\times(2-1))\times (3+2\times(2-1)) = 5\times 5$ 大小的矩阵，<br><img src="/images/cnn/9.png" alt=""><br>同时将卷积核B旋转180度：<br><img src="/images/cnn/10.png" alt=""><br>将旋转后的卷积核与扩充后的梯度矩阵进行卷积：<br><img src="/images/cnn/11.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;  神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其分道扬镳，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="卷积深度网络" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
     
   </entry>
   
