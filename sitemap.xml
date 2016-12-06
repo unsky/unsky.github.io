@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/12/06/3Sum/</loc>
+    
+    <lastmod>2016-12-06T13:54:23.954Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/03/Longest-Common-Prefix/</loc>
     
     <lastmod>2016-12-03T12:53:49.665Z</lastmod>

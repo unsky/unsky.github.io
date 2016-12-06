@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-03T12:53:49.665Z</updated>
+  <updated>2016-12-06T13:54:23.954Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>3Sum</title>
+    <link href="http://yoursite.com/2016/12/06/3Sum/"/>
+    <id>http://yoursite.com/2016/12/06/3Sum/</id>
+    <published>2016-12-06T13:41:05.000Z</published>
+    <updated>2016-12-06T13:54:23.954Z</updated>
+    
+    <content type="html"><![CDATA[<p>Id.15. 3Sum   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 165869<br>Total Submissions: 802806<br>Difficulty: Medium<br>Contributors: Admin<br>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
+<p>Note: The solution set must not contain duplicate triplets.</p>
+<p>For example, given array S = [-1, 0, 1, 2, -1, -4],</p>
+<p>A solution set is:<br>[<br>  [-1, 0, 1],<br>  [-1, -1, 2]<br>]<br><a id="more"></a><br>这道题目因为需要去重和遍历，所以用传统的方法遍历会出现很多的重复步骤，因为这个题目不要重复值，所以我们可以对其先进行排序，双指针在有序的数列问题中表现很好，所以使用双指针算法。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; threeSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</div><div class="line">        <span class="keyword">if</span>(nums.size()&lt;<span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">        sort(nums.begin(),nums.end());</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size()<span class="number">-2</span>;i++)</div><div class="line">        &#123;  </div><div class="line">            <span class="keyword">if</span> ((i&gt;<span class="number">0</span>)&amp;&amp;nums[i]==nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</div><div class="line">          <span class="keyword">int</span> left=i+<span class="number">1</span>;</div><div class="line">          <span class="keyword">int</span> right=nums.size()<span class="number">-1</span>;</div><div class="line">          <span class="keyword">while</span>(left&lt;right)</div><div class="line"></div><div class="line">          &#123;  </div><div class="line">              <span class="keyword">if</span>((nums[left]+nums[right])==(<span class="number">-1</span>*nums[i]))</div><div class="line">                &#123; <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</div><div class="line">                vec.push_back(nums[i]);</div><div class="line">                vec.push_back(nums[left]);</div><div class="line">                vec.push_back(nums[right]);</div><div class="line">                result.push_back(vec);</div><div class="line">                left++;</div><div class="line">                right--;</div><div class="line">                <span class="keyword">while</span>(nums[left]==nums[left<span class="number">-1</span>]) left++;</div><div class="line"></div><div class="line">                <span class="keyword">while</span>(nums[right]==nums[right+<span class="number">1</span>]) right--;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span>((nums[left]+nums[right])&lt;(<span class="number">-1</span>*nums[i]))</div><div class="line">                    left++;</div><div class="line">                <span class="keyword">else</span>  right--;</div><div class="line"></div><div class="line"></div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">`</div></pre></td></tr></table></figure></p>
+<p>该算法的核心，因为首先进行了排序，所以可以方便的使用双指针，如果小于一个目标值则进行left+1,大于则right-1.<br>关键步骤是去重。因为对于排序过后的数组，这三个数如果和在向下一步走的时候，如何和上一步相等则即可判断为重复。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Id.15. 3Sum   Add to List QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 165869&lt;br&gt;Total Submissions: 802806&lt;br&gt;Difficulty: Medium&lt;br&gt;Contributors: Admin&lt;br&gt;Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.&lt;/p&gt;
+&lt;p&gt;Note: The solution set must not contain duplicate triplets.&lt;/p&gt;
+&lt;p&gt;For example, given array S = [-1, 0, 1, 2, -1, -4],&lt;/p&gt;
+&lt;p&gt;A solution set is:&lt;br&gt;[&lt;br&gt;  [-1, 0, 1],&lt;br&gt;  [-1, -1, 2]&lt;br&gt;]&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Longest Common Prefix</title>
@@ -808,69 +834,6 @@
       <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="聚类分析" scheme="http://yoursite.com/tags/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>互斥聚类-k-means聚类</title>
-    <link href="http://yoursite.com/2016/11/09/k-means%E8%81%9A%E7%B1%BB/"/>
-    <id>http://yoursite.com/2016/11/09/k-means聚类/</id>
-    <published>2016-11-09T08:56:52.000Z</published>
-    <updated>2016-11-10T12:11:58.912Z</updated>
-    
-    <content type="html"><![CDATA[<p> 在数据挖掘中，K-Means算法是一种cluster analysis的算法， 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。<br> <a id="more"></a></p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>K-Means算法主要解决的问题如下图所示。我们可以看到，在图的左边有一些点，我们用肉眼可以看出来有四个点群，但是我们怎么通过计算机程序找出这几个点群来呢？</p>
-<p>于是就出现了我们的K-Means算法。<br><img src="/images/kmeans/1.png" alt=""><br>算法概要如下图所示：<br><img src="/images/kmeans/2.png" alt=""><br>从上图中，我们可以看到，A，B，C，D，E是五个在图中点。而灰色的点是我们的种子点，也就是我们用来找点群的点。有两个种子点，所以K=2。</p>
-<p>然后，K-Means的算法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1. 随机在图中取K（这里K=2）个种子点</div><div class="line"></div><div class="line">2. 然后对图中的所有点求到这K个种子点的距离，假如点Pi离种子点Si最近，</div><div class="line">那么Pi属于Si点群。</div><div class="line">（上图中，我们可以看到A，B属于上面的种子点，C，D，E属于下面中部的种子点）</div><div class="line">3. 我们要移动种子点到属于他的“点群”的中心。（见图上的第三步）</div><div class="line">然后重复第2）和第3）步直到，种子点没有移动（我们可以看到图中的第四步上面的种子点聚合了A，B，C，下面的种子点聚合了D，E）。</div></pre></td></tr></table></figure>
-<p>使用公式可以表示为：<br>$$\varUpsilon =\sum_{k=1}^K{\sum_{i=1}^L{dist\left( x_i-u_k \right)}}$$<br>而$dist$距离函数可以分为：</p>
-<ol>
-<li>Minkowski Distance（闵可夫斯基距离）<br>$$<br>d_{i,j}=\sqrt[\lambda]{\sum_{k=1}^n{|x_{i,k}-x_{j,k}|}^{\lambda}}<br>$$<br>$\lambda$ 可以随意取值，可以是负数，也可以是正数，或是无穷大</li>
-<li>Euclidean Distance(欧拉距离)</li>
-</ol>
-<p>$$<br>d_{i,j}=\sqrt[]{\sum_{k=1}^n{|x_{i,k}-x_{j,k}|}^2}<br>$$<br>其形式为 Minkowski Distance 为 $\lambda$=2时候的特殊形式。</p>
-<ol>
-<li>CityBlock Distance （CB距离）<br>$$<br>d_{i,j}=\sum_{k=1}^n{|x_{i,k}-x_{j,k}|}<br>$$<br>也就是第一个公式 $\lambda$=1的情况。</li>
-</ol>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>在模拟k-means的实验中我们使用深度学习网络vgg16在一个层的feature maps 来进行模拟实验，用来验证聚类效果，输入图片为一个行人。我们使用vgg16 conv1-2产生的feature maps进行实验。假设我们产生的feature maps 为 $\psi \in R^{m\times n\times k}$ ,其中 $m\times n$ 为feature大小, k为map的个数。首先每个feature进行向量化，从而将其转化为 $\psi \in R^{m* n\times k}$ 。使用k-means对一个层的feature maps进行聚类，并可视化效果。本实验中使用欧式距离。</p>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ol>
-<li>实验使用vlfeat工具包<br>下载地址： <a href="https://github.com/unsky/vlfeat" target="_blank" rel="external">https://github.com/unsky/vlfeat</a></li>
-<li>在vlfeat\toolbox中使用vl_setup启动工具包</li>
-</ol>
-<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><p>假设feature maps已经存在于 res1.mat 中<br>运行代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">load(&apos;res1.mat&apos;);</div><div class="line">a=res(23).x;</div><div class="line">[w,e,r]=size(a);</div><div class="line">a=reshape(a,w*e,r);</div><div class="line"> [C, A] = vl_kmeans(a, 10) ;</div><div class="line"> for i=1:10,</div><div class="line"> fea=C(:,i);</div><div class="line"> fea=reshape(fea,w,e);</div><div class="line">  n = mapminmax(fea, 0, 1);</div><div class="line"> subplot(2,5,i);</div><div class="line"> imshow(n);</div><div class="line"> hold on;</div><div class="line"> end</div></pre></td></tr></table></figure></p>
-<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><ol>
-<li>原始64个feature的可视化：<br><img src="/images/kmeans/3.png" alt=""></li>
-<li>k-means （k=10）<br><img src="/images/kmeans/4.png" alt=""></li>
-</ol>
-<p>k=5<br><img src="/images/kmeans/5.png" alt=""></p>
-<p>k=1<br><img src="/images/kmeans/6.png" alt=""></p>
-<h1 id="k-means-优缺点"><a href="#k-means-优缺点" class="headerlink" title="k-means 优缺点"></a>k-means 优缺点</h1><p> 优点：</p>
-<ol>
-<li>算法简单</li>
-<li>适用于球形簇</li>
-<li>二分k均值等变种算法运行良好，不受初始化问题的影响。</li>
-</ol>
-<p>缺点：</p>
-<ol>
-<li>不能处理非球形簇、不同尺寸和不同密度的簇</li>
-<li>对离群点、噪声敏感</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt; 在数据挖掘中，K-Means算法是一种cluster analysis的算法， 其主要是来计算数据聚集算法，主要通过不断地取离种子点最近均值的算法。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="聚类分析" scheme="http://yoursite.com/categories/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/"/>
-    
-    
-      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="k-means" scheme="http://yoursite.com/tags/k-means/"/>
-    
-      <category term="聚类" scheme="http://yoursite.com/tags/%E8%81%9A%E7%B1%BB/"/>
     
   </entry>
   
