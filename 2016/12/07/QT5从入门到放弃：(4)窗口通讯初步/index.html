@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Integer to Roman," />
+  <meta name="keywords" content="QT5,信号和槽," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="ID12:Integer to Roman   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 85662Total Submissions: 202008Difficulty: MediumContributors: AdminGiven an integer, convert it to a roman">
+<meta name="description" content="信号和槽的机制简单理解就是，做一件事，发射一种信号，然后执行槽内的程序。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Integer to Roman">
-<meta property="og:url" content="http://yoursite.com/2016/12/01/Integer-to-Roman/index.html">
+<meta property="og:title" content="QT5从入门到放弃:(4)窗口通讯初步">
+<meta property="og:url" content="http://yoursite.com/2016/12/07/QT5从入门到放弃：(4)窗口通讯初步/index.html">
 <meta property="og:site_name" content="Deepdim-Unsky'Blog">
-<meta property="og:description" content="ID12:Integer to Roman   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 85662Total Submissions: 202008Difficulty: MediumContributors: AdminGiven an integer, convert it to a roman">
-<meta property="og:updated_time" content="2016-12-02T14:50:41.381Z">
+<meta property="og:description" content="信号和槽的机制简单理解就是，做一件事，发射一种信号，然后执行槽内的程序。">
+<meta property="og:image" content="http://yoursite.com/images/signalbase/1.png">
+<meta property="og:image" content="http://yoursite.com/images/signalbase/2.png">
+<meta property="og:image" content="http://yoursite.com/images/signalbase/3.png">
+<meta property="og:image" content="http://yoursite.com/images/signalbase/4.png">
+<meta property="og:image" content="http://yoursite.com/images/signalbase/5.png">
+<meta property="og:updated_time" content="2016-12-07T16:11:07.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Integer to Roman">
-<meta name="twitter:description" content="ID12:Integer to Roman   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 85662Total Submissions: 202008Difficulty: MediumContributors: AdminGiven an integer, convert it to a roman">
+<meta name="twitter:title" content="QT5从入门到放弃:(4)窗口通讯初步">
+<meta name="twitter:description" content="信号和槽的机制简单理解就是，做一件事，发射一种信号，然后执行槽内的程序。">
+<meta name="twitter:image" content="http://yoursite.com/images/signalbase/1.png">
 
 
 
@@ -114,10 +120,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/01/Integer-to-Roman/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/07/QT5从入门到放弃：(4)窗口通讯初步/"/>
 
 
-  <title> Integer to Roman | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> QT5从入门到放弃:(4)窗口通讯初步 | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -377,7 +383,7 @@
             
             
               
-                Integer to Roman
+                QT5从入门到放弃:(4)窗口通讯初步
               
             
           </h1>
@@ -389,8 +395,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-01T19:47:19+08:00" content="2016-12-01">
-              2016-12-01
+            <time itemprop="dateCreated" datetime="2016-12-07T11:18:52+08:00" content="2016-12-07">
+              2016-12-07
             </time>
           </span>
 
@@ -403,8 +409,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/QT5从入门到放弃/" itemprop="url" rel="index">
+                    <span itemprop="name">QT5从入门到放弃</span>
                   </a>
                 </span>
 
@@ -419,8 +425,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/12/01/Integer-to-Roman/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/Integer-to-Roman/" itemprop="commentsCount"></span>
+                <a href="/2016/12/07/QT5从入门到放弃：(4)窗口通讯初步/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/07/QT5从入门到放弃：(4)窗口通讯初步/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -443,12 +449,35 @@
       
 
       
-        <p>ID12:Integer to Roman   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 85662<br>Total Submissions: 202008<br>Difficulty: Medium<br>Contributors: Admin<br>Given an integer, convert it to a roman numeral.</p>
-<p>Input is guaranteed to be within the range from 1 to 3999.<br><a id="more"></a><br>这道题目需要一定的背景知识。<br>罗马数字的表示方法可以参考wiki:<br><a href="https://en.wikipedia.org/wiki/Roman_numerals" target="_blank" rel="external">https://en.wikipedia.org/wiki/Roman_numerals</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">I: 1</div><div class="line">V: 5</div><div class="line">X: 10</div><div class="line">L: 50</div><div class="line">C: 100</div><div class="line">D: 500</div><div class="line">M: 1000</div></pre></td></tr></table></figure></p>
-<p>字母可以重复，但不超过三次，当需要超过三次时，用与下一位的组合表示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">I: 1, II: 2, III: 3, IV: 4</div><div class="line">C: 100, CC: 200, CCC: 300, CD: 400</div></pre></td></tr></table></figure></p>
-<p>所以需要特殊处理的数字包括：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">I: 1</div><div class="line">IV: 4</div><div class="line">V: 5</div><div class="line">IX: 9</div><div class="line">X: 10</div><div class="line">XL: 40</div><div class="line">L: 50</div><div class="line">XC: 90</div><div class="line">C: 100</div><div class="line">CD: 400</div><div class="line">D: 500</div><div class="line">CM: 900</div><div class="line">M: 1000</div></pre></td></tr></table></figure></p>
-<p>例如:3600这个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">3600&gt;1000 3600/1000=3 循环三次M,3600%1000=600;</div><div class="line">600&gt;400 600/400=1 循环一次CD,600%400=200;</div><div class="line">200&gt;100 200/100=2 循环两次C, 200%100=0;</div><div class="line">OVER;</div></pre></td></tr></table></figure></p>
-<p>代码:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> roman[]=&#123;<span class="string">"I"</span>,<span class="string">"IV"</span>,<span class="string">"V"</span>,<span class="string">"IX"</span>,<span class="string">"X"</span>,<span class="string">"XL"</span>,<span class="string">"L"</span>,<span class="string">"XC"</span>,<span class="string">"C"</span>,<span class="string">"CD"</span>,<span class="string">"D"</span>,<span class="string">"CM"</span>,<span class="string">"M"</span>&#125;;</div><div class="line">        <span class="keyword">int</span> val[<span class="number">13</span>]=&#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">90</span>,<span class="number">100</span>,<span class="number">400</span>,<span class="number">500</span>,<span class="number">900</span>,<span class="number">1000</span>&#125;;</div><div class="line">        <span class="built_in">string</span> result;</div><div class="line">        <span class="keyword">int</span> count;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">12</span>;i&gt;=<span class="number">0</span>;i--)</div><div class="line">        &#123; <span class="keyword">if</span>(num&gt;=val[i])</div><div class="line">           &#123;   count=num/val[i];</div><div class="line">           num=num%val[i];</div><div class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;count;j++)</div><div class="line">           result.append(roman[i]);</div><div class="line">        &#125;&#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+        <p>信号和槽的机制简单理解就是，做一件事，发射一种信号，然后执行槽内的程序。<br><a id="more"></a><br>QT可以手动设置信号与槽也可以自动设置，为了了解最基本的原理我们从最基本的手动设置开始：</p>
+<h1 id="手动实现信号与槽"><a href="#手动实现信号与槽" class="headerlink" title="手动实现信号与槽"></a>手动实现信号与槽</h1><p>  <img src="/images/signalbase/1.png" alt=""><br>  如图在设计师模块中加入push button 并将其objectName 设置为showChild.<br>   下面开始使用这个push button.</p>
+<p>   首先明确我们的目的师设计按下push button之后产生信号，信号激活槽内的程序使其产生一个label的窗口。</p>
+<p>   首先我们需要先声明槽（slots）.<br>   <code>note：</code><br>   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">c++编程补充：因为c++需要声明和定义，一般都将声明写进 .h文件，而定义写在.cpp文件中。</div><div class="line">在程序的书写中不需要包含各种cpp文件，程序在执行中动态的调用各种函数。</div></pre></td></tr></table></figure></p>
+<p>   所以我们先在mainwindow.h声明槽<br>   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MAINWINDOW_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAINWINDOW_H</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> Ui &#123;</div><div class="line"><span class="keyword">class</span> MainWindow;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> MainWindow : <span class="keyword">public</span> QMainWindow</div><div class="line">&#123;</div><div class="line">    Q_OBJECT</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">MainWindow</span><span class="params">(QWidget *parent = <span class="number">0</span>)</span></span>;</div><div class="line">    ~MainWindow();</div><div class="line">   <span class="keyword">public</span> slots:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showChild</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    Ui::MainWindow *ui;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// MAINWINDOW_H</span></span></div></pre></td></tr></table></figure></p>
+<p>其中<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> slots:</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">showChild</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure></p>
+<p>声明了槽函数 showChild();<br>在声明完之后我们需要给其具体的定义,在mainwindow.cpp中进行定义：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_mainwindow.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDialog&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></div><div class="line">MainWindow::MainWindow(QWidget *parent) :</div><div class="line">    QMainWindow(parent),</div><div class="line">    ui(<span class="keyword">new</span> Ui::MainWindow)</div><div class="line">&#123;</div><div class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</div><div class="line">    connect(ui-&gt;showChildButton,SIGNAL(clicked()),<span class="keyword">this</span>,SLOT(showChild()));</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">MainWindow::~MainWindow()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">delete</span> ui;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> MainWindow::showChild()</div><div class="line">&#123;  QLabel *label=<span class="keyword">new</span> QLabel();</div><div class="line">  label-&gt;setText(<span class="string">"I AM SLOT!"</span>);</div><div class="line"></div><div class="line">    label-&gt;show();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>因为我们在mainwindow.h中定义了类的名字空间<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> Ui &#123;</div><div class="line"><span class="keyword">class</span> MainWindow;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>所以这里函数的具体定义我们应该写成：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">void</span> MainWindow::showChild()</div><div class="line">&#123;  QLabel *label=<span class="keyword">new</span> QLabel();</div><div class="line">  label-&gt;setText(<span class="string">"I AM SLOT!"</span>);</div><div class="line"></div><div class="line">    label-&gt;show();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在定义完之后。我们需要进行具体的连接，也就是将信号和槽进行连接，我们在类的构造函数内完成，<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">connect(ui-&gt;showChildButton,SIGNAL(clicked()),<span class="keyword">this</span>,SLOT(showChild()));</div></pre></td></tr></table></figure></p>
+<p> connect的第一个参数是发送信号的对象，第二个是信号，第三个是接受信号的对象,第四个是槽函数。<br> 这是手工的做法</p>
+<h1 id="自动信号与槽"><a href="#自动信号与槽" class="headerlink" title="自动信号与槽"></a>自动信号与槽</h1><p>我们现在简单的实现一个登陆界面和主界面的切换程序。</p>
+<p>从最开始开始。新建一个空的项目。</p>
+<p>在工程文件里加上<code>QT + =widgets</code></p>
+<h2 id="新建第一个登陆界面："><a href="#新建第一个登陆界面：" class="headerlink" title="新建第一个登陆界面："></a>新建第一个登陆界面：</h2><p>新建一个空的QT设计师<br>选择Dialog without buttons<br>类名就写 myDialog<br>  <img src="/images/signalbase/2.png" alt=""><br>  点F4进入信号与槽模式<br>  先设计退出按钮，左键点击退出按钮的下边然后拉到主窗口的边缘，意思也就是信号源是退出按钮，接受源是整个窗口。<br>    <img src="/images/signalbase/3.png" alt=""><br>    设计成功后的样子：<br>        <img src="/images/signalbase/4.png" alt=""><br>然后再设计进入主程序：<br>F3回到设计模式，右键点击进入主程序按钮，选择转到槽，然后选择click(),之后点击确定。</p>
+<p>这时候转到了myDialog类的源文件即 myDialog.cpp加入代码，<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mydialog.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_mydialog.h"</span></span></div><div class="line"></div><div class="line">myDialog::myDialog(QWidget *parent) :</div><div class="line">    QDialog(parent),</div><div class="line">    ui(<span class="keyword">new</span> Ui::myDialog)</div><div class="line">&#123;</div><div class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">myDialog::~myDialog()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">delete</span> ui;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> myDialog::on_pushButton_clicked()</div><div class="line">&#123;</div><div class="line">    accept();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<pre><code>其中on_pushButton_clicked()，其声明在myDialog里也被自动声明完了，就是上面我们所说的实现模式就是自动生成函数
+我们在里面加入：
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> myDialog::on_pushButton_clicked()</div><div class="line">&#123;</div><div class="line">    accept();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  accept()这个函数的作用就是判断哪个是主程序界面这个按钮被按下，如果被按下则返回<code>QDialog::Accepted</code>.</p>
+<h2 id="设计第二个界面"><a href="#设计第二个界面" class="headerlink" title="设计第二个界面"></a>设计第二个界面</h2><p>  第二个界面有：<br>    <img src="/images/signalbase/5.png" alt=""></p>
+<h3 id="重新登陆按钮的设计："><a href="#重新登陆按钮的设计：" class="headerlink" title="重新登陆按钮的设计："></a>重新登陆按钮的设计：</h3><p>和前面一样，右键转到槽</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> myDialog1::on_pushButton_clicked()</div><div class="line">&#123;</div><div class="line">    close();</div><div class="line">    myDialog win;</div><div class="line">   win.show();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>即关闭之后重新建立一个myDialog窗口。</p>
+<h3 id="退出按钮"><a href="#退出按钮" class="headerlink" title="退出按钮"></a>退出按钮</h3><p>和前面的退出按钮设计相同。</p>
+<h3 id="显示label按钮"><a href="#显示label按钮" class="headerlink" title="显示label按钮"></a>显示label按钮</h3><p>右键转到槽<br>加入<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> myDialog1::on_pushButton_2_clicked()</div><div class="line">&#123;</div><div class="line">    QLabel *label=<span class="keyword">new</span> QLabel(<span class="keyword">this</span>);</div><div class="line">    label-&gt;setText(<span class="string">"uhgiuhuh"</span>);</div><div class="line">    label-&gt;show();</div><div class="line"></div><div class="line">&#125;</div><div class="line">至此没有Dialog.cpp变为</div><div class="line"></div><div class="line"></div><div class="line">```cpp</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span>  <span class="meta-string">&lt;QLabel&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mydialog1.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_mydialog1.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mydialog.h"</span></span></div><div class="line"></div><div class="line">myDialog1::myDialog1(QWidget *parent) :</div><div class="line">    QDialog(parent),</div><div class="line">    ui(<span class="keyword">new</span> Ui::myDialog1)</div><div class="line">&#123;</div><div class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">myDialog1::~myDialog1()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">delete</span> ui;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> myDialog1::on_pushButton_clicked()</div><div class="line">&#123;</div><div class="line">    accept();</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> myDialog1::on_pushButton_2_clicked()</div><div class="line">&#123;</div><div class="line">    QLabel *label=<span class="keyword">new</span> QLabel(<span class="keyword">this</span>);</div><div class="line">    label-&gt;setText(<span class="string">"uhgiuhuh"</span>);</div><div class="line">    label-&gt;show();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"mydialog.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"mydialog1.h"</span></span></div><div class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;  <span class="function">QApplication <span class="title">w</span><span class="params">(argc,argv)</span></span>;</div><div class="line">    myDialog win1;</div><div class="line">    myDialog1 win2;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(win1.exec()==QDialog::Accepted)</div><div class="line">    &#123;  <span class="keyword">if</span>(win2.exec()==QDialog::Accepted)</div><div class="line">        &#123; win1.show();</div><div class="line">            <span class="keyword">return</span> w.exec();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>即如果第一界面的进入主程序被按下，执行<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(win2.exec()==QDialog::Accepted)</div><div class="line">   &#123; win1.show();</div><div class="line">       <span class="keyword">return</span> w.exec();</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>这句语句的意思是如果第二个窗口的重新登陆被按下则显示第一个界面。</p>
 
       
     </div>
@@ -492,7 +521,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Integer-to-Roman/" rel="tag">#Integer to Roman</a>
+            <a href="/tags/QT5/" rel="tag">#QT5</a>
+          
+            <a href="/tags/信号和槽/" rel="tag">#信号和槽</a>
           
         </div>
       
@@ -501,17 +532,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/30/Container-With-Most-Water/" rel="next" title="Container With Most Water">
-                <i class="fa fa-chevron-left"></i> Container With Most Water
+              <a href="/2016/12/07/QT5从入门到放弃：(3)模态与非模特/" rel="next" title="QT5从入门到放弃:(3)模态与非模特">
+                <i class="fa fa-chevron-left"></i> QT5从入门到放弃:(3)模态与非模特
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/02/QT5从入门到放弃：(1)hello-qt/" rel="prev" title="QT5从入门到放弃:(1)hello,qt!">
-                QT5从入门到放弃:(1)hello,qt! <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -578,8 +605,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/01/Integer-to-Roman/"
-           data-title="Integer to Roman" data-url="http://yoursite.com/2016/12/01/Integer-to-Roman/">
+      <div class="ds-thread" data-thread-key="2016/12/07/QT5从入门到放弃：(4)窗口通讯初步/"
+           data-title="QT5从入门到放弃:(4)窗口通讯初步" data-url="http://yoursite.com/2016/12/07/QT5从入门到放弃：(4)窗口通讯初步/">
       </div>
     
   </div>
@@ -726,7 +753,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#手动实现信号与槽"><span class="nav-number">1.</span> <span class="nav-text">手动实现信号与槽</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动信号与槽"><span class="nav-number">2.</span> <span class="nav-text">自动信号与槽</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建第一个登陆界面："><span class="nav-number">2.1.</span> <span class="nav-text">新建第一个登陆界面：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计第二个界面"><span class="nav-number">2.2.</span> <span class="nav-text">设计第二个界面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重新登陆按钮的设计："><span class="nav-number">2.2.1.</span> <span class="nav-text">重新登陆按钮的设计：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#退出按钮"><span class="nav-number">2.2.2.</span> <span class="nav-text">退出按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示label按钮"><span class="nav-number">2.2.3.</span> <span class="nav-text">显示label按钮</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主程序"><span class="nav-number">3.</span> <span class="nav-text">主程序</span></a></li></ol></div>
             
           </div>
         </section>
