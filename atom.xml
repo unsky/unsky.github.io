@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-07T16:11:07.055Z</updated>
+  <updated>2016-12-09T14:17:52.550Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Deep Learning Strong Parts for Pedestrian Detection</title>
+    <link href="http://yoursite.com/2016/12/09/Deep-Learning-Strong-Parts-for-Pedestrian-Detection/"/>
+    <id>http://yoursite.com/2016/12/09/Deep-Learning-Strong-Parts-for-Pedestrian-Detection/</id>
+    <published>2016-12-09T13:04:02.000Z</published>
+    <updated>2016-12-09T14:17:52.550Z</updated>
+    
+    <content type="html"><![CDATA[<p> Deep Learning Strong Parts for Pedestrian Detection 是发表在iccv2015的文章。<br> <a id="more"></a><br> 本论文的核心思想是遮挡的处理问题。</p>
+<h1 id="出发点"><a href="#出发点" class="headerlink" title="出发点"></a>出发点</h1><p> 传统的行人检测对遮挡行人的处理都是用单分类器进行处理，这篇论文，将不再适用单分类器，而是用多分类器处理遮挡问题。同时这种方法是基于分块的。</p>
+<h1 id="论文贡献"><a href="#论文贡献" class="headerlink" title="论文贡献"></a>论文贡献</h1><ol>
+<li>构建了一个部件池包含很多行人的分块，这些分块是自动选择的而且适用于不同的数据集。</li>
+<li>基于各种CovNets,对各种分块分别训练一个网络，而不是单个分类器。</li>
+<li><p>提出了一种解决偏移的方法。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="部件池的构建"><a href="#部件池的构建" class="headerlink" title="部件池的构建"></a>部件池的构建</h2><p><img src="/images/deeppart/1.png" alt=""></p>
+<p>讲一个行人切分成2m<em>m个cell,在具体的试验中m=3.<br>就是18个cell,<br>然后适用一个h</em>w的滑动窗口在cell上滑动，步长是1，其中h和w满足<br><img src="/images/deeppart/2.png" alt=""><br>就是限制他们的大小，不能太小，太小了没意义。最后在实验的时候最小都取了2.</p>
+<p>这样通过滑动，总共可以选择出45个这种部件。构造除了我们的部件池。用如下的公式表示<br><img src="/images/deeppart/3.png" alt=""></p>
+</li>
+</ol>
+<p>x,y是左上的坐标，w，h是高，i是id,总共45个  这种表示方法的意思就是如果是整个图像就是（1，1，m，2m,id）</p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="/images/deeppart/4.png" alt=""><br>对于负样本直接滑动出45个部件，<br>      对于正样本，需要选择，如果可见部分超过0.4就选择其是人的部件为正样本。如果这个人没又遮挡，直接滑动出45个部分。这样正负样本总共包含45部分，拿着这45种部件，训练45个探测器。。。（内心os:这居然是优点·····）</p>
+<p>对于探测器直接用了pre-train的模型，然后进行fine-turning,<br>    fine-turning阶段吐槽一下作者的原话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  we uniformly sample 16 positive and 48</div><div class="line">negative windows to construct a mini-batch. Experiments</div><div class="line">show that fine-tuning for 10000 iterations with a learning</div><div class="line">rate of 0.001 is sufficient to converge</div></pre></td></tr></table></figure>
+<p>相当于重新训练一次了。。。</p>
+<h1 id="处理偏移"><a href="#处理偏移" class="headerlink" title="处理偏移"></a>处理偏移</h1><p>为了接收任意尺寸的图片<br><img src="/images/deeppart/5.png" alt=""><br>他们把最后的全连接层换成了卷积层，这样就可以接收任意的尺寸了。<br>以下拿AlexNet为例子<br>因为AlexNet的感受野的步长是32<br>所以对原始的候选框进行抖动扩充：<br><img src="/images/deeppart/6.png" alt=""><br>其中<br><img src="/images/deeppart/7.png" alt="">是原始图像，这个公式的意思就是按照神经网络的步长进行比例的扩充。这样最终的卷积层产生的就是（1+n）<em>(1+n)</em>4096的score map。<br><img src="/images/deeppart/8.png" alt=""><br>作者先解释了一下偏移问题的重要性，然后拿了一个n=2的例子进行的讲解。</p>
+<p>在这里，因为最终生成的是（1+n）<em>(1+n)</em>4096的score map<br><img src="/images/deeppart/9.png" alt=""><br>所以直接对其加入惩罚之后进行max(相当于max pooling)<br>    <img src="/images/deeppart/10.png" alt=""><br>  其实这个惩罚就是原位置的加权，</p>
+<p>在实验中他们探究了a和b的值, 上图的例子中a=2 b=10.</p>
+<h1 id="部件补充"><a href="#部件补充" class="headerlink" title="部件补充"></a>部件补充</h1><p>和R-CNN不同，它去掉了svm的分类，直接拿45个部件的1<em>1</em>4096的进行svm分类。。来判断最终的分类结果。。。</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>在AlexNet测试了三种部件：</p>
+<p><img src="/images/deeppart/11.png" alt=""><br>加入偏移处理之后<br><img src="/images/deeppart/12.png" alt=""><br>三种模型上的三种部件对比：<br> <img src="/images/deeppart/13.png" alt=""></p>
+<p> 整体在caltech-test<br> <img src="/images/deeppart/14.png" alt=""><br> 上的结果。<br><img src="/images/deeppart/15.png" alt=""><br>其他数据集<br><img src="/images/deeppart/16.png" alt=""><br>前六个分数最高的部件和随机选的六个部件。<br><img src="/images/deeppart/17.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; Deep Learning Strong Parts for Pedestrian Detection 是发表在iccv2015的文章。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="卷积深度网络" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="iccv2015" scheme="http://yoursite.com/tags/iccv2015/"/>
+    
+      <category term="Pedestrian Detection" scheme="http://yoursite.com/tags/Pedestrian-Detection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QT5从入门到放弃:(5)标准对话框</title>
+    <link href="http://yoursite.com/2016/12/09/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%9A%EF%BC%885%EF%BC%89%E6%A0%87%E5%87%86%E5%AF%B9%E8%AF%9D%E6%A1%86/"/>
+    <id>http://yoursite.com/2016/12/09/QT5从入门到放弃：（5）标准对话框/</id>
+    <published>2016-12-09T09:40:39.000Z</published>
+    <updated>2016-12-09T13:03:24.813Z</updated>
+    
+    <content type="html"><![CDATA[<p>Qt提供了丰富的标准对话框，全部继承自QDialog类，并且加入了自己的特色。<br><a id="more"></a><br>我们挨个实验一下：</p>
+<h1 id="颜色对话框"><a href="#颜色对话框" class="headerlink" title="颜色对话框"></a>颜色对话框</h1><p>在设计师界面加入一个新的 <code>push button</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Qt提供了丰富的标准对话框，全部继承自QDialog类，并且加入了自己的特色。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="QT5从入门到放弃" scheme="http://yoursite.com/categories/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
+    
+    
+      <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
+    
+      <category term="标准对话框" scheme="http://yoursite.com/tags/%E6%A0%87%E5%87%86%E5%AF%B9%E8%AF%9D%E6%A1%86/"/>
+    
+  </entry>
   
   <entry>
     <title>QT5从入门到放弃:(4)窗口通讯初步</title>
@@ -99,9 +172,9 @@
       <category term="QT5从入门到放弃" scheme="http://yoursite.com/categories/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
     
     
-      <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
-    
       <category term="模态与非模态" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%80%81%E4%B8%8E%E9%9D%9E%E6%A8%A1%E6%80%81/"/>
+    
+      <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
     
   </entry>
   
@@ -710,96 +783,6 @@
       <category term="Principal Component Analysis" scheme="http://yoursite.com/tags/Principal-Component-Analysis/"/>
     
       <category term="主成分分析" scheme="http://yoursite.com/tags/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>最大回文串 Longest Palindromic Substring</title>
-    <link href="http://yoursite.com/2016/11/11/%E6%9C%80%E5%A4%A7%E5%9B%9E%E6%96%87%E4%B8%B2-Longest-Palindromic-Substring/"/>
-    <id>http://yoursite.com/2016/11/11/最大回文串-Longest-Palindromic-Substring/</id>
-    <published>2016-11-11T12:20:16.000Z</published>
-    <updated>2016-11-18T11:53:13.533Z</updated>
-    
-    <content type="html"><![CDATA[<p>id5. Longest Palindromic Substring   QuestionEditorial Solution  My Submissions<br>Total Accepted: 147621<br>Total Submissions: 614546<br>Difficulty: Medium<br>Contributors: Admin<br>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.<br> <a id="more"></a></p>
-<p>Example:<br>Input: “babad”</p>
-<p>Output: “bab”</p>
-<p>Note: “aba” is also a valid answer.<br>Example:</p>
-<p>Input: “cbbd”</p>
-<p>Output: “bb”<br>最长回文串,首先最容易想到的是穷举所有的字串，然后判断是不是回文。<br>最开始的方法使用递归判断是不是回文：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这是一种超时但是正确的做法。但是超时了。。</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPalindromic</span><span class="params">(<span class="built_in">string</span> s,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (i==j)</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(s[i]!=s[j])</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (i+<span class="number">1</span>==j)</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> isPalindromic(s,i+<span class="number">1</span>,j<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> longestPalindromeString =s.substr(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">        <span class="built_in">string</span> str;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i!=s.size();i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j!=s.size();j++)</div><div class="line">            &#123;</div><div class="line">                str=s.substr(i,j-i+<span class="number">1</span>);</div><div class="line">             <span class="keyword">if</span>(isPalindromic(str,<span class="number">0</span>,str.size()<span class="number">-1</span>)&amp;&amp;(str.size()&gt;longestPalindromeString.size()))</div><div class="line">             longestPalindromeString=str;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> longestPalindromeString;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123; <span class="built_in">string</span> s=<span class="string">"sdgdfhfgjhgghkjhljkldyhrtiiiiytrewqtyitutyiyopuip"</span>;</div><div class="line"><span class="built_in">cout</span>&lt;&lt;longestPalindrome(s);</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>总结上面的做法，时间复杂度为  $o\left( n^2\log ^n \right) $<br>会发现做了很多重复的事情所以时间复杂度非常高，所以将思路变成穷举中心点，从中心按照奇数和偶数进行扩散，进而在扩散的过程就完成了回文的判断。节省了判断回文的时间。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> longestPalindromeString =s.substr(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i!=s.size();i++)</div><div class="line">        &#123;   <span class="comment">//奇数</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;((i-j)&gt;=<span class="number">0</span>)&amp;&amp;((i+j)&lt;=s.size()<span class="number">-1</span>);j++)</div><div class="line">            &#123;<span class="keyword">if</span>(s[i-j]!=s[i+j])</div><div class="line">             <span class="keyword">break</span>;</div><div class="line">             <span class="keyword">if</span> ((<span class="number">2</span>*j+<span class="number">1</span>)&gt;longestPalindromeString.size())</div><div class="line">             longestPalindromeString=s.substr(i-j,<span class="number">2</span>*j+<span class="number">1</span>);</div><div class="line">             &#125;</div><div class="line">             <span class="comment">//偶数</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;((i-j)&gt;=<span class="number">0</span>)&amp;&amp;((i+j+<span class="number">1</span>)&lt;=s.size()<span class="number">-1</span>);j++)</div><div class="line">            &#123; <span class="keyword">if</span>(s[i-j]!=s[i+j+<span class="number">1</span>])</div><div class="line">             <span class="keyword">break</span>;</div><div class="line">             <span class="keyword">if</span> ((<span class="number">2</span>*j+<span class="number">2</span>)&gt;longestPalindromeString.size())</div><div class="line">             longestPalindromeString=s.substr(i-j,<span class="number">2</span>*j+<span class="number">2</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> longestPalindromeString;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>这样的时间复杂度就为 $o\left( n^2 \right) $<br>顺别说一点，在写类的时候不要忘了在类后面加 <code>;</code>号，不然会提示</p>
-<p><code>error: expected unqualified-id before string constant</code></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;id5. Longest Palindromic Substring   QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 147621&lt;br&gt;Total Submissions: 614546&lt;br&gt;Difficulty: Medium&lt;br&gt;Contributors: Admin&lt;br&gt;Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
-    
-    
-      <category term="最大回文串" scheme="http://yoursite.com/tags/%E6%9C%80%E5%A4%A7%E5%9B%9E%E6%96%87%E4%B8%B2/"/>
-    
-      <category term="Longest Palindromic Substring" scheme="http://yoursite.com/tags/Longest-Palindromic-Substring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>激活函数</title>
-    <link href="http://yoursite.com/2016/11/10/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2016/11/10/激活函数/</id>
-    <published>2016-11-10T12:27:17.000Z</published>
-    <updated>2016-11-22T12:45:52.938Z</updated>
-    
-    <content type="html"><![CDATA[<p>在神经元的数学模型中，轴突所携带的信号(例如: $x_0$ )通过突触进行传递，由于突触的强弱不一，假设我们以 $w_0$ 表示，那么我们传到下一个神经元的树突处的信号就变成了 $w_0x_0$ 。其中突触强弱(参数w)是可学的，它控制了一个神经元对另一个神经元影响的大小和方向（正负）。然后树突接收到信号后传递到神经元内部<code>cell body</code>，与其他树突传递过来的信号一起进行加和，如果这个和的值大于某一个固定的阈值的话，神经元就会被激活，然后传递冲激信号给树突。在数学模型中我们假设传递冲激信号的时间长短并不重要，只有神经元被激活的频率用于传递信息. 我们将是否激活神经元的函数称为激活函数(activation function $f$ ), 它代表了轴突接收到冲激信号的频率。以前我们比较常用的一个激活信号是<code>sigmoid function</code> $σ$ ，因为它接收一个实值的信号（即上面所说的加和的值）然后将它压缩到 <code>0-1</code> 的范围内。我们在后面会介绍更多的激活函数。<br> <a id="more"></a></p>
-<h1 id="传统Sigmoid系激活函数"><a href="#传统Sigmoid系激活函数" class="headerlink" title="传统Sigmoid系激活函数"></a>传统Sigmoid系激活函数</h1><p><img src="/images/activate/3.png" alt=""><br>传统神经网络中最常用的两个激活函数，<code>Sigmoid</code>系（Logistic-Sigmoid、Tanh-Sigmoid）被视为神经网络的核心所在。从数学上来看，非线性的Sigmoid函数对中央区的信号增益较大，对两侧区的信号增益小，在信号的特征空间映射上，有很好的效果。从神经科学上来看，中央区酷似神经元的兴奋态，两侧区酷似神经元的抑制态，因而在神经网络学习方面，可以将重点特征推向中央区，将非重点特征推向两侧区。</p>
-<h2 id="sigmoid激活函数"><a href="#sigmoid激活函数" class="headerlink" title="sigmoid激活函数"></a>sigmoid激活函数</h2><p>sigmoid将一个实数输入映射到[0,1]范围内，如下图（左）所示。使用sigmoid作为激活函数存在以下几个问题：</p>
-<ol>
-<li>梯度饱和。当函数激活值接近于0或者1时，函数的梯度接近于0。在反向传播计算梯度过程中:<br>$$\delta^{\left(l\right)}=\left( W^{\left(l\right)} \right) ^T\delta ^{\left(l+1\right)}\cdot f’\left( z^{\left(L\right)}\right) $$<br>，每层残差接近于0，计算出的梯度也不可避免地接近于0。这样在参数微调过程中，会引起参数弥散问题，传到前几层的梯度已经非常靠近0了，参数几乎不会再更新。</li>
-<li>函数输出不是以0为中心的。我们更偏向于当激活函数的输入是0时，输出也是0的函数.</li>
-</ol>
-<h2 id="tanh激活函数"><a href="#tanh激活函数" class="headerlink" title="tanh激活函数"></a>tanh激活函数</h2><p>tanh函数将一个实数输入映射到[-1,1]范围内，如上图（右）所示。当输入为0时，tanh函数输出为0，符合我们对激活函数的要求。然而，tanh函数也存在梯度饱和问题，导致训练效率低下。</p>
-<h1 id="Softplus-amp-ReLu"><a href="#Softplus-amp-ReLu" class="headerlink" title="Softplus&amp;ReLu"></a>Softplus&amp;ReLu</h1><p><img src="/images/activate/4.png" alt=""></p>
-<p>2001年，神经科学家Dayan、Abott从生物学角度，模拟出了脑神经元接受信号更精确的激活模型，该模型如左图所示：这个模型对比Sigmoid系主要变化有三点：<br><code>单侧抑制</code> <code>相对宽阔的兴奋边界</code> <code>稀疏激活性</code>（重点，可以看到红框里前端状态完全没有激活）<br>同年，Charles Dugas等人在做正数回归预测论文中偶然使用了Softplus函数，Softplus函数是Logistic-Sigmoid函数原函数。</p>
-<h2 id="Softplus"><a href="#Softplus" class="headerlink" title="Softplus"></a>Softplus</h2><p>激活函数公式：<br>$$softplus\left( x \right) =\log \left( 1+e^x \right)<br>$$</p>
-<p>按照论文的说法，一开始想要使用一个指数函数（天然正数）作为激活函数来回归，但是到后期梯度实在太大，难以训练，于是加了一个log来减缓上升趋势。<br>加了1是为了保证非负性。同年，Charles Dugas等人在NIPS会议论文中又调侃了一句，Softplus可以看作是强制非负校正函数 $max(0,x)$ 平滑版本。<br>偶然的是，同是2001年，ML领域的Softplus/Rectifier激活函数与神经科学领域的提出脑神经元激活频率函数有神似的地方，这促成了新的激活函数的研究。</p>
-<h2 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h2><p>Relu激活函数（The Rectified Linear Unit）表达式为：<br>$$f(x)=max(0,x)$$</p>
-<p><img src="/images/activate/5.png" alt=""></p>
-<p>相比sigmoid和tanh函数，Relu激活函数的优点在于：</p>
-<ol>
-<li><code>梯度不饱和</code>。梯度计算公式为：1{x&gt;0}。因此在反向传播过程中，减轻了梯度弥散的问题，神经网络前几层的参数也可以很快的更新。</li>
-<li><code>计算速度快</code>。正向传播过程中，sigmoid和tanh函数计算激活值时需要计算指数，而Relu函数仅需要设置阈值。如果x<0,f(x)=0，如果x>0,f(x)=x。加快了正向传播的计算速度。</0,f(x)=0，如果x></li>
-</ol>
-<p>因此，Relu激活函数可以极大地加快收敛速度，相比tanh函数，收敛速度可以加快6倍（如上图（右）所示）。</p>
-<h1 id="激活函数的发展"><a href="#激活函数的发展" class="headerlink" title="激活函数的发展"></a>激活函数的发展</h1><h2 id="PReLU"><a href="#PReLU" class="headerlink" title="PReLU"></a>PReLU</h2><p>dsd<br>PReLU 是ReLU 和 LReLU的改进版本，具有非饱和性：</p>
-<p><img src="/images/activate/11.png" alt=""><br><img src="/images/activate/6.png" alt=""><br>与LReLU相比，PReLU中的负半轴斜率a可学习而非固定。原文献建议初始化a为0.25，不采用正则。个人认为，是否采用正则应当视具体的数据库和网络，通常情况下使用正则能够带来性能提升。</p>
-<p>虽然PReLU 引入了额外的参数，但基本不需要担心过拟合。例如，在上述cifar10+NIN实验中， PReLU比ReLU和ELU多引入了参数，但也展现了更优秀的性能。所以实验中若发现网络性能不好，建议从其他角度寻找原因。</p>
-<p>与ReLU相比，PReLU收敛速度更快。因为PReLU的输出更接近0均值，使得SGD更接近natural gradient。证明过程参见原文[10]。</p>
-<p>此外，作者在ResNet 中采用ReLU，而没有采用新的PReLU。这里给出个人浅见，不一定正确，仅供参考。首先，在上述LReLU实验中，负半轴斜率对性能的影响表现出一致性。对PReLU采用正则将激活值推向0也能够带来性能提升。这或许表明，小尺度或稀疏激活值对深度网络的影响更大。其次，ResNet中包含单位变换和残差两个分支。残差分支用于学习对单位变换的扰动。如果单位变换是最优解，那么残差分支的扰动应该越小越好。这种假设下，小尺度或稀疏激活值对深度网络的影响更大。此时，ReLU或许是比PReLU更好的选择.</p>
-<h2 id="RReLU"><a href="#RReLU" class="headerlink" title="RReLU"></a>RReLU</h2><p>数学形式与PReLU类似，但RReLU[9]是一种非确定性激活函数，其参数是随机的。这种随机性类似于一种噪声，能够在一定程度上起到正则效果。作者在cifar10/100上观察到了性能提升。</p>
-<h2 id="Maxout"><a href="#Maxout" class="headerlink" title="Maxout"></a>Maxout</h2><p>Maxout[13]是ReLU的推广，其发生饱和是一个零测集事件（measure zero event）。正式定义为：<br>$$\max \left( w_{1}^{T}x+b_1,…,w_{n}^{T}x+b_n \right) $$<br>Maxout网络能够近似任意连续函数，且当w2,b2,…,wn,bn为0时，退化为ReLU。 其实，Maxout的思想在视觉领域存在已久。例如，在HOG特征里有这么一个过程：计算三个通道的梯度强度，然后在每一个像素位置上，仅取三个通道中梯度强度最大的数值，最终形成一个通道。这其实就是Maxout的一种特例。</p>
-<p>Maxout能够缓解梯度消失，同时又规避了ReLU神经元死亡的缺点，但增加了参数和计算量。</p>
-<h2 id="ELU"><a href="#ELU" class="headerlink" title="ELU"></a>ELU</h2><p>ELU 融合了sigmoid和ReLU，具有左侧软饱性。其正式定义为：</p>
-<p><img src="/images/activate/9.png" alt=""><br><img src="/images/activate/7.png" alt=""><br>右侧线性部分使得ELU能够缓解梯度消失，而左侧软饱能够让ELU对输入变化或噪声更鲁棒。ELU的输出均值接近于零，所以收敛速度更快。经本文作者实验，ELU的收敛性质的确优于ReLU和PReLU。在cifar10上，ELU 网络的loss 降低速度更快；在 ImageNet上，不加 Batch Normalization 30 层以上的 ReLU 网络会无法收敛，PReLU网络在MSRA的Fan-in （caffe ）初始化下会发散，而 ELU 网络在Fan-in/Fan-out下都能收敛 。</p>
-<p>论文的另一个重要贡献是分析了Bias shift 现象与激活值的关系，证明了降低Bias shift 等价于把激活值的均值推向0。</p>
-<h2 id="MPELU"><a href="#MPELU" class="headerlink" title="MPELU"></a>MPELU</h2><p>将分段线性与ELU统一到了一种形式下。在NIN+CIFAR10，本文作者发现ELU与LReLU性能一致，而与PReLU差距较大。经过分析，ELU泰勒展开的一次项就是LReLU。当在ELU前加入BN让输入集中在0均值附近， 则ELU与LReLU之差——泰勒展开高次项会变小，粗略估计，约55.57%的激活值误差小于0.01。因此，受PReLU启发，令α可学习能够提高性能。此外，引入参数β能够进一步控制ELU的函数形状。正式定义为<br><img src="/images/activate/10.png" alt=""><br><img src="/images/activate/8.png" alt=""><br>α 和 β可以使用正则。α, β 固定为1时，MPELU 退化为 ELU； β 固定为很小的值时，MPELU 近似为 PReLU；当α=0，MPELU 等价于 ReLU。</p>
-<p>MPELU 的优势在于同时具备 ReLU、PReLU和 ELU的优点。首先，MPELU具备ELU的收敛性质，能够在无 Batch Normalization 的情况下让几十层网络收敛。其次，作为一般化形式， MPELU较三者的推广能力更强。简言之，MPELU = max(ReLU, PReLU, ELU)。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在神经元的数学模型中，轴突所携带的信号(例如: $x_0$ )通过突触进行传递，由于突触的强弱不一，假设我们以 $w_0$ 表示，那么我们传到下一个神经元的树突处的信号就变成了 $w_0x_0$ 。其中突触强弱(参数w)是可学的，它控制了一个神经元对另一个神经元影响的大小和方向（正负）。然后树突接收到信号后传递到神经元内部&lt;code&gt;cell body&lt;/code&gt;，与其他树突传递过来的信号一起进行加和，如果这个和的值大于某一个固定的阈值的话，神经元就会被激活，然后传递冲激信号给树突。在数学模型中我们假设传递冲激信号的时间长短并不重要，只有神经元被激活的频率用于传递信息. 我们将是否激活神经元的函数称为激活函数(activation function $f$ ), 它代表了轴突接收到冲激信号的频率。以前我们比较常用的一个激活信号是&lt;code&gt;sigmoid function&lt;/code&gt; $σ$ ，因为它接收一个实值的信号（即上面所说的加和的值）然后将它压缩到 &lt;code&gt;0-1&lt;/code&gt; 的范围内。我们在后面会介绍更多的激活函数。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="卷积深度网络" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="激活函数" scheme="http://yoursite.com/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
