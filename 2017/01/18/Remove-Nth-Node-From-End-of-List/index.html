@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="coding my world.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deepdim-Unsky'Blog">
-<meta property="og:url" content="http://yoursite.com/tags/atom/index.html">
+<meta name="description" content="Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, remove">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Remove Nth Node From End of List">
+<meta property="og:url" content="http://yoursite.com/2017/01/18/Remove-Nth-Node-From-End-of-List/index.html">
 <meta property="og:site_name" content="Deepdim-Unsky'Blog">
-<meta property="og:description" content="coding my world.">
+<meta property="og:description" content="Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, remove">
+<meta property="og:updated_time" content="2017-01-18T15:34:18.545Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deepdim-Unsky'Blog">
-<meta name="twitter:description" content="coding my world.">
+<meta name="twitter:title" content="Remove Nth Node From End of List">
+<meta name="twitter:description" content="Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, remove">
 
 
 
@@ -113,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/atom/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/18/Remove-Nth-Node-From-End-of-List/"/>
 
 
-  <title> 标签: atom | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Remove Nth Node From End of List | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +139,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
 
     <div class="headband"></div>
     <div style="float:left;width:170px;height:170px;" >
@@ -355,46 +356,187 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        atom
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Remove Nth Node From End of List
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-18T23:30:04+08:00" content="2017-01-18">
+              2017-01-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/18/Remove-Nth-Node-From-End-of-List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/18/Remove-Nth-Node-From-End-of-List/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+      
+        <ol>
+<li>Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 154617<br>Total Submissions: 480607<br>Difficulty: Easy<br>Contributors: Admin<br>Given a linked list, remove the nth node from the end of list and return its head.</li>
+</ol>
+<p>For example,</p>
+<p>   Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</p>
+<p>   After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.<br>Note:<br>Given n will always be valid.<br>Try to do this in one pass.<br><a id="more"></a><br>主要使用了双指针，比较重要得一点是建立头节点，因为是一个独立结点所以需要分配空间<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span></span></div><div class="line">    &#123; ListNode* result=<span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">if</span>(head==<span class="literal">NULL</span>||head-&gt;next==<span class="literal">NULL</span>)</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">   ListNode* Lhead= <span class="keyword">new</span> ListNode(<span class="keyword">sizeof</span>(ListNode));</div><div class="line"><span class="comment">//  Lhead-&gt;val=99;</span></div><div class="line">   Lhead-&gt;next=head;</div><div class="line">  <span class="comment">// cout&lt;&lt;Lhead-&gt;next-&gt;next-&gt;val;</span></div><div class="line">        ListNode *p=Lhead;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">        p=p-&gt;next;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        ListNode *q=Lhead;</div><div class="line">        <span class="keyword">while</span>(p)</div><div class="line">        &#123;p=p-&gt;next;</div><div class="line">         q=q-&gt;next;</div><div class="line">        &#125;</div><div class="line">        ListNode* h=q-&gt;next-&gt;next;</div><div class="line"></div><div class="line">    <span class="comment">//  cout&lt;&lt;h-&gt;val&lt;&lt;q-&gt;val;</span></div><div class="line">        q-&gt;next=h;</div><div class="line">     <span class="comment">//   cout&lt;&lt;q-&gt;val;</span></div><div class="line">        result=Lhead-&gt;next;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/11/08/手把手将atom打造成c-c编程利器/" itemprop="url">
-              
-                <span itemprop="name">手把手将atom打造成c++/c编程利器</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="unsky WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="unsky Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-08T10:31:28+08:00"
-              content="2016-11-08" >
-          11-08
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/18/4Sum/" rel="next" title="4Sum">
+                <i class="fa fa-chevron-left"></i> 4Sum
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
 
@@ -405,6 +547,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/18/Remove-Nth-Node-From-End-of-List/"
+           data-title="Remove Nth Node From End of List" data-url="http://yoursite.com/2017/01/18/Remove-Nth-Node-From-End-of-List/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -452,9 +602,18 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
 
       <div class="ui_base u_p3d">
       	<div class="base u_p3d">
@@ -531,6 +690,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
 
@@ -898,6 +1068,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
