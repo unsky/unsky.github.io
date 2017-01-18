@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-18T08:03:28.578Z</updated>
+  <updated>2017-01-18T08:07:28.334Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/01/18/QT%E5%AE%9E%E6%88%98-cortfly%E5%B1%80%E5%9F%9F%E7%BD%91%E5%B7%A5%E5%85%B7/"/>
     <id>http://yoursite.com/2017/01/18/QT实战-cortfly局域网工具/</id>
     <published>2017-01-18T07:58:55.000Z</published>
-    <updated>2017-01-18T08:03:28.578Z</updated>
+    <updated>2017-01-18T08:07:28.334Z</updated>
     
     <content type="html"><![CDATA[<p>学习了一段QTwidgets编程，自己设计了cortfly-一款基于局域网得使用工具。<br>update v1.0</p>
 <ol>
@@ -49,6 +49,12 @@
     
     </summary>
     
+      <category term="QT5从入门到放弃" scheme="http://yoursite.com/categories/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
+    
+    
+      <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
+    
+      <category term="cortfly" scheme="http://yoursite.com/tags/cortfly/"/>
     
   </entry>
   
