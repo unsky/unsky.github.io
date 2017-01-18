@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, remove">
+<meta name="description" content="id19. Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, re">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Remove Nth Node From End of List">
 <meta property="og:url" content="http://yoursite.com/2017/01/18/Remove-Nth-Node-From-End-of-List/index.html">
 <meta property="og:site_name" content="Deepdim-Unsky'Blog">
-<meta property="og:description" content="Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, remove">
-<meta property="og:updated_time" content="2017-01-18T15:34:18.545Z">
+<meta property="og:description" content="id19. Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, re">
+<meta property="og:updated_time" content="2017-01-18T15:38:03.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Remove Nth Node From End of List">
-<meta name="twitter:description" content="Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, remove">
+<meta name="twitter:description" content="id19. Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My SubmissionsTotal Accepted: 154617Total Submissions: 480607Difficulty: EasyContributors: AdminGiven a linked list, re">
 
 
 
@@ -395,6 +395,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -424,9 +443,7 @@
       
 
       
-        <ol>
-<li>Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 154617<br>Total Submissions: 480607<br>Difficulty: Easy<br>Contributors: Admin<br>Given a linked list, remove the nth node from the end of list and return its head.</li>
-</ol>
+        <p>id19. Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 154617<br>Total Submissions: 480607<br>Difficulty: Easy<br>Contributors: Admin<br>Given a linked list, remove the nth node from the end of list and return its head.</p>
 <p>For example,</p>
 <p>   Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</p>
 <p>   After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.<br>Note:<br>Given n will always be valid.<br>Try to do this in one pass.<br><a id="more"></a><br>主要使用了双指针，比较重要得一点是建立头节点，因为是一个独立结点所以需要分配空间<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span></span></div><div class="line">    &#123; ListNode* result=<span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">if</span>(head==<span class="literal">NULL</span>||head-&gt;next==<span class="literal">NULL</span>)</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">   ListNode* Lhead= <span class="keyword">new</span> ListNode(<span class="keyword">sizeof</span>(ListNode));</div><div class="line"><span class="comment">//  Lhead-&gt;val=99;</span></div><div class="line">   Lhead-&gt;next=head;</div><div class="line">  <span class="comment">// cout&lt;&lt;Lhead-&gt;next-&gt;next-&gt;val;</span></div><div class="line">        ListNode *p=Lhead;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">        p=p-&gt;next;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        ListNode *q=Lhead;</div><div class="line">        <span class="keyword">while</span>(p)</div><div class="line">        &#123;p=p-&gt;next;</div><div class="line">         q=q-&gt;next;</div><div class="line">        &#125;</div><div class="line">        ListNode* h=q-&gt;next-&gt;next;</div><div class="line"></div><div class="line">    <span class="comment">//  cout&lt;&lt;h-&gt;val&lt;&lt;q-&gt;val;</span></div><div class="line">        q-&gt;next=h;</div><div class="line">     <span class="comment">//   cout&lt;&lt;q-&gt;val;</span></div><div class="line">        result=Lhead-&gt;next;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
