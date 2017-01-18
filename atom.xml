@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-09T14:17:52.550Z</updated>
+  <updated>2017-01-18T07:55:50.564Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,90 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Letter Combinations of a Phone Number</title>
+    <link href="http://yoursite.com/2017/01/18/Letter-Combinations-of-a-Phone-Number/"/>
+    <id>http://yoursite.com/2017/01/18/Letter-Combinations-of-a-Phone-Number/</id>
+    <published>2017-01-18T07:49:48.000Z</published>
+    <updated>2017-01-18T07:55:50.564Z</updated>
+    
+    <content type="html"><![CDATA[<p>Given a digit string, return all possible letter combinations that the number could represent.</p>
+<p>A mapping of digit to letters (just like on the telephone buttons) is given below.</p>
+<p><img src="/images/leetcodeid17/1.png" alt=""></p>
+<p>Input:Digit string “23”<br>Output: [“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].<br><a id="more"></a><br>问题可以归结为backtracking问题，使用递归，需要建立对应得字母表<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;string&gt; letterCombinations(string digits) &#123;</div><div class="line">        vector&lt;string&gt; res;</div><div class="line">        if (digits.length()==0)</div><div class="line">    return res;</div><div class="line">     string dict[] = &#123;" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"&#125;;</div><div class="line">    string comb(digits.length(),'/0');</div><div class="line">           backtracking(digits,res,dict,comb,0);</div><div class="line">           return res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  void  backtracking(string digits,vector&lt;string&gt; &amp;res,string dict[],string &amp;comb, int index)</div><div class="line">    &#123; if(index==digits.size())</div><div class="line">      &#123;res.push_back(comb);</div><div class="line">          return;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      string str=dict[digits[index]-'0'];</div><div class="line">      for(int i=0;i&lt;str.length();i++)</div><div class="line">      &#123;comb[index]=str[i];</div><div class="line">         backtracking(digits,res,dict,comb,index+1);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Given a digit string, return all possible letter combinations that the number could represent.&lt;/p&gt;
+&lt;p&gt;A mapping of digit to letters (just like on the telephone buttons) is given below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/leetcodeid17/1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Input:Digit string “23”&lt;br&gt;Output: [“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].&lt;br&gt;
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="backtracking" scheme="http://yoursite.com/tags/backtracking/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3Sum Closest</title>
+    <link href="http://yoursite.com/2017/01/18/3Sum-Closest/"/>
+    <id>http://yoursite.com/2017/01/18/3Sum-Closest/</id>
+    <published>2017-01-18T07:44:48.000Z</published>
+    <updated>2017-01-18T07:48:59.936Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li><p>3Sum Closest   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 109596<br>Total Submissions: 358454<br>Difficulty: Medium<br>Contributors: Admin<br>Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
+<p>For example, given array S = {-1 2 1 -4}, and target = 1.</p>
+<p>The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</p>
+<a id="more"></a>
+<p>和3sum差不多，使用双指针，唯一得区别是每次指针移动判断得是和目标之间得距离得绝对值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(nums.size()==<span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> interval=<span class="number">0</span>;</div><div class="line">        sort(nums.begin(),nums.end());</div><div class="line">        res=nums[<span class="number">0</span>]+nums[<span class="number">1</span>]+nums[nums.size()<span class="number">-1</span>];</div><div class="line">        interval=<span class="built_in">abs</span>(target-res);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size()<span class="number">-2</span>;i++)</div><div class="line">        &#123;</div><div class="line">          <span class="keyword">int</span> j=i+<span class="number">1</span>,k=nums.size()<span class="number">-1</span>;</div><div class="line"></div><div class="line">            <span class="keyword">while</span>(j!=k)</div><div class="line">        &#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span>(nums[i]+nums[j]+nums[k]==target)</div><div class="line">              <span class="keyword">return</span> target;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]+nums[j]+nums[k]&lt;target)</div><div class="line">            &#123;</div><div class="line"></div><div class="line">             <span class="keyword">if</span>(target-nums[i]-nums[j]-nums[k]&lt;interval)</div><div class="line">            &#123;interval=<span class="built_in">abs</span>(target-nums[i]-nums[j]-nums[k]);</div><div class="line">            res=nums[i]+nums[j]+nums[k];</div><div class="line">            &#125;</div><div class="line">          j++; &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]+nums[j]+nums[k]&gt;target)</div><div class="line">            &#123;</div><div class="line">            <span class="keyword">if</span>(nums[i]+nums[j]+nums[k]-target&lt;interval)</div><div class="line">            &#123;interval=<span class="built_in">abs</span>(nums[i]+nums[j]+nums[k]-target);</div><div class="line">            res=nums[i]+nums[j]+nums[k];</div><div class="line">          &#125; k--;&#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;3Sum Closest   Add to List QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 109596&lt;br&gt;Total Submissions: 358454&lt;br&gt;Difficulty: Medium&lt;br&gt;Contributors: Admin&lt;br&gt;Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.&lt;/p&gt;
+&lt;p&gt;For example, given array S = {-1 2 1 -4}, and target = 1.&lt;/p&gt;
+&lt;p&gt;The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="3Sum Closest" scheme="http://yoursite.com/tags/3Sum-Closest/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QT从入门到放弃:(6)Frame类族</title>
+    <link href="http://yoursite.com/2017/01/11/QT%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%9A%EF%BC%886%EF%BC%89Frame%E7%B1%BB%E6%97%8F/"/>
+    <id>http://yoursite.com/2017/01/11/QT从入门到放弃：（6）Frame类族/</id>
+    <published>2017-01-11T06:53:43.000Z</published>
+    <updated>2017-01-11T07:07:04.486Z</updated>
+    
+    <content type="html"><![CDATA[<p>QFramae 类是带有边框得基类，它得子类有最常用得标签部件QLabel,QLCDNumber,QSplitter,QStackedWidget,QToolBox,QAbstractScrollArea类，其中再QT中凡是带有Abstract字样得类都是抽象基类，对于抽象基类我们不能直接使用，但是可以继承该类实现自己得类。或者使用他提供得子类，<br><a id="more"></a><br>带有边框得不叫主要特点是文本编辑器类QTextEdit类和各种项目视图.</p>
+<p><img src="/images/frame/1.png" alt=""><br><img src="/images/frame/2.png" alt=""></p>
+<h1 id="QFrame"><a href="#QFrame" class="headerlink" title="QFrame"></a>QFrame</h1><p>在设计器中拖入frame，右下角可以修改其具体属性。<br><img src="/images/frame/3.png" alt=""><br>效果如：<br><img src="/images/frame/4.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;QFramae 类是带有边框得基类，它得子类有最常用得标签部件QLabel,QLCDNumber,QSplitter,QStackedWidget,QToolBox,QAbstractScrollArea类，其中再QT中凡是带有Abstract字样得类都是抽象基类，对于抽象基类我们不能直接使用，但是可以继承该类实现自己得类。或者使用他提供得子类，&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Deep Learning Strong Parts for Pedestrian Detection</title>
@@ -714,100 +798,6 @@
       <category term="时间序列" scheme="http://yoursite.com/tags/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97/"/>
     
       <category term="RNN" scheme="http://yoursite.com/tags/RNN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>fast-r-cnn-物体检测</title>
-    <link href="http://yoursite.com/2016/11/14/fast-r-cnn-%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/"/>
-    <id>http://yoursite.com/2016/11/14/fast-r-cnn-物体检测/</id>
-    <published>2016-11-14T14:01:38.000Z</published>
-    <updated>2016-11-22T15:10:55.331Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是RBG大神对于R-CNN的改进，从上一篇RCNN <a href="http://deepdim.com/2016/11/22/R-CNN/" target="_blank" rel="external">http://deepdim.com/2016/11/22/R-CNN/</a><br>中我们知道R-CNN，同时知道SPP-NET可以惊醒任意尺寸的输入同时不需要对没个候选窗口进行输入，而是输入整张图片，在卷积层之后进行窗口推荐。<br>结合两者的优点，所以RBG大神就此提出了fast-r-cnn.<br> <a id="more"></a></p>
-<h1 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h1><p>具体的结构不同在于卷积层之后：<br>  <img src="/images/fast-r-cnn/1.png" alt=""></p>
-<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><ol>
-<li>经过多层的卷积和pooling得到一组feature map</li>
-<li>通过SPP net中的ROI projection在这层feature map上找到原图的proposal对应的区域（ROI）</li>
-<li>利用spatial pooling的思路，对每个ROI做pooling。具体来说就是把h×w的ROI划分为H×W个grid/sub-window，每个grid大小是h/H × w/W，在每个grid内取max。</li>
-<li>把ROI pooling layer对每个ROI（对应回原图就是每个proposal）输出的H×W长的max pooling feature vector接全连接层</li>
-<li>全连接层之后有两个输出层，一个softmax分类器，输出该ROI对应的proposal的object类别，一个是bounding box回归层，输出category specific bounding box<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2>可以看出该网络最大的创新是在</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是RBG大神对于R-CNN的改进，从上一篇RCNN &lt;a href=&quot;http://deepdim.com/2016/11/22/R-CNN/&quot;&gt;http://deepdim.com/2016/11/22/R-CNN/&lt;/a&gt;&lt;br&gt;中我们知道R-CNN，同时知道SPP-NET可以惊醒任意尺寸的输入同时不需要对没个候选窗口进行输入，而是输入整张图片，在卷积层之后进行窗口推荐。&lt;br&gt;结合两者的优点，所以RBG大神就此提出了fast-r-cnn.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="卷积深度网络" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ZigZag Conversion 回旋字符串</title>
-    <link href="http://yoursite.com/2016/11/14/ZigZag-Conversion-%E5%9B%9E%E6%97%8B%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    <id>http://yoursite.com/2016/11/14/ZigZag-Conversion-回旋字符串/</id>
-    <published>2016-11-14T13:27:29.000Z</published>
-    <updated>2016-11-18T11:52:17.947Z</updated>
-    
-    <content type="html"><![CDATA[<p>id：6. ZigZag Conversion   QuestionEditorial Solution  My Submissions<br>Total Accepted: 120341<br>Total Submissions: 469716<br>Difficulty: Easy<br>Contributors: Admin<br>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><img src="/images/zigzagconversion/1.png" alt=""><br> <a id="more"></a><br>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
-<p>string convert(string text, int nRows);<br>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.<br>Subscribe to see which companies asked this question</p>
-<p>这道题是一个变换，只要找到其中的规律就很好做题。<br><img src="/images/zigzagconversion/2.png" alt=""></p>
-<p><code>假设结果存在一个string result中</code></p>
-<p><code>原字符串存于s</code></p>
-<p>经过观察我们可以发现<br>红色部分的变换为：</p>
-<p><code>result.append(1,s[j*(numRows+numRows-2)+i])</code></p>
-<p>绿色部分的变换为</p>
-<p><code>result.append(1,s[(j+1)*(numRows+numRows-2)-i])</code></p>
-<p>其中i是第i行，j是（红色或者绿）的第j个数</p>
-<p>所以我们可以这么写代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> result;</div><div class="line">        <span class="keyword">if</span> (numRows==<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">        <span class="keyword">if</span>(s.size()==<span class="number">0</span>)<span class="keyword">return</span> result;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numRows;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;(j*(numRows+numRows<span class="number">-2</span>)+i)&lt;s.size();j++)</div><div class="line">            &#123;result.append(<span class="number">1</span>,s[j*(numRows+numRows<span class="number">-2</span>)+i]);</div><div class="line">            <span class="keyword">if</span>(i==<span class="number">0</span>||i==numRows<span class="number">-1</span>)</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">            <span class="keyword">if</span>(((j+<span class="number">1</span>)*(numRows+numRows<span class="number">-2</span>)-i)&lt;s.size())</div><div class="line">            &#123;</div><div class="line">            result.append(<span class="number">1</span>,s[(j+<span class="number">1</span>)*(numRows+numRows<span class="number">-2</span>)-i]);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;id：6. ZigZag Conversion   QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 120341&lt;br&gt;Total Submissions: 469716&lt;br&gt;Difficulty: Easy&lt;br&gt;Contributors: Admin&lt;br&gt;The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)&lt;br&gt;&lt;img src=&quot;/images/zigzagconversion/1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
-    
-    
-      <category term="回旋字符串" scheme="http://yoursite.com/tags/%E5%9B%9E%E6%97%8B%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-      <category term="ZigZag Conversion" scheme="http://yoursite.com/tags/ZigZag-Conversion/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PCA主成分分析</title>
-    <link href="http://yoursite.com/2016/11/12/PCA%E9%99%8D%E7%BB%B4/"/>
-    <id>http://yoursite.com/2016/11/12/PCA降维/</id>
-    <published>2016-11-12T01:37:32.000Z</published>
-    <updated>2016-11-25T08:32:58.268Z</updated>
-    
-    <content type="html"><![CDATA[<p>pca降维</p>
-<h1 id="pca降维"><a href="#pca降维" class="headerlink" title="pca降维"></a>pca降维</h1>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;pca降维&lt;/p&gt;
-&lt;h1 id=&quot;pca降维&quot;&gt;&lt;a href=&quot;#pca降维&quot; class=&quot;headerlink&quot; title=&quot;pca降维&quot;&gt;&lt;/a&gt;pca降维&lt;/h1&gt;
-    
-    </summary>
-    
-      <category term="主成分分析" scheme="http://yoursite.com/categories/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/"/>
-    
-    
-      <category term="Principal Component Analysis" scheme="http://yoursite.com/tags/Principal-Component-Analysis/"/>
-    
-      <category term="主成分分析" scheme="http://yoursite.com/tags/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
