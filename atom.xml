@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-18T15:38:03.326Z</updated>
+  <updated>2017-01-19T03:34:01.591Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Valid Parentheses</title>
+    <link href="http://yoursite.com/2017/01/19/Valid-Parentheses/"/>
+    <id>http://yoursite.com/2017/01/19/Valid-Parentheses/</id>
+    <published>2017-01-19T03:29:24.000Z</published>
+    <updated>2017-01-19T03:34:01.591Z</updated>
+    
+    <content type="html"><![CDATA[<p>id20. Valid Parentheses   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 163285<br>Total Submissions: 507096<br>Difficulty: Easy<br>Contributors: Admin<br>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
+<p>The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.</p>
+<a id="more"></a>
+<p>字符串匹配<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt; st;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</div><div class="line">        &#123;<span class="keyword">if</span>(s[i]==<span class="string">'('</span>||s[i]==<span class="string">'['</span>||s[i]==<span class="string">'&#123;'</span>)</div><div class="line">            st.push(s[i]);</div><div class="line">            <span class="keyword">if</span>(s[i]==<span class="string">')'</span>)</div><div class="line">            &#123;<span class="keyword">if</span>(st.empty())</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">             <span class="keyword">if</span>(st.top()==<span class="string">'('</span>)</div><div class="line">            st.pop();</div><div class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(s[i]==<span class="string">']'</span>)</div><div class="line">            &#123;<span class="keyword">if</span>(st.empty())</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">if</span>(st.top()==<span class="string">'['</span>)</div><div class="line">            st.pop();</div><div class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;&#125;</div><div class="line">            <span class="keyword">if</span>(s[i]==<span class="string">'&#125;'</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(st.empty())</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            <span class="keyword">else</span>&#123;<span class="keyword">if</span>(st.top()==<span class="string">'&#123;'</span>)</div><div class="line">            st.pop();</div><div class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(st.empty())</div><div class="line"><span class="keyword">return</span> <span class="number">1</span>;</div><div class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;id20. Valid Parentheses   Add to List QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 163285&lt;br&gt;Total Submissions: 507096&lt;br&gt;Difficulty: Easy&lt;br&gt;Contributors: Admin&lt;br&gt;Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.&lt;/p&gt;
+&lt;p&gt;The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Remove Nth Node From End of List</title>
     <link href="http://yoursite.com/2017/01/18/Remove-Nth-Node-From-End-of-List/"/>
     <id>http://yoursite.com/2017/01/18/Remove-Nth-Node-From-End-of-List/</id>
     <published>2017-01-18T15:30:04.000Z</published>
-    <updated>2017-01-18T15:38:03.326Z</updated>
+    <updated>2017-01-18T15:40:02.426Z</updated>
     
     <content type="html"><![CDATA[<p>id19. Remove Nth Node From End of List   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 154617<br>Total Submissions: 480607<br>Difficulty: Easy<br>Contributors: Admin<br>Given a linked list, remove the nth node from the end of list and return its head.</p>
 <p>For example,</p>
@@ -382,9 +407,9 @@
       <category term="QT5从入门到放弃" scheme="http://yoursite.com/categories/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
     
     
-      <category term="模态与非模态" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%80%81%E4%B8%8E%E9%9D%9E%E6%A8%A1%E6%80%81/"/>
-    
       <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
+    
+      <category term="模态与非模态" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%80%81%E4%B8%8E%E9%9D%9E%E6%A8%A1%E6%80%81/"/>
     
   </entry>
   
@@ -716,62 +741,6 @@
       <category term="物体检测" scheme="http://yoursite.com/tags/%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/"/>
     
       <category term="spp-net" scheme="http://yoursite.com/tags/spp-net/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>R-CNN-物体检测</title>
-    <link href="http://yoursite.com/2016/11/22/R-CNN/"/>
-    <id>http://yoursite.com/2016/11/22/R-CNN/</id>
-    <published>2016-11-22T08:41:48.000Z</published>
-    <updated>2016-11-22T13:55:35.758Z</updated>
-    
-    <content type="html"><![CDATA[<p>Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)<br> <a id="more"></a></p>
-<h1 id="IOU的定义"><a href="#IOU的定义" class="headerlink" title="IOU的定义"></a>IOU的定义</h1><p> 物体检测需要定位出物体的bounding box，就像下面的图片一样，我们不仅要定位出车辆的bounding box 我们还要识别出bounding box 里面的物体就是车辆。对于bounding box的定位精度，有一个很重要的概念，因为我们算法不可能百分百跟人工标注的数据完全匹配，因此就存在一个定位精度评价公式：IOU。</p>
-<p> 矩形框A、B的一个重合度IOU计算公式为：</p>
-<p> <img src="/images/r-cnn/1.png" alt=""><br> $$IOU=\left( A\cap B \right) /\left( A\cup B \right) $$<br> 就是矩形框A、B的重叠面积占A、B并集的面积比例:</p>
-<h1 id="非极大值抑制"><a href="#非极大值抑制" class="headerlink" title="非极大值抑制"></a>非极大值抑制</h1><p>  <img src="/images/r-cnn/2.png" alt=""><br> 就像上面的图片一样，定位一个车辆，最后算法就找出了一堆的方框，我们需要判别哪些矩形框是没用的。非极大值抑制：先假设有6个矩形框，根据分类器类别分类概率做排序，从小到大分别属于车辆的概率分别为A、B、C、D、E、F。</p>
-<ol>
-<li><p>从最大概率矩形框F开始，分别判断A~E与F的重叠度IOU是否大于某个设定的阈值;</p>
-</li>
-<li><p>假设B、D与F的重叠度超过阈值，那么就扔掉B、D；并标记第一个矩形框F，是我们保留下来的。</p>
-</li>
-<li><p>从剩下的矩形框A、C、E中，选择概率最大的E，然后判断E与A、C的重叠度，重叠度大于一定的阈值，那么就扔掉；并标记E是我们保留下来的第二个矩形框。</p>
-</li>
-</ol>
-<p>就这样一直重复，找到所有被保留下来的矩形框。</p>
-<h1 id="r-cnn的论文思想"><a href="#r-cnn的论文思想" class="headerlink" title="r-cnn的论文思想"></a>r-cnn的论文思想</h1><p> <img src="/images/r-cnn/3.png" alt=""><br> 在如今看来是非常简单的，</p>
-<ol>
-<li>首先在原图中使用selective_search进行窗口的推荐推荐出2000个候选窗口。</li>
-<li><p>然后采用CNN提取每个候选框中图片的特征向量，特征向量的维度为4096维。</p>
-</li>
-<li><p>接着采用svm算法对各个候选框中的物体进行分类识别</p>
-<h1 id="部分实现细节"><a href="#部分实现细节" class="headerlink" title="部分实现细节"></a>部分实现细节</h1><h2 id="selective-search"><a href="#selective-search" class="headerlink" title="selective_search"></a>selective_search</h2><p>当我们输入一张图片时，我们要搜索出所有可能是物体的区域，这个采用的方法是传统文献的算法：《search for object recognition》，通过这个算法我们搜索出2000个候选框。然后从上面的总流程图中可以看到，搜出的候选框是矩形的，而且是大小各不相同。然而CNN对输入图片的大小是有固定的，如果把搜索到的矩形选框不做处理，就扔进CNN中，肯定不行。因此对于每个输入的候选框都需要缩放到固定的大小。下面我们讲解要怎么进行缩放处理，为了简单起见我们假设下一阶段CNN所需要的输入图片大小是个正方形图片227*227。因为我们经过selective search 得到的是矩形框，paper试验了两种不同的处理方法：<br><img src="/images/r-cnn/4.png" alt=""></p>
-</li>
-<li>各向异性缩放,这种方法很简单，就是不管图片的长宽比例，管它是否扭曲，进行缩放就是了，全部缩放到CNN输入的大小227*227，如下图(D)所示；</li>
-<li>先把bounding box图片裁剪出来，然后用固定的背景颜色填充成正方形图片(背景颜色也是采用bounding box的像素颜色均值),如下图(C)所示;</li>
-</ol>
-<p>对于上面的异性、同性缩放，文献还有个padding处理，上面的示意图中第1、3行就是结合了padding=0,第2、4行结果图采用padding=16的结果。经过最后的试验，作者发现采用各向异性缩放、padding=16的精度最高.</p>
-<h2 id="fine-tuning阶段"><a href="#fine-tuning阶段" class="headerlink" title="fine-tuning阶段"></a>fine-tuning阶段</h2><p>我们接着采用selective search 搜索出来的候选框，然后处理到指定大小图片，继续对上面预训练的cnn模型进行fine-tuning训练。假设要检测的物体类别有N类，那么我们就需要把上面预训练阶段的CNN模型的最后一层给替换掉，替换成N+1个输出的神经元(加1，表示还有一个背景)，然后这一层直接采用参数随机初始化的方法，其它网络层的参数不变；接着就可以开始继续SGD训练了。开始的时候，SGD学习率选择0.001，在每次训练的时候，我们batch size大小选择128，其中32个正样本、96个负样本(1:3)<br>note：作者在此论文中给出了卷积层和全连接层的一些特征，拿vgg16而言，网络的卷积层部分可以看作是sift等一样的特征提取器，但是对于全连接层是根据特定任务而言的，比如vgg16是用于图片分类，我们可以直接用其卷积层进行特征提取，而对于全连接，一般需要针对人脸任务进行一部分的微调。</p>
-<p><code>一些附加的调参技巧：在cat vs dog 的二分类竞赛中，发现对于vgg16网络，如果仅仅改变全连接层，那么效果可以达到正确率95%,但是如果微调vgg16的conv5+全连接层可以达到正确率98%</code></p>
-<h1 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h1><p> <img src="/images/r-cnn/5.png" alt=""></p>
-<p>具体的实验代码可以在<br><a href="https://github.com/unsky/rcnn" target="_blank" rel="external">https://github.com/unsky/rcnn</a><br>中找到。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Rich feature hierarchies for accurate object detection and semantic segmentation是RBG大神的作品，提出了深度学习用于物体检测的开山之作r-cnn (Regions with Convolutional Neural Network Features)&lt;br&gt;
-    
-    </summary>
-    
-      <category term="卷积深度网络" scheme="http://yoursite.com/categories/%E5%8D%B7%E7%A7%AF%E6%B7%B1%E5%BA%A6%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="R-CNN" scheme="http://yoursite.com/tags/R-CNN/"/>
-    
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="物体检测" scheme="http://yoursite.com/tags/%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
