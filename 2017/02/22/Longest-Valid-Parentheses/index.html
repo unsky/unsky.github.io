@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="coding my world.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deepdim-Unsky'Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Roman-to-Integer/index.html">
+<meta name="description" content="Longest Valid Parentheses Add to ListDescription  Submission  SolutionsTotal Accepted: 86398Total Submissions: 374225Difficulty: HardContributors: AdminGiven a string containing just the characters ‘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Valid Parentheses">
+<meta property="og:url" content="http://yoursite.com/2017/02/22/Longest-Valid-Parentheses/index.html">
 <meta property="og:site_name" content="Deepdim-Unsky'Blog">
-<meta property="og:description" content="coding my world.">
+<meta property="og:description" content="Longest Valid Parentheses Add to ListDescription  Submission  SolutionsTotal Accepted: 86398Total Submissions: 374225Difficulty: HardContributors: AdminGiven a string containing just the characters ‘">
+<meta property="og:updated_time" content="2017-02-22T03:44:36.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deepdim-Unsky'Blog">
-<meta name="twitter:description" content="coding my world.">
+<meta name="twitter:title" content="Longest Valid Parentheses">
+<meta name="twitter:description" content="Longest Valid Parentheses Add to ListDescription  Submission  SolutionsTotal Accepted: 86398Total Submissions: 374225Difficulty: HardContributors: AdminGiven a string containing just the characters ‘">
 
 
 
@@ -113,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Roman-to-Integer/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/22/Longest-Valid-Parentheses/"/>
 
 
-  <title> 标签: Roman to Integer | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Longest Valid Parentheses | Deepdim-Unsky'Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +139,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
 
     <div class="headband"></div>
     <div style="float:left;width:170px;height:170px;" >
@@ -355,46 +356,205 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Roman to Integer
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Longest Valid Parentheses
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-22T11:42:35+08:00" content="2017-02-22">
+              2017-02-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/22/Longest-Valid-Parentheses/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/22/Longest-Valid-Parentheses/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+      
+        <ol>
+<li>Longest Valid Parentheses Add to List<br>Description  Submission  Solutions<br>Total Accepted: 86398<br>Total Submissions: 374225<br>Difficulty: Hard<br>Contributors: Admin<br>Given a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring.<a id="more"></a>
+For “(()”, the longest valid parentheses substring is “()”, which has length = 2.</li>
+</ol>
+<p>Another example is “)()())”, where the longest valid parentheses substring is “()()”, which has length = 4.<br>使用动态规划进行解题<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestValidParentheses</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (s.length()&lt;<span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> dp[s.length()];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</div><div class="line">        dp[i]=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> maxLen =<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=s.length()<span class="number">-2</span>; i&gt;=<span class="number">0</span>;i--)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(s[i]==<span class="string">'('</span>)&#123;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>((i+dp[i+<span class="number">1</span>]+<span class="number">1</span>)&lt;s.length()&amp;&amp;s[i+dp[i+<span class="number">1</span>]+<span class="number">1</span>]==<span class="string">')'</span>)</div><div class="line">                &#123;dp[i]=dp[i+<span class="number">1</span>]+<span class="number">2</span>;</div><div class="line">                <span class="built_in">cout</span>&lt;&lt;dp[i];</div><div class="line">                <span class="keyword">if</span>((i+dp[i+<span class="number">1</span>]+<span class="number">2</span>)&lt;s.length())</div><div class="line">                dp[i]+=dp[i+dp[i+<span class="number">1</span>]+<span class="number">2</span>];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(maxLen&lt;dp[i])</div><div class="line">            maxLen=dp[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> maxLen;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/12/02/Roman-to-Integer/" itemprop="url">
-              
-                <span itemprop="name">Roman to Integer</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="unsky WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="unsky Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-02T22:49:15+08:00"
-              content="2016-12-02" >
-          12-02
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/22/409-Longest-Palindrome/" rel="next" title="409.Longest Palindrome">
+                <i class="fa fa-chevron-left"></i> 409.Longest Palindrome
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
 
@@ -405,6 +565,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/22/Longest-Valid-Parentheses/"
+           data-title="Longest Valid Parentheses" data-url="http://yoursite.com/2017/02/22/Longest-Valid-Parentheses/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -452,9 +620,18 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
 
       <div class="ui_base u_p3d">
       	<div class="base u_p3d">
@@ -531,6 +708,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
 
@@ -898,6 +1086,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 

@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Longest Valid Parentheses]]></title>
+      <url>%2F2017%2F02%2F22%2FLongest-Valid-Parentheses%2F</url>
+      <content type="text"><![CDATA[Longest Valid Parentheses Add to ListDescription Submission SolutionsTotal Accepted: 86398Total Submissions: 374225Difficulty: HardContributors: AdminGiven a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring. For “(()”, the longest valid parentheses substring is “()”, which has length = 2. Another example is “)()())”, where the longest valid parentheses substring is “()()”, which has length = 4.使用动态规划进行解题1234567891011121314151617181920212223242526272829class Solution &#123;public: int longestValidParentheses(string s) &#123; if (s.length()&lt;2) return 0; int dp[s.length()]; for(int i=0;i&lt;s.length();i++) dp[i]=0; int maxLen =0; for(int i=s.length()-2; i&gt;=0;i--) &#123; if(s[i]=='(')&#123; if((i+dp[i+1]+1)&lt;s.length()&amp;&amp;s[i+dp[i+1]+1]==')') &#123;dp[i]=dp[i+1]+2; cout&lt;&lt;dp[i]; if((i+dp[i+1]+2)&lt;s.length()) dp[i]+=dp[i+dp[i+1]+2]; &#125; &#125; if(maxLen&lt;dp[i]) maxLen=dp[i]; &#125; return maxLen; &#125;&#125;;]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[409.Longest Palindrome]]></title>
       <url>%2F2017%2F02%2F22%2F409-Longest-Palindrome%2F</url>
       <content type="text"><![CDATA[Longest Palindrome Add to ListDescription Submission SolutionsTotal Accepted: 28693Total Submissions: 64338Difficulty: EasyContributors: AdminGiven a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters. This is case sensitive, for example “Aa” is not considered a palindrome here. Note:Assume the length of given string will not exceed 1,010. Example: Input:“abccccdd” Output:7 Explanation:One longest palindrome that can be built is “dccaccd”, whose length is 7. 很简单得题目12345678910111213141516171819class Solution &#123;public: int longestPalindrome(string s) &#123; unordered_map&lt;char,int&gt; ma; for(int i=0;i&lt;s.length();i++) ma[s[i]]++; unordered_map&lt;char,int&gt;::iterator it=ma.begin(); int len=0; bool w=false; for(;it!=ma.end();it++) &#123;len+=((it-&gt;second)/2); if(it-&gt;second%2==1) w=true; &#125; return w?(len*2+1):(len*2); &#125;&#125;;]]></content>
