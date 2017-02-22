@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[409.Longest Palindrome]]></title>
+      <url>%2F2017%2F02%2F22%2F409-Longest-Palindrome%2F</url>
+      <content type="text"><![CDATA[Longest Palindrome Add to ListDescription Submission SolutionsTotal Accepted: 28693Total Submissions: 64338Difficulty: EasyContributors: AdminGiven a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters. This is case sensitive, for example “Aa” is not considered a palindrome here. Note:Assume the length of given string will not exceed 1,010. Example: Input:“abccccdd” Output:7 Explanation:One longest palindrome that can be built is “dccaccd”, whose length is 7. 很简单得题目12345678910111213141516171819class Solution &#123;public: int longestPalindrome(string s) &#123; unordered_map&lt;char,int&gt; ma; for(int i=0;i&lt;s.length();i++) ma[s[i]]++; unordered_map&lt;char,int&gt;::iterator it=ma.begin(); int len=0; bool w=false; for(;it!=ma.end();it++) &#123;len+=((it-&gt;second)/2); if(it-&gt;second%2==1) w=true; &#125; return w?(len*2+1):(len*2); &#125;&#125;;]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Generate Parentheses]]></title>
+      <url>%2F2017%2F01%2F19%2FGenerate-Parentheses%2F</url>
+      <content type="text"></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Merge Two Sorted Lists]]></title>
       <url>%2F2017%2F01%2F19%2FMerge-Two-Sorted-Lists%2F</url>
       <content type="text"><![CDATA[id21. Merge Two Sorted Lists Add to List QuestionEditorial Solution My SubmissionsTotal Accepted: 185619Total Submissions: 488183Difficulty: EasyContributors: AdminMerge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123; if(l1==NULL)return l2; if(l2==NULL)return l1; ListNode *result=new ListNode(-1); ListNode *head=result; while(l1!=NULL&amp;&amp;l2!=NULL) &#123; if(l1-&gt;val&lt;l2-&gt;val) &#123; ListNode *node=l1; result-&gt;next=node; result=result-&gt;next; l1=l1-&gt;next; &#125; else if(l1-&gt;val&gt;=l2-&gt;val)&#123; ListNode *node=l2; result-&gt;next=node; result=result-&gt;next; l2=l2-&gt;next; // cout&lt;&lt;l2-&gt;val&lt;&lt;" "&lt;&lt;l1-&gt;val&lt;&lt;endl; &#125; &#125; if(l1&amp;&amp;l2) return head-&gt;next; else &#123; if(l1==NULL) &#123; result-&gt;next=l2;&#125; else if(l2==NULL) result-&gt;next=l1; return head-&gt;next; &#125; delete result; &#125;&#125;;]]></content>

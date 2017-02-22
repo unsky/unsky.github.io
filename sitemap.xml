@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/02/22/409-Longest-Palindrome/</loc>
+    
+    <lastmod>2017-02-22T02:24:48.124Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/01/19/Generate-Parentheses/</loc>
+    
+    <lastmod>2017-01-19T08:58:06.173Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/01/19/Merge-Two-Sorted-Lists/</loc>
     
     <lastmod>2017-01-19T08:23:48.589Z</lastmod>
