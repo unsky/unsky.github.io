@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[Generate Parentheses]]></title>
       <url>%2F2017%2F01%2F19%2FGenerate-Parentheses%2F</url>
-      <content type="text"></content>
+      <content type="text"><![CDATA[Generate Parentheses Add to ListDescription Submission SolutionsTotal Accepted: 129826Total Submissions: 305733Difficulty: MediumContributors: AdminGiven n pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given n = 3, a solution set is: [ “((()))”, “(()())”, “(())()”, “()(())”, “()()()”]使用递归得思想，主要是12345678910if(left&lt;n)//对于左括号，只要没超过个数什么时候都可以插入 &#123;s.push_back('('); generate(res,s,left+1,right,n); s.pop_back();//在递归回来之后应该将刚刚插入得进行删除 &#125;if(right&lt;left)//在右括号得个数小于左括号得个数时候可以进行右括号得插入&#123;s.push_back(')'); generate(res,s,left,right+1,n); s.pop_back();//删除&#125; 12345678910111213141516171819202122232425262728class Solution &#123;public:s vector&lt;string&gt; generateParenthesis(int n) &#123; vector&lt;string&gt; res; string s; generate(res,s,0,0,n); return res; &#125; void generate(vector&lt;string&gt;&amp;res,string s,int left,int right,int n) &#123; if(left==n&amp;&amp;right==n) &#123;res.push_back(s); return; &#125; if(left&lt;n) &#123;s.push_back('('); generate(res,s,left+1,right,n); s.pop_back(); &#125; if(right&lt;left) &#123;s.push_back(')'); generate(res,s,left,right+1,n); s.pop_back(); &#125; &#125;&#125;;]]></content>
     </entry>
 
     

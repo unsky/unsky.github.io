@@ -53,9 +53,21 @@
     <link href="http://yoursite.com/2017/01/19/Generate-Parentheses/"/>
     <id>http://yoursite.com/2017/01/19/Generate-Parentheses/</id>
     <published>2017-01-19T08:58:06.000Z</published>
-    <updated>2017-01-19T08:58:06.173Z</updated>
+    <updated>2017-02-22T03:33:31.275Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>Generate Parentheses Add to List<br>Description  Submission  Solutions<br>Total Accepted: 129826<br>Total Submissions: 305733<br>Difficulty: Medium<br>Contributors: Admin<br>Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.<a id="more"></a>
+</li>
+</ol>
+<p>For example, given n = 3, a solution set is:</p>
+<p>[<br>  “((()))”,<br>  “(()())”,<br>  “(())()”,<br>  “()(())”,<br>  “()()()”<br>]<br>使用递归得思想，主要是<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(left&lt;n)<span class="comment">//对于左括号，只要没超过个数什么时候都可以插入</span></div><div class="line">  &#123;s.push_back(<span class="string">'('</span>);</div><div class="line">  generate(res,s,left+<span class="number">1</span>,right,n);</div><div class="line">  s.pop_back();<span class="comment">//在递归回来之后应该将刚刚插入得进行删除</span></div><div class="line">  &#125;</div><div class="line"><span class="keyword">if</span>(right&lt;left)<span class="comment">//在右括号得个数小于左括号得个数时候可以进行右括号得插入</span></div><div class="line">&#123;s.push_back(<span class="string">')'</span>);</div><div class="line"> generate(res,s,left,right+<span class="number">1</span>,n);</div><div class="line">  s.pop_back();<span class="comment">//删除</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:s</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; generateParenthesis(<span class="keyword">int</span> n) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</div><div class="line">        <span class="built_in">string</span> s;</div><div class="line">        generate(res,s,<span class="number">0</span>,<span class="number">0</span>,n);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">generate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp;res,<span class="built_in">string</span> s,<span class="keyword">int</span> left,<span class="keyword">int</span> right,<span class="keyword">int</span> n)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(left==n&amp;&amp;right==n)</div><div class="line">     &#123;res.push_back(s);</div><div class="line">     <span class="keyword">return</span>;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">      <span class="keyword">if</span>(left&lt;n)</div><div class="line">        &#123;s.push_back(<span class="string">'('</span>);</div><div class="line">        generate(res,s,left+<span class="number">1</span>,right,n);</div><div class="line">        s.pop_back();</div><div class="line">        &#125;</div><div class="line">    <span class="keyword">if</span>(right&lt;left)</div><div class="line">    &#123;s.push_back(<span class="string">')'</span>);</div><div class="line">       generate(res,s,left,right+<span class="number">1</span>,n);</div><div class="line">        s.pop_back();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+]]></content>
     
     <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;Generate Parentheses Add to List&lt;br&gt;Description  Submission  Solutions&lt;br&gt;Total Accepted: 129826&lt;br&gt;Total Submissions: 305733&lt;br&gt;Difficulty: Medium&lt;br&gt;Contributors: Admin&lt;br&gt;Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
     
     </summary>
     
@@ -477,9 +489,9 @@
       <category term="QT5从入门到放弃" scheme="http://yoursite.com/categories/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
     
     
-      <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
-    
       <category term="模态与非模态" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%80%81%E4%B8%8E%E9%9D%9E%E6%A8%A1%E6%80%81/"/>
+    
+      <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
     
   </entry>
   
