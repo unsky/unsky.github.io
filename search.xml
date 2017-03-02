@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Maximum Subarray]]></title>
+      <url>%2F2017%2F02%2F23%2FMaximum-Subarray%2F</url>
+      <content type="text"><![CDATA[id53. Maximum Subarray Add to ListDescription Submission SolutionsTotal Accepted: 169989Total Submissions: 436088Difficulty: EasyContributors: AdminFind the contiguous subarray within an array (containing at least one number) which has the largest sum. For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous subarray [4,-1,2,1] has the largest sum = 6.第一种，穷举法第二种，优化第三种，贪婪算法]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Longest Valid Parentheses]]></title>
       <url>%2F2017%2F02%2F22%2FLongest-Valid-Parentheses%2F</url>
       <content type="text"><![CDATA[Longest Valid Parentheses Add to ListDescription Submission SolutionsTotal Accepted: 86398Total Submissions: 374225Difficulty: HardContributors: AdminGiven a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring. For “(()”, the longest valid parentheses substring is “()”, which has length = 2. Another example is “)()())”, where the longest valid parentheses substring is “()()”, which has length = 4.使用动态规划进行解题1234567891011121314151617181920212223242526272829class Solution &#123;public: int longestValidParentheses(string s) &#123; if (s.length()&lt;2) return 0; int dp[s.length()]; for(int i=0;i&lt;s.length();i++) dp[i]=0; int maxLen =0; for(int i=s.length()-2; i&gt;=0;i--) &#123; if(s[i]=='(')&#123; if((i+dp[i+1]+1)&lt;s.length()&amp;&amp;s[i+dp[i+1]+1]==')') &#123;dp[i]=dp[i+1]+2; cout&lt;&lt;dp[i]; if((i+dp[i+1]+2)&lt;s.length()) dp[i]+=dp[i+dp[i+1]+2]; &#125; &#125; if(maxLen&lt;dp[i]) maxLen=dp[i]; &#125; return maxLen; &#125;&#125;;]]></content>

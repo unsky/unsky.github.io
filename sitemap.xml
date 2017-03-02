@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/02/23/Maximum-Subarray/</loc>
+    
+    <lastmod>2017-02-23T03:19:41.276Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/02/22/Longest-Valid-Parentheses/</loc>
     
     <lastmod>2017-02-22T03:44:36.616Z</lastmod>
