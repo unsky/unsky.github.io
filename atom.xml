@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-27T15:13:52.553Z</updated>
+  <updated>2017-04-04T09:45:01.288Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>线性回归与逻辑回归</title>
+    <link href="http://yoursite.com/2017/04/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%8E%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
+    <id>http://yoursite.com/2017/04/04/线性回归与逻辑回归/</id>
+    <published>2017-04-04T07:37:24.000Z</published>
+    <updated>2017-04-04T09:45:01.288Z</updated>
+    
+    <content type="html"><![CDATA[<p>在这里总结一下线性回归逻辑回归和更一般的回归模型。<br><a id="more"></a></p>
+<h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><p>用一个线性函数对提供的已知数据进行拟合，最终得到一个线性函数，使这个函数满足我们的要求（如具有最小平方差,随后我们将定义一个代价函数，使这个目标量化），之后我们可以利用这个函数，对给定的输入进行预测（例如，给定房屋面积，我们预测这个房屋的价格）。如下图所示：</p>
+<p><img src="/images/regression/1.png" alt=""></p>
+<p>假设我们最终要的得到的假设函数具有如下形式：</p>
+<p><img src="/images/regression/2.png" alt=""><br>其中，x是我们的输入，theta是我们要求得的参数。</p>
+<p>代价函数如下：<br><img src="/images/regression/3.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">note: 为什么选择平方误差作为损失函数，可以看到平方误差函数是一个以0为分布的正太函数，以其为误差是科学的。</div></pre></td></tr></table></figure>
+<p>正态分布（Normal distribution）又名高斯分布（Gaussian distribution），是一个在数学、物理及工程等领域都非常重要的概率分布，在统计学的许多方面有着重大的影响力。<br>若随机变量X服从一个数学期望为μ、标准方差为σ2的高斯分布，记为：<br>X∼N(μ,σ2),<br>则其概率密度函数为：</p>
+<pre><code>正态分布的期望值μ决定了其位置，其标准差σ决定了分布的幅度。因其曲线呈钟形，因此人们又经常称之为钟形曲线。我们通常所说的标准正态分布是μ = 0,σ = 1的正态分布
+</code></pre><p>我们的目标是使得此代价函数具有最小值。</p>
+<p>为此，我们还需要求得代价函数关于参量theta的导数，即梯度，具有如下形式：<br><img src="/images/regression/4.png" alt=""></p>
+<p>有了这些信息之后，我们就可以用梯度下降算法来求得theta参数。过程如下：<br><img src="/images/regression/5.png" alt=""></p>
+<h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><p>相比于线性回归，逻辑回归只会输出一些离散的特定值（例如判定一封邮件是否为垃圾邮件，输出只有0和1），而且对假设函数进行了处理，使得输出只在0和1之间。</p>
+<p>假设函数如下：</p>
+<p><img src="/images/regression/6.png" alt=""></p>
+<p>代价函数如下：</p>
+<p><img src="/images/regression/7.png" alt=""></p>
+<p>note:</p>
+<p> 在这里可以看到逻辑回归使用伯努利分布来处理误差</p>
+<p> 伯努利分布(Bernoulli distribution)又名两点分布或0-1分布，介绍伯努利分布前首先需要引入伯努利试验（Bernoulli trial）。<br> 伯努利试验是只有两种可能结果的单次随机试验，即对于一个随机变量X而言：</p>
+<p><img src="/images/regression/8.png" alt=""></p>
+<p>伯努利试验都可以表达为“是或否”的问题。例如，抛一次硬币是正面向上吗？刚出生的小孩是个女孩吗？等等</p>
+<p>如果试验E是一个伯努利试验，将E独立重复地进行n次，则称这一串重复的独立试验为n重伯努利试验。</p>
+<p>进行一次伯努利试验，成功(X=1)概率为p(0&lt;=p&lt;=1)，失败(X=0)概率为1-p，则称随机变量X服从伯努利分布。伯努利分布是离散型概率分布，其概率质量函数为：</p>
+<p><img src="/images/regression/9.png" alt=""></p>
+<p>梯度函数如下，观察可知，形式与线性回归时一样：<br><img src="/images/regression/10.png" alt=""></p>
+<h1 id="一般线性回归（softmax）"><a href="#一般线性回归（softmax）" class="headerlink" title="一般线性回归（softmax）"></a>一般线性回归（softmax）</h1><p>线性回归 是以 高斯分布 为误差分析模型； 逻辑回归 采用的是 伯努利分布 分析误差。</p>
+<p>而高斯分布、伯努利分布、贝塔分布、迪特里特分布，都属于指数分布。</p>
+<p><img src="/images/regression/11.png" alt=""><br>而一般线性回归，在x条件下，y的概率分布 p(y|x) 就是指 指数分布.</p>
+<p>经历最大似然估计的推导，就能导出一般线性回归的 误差分析模型（最小化误差模型）。</p>
+<p>softmax回归就是 一般线性回归的一个例子。</p>
+<p>有监督学习回归，针对多类问题（逻辑回归，解决的是二类划分问题），如数字字符的分类问题，0-9,10个数字，y值有10个可能性。</p>
+<p>而这种可能的分布，是一种指数分布。而且所有可能的和 为1，则对于一个输入的结果，其结果可表示为：<br><img src="/images/regression/12.png" alt=""></p>
+<p>参数是一个k维的向量。</p>
+<p>而代价函数：</p>
+<p><img src="/images/regression/13.png" alt=""><br>而对于softmax的求解，没有闭式解法（高阶多项方程组求解），仍用梯度下降法，或L-BFGS求解。</p>
+<p>当k=2时，softmax退化为逻辑回归，这也能反映softmax回归是逻辑回归的推广。</p>
+<p>证明如下：</p>
+<p><img src="/images/regression/14.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在这里总结一下线性回归逻辑回归和更一般的回归模型。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>cnn-rnn for multi-label image classification</title>
@@ -664,51 +723,6 @@ For “(()”, the longest valid parentheses substring is “()”, which has le
       <category term="leetode" scheme="http://yoursite.com/tags/leetode/"/>
     
       <category term="Longest Common Prefix" scheme="http://yoursite.com/tags/Longest-Common-Prefix/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>QT5从入门到放弃:(2)基础窗口部件</title>
-    <link href="http://yoursite.com/2016/12/03/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%9A%EF%BC%882)%E5%9F%BA%E7%A1%80%E7%AA%97%E5%8F%A3%E9%83%A8%E4%BB%B6/"/>
-    <id>http://yoursite.com/2016/12/03/QT5从入门到放弃：（2)基础窗口部件/</id>
-    <published>2016-12-03T09:55:49.000Z</published>
-    <updated>2016-12-03T11:26:02.867Z</updated>
-    
-    <content type="html"><![CDATA[<p>QT提供默认的几类只有QMainWindow,QWidget,QDialog三种，这三种窗体是最常见的,QMainWindow带有菜单栏和工具栏的主窗口类，QDialog是各种对话框的几类，而他们全部继承自QWidget.<br><a id="more"></a><br>他们之间详细的关系如下：<br><img src="/images/qwidgets/1.png" alt=""></p>
-<h1 id="窗口和部件以及窗口类型"><a href="#窗口和部件以及窗口类型" class="headerlink" title="窗口和部件以及窗口类型"></a>窗口和部件以及窗口类型</h1><p> 窗口部件是QT中建立用户元素的主要部件，其中作为部件附属于其他窗口的可以简称为部件，而没有上级的成为窗口（根）<br> 看一段代码：<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLabel&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</div><div class="line">    QDialog *w1=<span class="keyword">new</span> QDialog();</div><div class="line">    w1-&gt;setWindowTitle(<span class="string">"thie is win1"</span>);</div><div class="line">    QLabel * label1=<span class="keyword">new</span> QLabel();</div><div class="line">    label1-&gt;setText(<span class="string">"label1"</span>);</div><div class="line">    label1-&gt;show();</div><div class="line">    label1-&gt;resize(<span class="number">200</span>,<span class="number">200</span>);</div><div class="line">   QLabel *label2=<span class="keyword">new</span> QLabel(w1);</div><div class="line">   label2-&gt;setText(<span class="string">"LABEL2"</span>);</div><div class="line">   w1-&gt;resize(<span class="number">200</span>,<span class="number">200</span>);</div><div class="line">   label2-&gt;show();</div><div class="line">   label2-&gt;resize(<span class="number">150</span>,<span class="number">150</span>);</div><div class="line">   w1-&gt;show();</div><div class="line"></div><div class="line"></div><div class="line"> <span class="keyword">return</span> a.exec();</div><div class="line"> <span class="keyword">delete</span> label1;</div><div class="line"> <span class="comment">//  delete label2;</span></div><div class="line">   <span class="keyword">delete</span> w1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p> 这段程序定义了一个QDialog :w1,两个QLabel: label1和label2.<br> 在这里需要注意的是所有的定义都使用new()开辟空间，所以在最后都需要执行delete操作。<br> 如：<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QDialog *w1=<span class="keyword">new</span> QDialog();</div><div class="line"><span class="keyword">delete</span> w1;</div></pre></td></tr></table></figure></p>
-<p> 在这段程序里我们分析各个部件之间的关系。因为label1没有绑定任何父类，所以他是一个独立的窗口，而label2在新定义的时候，  <code>QLabel *label2=new QLabel(w1);</code>就被绑定上了w1所以其父是w1.<br> 所以有如下的一些特点：</p>
-<ol>
-<li>label1可以单独显示，而label2不可以单独显示，如果显示w1则显示w1的全部子部件，即label2也被显示出来。</li>
-<li><p>在delete的时候，label1和label2都可以单独被销毁，但是如果如果w1被销毁，那么w1的所有子部件也全部被销毁。<br><img src="/images/qwidgets/2.png" alt=""></p>
-<h1 id="窗口类型"><a href="#窗口类型" class="headerlink" title="窗口类型"></a>窗口类型</h1><p>QT有非常多的窗口类型，QWidget的构造函数有两个参数<br>一个是<code>QWidget *parent=0</code> 这个参数主要负责该窗口部件的附属关系，默认是0，表示是一个独立窗口，两一个参数是<br><code>Qt::WindowFlags</code>这个参数主要负责的是这个窗口部件的类型。<br>比如我们可以</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QDialog *w1=<span class="keyword">new</span> QDialog(<span class="number">0</span>,Qt::Dialog);</div><div class="line">  QLabel * label1=<span class="keyword">new</span> QLabel(<span class="number">0</span>,Qt::SplashScreen);</div></pre></td></tr></table></figure>
-<p>其效果：<br><img src="/images/qwidgets/3.png" alt=""><br>也可以使用位或操作如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> QDialog *w1=<span class="keyword">new</span> QDialog(<span class="number">0</span>,Qt::Dialog|Qt::FramelessWindowHint);</div><div class="line"></div><div class="line">QLabel * label1=<span class="keyword">new</span> QLabel(<span class="number">0</span>,Qt::SplashScreen|Qt::WindowStaysOnTopHint);</div></pre></td></tr></table></figure>
-<p><img src="/images/qwidgets/4.png" alt=""><br>更加详细的样式，用到再说。</p>
-<h1 id="窗口的几何布局"><a href="#窗口的几何布局" class="headerlink" title="窗口的几何布局"></a>窗口的几何布局</h1><p><img src="/images/qwidgets/5.png" alt=""><br>这里的函数主要分为两类，一类是包含框架的，另一个事不包含框架的。</p>
-</li>
-<li>包含框架的：x(),y(),frameGemetry(),pos(),move()函数</li>
-<li><p>不包含框架的：genmetry(),width(),height(),rect()和size()函数。<br>实例程序：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QWidget&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;  <span class="function">QApplication <span class="title">a</span><span class="params">(argc,argv)</span></span>;</div><div class="line">    QWidget w;</div><div class="line">   <span class="keyword">int</span> x=w.x();</div><div class="line">   <span class="keyword">int</span> y=w.y();</div><div class="line">   QRect gemetry=w.geometry();</div><div class="line">   QRect frame=w.frameGeometry();</div><div class="line">    <span class="keyword">return</span> a.exec();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>其中<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> x=w.x();</div><div class="line"><span class="keyword">int</span> y=w.y();</div></pre></td></tr></table></figure></p>
-<p>分别返回窗口部件的坐标值x,y,他们的默认值是0.</p>
-<p>而geometry和frameGeometry()函数分别返回没有边框的和包含边框矩形的值，其返回值是QRect类型的，就是一个矩形，他的形式是（x,y,height,width）<br>在这里我们使用QDebug进行调试。<br>程序<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QWidget&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDebug&gt;</span></span></div><div class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;  <span class="function">QApplication <span class="title">a</span><span class="params">(argc,argv)</span></span>;</div><div class="line">    QWidget w;</div><div class="line">   <span class="keyword">int</span> x=w.x();</div><div class="line">   <span class="keyword">int</span> y=w.y();</div><div class="line">   QRect gemetry=w.geometry();</div><div class="line">   QRect frame=w.frameGeometry();</div><div class="line">   qDebug()&lt;&lt;x&lt;&lt;<span class="string">" "</span>&lt;&lt;y&lt;&lt;<span class="string">" "</span>&lt;&lt;gemetry&lt;&lt;<span class="string">" "</span>&lt;&lt;frame;</div><div class="line">    <span class="keyword">return</span> a.exec();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在引入了QDebug头文件之后，可以直接使用qDebug()函数<br><code>qDebug()&lt;&lt;x&lt;&lt;&quot; &quot;&lt;&lt;y&lt;&lt;&quot; &quot;&lt;&lt;gemetry&lt;&lt;&quot; &quot;&lt;&lt;frame;</code>这句语句可以输出。<br>其结果如下：<br> <img src="/images/qwidgets/6.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;QT提供默认的几类只有QMainWindow,QWidget,QDialog三种，这三种窗体是最常见的,QMainWindow带有菜单栏和工具栏的主窗口类，QDialog是各种对话框的几类，而他们全部继承自QWidget.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="QT5从入门到放弃" scheme="http://yoursite.com/categories/QT5%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
-    
-    
-      <category term="QT5" scheme="http://yoursite.com/tags/QT5/"/>
     
   </entry>
   
