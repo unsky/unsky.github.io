@@ -93,11 +93,13 @@
 <meta property="og:image" content="http://yoursite.com/images/hypernet/1.png">
 <meta property="og:image" content="http://yoursite.com/images/hypernet/2.png">
 <meta property="og:image" content="http://yoursite.com/images/hypernet/3.png">
+<meta property="og:image" content="http://yoursite.com/images/hypernet/8.png">
+<meta property="og:image" content="http://yoursite.com/images/hypernet/9.png">
 <meta property="og:image" content="http://yoursite.com/images/hypernet/4.png">
 <meta property="og:image" content="http://yoursite.com/images/hypernet/5.png">
 <meta property="og:image" content="http://yoursite.com/images/hypernet/5.png">
 <meta property="og:image" content="http://yoursite.com/images/hypernet/6.png">
-<meta property="og:updated_time" content="2017-04-21T09:38:02.409Z">
+<meta property="og:updated_time" content="2017-04-21T09:40:46.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hyperNet for object detection">
 <meta name="twitter:description" content="HyperNet: Towards Accurate Region Proposal Generationand Joint Object Detection本篇论文发表于2016 IEEE Conference on Computer Vision and Pattern Recognition论文下载地址：http://ieeexplore.ieee.org/document/7780467/">
@@ -476,7 +478,7 @@
 <li>Computation efficiency. All features can be precomputed before region proposal generation and detection module. There is no redundant computation.<br>这点我个人是非常赞同的，深究一下，从我们最开始的出发点可以看出。<br>如果我们在高层来进行区域推荐，会忽略小目标。<br>如果我们在底层进行区域推荐，对于大目标，它本应该进行更深的语义卷积，但这种策略没有做，结果就是丢失了更深层的特征。<br>说白了就是，在高层对小目标不好，在底层对大物体不公平。<h1 id="Region-Proposal-Generation"><a href="#Region-Proposal-Generation" class="headerlink" title="Region Proposal Generation"></a>Region Proposal Generation</h1><img src="/images/hypernet/3.png" alt=""><br>这一层和rpn回归网络很像，不同的是，其由ROI pooling layer（13<em>13）, a Conv layer（3</em>3*4） and a Fully Connect (FC) layer(256-d),不同的是其多了一个卷积层。后面的操作都和rpn一样，需要使用阈值来进行极大值抑制（0.7）选1K个窗口，然后选top200进行下一步的操作，也就是最终推荐出200个窗口。<br>思考：此网络和rpn网络相似度极高，为什么，它可以很猛的选择top200而rpn不敢？<br>Rpn生成的网络推荐的2000个窗口中，可以保证很大的recall，因为有很多正样本和hard nagitives混杂在一起，而此网络可以选择top200而用于很高的recall猜测一方面其得益于concat的特征，或者多了的卷积层（stranger than rpn in classification…）？<br>Object Detection</li>
 </ol>
 <p>分类器，一个中规中矩的分类，损失函数还是用r-cnn的</p>
-<h1 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h1><p>论文提出了一个6步训练策略，在训练的fineturning阶段可以做到object classification网络和region generation network联合反向更新。<br>加速策略：<br>这么做还是太慢了，作者说，主要话费时间的地方是区域生成网络，而区域网络最费时间的地方是对大推向做iou pooling（占了70%的时间）所以坚决策略，先卷积再iou-pooling…</p>
+<h1 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h1><p><img src="/images/hypernet/8.png" alt=""><br>论文提出了一个6步训练策略，在训练的fineturning阶段可以做到object classification网络和region generation network联合反向更新。<br>加速策略：<br><img src="/images/hypernet/9.png" alt=""><br>这么做还是太慢了，作者说，主要话费时间的地方是区域生成网络，而区域网络最费时间的地方是对大推向做iou pooling（占了70%的时间）所以坚决策略，先卷积再iou-pooling…</p>
 <h1 id="实验："><a href="#实验：" class="headerlink" title="实验："></a>实验：</h1><p>作为主打区域推荐，当然要计算下recall<br>  <img src="/images/hypernet/4.png" alt=""><br>可以看到其在200proposal的时候，recall真的提了一大截。很赞。<br>  <img src="/images/hypernet/5.png" alt=""></p>
 <p>正确率</p>
 <p>   <img src="/images/hypernet/5.png" alt=""><br>速度</p>
