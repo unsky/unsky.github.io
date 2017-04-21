@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-04T09:45:01.288Z</updated>
+  <updated>2017-04-21T09:38:02.409Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hyperNet for object detection</title>
+    <link href="http://yoursite.com/2017/04/21/hyperNet-for-object-detection/"/>
+    <id>http://yoursite.com/2017/04/21/hyperNet-for-object-detection/</id>
+    <published>2017-04-21T09:29:51.000Z</published>
+    <updated>2017-04-21T09:38:02.409Z</updated>
+    
+    <content type="html"><![CDATA[<p>HyperNet: Towards Accurate Region Proposal Generation<br>and Joint Object Detection<br>本篇论文发表于2016 IEEE Conference on Computer Vision and Pattern Recognition<br>论文下载地址：<br><a href="http://ieeexplore.ieee.org/document/7780467/" target="_blank" rel="external">http://ieeexplore.ieee.org/document/7780467/</a><br><a id="more"></a><br>HyperNet: Towards Accurate Region Proposal Generation<br>and Joint Object Detection<br>本篇论文发表于2016 IEEE Conference on Computer Vision and Pattern Recognition<br>论文下载地址：<br><a href="http://ieeexplore.ieee.org/document/7780467/" target="_blank" rel="external">http://ieeexplore.ieee.org/document/7780467/</a></p>
+<h1 id="简介一下物体检测目前最火的框架："><a href="#简介一下物体检测目前最火的框架：" class="headerlink" title="简介一下物体检测目前最火的框架："></a>简介一下物体检测目前最火的框架：</h1><p>在这两年的物体监测论文发展中，faster r-cnn 属于一篇分水岭是的文章，在此之前，大多延续的框架是region proposal + classification.其主要还是在做分类问题，faster-rcnn框架，第一次提出了 region proposal network，这个区域推荐网络是直接对feature maps做回归，详细点就是对每个sliding window 做k(k is 9 in faster r-cnn) 个anchor的回归.接着这个思想you only look once, ssd直接用回归来做检测问题盛行起来。<br>总结如下：<br>经典框架：region proposal +classification<br>最新框架：regression</p>
+<h1 id="论文出发点："><a href="#论文出发点：" class="headerlink" title="论文出发点："></a>论文出发点：</h1><p>这是一篇2016年的论文，基本是在fast r-cnn的阶段进行研究，对于fast r-cnn有很大的缺点，因为在深度网络的高层使用区域推荐，来产生大量的区域推荐从而进行下一阶段的分类。但是直接在高层做区域提取往往会对小的物体不敏感，意思就是卷没了。在高层可能只剩下很大的物体，所以这些制约了最终的分类性能能。论文原话：<br>Although the latest Region Proposal Network method gets promising detection<br>accuracy with several hundred proposals, it still struggles in small-size object detection and precise localization (e.g.,large IoU thresholds), mainly due to the coarseness of its<br>feature maps.<br>意思就是就算使用了阈值来进行筛选，区域推荐依然需要推荐出大约2k个窗口来进行强分类。而大量的负样本掺杂在其中，同时小的物体还没有推荐出来。<br>问题：</p>
+<ol>
+<li>推荐出的窗口太多，限制了速度。同时引入了更多的hard negatives增加了分类的难度。</li>
+<li>因为在高层做卷积，遗失了很多小物体区域。</li>
+</ol>
+<p>其实这俩问题属于很经典的问题，作者并没有提出很native的问题，大家基本都围绕这个问题在做工作，看他们怎么做的吧</p>
+<h1 id="网络框架："><a href="#网络框架：" class="headerlink" title="网络框架："></a>网络框架：</h1><p> <img src="/images/hypernet/1.png" alt=""><br>整体网络结构分成三部分：</p>
+<ol>
+<li>Pre-train cnn modal 他使用了vgg16/19的 conv1,conv3和conv5,更高层的conv n 和 fc都被舍弃了。</li>
+<li>Network for hyper feature extraction 层级特征提取，这部分主要负责在各层提取特征，然后进行concat（这个idea的思想在ssd也能找到，属于比较好像的idea，提取不出小物体，就在底层提取嘛，，这在 is faster r-cnn is doing well for pedestrian detection 中思想已初见）。</li>
+<li>Region proposal generation 部分是论文的核心，在这里使用层级特征来进行区域推荐。</li>
+<li>Object detection就是个强分类器阶段。<br>以上1-3步骤对应于经典框架的region proposal部分，4步骤对应于classification阶段。<br>下来挨个看每一部分。<h1 id="Pre-train-cnn-modal"><a href="#Pre-train-cnn-modal" class="headerlink" title="Pre-train cnn modal"></a>Pre-train cnn modal</h1>没啥好说的，pre-train cnn modal as a feature extractor basing on Transfer learning..<h1 id="Network-for-hyper-feature-extraction"><a href="#Network-for-hyper-feature-extraction" class="headerlink" title="Network for hyper feature extraction"></a>Network for hyper feature extraction</h1><img src="/images/hypernet/2.png" alt=""><br>目标是为了从各层提出特征进行concat，但是问题来了，拿VGG16来说，底层和高层之间的feature maps size 是很不一样的。怎么进行concat?<br>作者解决方法：对每一层使用不同的策略进行特征提取</li>
+<li>对底层，使用max –pool进行下采样</li>
+<li>对中层，啥都不干</li>
+<li>对高层使用deconv进行上采样</li>
+</ol>
+<p>讲真，这种策略看起来十分工程化，很不优美。。。<br>进行完以上的操作需要使用一个卷积操作（上图褐色部分）对他们卷积到同一维度：作者的原话：<br>The Conv operation not only extracts more semantic features but also compresses them into a uniform space.<br>意思是，这个卷积操作不止提取了更深的语意信息，而且将multi-level feature 映射到uniform space了。(自我猜想：虽然道理是这么个道理，但是都已经上采样和下采样到中间level为什么不直接使用一个卷积或者直接不用卷积来进行concat 这样三个卷积训练起来会不会很low..)<br>最终的最终我们需要使用local response normalization (LRN)对concat之后的特征进行正则化，（更加怀疑那三个卷积的怎么更新。。。）<br>这么做作者说有三个好处：</p>
+<ol>
+<li>Multiple levels’ abstraction. Inspired by neuroscience, reasoning across<br>multiple levels has been proven beneficial in some computer<br>vision problems。神经学说借助多层特征的推理已经被很好的运用于视觉。（明明是玄学）</li>
+<li>Appropriate resolution分辨率变合适了，这么concat下来1000<em>600的图片变为250</em>150。</li>
+<li>Computation efficiency. All features can be precomputed before region proposal generation and detection module. There is no redundant computation.<br>这点我个人是非常赞同的，深究一下，从我们最开始的出发点可以看出。<br>如果我们在高层来进行区域推荐，会忽略小目标。<br>如果我们在底层进行区域推荐，对于大目标，它本应该进行更深的语义卷积，但这种策略没有做，结果就是丢失了更深层的特征。<br>说白了就是，在高层对小目标不好，在底层对大物体不公平。<h1 id="Region-Proposal-Generation"><a href="#Region-Proposal-Generation" class="headerlink" title="Region Proposal Generation"></a>Region Proposal Generation</h1><img src="/images/hypernet/3.png" alt=""><br>这一层和rpn回归网络很像，不同的是，其由ROI pooling layer（13<em>13）, a Conv layer（3</em>3*4） and a Fully Connect (FC) layer(256-d),不同的是其多了一个卷积层。后面的操作都和rpn一样，需要使用阈值来进行极大值抑制（0.7）选1K个窗口，然后选top200进行下一步的操作，也就是最终推荐出200个窗口。<br>思考：此网络和rpn网络相似度极高，为什么，它可以很猛的选择top200而rpn不敢？<br>Rpn生成的网络推荐的2000个窗口中，可以保证很大的recall，因为有很多正样本和hard nagitives混杂在一起，而此网络可以选择top200而用于很高的recall猜测一方面其得益于concat的特征，或者多了的卷积层（stranger than rpn in classification…）？<br>Object Detection</li>
+</ol>
+<p>分类器，一个中规中矩的分类，损失函数还是用r-cnn的</p>
+<h1 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h1><p>论文提出了一个6步训练策略，在训练的fineturning阶段可以做到object classification网络和region generation network联合反向更新。<br>加速策略：<br>这么做还是太慢了，作者说，主要话费时间的地方是区域生成网络，而区域网络最费时间的地方是对大推向做iou pooling（占了70%的时间）所以坚决策略，先卷积再iou-pooling…</p>
+<h1 id="实验："><a href="#实验：" class="headerlink" title="实验："></a>实验：</h1><p>作为主打区域推荐，当然要计算下recall<br>  <img src="/images/hypernet/4.png" alt=""><br>可以看到其在200proposal的时候，recall真的提了一大截。很赞。<br>  <img src="/images/hypernet/5.png" alt=""></p>
+<p>正确率</p>
+<p>   <img src="/images/hypernet/5.png" alt=""><br>速度</p>
+<p>论文就结束了.<br>思考：<br>   <img src="/images/hypernet/6.png" alt=""><br>对于层级特征目前运用的比较多，作者也将层级特征进行了可视化，从可视化的结果上可以看出对于小物体它有近似放大的效果，这很可能得益于对下层特征进行下采样的结果。<br>这个模型明显有改进的方法，就是将object detection网络和区域生成网路合并，就成了ssd。。。。哈哈哈天下人的idea都一样。<br>整体评价：如果不是文章赶得快，这论文在ssd和yolo之后就没有价值了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;HyperNet: Towards Accurate Region Proposal Generation&lt;br&gt;and Joint Object Detection&lt;br&gt;本篇论文发表于2016 IEEE Conference on Computer Vision and Pattern Recognition&lt;br&gt;论文下载地址：&lt;br&gt;&lt;a href=&quot;http://ieeexplore.ieee.org/document/7780467/&quot;&gt;http://ieeexplore.ieee.org/document/7780467/&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="papers" scheme="http://yoursite.com/categories/papers/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>线性回归与逻辑回归</title>
@@ -697,32 +747,6 @@ For “(()”, the longest valid parentheses substring is “()”, which has le
     
       <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Longest Common Prefix</title>
-    <link href="http://yoursite.com/2016/12/03/Longest-Common-Prefix/"/>
-    <id>http://yoursite.com/2016/12/03/Longest-Common-Prefix/</id>
-    <published>2016-12-03T12:43:58.000Z</published>
-    <updated>2016-12-03T12:53:49.665Z</updated>
-    
-    <content type="html"><![CDATA[<p>id14. Longest Common Prefix   Add to List QuestionEditorial Solution  My Submissions<br>Total Accepted: 137142<br>Total Submissions: 452531<br>Difficulty: Easy<br>Contributors: Admin<br>Write a function to find the longest common prefix string amongst an array of strings.<br><a id="more"></a><br>题目的意思是找到n多字符串中的最大公共前缀<br>直接写代码了：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="built_in">string</span> result;</div><div class="line">        <span class="keyword">if</span>(strs.empty())<span class="keyword">return</span> result;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;strs[<span class="number">0</span>].size();i++)<span class="comment">//拿任意一个做标度</span></div><div class="line">        &#123;  <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;strs.size();j++)</div><div class="line">             &#123;<span class="keyword">if</span>(strs[<span class="number">0</span>][i]!=strs[j][i])</div><div class="line">              <span class="keyword">return</span> result;</div><div class="line">             &#125;</div><div class="line">             result.push_back(strs[<span class="number">0</span>][i]);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>其中<br>  <code>for(int i=0;i&lt;strs[0].size();i++)//拿任意一个做标度</code>可以随便拿其中一个字符串做标度，因为是求最大公共前缀所以必须保证所有的都有，如果我们任意选择的都没有，说明就不是公共字串，为了控制简单所以使用第一个来进行。<br>  此外，一些语法的问题<br>  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; strs;</div><div class="line">可以表示的数组是</div><div class="line">&#123;</div><div class="line">  &#123;dgh&#125;,</div><div class="line">  &#123;dfgth&#125;,</div><div class="line">  &#123;dgreuihgre&#125;,</div><div class="line">&#125;</div><div class="line">strs[<span class="number">0</span>]=<span class="string">"dgh"</span>;</div><div class="line">strs[<span class="number">0</span>][<span class="number">0</span>]=‘d’;</div><div class="line">此外 对于 <span class="built_in">string</span> 的后插操作</div><div class="line"><span class="built_in">string</span> s;</div><div class="line">s.append(<span class="string">"a"</span>);正确</div><div class="line">但是s.append(‘a’);错误</div><div class="line">应该使用s.push_back(‘a’);</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;id14. Longest Common Prefix   Add to List QuestionEditorial Solution  My Submissions&lt;br&gt;Total Accepted: 137142&lt;br&gt;Total Submissions: 452531&lt;br&gt;Difficulty: Easy&lt;br&gt;Contributors: Admin&lt;br&gt;Write a function to find the longest common prefix string amongst an array of strings.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
-    
-    
-      <category term="leetode" scheme="http://yoursite.com/tags/leetode/"/>
-    
-      <category term="Longest Common Prefix" scheme="http://yoursite.com/tags/Longest-Common-Prefix/"/>
     
   </entry>
   
